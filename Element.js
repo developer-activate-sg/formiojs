@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -10,21 +9,16 @@ require("core-js/modules/es.object.get-own-property-descriptor.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.exec.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
@@ -42,8 +36,8 @@ var _lodash = _interopRequireDefault(require("lodash"));
 var _moment = _interopRequireDefault(require("moment"));
 var _vanillaTextMask = _interopRequireDefault(require("@formio/vanilla-text-mask"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -82,14 +76,14 @@ var Element = /*#__PURE__*/function () {
     this.eventHandlers = [];
 
     // Use the i18next that is passed in, otherwise use the global version.
-    this.i18next = this.options.i18next || _i18next["default"];
+    this.i18next = this.options.i18next || _i18next.default;
 
     /**
      * An instance of the EventEmitter class to handle the emitting and registration of events.
      *
      * @type {EventEmitter}
      */
-    this.events = options && options.events ? options.events : new _EventEmitter["default"]();
+    this.events = options && options.events ? options.events : new _EventEmitter.default();
     this.defaultMask = null;
     /**
      * Conditional to show or hide helplinks in editForm
@@ -258,7 +252,7 @@ var Element = /*#__PURE__*/function () {
      */
   }, {
     key: "addEventListener",
-    value: function addEventListener(obj, type, func, persistent, capture) {
+    value: function addEventListener(obj, type, func, persistent) {
       if (!obj) {
         return;
       }
@@ -271,7 +265,7 @@ var Element = /*#__PURE__*/function () {
         });
       }
       if ('addEventListener' in obj) {
-        obj.addEventListener(type, func, !!capture);
+        obj.addEventListener(type, func, false);
       } else if ('attachEvent' in obj) {
         obj.attachEvent("on".concat(type), func);
       }
@@ -300,7 +294,7 @@ var Element = /*#__PURE__*/function () {
         }
       });
       if (indexes.length) {
-        _lodash["default"].pullAt(this.eventHandlers, indexes);
+        _lodash.default.pullAt(this.eventHandlers, indexes);
       }
       return this;
     }
@@ -319,8 +313,8 @@ var Element = /*#__PURE__*/function () {
     key: "removeAllEvents",
     value: function removeAllEvents(includeExternal) {
       var _this5 = this;
-      _lodash["default"].each(this.events._events, function (events, type) {
-        _lodash["default"].each(events, function (listener) {
+      _lodash.default.each(this.events._events, function (events, type) {
+        _lodash.default.each(events, function (listener) {
           if (listener && _this5.id === listener.id && (includeExternal || listener.internal)) {
             _this5.events.off(type, listener);
           }
@@ -451,8 +445,8 @@ var Element = /*#__PURE__*/function () {
     key: "maskPlaceholder",
     value: function maskPlaceholder(mask) {
       var _this7 = this;
-      return mask.map(function (_char) {
-        return _char instanceof RegExp ? _this7.placeholderChar : _char;
+      return mask.map(function (char) {
+        return char instanceof RegExp ? _this7.placeholderChar : char;
       }).join('');
     }
   }, {
@@ -480,7 +474,7 @@ var Element = /*#__PURE__*/function () {
           if (input.mask) {
             input.mask.destroy();
           }
-          input.mask = (0, _vanillaTextMask["default"])({
+          input.mask = (0, _vanillaTextMask.default)({
             inputElement: input,
             mask: mask,
             placeholderChar: this.placeholderChar,
@@ -539,7 +533,7 @@ var Element = /*#__PURE__*/function () {
       if (!element) {
         return;
       }
-      _lodash["default"].each(_attr, function (value, key) {
+      _lodash.default.each(_attr, function (value, key) {
         if (typeof value !== 'undefined') {
           if (key.indexOf('on') === 0) {
             // If this is an event, add a listener.
@@ -639,18 +633,18 @@ var Element = /*#__PURE__*/function () {
     value: function evalContext(additional) {
       var _this$options;
       return Object.assign({
-        _: _lodash["default"],
+        _: _lodash.default,
         utils: FormioUtils,
         util: FormioUtils,
         user: _Formio.GlobalFormio.getUser(),
-        moment: _moment["default"],
+        moment: _moment.default,
         instance: this,
         self: this,
         token: _Formio.GlobalFormio.getToken({
           decode: true
         }),
         config: this.root && this.root.form && this.root.form.config ? this.root.form.config : (_this$options = this.options) !== null && _this$options !== void 0 && _this$options.formConfig ? this.options.formConfig : {}
-      }, additional, _lodash["default"].get(this.root, 'options.evalContext', {}));
+      }, additional, _lodash.default.get(this.root, 'options.evalContext', {}));
     }
 
     /**
@@ -711,4 +705,4 @@ var Element = /*#__PURE__*/function () {
   }]);
   return Element;
 }();
-exports["default"] = Element;
+exports.default = Element;

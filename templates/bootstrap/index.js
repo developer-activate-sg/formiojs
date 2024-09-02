@@ -1,13 +1,10 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -15,8 +12,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.date.to-string.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -88,7 +84,7 @@ var _wizardNav = _interopRequireDefault(require("./wizardNav"));
 var _cssClasses = _interopRequireDefault(require("./cssClasses"));
 var _errorsList = _interopRequireDefault(require("./errorsList"));
 var _alert = _interopRequireDefault(require("./alert"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -107,69 +103,69 @@ var _default = _objectSpread(_objectSpread({
     return text;
   },
   defaultIconset: 'fa',
-  iconClass: _iconClass["default"],
-  cssClasses: _cssClasses["default"],
-  address: _address["default"],
-  builder: _builder["default"],
-  builderComponent: _builderComponent["default"],
-  builderComponents: _builderComponents["default"],
-  builderEditForm: _builderEditForm["default"],
-  builderPlaceholder: _builderPlaceholder["default"],
-  builderSidebar: _builderSidebar["default"],
-  builderSidebarGroup: _builderSidebarGroup["default"],
-  builderWizard: _builderWizard["default"],
-  button: _button["default"],
-  checkbox: _checkbox["default"],
-  columns: _columns["default"],
-  component: _component["default"],
-  componentModal: _componentModal["default"],
-  components: _components["default"],
-  tableComponents: _tableComponents["default"],
-  container: _container["default"],
-  datagrid: _datagrid["default"],
-  day: _day["default"],
-  dialog: _dialog["default"],
-  editgrid: _editgrid["default"],
-  editgridTable: _editgridTable["default"],
-  field: _field["default"],
-  fieldset: _fieldset["default"],
-  file: _file["default"],
-  html: _html["default"],
-  icon: _icon["default"],
-  input: _input["default"],
-  label: _label["default"],
-  loader: _loader["default"],
-  loading: _loading["default"],
-  map: _map["default"],
-  message: _message["default"],
-  modaledit: _modaledit["default"],
-  modaldialog: _modaldialog["default"],
-  modalPreview: _modalPreview["default"],
-  multipleMasksInput: _multipleMasksInput["default"],
-  multiValueRow: _multiValueRow["default"],
-  multiValueTable: _multiValueTable["default"],
-  panel: _panel["default"],
-  pdf: _pdf["default"],
-  pdfBuilder: _pdfBuilder["default"],
-  pdfBuilderUpload: _pdfBuilderUpload["default"],
-  radio: _radio["default"],
-  resourceAdd: _resourceAdd["default"],
-  select: _select["default"],
-  selectOption: _selectOption["default"],
-  signature: _signature["default"],
-  survey: _survey["default"],
-  tab: _tab["default"],
-  table: _table["default"],
-  tree: _tree["default"]
-}, _partials["default"]), {}, {
-  webform: _webform["default"],
-  well: _well["default"],
-  wizard: _wizard["default"],
-  wizardHeader: _wizardHeader["default"],
-  wizardHeaderClassic: _wizardHeaderClassic["default"],
-  wizardHeaderVertical: _wizardHeaderVertical["default"],
-  wizardNav: _wizardNav["default"],
-  errorsList: _errorsList["default"],
-  alert: _alert["default"]
+  iconClass: _iconClass.default,
+  cssClasses: _cssClasses.default,
+  address: _address.default,
+  builder: _builder.default,
+  builderComponent: _builderComponent.default,
+  builderComponents: _builderComponents.default,
+  builderEditForm: _builderEditForm.default,
+  builderPlaceholder: _builderPlaceholder.default,
+  builderSidebar: _builderSidebar.default,
+  builderSidebarGroup: _builderSidebarGroup.default,
+  builderWizard: _builderWizard.default,
+  button: _button.default,
+  checkbox: _checkbox.default,
+  columns: _columns.default,
+  component: _component.default,
+  componentModal: _componentModal.default,
+  components: _components.default,
+  tableComponents: _tableComponents.default,
+  container: _container.default,
+  datagrid: _datagrid.default,
+  day: _day.default,
+  dialog: _dialog.default,
+  editgrid: _editgrid.default,
+  editgridTable: _editgridTable.default,
+  field: _field.default,
+  fieldset: _fieldset.default,
+  file: _file.default,
+  html: _html.default,
+  icon: _icon.default,
+  input: _input.default,
+  label: _label.default,
+  loader: _loader.default,
+  loading: _loading.default,
+  map: _map.default,
+  message: _message.default,
+  modaledit: _modaledit.default,
+  modaldialog: _modaldialog.default,
+  modalPreview: _modalPreview.default,
+  multipleMasksInput: _multipleMasksInput.default,
+  multiValueRow: _multiValueRow.default,
+  multiValueTable: _multiValueTable.default,
+  panel: _panel.default,
+  pdf: _pdf.default,
+  pdfBuilder: _pdfBuilder.default,
+  pdfBuilderUpload: _pdfBuilderUpload.default,
+  radio: _radio.default,
+  resourceAdd: _resourceAdd.default,
+  select: _select.default,
+  selectOption: _selectOption.default,
+  signature: _signature.default,
+  survey: _survey.default,
+  tab: _tab.default,
+  table: _table.default,
+  tree: _tree.default
+}, _partials.default), {}, {
+  webform: _webform.default,
+  well: _well.default,
+  wizard: _wizard.default,
+  wizardHeader: _wizardHeader.default,
+  wizardHeaderClassic: _wizardHeaderClassic.default,
+  wizardHeaderVertical: _wizardHeaderVertical.default,
+  wizardNav: _wizardNav.default,
+  errorsList: _errorsList.default,
+  alert: _alert.default
 });
-exports["default"] = _default;
+exports.default = _default;

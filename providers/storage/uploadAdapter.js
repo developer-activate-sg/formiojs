@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -21,7 +20,7 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 var _utils = require("../../utils/utils");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -43,7 +42,7 @@ var FormioUploadAdapter = /*#__PURE__*/function () {
     value: function upload() {
       var _this = this;
       return this.loader.file.then(function (file) {
-        return new _nativePromiseOnly["default"](function (resolve, reject) {
+        return new _nativePromiseOnly.default(function (resolve, reject) {
           var _this$fileService;
           var _this$component$compo = _this.component.component,
             uploadStorage = _this$component$compo.uploadStorage,
@@ -62,12 +61,12 @@ var FormioUploadAdapter = /*#__PURE__*/function () {
             return _this.fileService.downloadFile(result);
           }).then(function (result) {
             return resolve({
-              "default": result.url
+              default: result.url
             });
-          })["catch"](function (err) {
+          }).catch(function (err) {
             console.warn('An Error occured while uploading file', err);
             reject(err);
-          })["finally"](function () {
+          }).finally(function () {
             _this.component.emit('fileUploadingEnd', uploadPromise);
           });
         });

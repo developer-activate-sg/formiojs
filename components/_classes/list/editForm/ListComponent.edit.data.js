@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'select',
   input: true,
@@ -25,7 +24,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
@@ -50,7 +49,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
@@ -66,8 +65,8 @@ var _default = [{
   tooltip: 'The property of each item in the data source to use as the select value. If not specified, the item itself will be used.',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['json', 'url', 'custom']]
     }
   }
@@ -100,7 +99,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
@@ -115,14 +114,14 @@ var _default = [{
     json: {
       'or': [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'url']
       }, {
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'resource']
       }]
     }
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

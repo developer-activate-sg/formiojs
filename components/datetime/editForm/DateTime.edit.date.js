@@ -1,13 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _Evaluator = _interopRequireDefault(require("../../../utils/Evaluator"));
 var _utils = _interopRequireDefault(require("../../_classes/component/editForm/utils"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   type: 'checkbox',
   input: true,
@@ -36,15 +35,15 @@ var _default = [{
   },
   key: 'panel-disable-function',
   customConditional: function customConditional() {
-    return !_Evaluator["default"].noeval || _Evaluator["default"].protectedEval;
+    return !_Evaluator.default.noeval || _Evaluator.default.protectedEval;
   },
-  components: [_utils["default"].logicVariablesTable('<tr><th>date</th><td>The date object.</td></tr>'), {
+  components: [_utils.default.logicVariablesTable('<tr><th>date</th><td>The date object.</td></tr>'), {
     type: 'textarea',
     input: true,
     editor: 'ace',
     key: 'datePicker.disableFunction',
     label: 'Disabling dates by a function',
-    description: 'For more information check out the <a href="https://flatpickr.js.org/examples/#disabling-dates" target="_blank" rel="noopener noreferrer">Docs</a>',
+    description: 'For more information check out the <a href="https://flatpickr.js.org/examples/#disabling-dates" target="_blank">Docs</a>',
     weight: 22
   }, {
     type: 'htmlelement',
@@ -66,4 +65,4 @@ var _default = [{
   tooltip: 'Check to disable weekdays',
   weight: 23
 }];
-exports["default"] = _default;
+exports.default = _default;

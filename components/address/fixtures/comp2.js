@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   type: 'form',
   components: [{
@@ -72,7 +71,7 @@ var _default = {
       lat: '32.7620405',
       lon: '-96.7790069',
       'display_name': 'Dallas County, Texas, United States',
-      "class": 'boundary',
+      class: 'boundary',
       type: 'administrative',
       importance: 0.6662149661993487,
       icon: 'https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png',
@@ -96,4 +95,4 @@ var _default = {
   name: 'test11',
   path: 'test11'
 };
-exports["default"] = _default;
+exports.default = _default;

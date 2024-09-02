@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -18,17 +16,11 @@ require("core-js/modules/es.symbol.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/es.array.index-of.js");
-require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/web.timers.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Element2 = _interopRequireDefault(require("./Element"));
 var _Formio = require("./Formio");
@@ -37,8 +29,8 @@ var _templates = _interopRequireDefault(require("./templates"));
 var FormioUtils = _interopRequireWildcard(require("./utils/utils"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -82,7 +74,7 @@ var Form = /*#__PURE__*/function (_Element) {
     if (_this.options.useSessionToken) {
       _Formio.GlobalFormio.useSessionToken(_this.options);
     }
-    _this.ready = new _nativePromiseOnly["default"](function (resolve, reject) {
+    _this.ready = new _nativePromiseOnly.default(function (resolve, reject) {
       _this.readyResolve = resolve;
       _this.readyReject = reject;
     });
@@ -93,14 +85,14 @@ var Form = /*#__PURE__*/function (_Element) {
       _this.options.events = _this.events;
       _this.setForm(arguments.length <= 1 ? undefined : arguments[1]).then(function () {
         return _this.readyResolve(_this.instance);
-      })["catch"](_this.readyReject);
+      }).catch(_this.readyReject);
     } else if (arguments.length <= 0 ? undefined : arguments[0]) {
       _this.element = null;
       _this.options = (arguments.length <= 1 ? undefined : arguments[1]) || {};
       _this.options.events = _this.events;
       _this.setForm(arguments.length <= 0 ? undefined : arguments[0]).then(function () {
         return _this.readyResolve(_this.instance);
-      })["catch"](_this.readyReject);
+      }).catch(_this.readyReject);
     } else {
       _this.element = null;
       _this.options = {};
@@ -123,11 +115,11 @@ var Form = /*#__PURE__*/function (_Element) {
         display = 'form';
       }
       this.display = display;
-      if (_displays["default"].displays[display]) {
-        return new _displays["default"].displays[display](this.element, this.options);
+      if (_displays.default.displays[display]) {
+        return new _displays.default.displays[display](this.element, this.options);
       } else {
         // eslint-disable-next-line new-cap
-        return new _displays["default"].displays['webform'](this.element, this.options);
+        return new _displays.default.displays['webform'](this.element, this.options);
       }
     }
 
@@ -177,41 +169,6 @@ var Form = /*#__PURE__*/function (_Element) {
         }]
       };
     }
-
-    /**
-    * Check Subdirectories path and provide correct options
-    *
-    * @param {string} url - The the URL of the form json.
-    * @param {form} object - The form json.
-    * @return {object} The initial options with base and project.
-    */
-  }, {
-    key: "getFormInitOptions",
-    value: function getFormInitOptions(url, form) {
-      var options = {};
-      var index = url.indexOf(form === null || form === void 0 ? void 0 : form.path);
-      // form url doesn't include form path
-      if (index === -1) {
-        return options;
-      }
-      var projectUrl = url.substring(0, index - 1);
-      var urlParts = _Formio.GlobalFormio.getUrlParts(projectUrl);
-      // project url doesn't include subdirectories path
-      if (!urlParts || urlParts.filter(function (part) {
-        return !!part;
-      }).length < 4) {
-        return options;
-      }
-      var baseUrl = "".concat(urlParts[1]).concat(urlParts[2]);
-      // Skip if baseUrl has already been set
-      if (baseUrl !== _Formio.GlobalFormio.baseUrl) {
-        return {
-          base: baseUrl,
-          project: projectUrl
-        };
-      }
-      return {};
-    }
   }, {
     key: "setForm",
     value: function setForm(formParam) {
@@ -221,12 +178,12 @@ var Form = /*#__PURE__*/function (_Element) {
       if (typeof formParam === 'string') {
         var formio = new _Formio.GlobalFormio(formParam);
         var error;
-        result = this.getSubmission(formio, this.options)["catch"](function (err) {
+        result = this.getSubmission(formio).catch(function (err) {
           error = err;
         }).then(function (submission) {
           return formio.loadForm()
           // If the form returned an error, show it instead of the form.
-          ["catch"](function (err) {
+          .catch(function (err) {
             error = err;
           }).then(function (form) {
             // If the submission returned an error, show it instead of the form.
@@ -234,8 +191,7 @@ var Form = /*#__PURE__*/function (_Element) {
               form = _this2.errorForm(error);
             }
             _this2.instance = _this2.instance || _this2.create(form.display);
-            var options = _this2.getFormInitOptions(formParam, form);
-            _this2.instance.setUrl(formParam, options);
+            _this2.instance.url = formParam;
             _this2.instance.nosubmit = false;
             _this2._form = _this2.instance.form = form;
             if (submission) {
@@ -261,17 +217,17 @@ var Form = /*#__PURE__*/function (_Element) {
     }
   }, {
     key: "getSubmission",
-    value: function getSubmission(formio, opts) {
+    value: function getSubmission(formio) {
       if (formio.submissionId) {
-        return formio.loadSubmission(null, opts);
+        return formio.loadSubmission();
       }
-      return _nativePromiseOnly["default"].resolve();
+      return _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "setDisplay",
     value: function setDisplay(display) {
       if (this.display === display && this.instance) {
-        return _nativePromiseOnly["default"].resolve(this.instance);
+        return _nativePromiseOnly.default.resolve(this.instance);
       }
       this.form.display = display;
       this.instance.destroy();
@@ -323,15 +279,15 @@ var Form = /*#__PURE__*/function (_Element) {
     value: function build() {
       var _this3 = this;
       if (!this.instance) {
-        return _nativePromiseOnly["default"].reject('Form not ready. Use form.ready promise');
+        return _nativePromiseOnly.default.reject('Form not ready. Use form.ready promise');
       }
       if (!this.element) {
-        return _nativePromiseOnly["default"].reject('No DOM element for form.');
+        return _nativePromiseOnly.default.reject('No DOM element for form.');
       }
 
       // Add temporary loader.
       var template = this.options && this.options.template ? this.options.template : 'bootstrap';
-      var loader = _templates["default"][template].loader || _templates["default"].bootstrap.loader;
+      var loader = _templates.default[template].loader || _templates.default.bootstrap.loader;
       this.setContent(this.element, loader.form);
       return this.render().then(function (html) {
         _this3.setContent(_this3.element, html);
@@ -348,9 +304,9 @@ var Form = /*#__PURE__*/function (_Element) {
     value: function render() {
       var _this4 = this;
       if (!this.instance) {
-        return _nativePromiseOnly["default"].reject('Form not ready. Use form.ready promise');
+        return _nativePromiseOnly.default.reject('Form not ready. Use form.ready promise');
       }
-      return _nativePromiseOnly["default"].resolve(this.instance.render()).then(function (param) {
+      return _nativePromiseOnly.default.resolve(this.instance.render()).then(function (param) {
         _this4.emit('render', param);
         return param;
       });
@@ -360,7 +316,7 @@ var Form = /*#__PURE__*/function (_Element) {
     value: function attach(element) {
       var _this5 = this;
       if (!this.instance) {
-        return _nativePromiseOnly["default"].reject('Form not ready. Use form.ready promise');
+        return _nativePromiseOnly.default.reject('Form not ready. Use form.ready promise');
       }
       this.element = element;
       return this.instance.attach(this.element).then(function (param) {
@@ -372,12 +328,12 @@ var Form = /*#__PURE__*/function (_Element) {
     key: "embed",
     value: function embed(_embed) {
       var _this6 = this;
-      return new _nativePromiseOnly["default"](function (resolve) {
+      return new _nativePromiseOnly.default(function (resolve) {
         if (!_embed || !_embed.src) {
           resolve();
         }
         var id = _this6.id || "formio-".concat(Math.random().toString(36).substring(7));
-        var className = _embed["class"] || 'formio-form-wrapper';
+        var className = _embed.class || 'formio-form-wrapper';
         var code = _embed.styles ? "<link rel=\"stylesheet\" href=\"".concat(_embed.styles, "\">") : '';
         code += "<div id=\"".concat(id, "\" class=\"").concat(className, "\"></div>");
         document.write(code);
@@ -394,8 +350,8 @@ var Form = /*#__PURE__*/function (_Element) {
     }
   }]);
   return Form;
-}(_Element2["default"]); // Allow simple embedding.
-exports["default"] = Form;
+}(_Element2.default); // Allow simple embedding.
+exports.default = Form;
 _Formio.GlobalFormio.embedForm = function (embed) {
   return Form.embed(embed);
 };

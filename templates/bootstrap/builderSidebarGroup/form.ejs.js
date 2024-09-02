@@ -34,15 +34,13 @@ __p += '<div class="card form-builder-panel" ref="group-panel-' +
  if (ctx.group.componentOrder.length || ctx.subgroups.length) { ;
 __p += '\n        ';
  !ctx.group.componentOrder || ctx.group.componentOrder.forEach(function(componentKey) { ;
-__p += '\n          <span\n            ref="sidebar-component"\n            data-group="' +
+__p += '\n          <span\n            data-group="' +
 ((__t = (ctx.groupKey)) == null ? '' : __t) +
 '"\n            data-key="' +
 ((__t = (ctx.group.components[componentKey].key)) == null ? '' : __t) +
 '"\n            data-type="' +
 ((__t = (ctx.group.components[componentKey].schema.type)) == null ? '' : __t) +
-'"\n            class="btn btn-primary btn-sm btn-block formcomponent drag-copy"\n            tabindex="' +
-((__t = (ctx.keyboardActionsEnabled ? 0 : -1)) == null ? '' : __t) +
-'"\n          >\n            ';
+'"\n            class="btn btn-primary btn-sm btn-block formcomponent drag-copy"\n          >\n            ';
  if (ctx.group.components[componentKey].icon) { ;
 __p += '\n              <i class="' +
 ((__t = (ctx.iconClass(ctx.group.components[componentKey].icon))) == null ? '' : __t) +

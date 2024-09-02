@@ -1,13 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _widgets = _interopRequireDefault(require("../../../widgets"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   weight: 400,
   type: 'select',
@@ -18,7 +17,7 @@ var _default = [{
   tooltip: 'The widget is the display UI used to input the value of the field.',
   defaultValue: 'input',
   onChange: function onChange(context) {
-    context.data.widget = _lodash["default"].pick(context.data.widget, 'type');
+    context.data.widget = _lodash.default.pick(context.data.widget, 'type');
   },
   dataSrc: 'values',
   data: {
@@ -33,7 +32,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.type'
+        var: 'data.type'
       }, 'textfield']
     }
   }
@@ -48,15 +47,15 @@ var _default = [{
   calculateValue: function calculateValue(context) {
     var calculatedValue = context.instance.calculatedValue;
     var type = context.data.widget.type;
-    if (_lodash["default"].isEmpty(_lodash["default"].omit(context.data.widget, 'type')) || _lodash["default"].isEmpty(_lodash["default"].omit(calculatedValue, 'type'))) {
+    if (_lodash.default.isEmpty(_lodash.default.omit(context.data.widget, 'type')) || _lodash.default.isEmpty(_lodash.default.omit(calculatedValue, 'type'))) {
       if (calculatedValue && !calculatedValue.type) {
         return context.data.widget;
       }
       var existWidget = context.instance._currentForm.options.editComponent.widget;
-      if (existWidget && !_lodash["default"].isEmpty(_lodash["default"].omit(existWidget, 'type')) && type === existWidget.type) {
-        return _lodash["default"].omit(existWidget, 'language');
+      if (existWidget && !_lodash.default.isEmpty(_lodash.default.omit(existWidget, 'type')) && type === existWidget.type) {
+        return _lodash.default.omit(existWidget, 'language');
       } else if (type) {
-        return _lodash["default"].omit(_widgets["default"][type].defaultSettings, 'language');
+        return _lodash.default.omit(_widgets.default[type].defaultSettings, 'language');
       }
     }
     return context.data.widget;
@@ -68,7 +67,7 @@ var _default = [{
   conditional: {
     json: {
       '!==': [{
-        "var": 'data.widget.type'
+        var: 'data.widget.type'
       }, 'input']
     }
   }
@@ -89,27 +88,6 @@ var _default = [{
   key: 'displayMask',
   label: 'Display Mask',
   tooltip: 'A display mask helps to display the input in a readable way, this won\'t affect the  value which will be saved (to affect both view and saved value, delete Display Mask and use Input Mask).<br><br>9: numeric<br>a: alphabetical<br>*: alphanumeric<br><br>Example telephone mask: (999) 999-9999<br><br>See the <a target=\'_blank\' href=\'https://github.com/RobinHerbots/jquery.inputmask\'>jquery.inputmask documentation</a> for more information.</a>',
-  customConditional: function customConditional(context) {
-    return !context.data.allowMultipleMasks;
-  }
-}, {
-  weight: 410,
-  type: 'select',
-  input: true,
-  key: 'applyMaskOn',
-  label: 'Apply Mask On',
-  tooltip: 'Select the type of applying mask.',
-  defaultValue: 'change',
-  dataSrc: 'values',
-  data: {
-    values: [{
-      label: 'Change',
-      value: 'change'
-    }, {
-      label: 'Blur',
-      value: 'blur'
-    }]
-  },
   customConditional: function customConditional(context) {
     return !context.data.allowMultipleMasks;
   }
@@ -202,4 +180,4 @@ var _default = [{
   key: 'showCharCount',
   input: true
 }];
-exports["default"] = _default;
+exports.default = _default;

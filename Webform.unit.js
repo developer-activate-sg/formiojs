@@ -1,7 +1,6 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
@@ -10,11 +9,8 @@ require("core-js/modules/es.symbol.async-iterator.js");
 require("core-js/modules/es.symbol.to-string-tag.js");
 require("core-js/modules/es.json.to-string-tag.js");
 require("core-js/modules/es.math.to-string-tag.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
@@ -23,23 +19,19 @@ require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
-require("core-js/modules/es.array.from.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.weak-map.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.string.trim.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
+require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.string.includes.js");
+require("core-js/modules/es.promise.js");
+require("core-js/modules/es.promise.finally.js");
 var _powerAssert = _interopRequireDefault(require("power-assert"));
 var _chai = require("chai");
 var _sinon = _interopRequireDefault(require("sinon"));
@@ -51,8 +43,8 @@ var _forms = _interopRequireDefault(require("../test/forms"));
 var _Webform = _interopRequireDefault(require("./Webform"));
 require("flatpickr");
 var _Formio = _interopRequireDefault(require("./Formio"));
-var _components = _interopRequireDefault(require("./components"));
 var _formtest = require("../test/formtest");
+var _dataGridOnBlurValidation = _interopRequireDefault(require("../test/forms/dataGridOnBlurValidation"));
 var _updateErrorClassesWidgets = _interopRequireDefault(require("../test/forms/updateErrorClasses-widgets"));
 var _nestedModalWizard = _interopRequireDefault(require("../test/forms/nestedModalWizard"));
 var _disableSubmitButton = _interopRequireDefault(require("../test/forms/disableSubmitButton"));
@@ -65,7 +57,6 @@ var _dataGridWithConditionalColumn = _interopRequireDefault(require("../test/for
 var _fixtures = require("../test/fixtures");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _utils = require("../lib/utils/utils");
-var _dataGridOnBlurValidation = _interopRequireDefault(require("../test/forms/dataGridOnBlurValidation"));
 var _checkBlurFocusEventForm = _interopRequireDefault(require("../test/forms/checkBlurFocusEventForm"));
 var _truncateMultipleSpaces = _interopRequireDefault(require("../test/forms/truncateMultipleSpaces"));
 var _calculatedValue = _interopRequireDefault(require("../test/forms/calculatedValue"));
@@ -80,56 +71,32 @@ var _formWithCalcValue = _interopRequireDefault(require("../test/forms/formWithC
 var _formWithAllowCalculateOverride = _interopRequireDefault(require("../test/forms/formWithAllowCalculateOverride"));
 var _clearOnHideInsideEditGrid = _interopRequireDefault(require("../test/forms/clearOnHideInsideEditGrid"));
 var _nestedDataGridWithInitEmpty = _interopRequireDefault(require("../test/forms/nestedDataGridWithInitEmpty"));
-var _formWithEventLogicInHiddenComponent = _interopRequireDefault(require("../test/forms/formWithEventLogicInHiddenComponent"));
 var FormioUtils = _interopRequireWildcard(require("./utils/utils"));
 var _htmlRenderMode = _interopRequireDefault(require("../test/forms/htmlRenderMode"));
 var _optionalSanitize = _interopRequireDefault(require("../test/forms/optionalSanitize"));
-var _formsWithNewSimpleConditions = _interopRequireDefault(require("../test/forms/formsWithNewSimpleConditions"));
 var _formWithRadioInsideDataGrid = _interopRequireDefault(require("../test/forms/formWithRadioInsideDataGrid"));
 var _formWithCheckboxRadioType = _interopRequireDefault(require("../test/forms/formWithCheckboxRadioType"));
-var _formWithFormController = _interopRequireDefault(require("../test/forms/formWithFormController"));
-var _calculateValueOnServerForEditGrid = _interopRequireDefault(require("../test/forms/calculateValueOnServerForEditGrid"));
-var _formsWithAllowOverrideComps = _interopRequireDefault(require("../test/forms/formsWithAllowOverrideComps"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 global.requestAnimationFrame = function (cb) {
   return cb();
 };
 global.cancelAnimationFrame = function () {};
-if (_lodash["default"].has(_Formio["default"], 'Components.setComponents')) {
-  _Formio["default"].Components.setComponents(_components["default"]);
-}
 
 /* eslint-disable max-statements */
 describe('Webform tests', function () {
   this.retries(3);
-  it('Should execute form controller', function (done) {
-    _Formio["default"].createForm(_formWithFormController["default"]).then(function (form) {
-      setTimeout(function () {
-        var textField = form.getComponent('textField');
-        _powerAssert["default"].equal(textField.getValue(), 'Hello World');
-        _powerAssert["default"].equal(textField.disabled, true);
-        _powerAssert["default"].equal(form.components[0].disabled, true);
-        done();
-      }, 300);
-    })["catch"](function (err) {
-      return done(err);
-    });
-  });
   it('Should set radio components value inside data grid correctly', function (done) {
-    _Formio["default"].createForm(_formWithRadioInsideDataGrid["default"]).then(function (form) {
+    _Formio.default.createForm(_formWithRadioInsideDataGrid.default).then(function (form) {
       var dataGridData = [{
         radio: 'two'
       }, {
@@ -144,49 +111,17 @@ describe('Webform tests', function () {
       });
       setTimeout(function () {
         var dataGrid = form.getComponent('dataGrid');
-        _powerAssert["default"].deepEqual(dataGrid.dataValue, dataGridData);
+        _powerAssert.default.deepEqual(dataGrid.dataValue, dataGridData);
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
-  it('Should not fall into setValue calls loop when doing value calculation on server', function (done) {
-    var formElement = document.createElement('div');
-    // Set a spy for Edit Grid setValue method
-    var spy = _sinon["default"].spy(_Formio["default"].Components.components.editgrid.prototype, 'setValue');
-    _Formio["default"].createForm(formElement, _calculateValueOnServerForEditGrid["default"], {
-      server: true,
-      noDefaults: true
-    }).then(function (form) {
-      _powerAssert["default"].deepEqual(form.data, {
-        editGrid: [{
-          fielda: undefined,
-          fieldb: 'test'
-        }]
-      });
-      _powerAssert["default"].equal(spy.callCount, 1);
-      var first = form.getComponent('first');
-      first.setValue('test value');
-      setTimeout(function () {
-        _powerAssert["default"].deepEqual(form.data, {
-          first: 'test value',
-          editGrid: [{
-            fielda: 'test value',
-            fieldb: 'test'
-          }]
-        });
-        _powerAssert["default"].equal(spy.callCount, 2);
-        // Remove the spy from setValue method
-        _Formio["default"].Components.components.editgrid.prototype.setValue.restore();
-        done();
-      }, 300);
-    })["catch"](done);
-  });
   it('Should fire blur and focus events for address and select components', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_checkBlurFocusEventForm["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_checkBlurFocusEventForm.default).then(function () {
       var blurEvents = 0;
       var focusEvents = 0;
       form.on('blur', function () {
@@ -210,19 +145,19 @@ describe('Webform tests', function () {
           setTimeout(function () {
             address.refs.searchInput[0].dispatchEvent(blurEvent);
             setTimeout(function () {
-              _powerAssert["default"].equal(focusEvents, 3);
-              _powerAssert["default"].equal(blurEvents, 3);
+              _powerAssert.default.equal(focusEvents, 3);
+              _powerAssert.default.equal(blurEvents, 3);
               done();
             }, 300);
           }, 300);
         }, 300);
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should return correct string value for checkbox radio type', function (done) {
-    _Formio["default"].createForm(_formWithCheckboxRadioType["default"]).then(function (form) {
+    _Formio.default.createForm(_formWithCheckboxRadioType.default).then(function (form) {
       form.setValue({
         data: {
           radio: 'value1',
@@ -236,7 +171,7 @@ describe('Webform tests', function () {
           checkbox: 'Yes'
         };
         form.eachComponent(function (comp) {
-          _powerAssert["default"].equal(comp.getValueAsString(comp.dataValue), stringValues["".concat(comp.component.key)], "Error for string value of ".concat(comp.component.key));
+          _powerAssert.default.equal(comp.getValueAsString(comp.dataValue), stringValues["".concat(comp.component.key)], "Error for string value of ".concat(comp.component.key));
         });
         form.setValue({
           data: {
@@ -251,52 +186,25 @@ describe('Webform tests', function () {
             checkbox: 'No'
           };
           form.eachComponent(function (comp) {
-            _powerAssert["default"].equal(comp.getValueAsString(comp.dataValue), stringValues2["".concat(comp.component.key)], "Error for string value of ".concat(comp.component.key));
+            _powerAssert.default.equal(comp.getValueAsString(comp.dataValue), stringValues2["".concat(comp.component.key)], "Error for string value of ".concat(comp.component.key));
           });
           done();
         }, 200);
       }, 200);
-    })["catch"](function (err) {
-      return done(err);
-    });
-  });
-  it('Should set value for hidden nested component through the logic triggered by event', function (done) {
-    var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_formWithEventLogicInHiddenComponent["default"]).then(function () {
-      var regesteredAddress = form.getComponent('registeredAddressInformation').getComponent('streetAddress')[0];
-      var address = form.getComponent('addressInformation').getComponent('streetAddress')[0];
-      _powerAssert["default"].equal(address.visible, true);
-      _powerAssert["default"].equal(regesteredAddress.visible, false);
-      var value = 'Dallas';
-      address.setValue(value);
-      setTimeout(function () {
-        _powerAssert["default"].equal(address.dataValue, value);
-        _powerAssert["default"].equal(regesteredAddress.dataValue, value);
-        var role = form.getComponent('role');
-        role.setValue(['client']);
-        setTimeout(function () {
-          _powerAssert["default"].equal(address.visible, false);
-          _powerAssert["default"].equal(regesteredAddress.visible, true);
-          _powerAssert["default"].equal(regesteredAddress.dataValue, value);
-          _powerAssert["default"].equal(address.dataValue, value);
-          done();
-        }, 500);
-      }, 500);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should recalculate value when submission is being set in edit mode', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_formWithCalcValue["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_formWithCalcValue.default).then(function () {
       var numberComp = form.getComponent('number');
       var checkbox = form.getComponent('checkbox');
       form.setSubmission({}).then(function () {
         setTimeout(function () {
-          _powerAssert["default"].equal(numberComp.dataValue, 0);
-          _powerAssert["default"].equal(checkbox.dataValue, true);
+          _powerAssert.default.equal(numberComp.dataValue, 0);
+          _powerAssert.default.equal(checkbox.dataValue, true);
           form.setSubmission({
             data: {
               number: 7,
@@ -304,38 +212,24 @@ describe('Webform tests', function () {
             }
           }).then(function () {
             setTimeout(function () {
-              _powerAssert["default"].equal(numberComp.dataValue, 7);
-              _powerAssert["default"].equal(checkbox.dataValue, false);
+              _powerAssert.default.equal(numberComp.dataValue, 7);
+              _powerAssert.default.equal(checkbox.dataValue, false);
               done();
             }, 500);
           });
         }, 500);
       });
-    })["catch"](function (err) {
-      return done(err);
-    });
-  });
-  it('Should not activate checkbox when clicking tooltip icon', function (done) {
-    var element = document.createElement('div');
-    var form = new _Webform["default"](element);
-    form.setForm(_formtest.tooltipActivateCheckbox).then(function () {
-      var checkboxValue = form.element.querySelector('[name="data[checkbox]"]').value;
-      _harness["default"].clickElement(form, form.element.querySelector('[ref="tooltip"]'));
-      setTimeout(function () {
-        _powerAssert["default"].equal(form.element.querySelector('[name="data[checkbox]"]').value, checkboxValue);
-        done();
-      }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show survey values in html render mode', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       renderMode: 'html',
       readOnly: true
     });
-    form.setForm(_formWithSurvey["default"]).then(function () {
+    form.setForm(_formWithSurvey.default).then(function () {
       form.setSubmission({
         data: {
           survey: {
@@ -346,22 +240,22 @@ describe('Webform tests', function () {
       }).then(function () {
         var survey = form.getComponent('survey');
         var values = survey.element.querySelectorAll('td');
-        _powerAssert["default"].equal(values.length, 2);
-        _powerAssert["default"].equal(values[0].innerHTML.trim(), 'a3');
-        _powerAssert["default"].equal(values[1].innerHTML.trim(), 'a1');
+        _powerAssert.default.equal(values.length, 2);
+        _powerAssert.default.equal(values[0].innerHTML.trim(), 'a3');
+        _powerAssert.default.equal(values[1].innerHTML.trim(), 'a1');
         done();
       });
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show select boxes values in html render mode', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       renderMode: 'html',
       readOnly: true
     });
-    form.setForm(_formWithSelectBoxes["default"]).then(function () {
+    form.setForm(_formWithSelectBoxes.default).then(function () {
       form.setSubmission({
         data: {
           selectBoxes: {
@@ -373,20 +267,20 @@ describe('Webform tests', function () {
       }).then(function () {
         var selectBoxes = form.getComponent('selectBoxes');
         var values = selectBoxes.element.querySelector('[ref="value"]').textContent.trim();
-        _powerAssert["default"].equal(values, 'a, b');
+        _powerAssert.default.equal(values, 'a, b');
         done();
       });
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show day value in html render mode', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       renderMode: 'html',
       readOnly: true
     });
-    form.setForm(_formWithDayComp["default"]).then(function () {
+    form.setForm(_formWithDayComp.default).then(function () {
       form.setSubmission({
         data: {
           day: '05/07/2020'
@@ -394,25 +288,25 @@ describe('Webform tests', function () {
       }).then(function () {
         var day = form.getComponent('day');
         var value = day.element.querySelector('[ref="value"]').textContent.trim();
-        _powerAssert["default"].equal(value, '05/07/2020');
+        _powerAssert.default.equal(value, '05/07/2020');
         done();
       });
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should allow to input value and add rows in deeply nested conditional dataGrid', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_nestedDataGridsAndContainers["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_nestedDataGridsAndContainers.default).then(function () {
       var parentDataGrid = form.getComponent('dataGrid6');
-      _powerAssert["default"].equal(parentDataGrid.rows.length, 1);
-      _powerAssert["default"].equal(parentDataGrid.rows[0].dataGrid5.visible, false);
+      _powerAssert.default.equal(parentDataGrid.rows.length, 1);
+      _powerAssert.default.equal(parentDataGrid.rows[0].dataGrid5.visible, false);
       var checkbox = form.getComponent('checkbox');
       checkbox.setValue(true);
       setTimeout(function () {
-        _powerAssert["default"].equal(parentDataGrid.rows.length, 1);
-        _powerAssert["default"].equal(parentDataGrid.rows[0].dataGrid5.visible, true);
+        _powerAssert.default.equal(parentDataGrid.rows.length, 1);
+        _powerAssert.default.equal(parentDataGrid.rows[0].dataGrid5.visible, true);
         var numberInput = parentDataGrid.rows[0].dataGrid5.rows[0].number.refs.input[0];
         numberInput.value = 555;
         var inputEvent = new Event('input');
@@ -420,30 +314,30 @@ describe('Webform tests', function () {
         setTimeout(function () {
           var conditionalDataGrid = form.getComponent('dataGrid6').rows[0].dataGrid5;
           var numberComp = conditionalDataGrid.rows[0].number;
-          _powerAssert["default"].equal(numberComp.dataValue, 555);
-          _powerAssert["default"].equal(numberComp.refs.input[0].value, 555);
+          _powerAssert.default.equal(numberComp.dataValue, 555);
+          _powerAssert.default.equal(numberComp.refs.input[0].value, 555);
           var addRowBtn = conditionalDataGrid.refs['datagrid-dataGrid5-addRow'][0];
           var clickEvent = new Event('click');
           addRowBtn.dispatchEvent(clickEvent);
           setTimeout(function () {
-            _powerAssert["default"].equal(conditionalDataGrid.rows.length, 2);
+            _powerAssert.default.equal(conditionalDataGrid.rows.length, 2);
             done();
           }, 300);
         }, 300);
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should adjust columns when conditional fields appear/disappear', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_columnWithConditionalComponents["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_columnWithConditionalComponents.default).then(function () {
       var selectBoxes = form.getComponent('selectBoxes');
       var columns = form.getComponent('columns');
       columns.columns.forEach(function (column, index) {
-        _powerAssert["default"].equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
-        _powerAssert["default"].equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
+        _powerAssert.default.equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
+        _powerAssert.default.equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
       });
       selectBoxes.setValue({
         '1': false,
@@ -456,11 +350,11 @@ describe('Webform tests', function () {
       setTimeout(function () {
         columns.columns.forEach(function (column, index) {
           if ([3, 6].includes(index + 1)) {
-            _powerAssert["default"].equal(column[0].visible, true, "Column ".concat(index + 1, " component should be visible"));
-            _powerAssert["default"].equal(columns.component.columns[index].currentWidth, 2, "Column ".concat(index + 1, "  width should be 2"));
+            _powerAssert.default.equal(column[0].visible, true, "Column ".concat(index + 1, " component should be visible"));
+            _powerAssert.default.equal(columns.component.columns[index].currentWidth, 2, "Column ".concat(index + 1, "  width should be 2"));
           } else {
-            _powerAssert["default"].equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
-            _powerAssert["default"].equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
+            _powerAssert.default.equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
+            _powerAssert.default.equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
           }
         });
         var visibleTextField1 = columns.columns[2][0].refs.input[0];
@@ -473,8 +367,8 @@ describe('Webform tests', function () {
         setTimeout(function () {
           var visibleTextField1 = columns.columns[2][0].refs.input[0];
           var visibleTextField2 = columns.columns[5][0].refs.input[0];
-          _powerAssert["default"].equal(visibleTextField1.value, 'test   ', 'Should not cut whitespaces while inputting into the conditional component inside column');
-          _powerAssert["default"].equal(visibleTextField2.value, ' some ', 'Should not cut whitespaces while inputting into the conditional component inside column');
+          _powerAssert.default.equal(visibleTextField1.value, 'test   ', 'Should not cut whitespaces while inputting into the conditional component inside column');
+          _powerAssert.default.equal(visibleTextField2.value, ' some ', 'Should not cut whitespaces while inputting into the conditional component inside column');
           selectBoxes.setValue({
             '1': false,
             '2': false,
@@ -486,47 +380,47 @@ describe('Webform tests', function () {
           setTimeout(function () {
             columns.columns.forEach(function (column, index) {
               if ([6].includes(index + 1)) {
-                _powerAssert["default"].equal(column[0].visible, true, "Column ".concat(index + 1, " component should be visible"));
-                _powerAssert["default"].equal(columns.component.columns[index].currentWidth, 2, "Column ".concat(index + 1, "  width should be 2"));
+                _powerAssert.default.equal(column[0].visible, true, "Column ".concat(index + 1, " component should be visible"));
+                _powerAssert.default.equal(columns.component.columns[index].currentWidth, 2, "Column ".concat(index + 1, "  width should be 2"));
               } else {
-                _powerAssert["default"].equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
-                _powerAssert["default"].equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
+                _powerAssert.default.equal(column[0].visible, false, "Column ".concat(index + 1, " component should be hidden"));
+                _powerAssert.default.equal(columns.component.columns[index].currentWidth, 0, "Column ".concat(index + 1, "  width should be 0"));
               }
             });
             done();
           }, 300);
         }, 300);
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not translate en value if _userInput option is provided and value presents in reserved translation names', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en'
     });
-    form.setForm(_translationTestForm["default"]).then(function () {
+    form.setForm(_translationTestForm.default).then(function () {
       setTimeout(function () {
         var selectComp = form.getComponent('select');
         var options = selectComp.element.querySelector('[role="listbox"]').children;
         var option1 = options[0].textContent.trim();
         var option2 = options[1].textContent.trim();
         var label = selectComp.element.querySelector('label').textContent.trim();
-        _powerAssert["default"].equal(option1, _translationTestForm["default"].components[0].data.values[0].label);
-        _powerAssert["default"].equal(option2, _translationTestForm["default"].components[0].data.values[1].label);
-        _powerAssert["default"].equal(label, _translationTestForm["default"].components[0].label);
+        _powerAssert.default.equal(option1, _translationTestForm.default.components[0].data.values[0].label);
+        _powerAssert.default.equal(option2, _translationTestForm.default.components[0].data.values[1].label);
+        _powerAssert.default.equal(label, _translationTestForm.default.components[0].label);
         document.body.innerHTML = '';
         done();
       }, 100);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should translate in English if _userInput option is provided and value does not present in reserved translation names', function (done) {
     var formElement = document.createElement('div');
     var selectLabel = 'Select test label';
-    var translationForm = (0, _utils.fastCloneDeep)(_translationTestForm["default"]);
+    var translationForm = (0, _utils.fastCloneDeep)(_translationTestForm.default);
     translationForm.components[0].label = selectLabel;
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       i18n: {
         en: {
@@ -540,17 +434,17 @@ describe('Webform tests', function () {
     form.setForm(translationForm).then(function () {
       var selectComp = form.getComponent('select');
       var label = selectComp.element.querySelector('label').textContent.trim();
-      _powerAssert["default"].equal(label, 'English Label');
+      _powerAssert.default.equal(label, 'English Label');
       document.body.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should translate value in franch if _userInput option is provided and value does not present in reserved translation names', function (done) {
     var formElement = document.createElement('div');
     var selectLabel = 'Select test label';
-    var translationForm = (0, _utils.fastCloneDeep)(_translationTestForm["default"]);
+    var translationForm = (0, _utils.fastCloneDeep)(_translationTestForm.default);
     translationForm.components[0].label = selectLabel;
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'fr',
       i18n: {
         en: {
@@ -564,52 +458,52 @@ describe('Webform tests', function () {
     form.setForm(translationForm).then(function () {
       var selectComp = form.getComponent('select');
       var label = selectComp.element.querySelector('label').textContent.trim();
-      _powerAssert["default"].equal(label, 'French Label');
+      _powerAssert.default.equal(label, 'French Label');
       document.body.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should display dataGrid conditional column once the condition is met', function (done) {
     var formElement = document.createElement('div');
-    var formWithCondDataGridColumn = new _Webform["default"](formElement);
-    formWithCondDataGridColumn.setForm(_dataGridWithConditionalColumn["default"]).then(function () {
+    var formWithCondDataGridColumn = new _Webform.default(formElement);
+    formWithCondDataGridColumn.setForm(_dataGridWithConditionalColumn.default).then(function () {
       var condDataGridField = formWithCondDataGridColumn.element.querySelector('[name="data[dataGrid][0][numberCond]"]');
-      _powerAssert["default"].equal(!!condDataGridField, false);
+      _powerAssert.default.equal(!!condDataGridField, false);
       var textField = formWithCondDataGridColumn.element.querySelector('[name="data[textField]"]');
       textField.value = 'show';
       var inputEvent = new Event('input');
       textField.dispatchEvent(inputEvent);
       setTimeout(function () {
         var condDataGridFieldAfterFulfillingCond = formWithCondDataGridColumn.element.querySelector('[name="data[dataGrid][0][numberCond]"]');
-        _powerAssert["default"].equal(!!condDataGridFieldAfterFulfillingCond, true);
+        _powerAssert.default.equal(!!condDataGridFieldAfterFulfillingCond, true);
         done();
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should remove dataGrid extra rows and components after setting value with less row number', function (done) {
     var formElement = document.createElement('div');
-    var formWithDG = new _Webform["default"](formElement);
-    formWithDG.setForm(_formWithDataGrid["default"].form).then(function () {
-      formWithDG.setSubmission(_formWithDataGrid["default"].submission3rows);
+    var formWithDG = new _Webform.default(formElement);
+    formWithDG.setForm(_formWithDataGrid.default.form).then(function () {
+      formWithDG.setSubmission(_formWithDataGrid.default.submission3rows);
       setTimeout(function () {
-        _powerAssert["default"].equal(formWithDG.components[0].rows.length, 3);
-        _powerAssert["default"].equal(formWithDG.components[0].components.length, 3);
-        formWithDG.setSubmission(_formWithDataGrid["default"].submission1row);
+        _powerAssert.default.equal(formWithDG.components[0].rows.length, 3);
+        _powerAssert.default.equal(formWithDG.components[0].components.length, 3);
+        formWithDG.setSubmission(_formWithDataGrid.default.submission1row);
         setTimeout(function () {
-          _powerAssert["default"].equal(formWithDG.components[0].rows.length, 1);
-          _powerAssert["default"].equal(formWithDG.components[0].components.length, 1);
+          _powerAssert.default.equal(formWithDG.components[0].rows.length, 1);
+          _powerAssert.default.equal(formWithDG.components[0].components.length, 1);
           done();
         }, 200);
       }, 100);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not delete/change date value in dataGrid after adding new row', function (done) {
     var formElement = document.createElement('div');
-    var formWithDate = new _Webform["default"](formElement);
+    var formWithDate = new _Webform.default(formElement);
     formWithDate.setForm(_formtest.formWithCustomFormatDate).then(function () {
       setTimeout(function () {
         var clickEvent = new Event('click');
@@ -629,56 +523,56 @@ describe('Webform tests', function () {
           var dateComp1 = formWithDate.element.querySelector('.formio-component-dateTime').querySelector('[type="text"]');
           var dateCompAltInput2 = formWithDate.element.querySelector('.formio-component-textField2').querySelector('.flatpickr-input');
           var dateComp2 = formWithDate.element.querySelector('.formio-component-textField2').querySelector('[type="text"]');
-          _powerAssert["default"].equal(dateCompAltInput.value, '30-05-2020');
-          _powerAssert["default"].equal(dateComp.value, '30-05-2020');
-          _powerAssert["default"].equal(dateCompAltInput1.value, '2020-05-30T00:00:00');
-          _powerAssert["default"].equal(dateComp1.value, '30-05-2020');
-          _powerAssert["default"].equal(dateCompAltInput2.value, '2020-05-30T00:00:00');
-          _powerAssert["default"].equal(dateComp2.value, '30-05-2020');
+          _powerAssert.default.equal(dateCompAltInput.value, '30-05-2020');
+          _powerAssert.default.equal(dateComp.value, '30-05-2020');
+          _powerAssert.default.equal(dateCompAltInput1.value, '2020-05-30T00:00:00');
+          _powerAssert.default.equal(dateComp1.value, '30-05-2020');
+          _powerAssert.default.equal(dateCompAltInput2.value, '2020-05-30T00:00:00');
+          _powerAssert.default.equal(dateComp2.value, '30-05-2020');
           var addNewRowBtn = formWithDate.element.querySelector('.formio-button-add-row');
           addNewRowBtn.dispatchEvent(clickEvent);
           setTimeout(function () {
             var dataGridRows = formWithDate.element.querySelectorAll('[ref="datagrid-dataGrid-row"]');
-            _powerAssert["default"].equal(dataGridRows.length, 2);
+            _powerAssert.default.equal(dataGridRows.length, 2);
             var dateCompAltInputAfterAddingRow = formWithDate.element.querySelectorAll('.formio-component-textField')[0].querySelector('.flatpickr-input');
             var dateCompAfterAddingRow = formWithDate.element.querySelectorAll('.formio-component-textField')[0].querySelector('[type="text"]');
             var dateCompAltInputAfterAddingRow1 = formWithDate.element.querySelectorAll('.formio-component-dateTime')[0].querySelector('.flatpickr-input');
             var dateCompAfterAddingRow1 = formWithDate.element.querySelectorAll('.formio-component-dateTime')[0].querySelector('[type="text"]');
             var dateCompAltInputAfterAddingRow2 = formWithDate.element.querySelectorAll('.formio-component-textField2')[0].querySelector('.flatpickr-input');
             var dateCompAfterAddingRow2 = formWithDate.element.querySelectorAll('.formio-component-textField2')[0].querySelector('[type="text"]');
-            _powerAssert["default"].equal(dateCompAltInputAfterAddingRow.value, '30-05-2020');
-            _powerAssert["default"].equal(dateCompAfterAddingRow.value, '30-05-2020');
-            _powerAssert["default"].equal(dateCompAltInputAfterAddingRow1.value, '2020-05-30T00:00:00');
-            _powerAssert["default"].equal(dateCompAfterAddingRow1.value, '30-05-2020');
-            _powerAssert["default"].equal(dateCompAltInputAfterAddingRow2.value, '2020-05-30T00:00:00');
-            _powerAssert["default"].equal(dateCompAfterAddingRow2.value, '30-05-2020');
+            _powerAssert.default.equal(dateCompAltInputAfterAddingRow.value, '30-05-2020');
+            _powerAssert.default.equal(dateCompAfterAddingRow.value, '30-05-2020');
+            _powerAssert.default.equal(dateCompAltInputAfterAddingRow1.value, '2020-05-30T00:00:00');
+            _powerAssert.default.equal(dateCompAfterAddingRow1.value, '30-05-2020');
+            _powerAssert.default.equal(dateCompAltInputAfterAddingRow2.value, '2020-05-30T00:00:00');
+            _powerAssert.default.equal(dateCompAfterAddingRow2.value, '30-05-2020');
             done();
           }, 150);
         }, 50);
       }, 100);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should open collapsed panel with invalid components inside container that is inside the panel on submit', function (done) {
     var formElement = document.createElement('div');
-    var formWithPanel = new _Webform["default"](formElement);
+    var formWithPanel = new _Webform.default(formElement);
     formWithPanel.setForm(_formtest.formWithCollapsedPanel).then(function () {
       var clickEvent = new Event('click');
-      _powerAssert["default"].equal(formWithPanel.components[0].collapsed, true);
+      _powerAssert.default.equal(formWithPanel.components[0].collapsed, true);
       var submitBtn = formWithPanel.element.querySelector('[name="data[submit]"]');
       submitBtn.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(formWithPanel.components[0].collapsed, false);
+        _powerAssert.default.equal(formWithPanel.components[0].collapsed, false);
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should correctly set date after collapsing and openning the panel', function (done) {
     var formElement = document.createElement('div');
-    var formWithDate = new _Webform["default"](formElement);
+    var formWithDate = new _Webform.default(formElement);
     formWithDate.setForm(_formtest.formWithDateTimeComponents).then(function () {
       var clickEvent = new Event('click');
       var dateTimeCompInputWidget = formWithDate.element.querySelector('.formio-component-dateTime1').querySelector('.flatpickr-input').widget;
@@ -692,36 +586,36 @@ describe('Webform tests', function () {
         var textFieldDateCompAltInput = formWithDate.element.querySelector('.formio-component-textField1').querySelector('.flatpickr-input');
         var dateTimeComp = formWithDate.element.querySelector('.formio-component-dateTime1').querySelector('[type="text"]');
         var textFieldDateComp = formWithDate.element.querySelector('.formio-component-textField1').querySelector('[type="text"]');
-        _powerAssert["default"].equal(dateTimeCompAltInput.value, '2020-05-05T00:00:00');
-        _powerAssert["default"].equal(textFieldDateCompAltInput.value, '2020-04-04T00:00:00');
-        _powerAssert["default"].equal(dateTimeComp.value, '05-05-2020');
-        _powerAssert["default"].equal(textFieldDateComp.value, '04-04-2020');
+        _powerAssert.default.equal(dateTimeCompAltInput.value, '2020-05-05T00:00:00');
+        _powerAssert.default.equal(textFieldDateCompAltInput.value, '2020-04-04T00:00:00');
+        _powerAssert.default.equal(dateTimeComp.value, '05-05-2020');
+        _powerAssert.default.equal(textFieldDateComp.value, '04-04-2020');
         var panelCollapseBtn = formWithDate.element.querySelector('.formio-collapse-icon');
         panelCollapseBtn.dispatchEvent(clickEvent);
         setTimeout(function () {
           var panelBody = formWithDate.element.querySelector('.panel-body');
-          _powerAssert["default"].equal(!!panelBody, false);
+          _powerAssert.default.equal(!!panelBody, false);
           formWithDate.element.querySelector('.formio-collapse-icon').dispatchEvent(clickEvent);
           setTimeout(function () {
             var dateTimeCompAfterOpenningPanel = formWithDate.element.querySelector('.formio-component-dateTime1').querySelector('[type="text"]');
             var textFieldDateCompAfterOpenningPanel = formWithDate.element.querySelector('.formio-component-textField1').querySelector('[type="text"]');
             var dateTimeCompAltInputAfterOpenningPanel = formWithDate.element.querySelector('.formio-component-dateTime1').querySelector('.flatpickr-input');
             var textFieldDateCompAltInputAfterOpenningPanel = formWithDate.element.querySelector('.formio-component-textField1').querySelector('.flatpickr-input');
-            _powerAssert["default"].equal(dateTimeCompAltInputAfterOpenningPanel.value, '2020-05-05T00:00:00');
-            _powerAssert["default"].equal(textFieldDateCompAltInputAfterOpenningPanel.value, '2020-04-04T00:00:00');
-            _powerAssert["default"].equal(dateTimeCompAfterOpenningPanel.value, '05-05-2020');
-            _powerAssert["default"].equal(textFieldDateCompAfterOpenningPanel.value, '04-04-2020');
+            _powerAssert.default.equal(dateTimeCompAltInputAfterOpenningPanel.value, '2020-05-05T00:00:00');
+            _powerAssert.default.equal(textFieldDateCompAltInputAfterOpenningPanel.value, '2020-04-04T00:00:00');
+            _powerAssert.default.equal(dateTimeCompAfterOpenningPanel.value, '05-05-2020');
+            _powerAssert.default.equal(textFieldDateCompAfterOpenningPanel.value, '04-04-2020');
             done();
           }, 250);
         }, 150);
       }, 50);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it("Should show confirmation alert when clicking X btn or clicking outside modal window after editing\n  editGrid modal draft row", function (done) {
     var formElement = document.createElement('div');
-    var formWithNestedDraftModals = new _Webform["default"](formElement);
+    var formWithNestedDraftModals = new _Webform.default(formElement);
     formWithNestedDraftModals.setForm(_formtest.formWithEditGridAndNestedDraftModalRow).then(function () {
       var editGrid = formWithNestedDraftModals.getComponent('editGrid');
       var clickEvent = new Event('click');
@@ -732,21 +626,21 @@ describe('Webform tests', function () {
       setTimeout(function () {
         var rowModal = document.querySelector(".editgrid-row-modal-".concat(editGrid.id));
         //checking if row modal was openned
-        _powerAssert["default"].equal(!!rowModal, true);
+        _powerAssert.default.equal(!!rowModal, true);
         var textField = rowModal.querySelector('[name="data[textField]"]');
         textField.value = 'test';
         //input value
         textField.dispatchEvent(inputEvent);
         setTimeout(function () {
           //checking if the value was set inside the field
-          _powerAssert["default"].equal(textField.value, 'test');
+          _powerAssert.default.equal(textField.value, 'test');
           var saveModalBtn = rowModal.querySelector('.btn-primary');
           //clicking save button to save row draft
           saveModalBtn.dispatchEvent(clickEvent);
           setTimeout(function () {
             var editGridRows = formWithNestedDraftModals.element.querySelectorAll('[ref="editgrid-editGrid-row"]');
             //checking if the editGrid row was created
-            _powerAssert["default"].equal(editGridRows.length, 1);
+            _powerAssert.default.equal(editGridRows.length, 1);
             var editRowBtn = editGridRows[0].querySelector('.editRow');
             //click the edit btn to open the row again
             editRowBtn.dispatchEvent(clickEvent);
@@ -759,28 +653,28 @@ describe('Webform tests', function () {
               setTimeout(function () {
                 //checking if the textfield value was changed
                 var inputValue = textFieldInputForEditing.value;
-                _powerAssert["default"].equal(inputValue, 'changed value');
+                _powerAssert.default.equal(inputValue, 'changed value');
                 var XCloseBtn = rowModalForEditing.querySelector('[ref="dialogClose"]');
                 //clicking modal close btn
                 XCloseBtn.dispatchEvent(clickEvent);
                 setTimeout(function () {
                   var dialogConfirmationWindows = document.querySelectorAll(".editgrid-row-modal-confirmation-".concat(editGrid.id));
                   //checking if confirmation dialog is openned
-                  _powerAssert["default"].equal(dialogConfirmationWindows.length, 1);
+                  _powerAssert.default.equal(dialogConfirmationWindows.length, 1);
                   var dialogCancelBtn = dialogConfirmationWindows[0].querySelector('[ref="dialogCancelButton"]');
                   //closing confirmation dialog
                   dialogCancelBtn.dispatchEvent(clickEvent);
                   setTimeout(function () {
                     var confirmationWindows = document.querySelectorAll(".editgrid-row-modal-confirmation-".concat(editGrid.id));
                     //checking if confirmation dialig is closed
-                    _powerAssert["default"].equal(confirmationWindows.length, 0);
+                    _powerAssert.default.equal(confirmationWindows.length, 0);
                     var dialog = document.querySelector(".editgrid-row-modal-".concat(editGrid.id));
                     var overlay = dialog.querySelector('[ref="dialogOverlay"]');
                     //clocking model overlay to open confirmation dialog again
                     overlay.dispatchEvent(clickEvent);
                     setTimeout(function () {
                       var confirmationDialogsAfterClickingOverlay = document.querySelectorAll(".editgrid-row-modal-confirmation-".concat(editGrid.id));
-                      _powerAssert["default"].equal(confirmationDialogsAfterClickingOverlay.length, 1);
+                      _powerAssert.default.equal(confirmationDialogsAfterClickingOverlay.length, 1);
                       document.body.innerHTML = '';
                       done();
                     }, 190);
@@ -791,13 +685,13 @@ describe('Webform tests', function () {
           }, 100);
         }, 70);
       }, 50);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not show validation errors when saving invalid draft row in dataGrid', function (done) {
     var formElement = document.createElement('div');
-    var formWithDraftModals = new _Webform["default"](formElement);
+    var formWithDraftModals = new _Webform.default(formElement);
     formWithDraftModals.setForm(_formtest.formWithEditGridModalDrafts).then(function () {
       var clickEvent = new Event('click');
       var inputEvent = new Event('input');
@@ -807,106 +701,106 @@ describe('Webform tests', function () {
       setTimeout(function () {
         var rowModal = document.querySelector('.formio-dialog-content');
         //checking if row modal was openned
-        _powerAssert["default"].equal(!!rowModal, true);
+        _powerAssert.default.equal(!!rowModal, true);
         var textFieldInput = rowModal.querySelector('[name="data[editGrid][0][textField]"]');
         textFieldInput.value = 'test';
         //input value in one of required row fields
         textFieldInput.dispatchEvent(inputEvent);
         setTimeout(function () {
           //checking if the value was set inside the field
-          _powerAssert["default"].equal(textFieldInput.value, 'test');
+          _powerAssert.default.equal(textFieldInput.value, 'test');
           var saveModalBtn = rowModal.querySelector('.btn-primary');
           //clicking save button to save row draft
           saveModalBtn.dispatchEvent(clickEvent);
           setTimeout(function () {
             var editGridRows = formWithDraftModals.element.querySelectorAll('[ref="editgrid-editGrid-row"]');
             //checking if the editGrid row was created
-            _powerAssert["default"].equal(editGridRows.length, 1);
+            _powerAssert.default.equal(editGridRows.length, 1);
             var rowError = formWithDraftModals.element.querySelector('.editgrid-row-error').textContent.trim();
             var editGridError = formWithDraftModals.element.querySelector('[ref="messageContainer"]').querySelector('.error');
-            _powerAssert["default"].equal(!!rowError, false);
-            _powerAssert["default"].equal(!!editGridError, false);
+            _powerAssert.default.equal(!!rowError, false);
+            _powerAssert.default.equal(!!editGridError, false);
             done();
           }, 200);
         }, 100);
       }, 50);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show dataGrid rows when viewing submission in dataGrid with initEmpty option', function (done) {
     var formElement = document.createElement('div');
-    var formWithDataGridInitEmptyOption = new _Webform["default"](formElement);
-    formWithDataGridInitEmptyOption.setForm(_dataGridWithInitEmpty["default"].form).then(function () {
-      formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty["default"].submission2);
+    var formWithDataGridInitEmptyOption = new _Webform.default(formElement);
+    formWithDataGridInitEmptyOption.setForm(_dataGridWithInitEmpty.default.form).then(function () {
+      formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty.default.submission2);
       setTimeout(function () {
         var dataGridRows = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid-row"]');
         var dataGrid1Rows = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid1-row"]');
-        _powerAssert["default"].equal(dataGrid1Rows.length, 1);
-        _powerAssert["default"].equal(dataGridRows.length, 1);
-        formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty["default"].submission3);
+        _powerAssert.default.equal(dataGrid1Rows.length, 1);
+        _powerAssert.default.equal(dataGridRows.length, 1);
+        formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty.default.submission3);
         setTimeout(function () {
           var dataGridRows1 = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid-row"]');
           var dataGrid1Rows1 = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid1-row"]');
           var dataGridSecondRowComponentValue = formWithDataGridInitEmptyOption.element.querySelector('[name = "data[dataGrid][1][textField]"]');
           var dataGrid1FirstRowComponentValue = formWithDataGridInitEmptyOption.element.querySelector('[name = "data[dataGrid1][0][textArea]"]');
           var dataGrid1SecondRowComponentValue = formWithDataGridInitEmptyOption.element.querySelector('[name = "data[dataGrid1][1][number]"]');
-          _powerAssert["default"].equal(dataGrid1Rows1.length, 2);
-          _powerAssert["default"].equal(dataGridRows1.length, 2);
-          _powerAssert["default"].equal(dataGridSecondRowComponentValue.value, 'test2');
-          _powerAssert["default"].equal(dataGrid1FirstRowComponentValue.textContent, 'test3');
-          _powerAssert["default"].equal(dataGrid1SecondRowComponentValue.value, 222);
+          _powerAssert.default.equal(dataGrid1Rows1.length, 2);
+          _powerAssert.default.equal(dataGridRows1.length, 2);
+          _powerAssert.default.equal(dataGridSecondRowComponentValue.value, 'test2');
+          _powerAssert.default.equal(dataGrid1FirstRowComponentValue.textContent, 'test3');
+          _powerAssert.default.equal(dataGrid1SecondRowComponentValue.value, 222);
           done();
         }, 300);
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not show dataGrid rows when empty submission is set for dataGrid with initEmpty', function (done) {
     var formElement = document.createElement('div');
-    var formWithDataGridInitEmptyOption = new _Webform["default"](formElement);
-    formWithDataGridInitEmptyOption.setForm(_dataGridWithInitEmpty["default"].form).then(function () {
-      formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty["default"].submission1);
+    var formWithDataGridInitEmptyOption = new _Webform.default(formElement);
+    formWithDataGridInitEmptyOption.setForm(_dataGridWithInitEmpty.default.form).then(function () {
+      formWithDataGridInitEmptyOption.setSubmission(_dataGridWithInitEmpty.default.submission1);
       setTimeout(function () {
         var dataGridRows = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid-row"]');
         var dataGrid1Rows = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid1-row"]');
-        _powerAssert["default"].equal(dataGridRows.length, 0);
-        _powerAssert["default"].equal(dataGrid1Rows.length, 0);
+        _powerAssert.default.equal(dataGridRows.length, 0);
+        _powerAssert.default.equal(dataGrid1Rows.length, 0);
         formWithDataGridInitEmptyOption.setSubmission({
           data: {}
         });
         setTimeout(function () {
           var dataGridRows1 = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid-row"]');
           var dataGrid1Rows1 = formWithDataGridInitEmptyOption.element.querySelectorAll('[ref = "datagrid-dataGrid1-row"]');
-          _powerAssert["default"].equal(dataGridRows1.length, 0);
-          _powerAssert["default"].equal(dataGrid1Rows1.length, 0);
+          _powerAssert.default.equal(dataGridRows1.length, 0);
+          _powerAssert.default.equal(dataGrid1Rows1.length, 0);
           done();
         }, 300);
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show address submission data inside dataGrid', function (done) {
     var formElement = document.createElement('div');
-    var formWithAddress = new _Webform["default"](formElement);
-    formWithAddress.setForm(_formWithAddressComponent["default"].form).then(function () {
+    var formWithAddress = new _Webform.default(formElement);
+    formWithAddress.setForm(_formWithAddressComponent.default.form).then(function () {
       formWithAddress.setSubmission({
-        data: _formWithAddressComponent["default"].submission
+        data: _formWithAddressComponent.default.submission
       });
       setTimeout(function () {
         var addressInput = formWithAddress.element.querySelector('[name = "data[dataGrid][0][address]"]');
-        _powerAssert["default"].equal(addressInput.value, _formWithAddressComponent["default"].submission.dataGrid[0].address['formatted_address']);
+        _powerAssert.default.equal(addressInput.value, _formWithAddressComponent.default.submission.dataGrid[0].address['formatted_address']);
         done();
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should validate field on blur inside panel', function (done) {
     var formElement = document.createElement('div');
-    var formWithBlurValidation = new _Webform["default"](formElement);
+    var formWithBlurValidation = new _Webform.default(formElement);
     formWithBlurValidation.setForm(_formtest.formWithBlurValidationInsidePanel).then(function () {
       var inputEvent = new Event('input');
       var focusEvent = new Event('focus');
@@ -919,39 +813,39 @@ describe('Webform tests', function () {
       });
       setTimeout(function () {
         var validationErrorBeforeBlur = formWithBlurValidation.element.querySelector('.error');
-        _powerAssert["default"].equal(!!validationErrorBeforeBlur, false);
-        _powerAssert["default"].equal(formWithBlurValidation.data.textField, 'test');
+        _powerAssert.default.equal(!!validationErrorBeforeBlur, false);
+        _powerAssert.default.equal(formWithBlurValidation.data.textField, 'test');
         fieldWithBlurValidation.dispatchEvent(blurEvent);
         setTimeout(function () {
           var validationErrorAfterBlur = formWithBlurValidation.element.querySelector('.error');
-          _powerAssert["default"].equal(!!validationErrorAfterBlur, true);
-          _powerAssert["default"].equal(validationErrorAfterBlur.textContent, 'Text Field must have at least 5 characters.');
+          _powerAssert.default.equal(!!validationErrorAfterBlur, true);
+          _powerAssert.default.equal(validationErrorAfterBlur.textContent, 'Text Field must have at least 5 characters.');
           done();
         }, 350);
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should submit form with empty time field when time field is not required', function (done) {
     var formElement = document.createElement('div');
-    var formWithTime = new _Webform["default"](formElement);
+    var formWithTime = new _Webform.default(formElement);
     formWithTime.setForm(_formtest.formWithTimeComponent).then(function () {
       var clickEvent = new Event('click');
       var submitBtn = formWithTime.element.querySelector('[name="data[submit]"]');
       submitBtn.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(formWithTime.errors.length, 0);
-        _powerAssert["default"].equal(formWithTime.data.submit, true);
+        _powerAssert.default.equal(formWithTime.errors.length, 0);
+        _powerAssert.default.equal(formWithTime.data.submit, true);
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it("Should show validation errors and update validation errors list when openning and editing edit grid rows\n  in draft modal mode after pushing submit btn", function (done) {
     var formElement = document.createElement('div');
-    var formWithDraftModals = new _Webform["default"](formElement, {
+    var formWithDraftModals = new _Webform.default(formElement, {
       sanitize: true
     });
     formWithDraftModals.setForm(_formtest.formWithEditGridModalDrafts).then(function () {
@@ -962,35 +856,35 @@ describe('Webform tests', function () {
       addRowBtn.dispatchEvent(clickEvent);
       setTimeout(function () {
         var editGrid = formWithDraftModals.getComponent('editGrid');
-        _powerAssert["default"].equal(editGrid.editRows.length, 1, 'Should create a row');
+        _powerAssert.default.equal(editGrid.editRows.length, 1, 'Should create a row');
         var rowModal = editGrid.editRows[0].dialog;
         //checking if row modal was openned
-        _powerAssert["default"].equal(!!rowModal, true, 'Should open a modal window');
+        _powerAssert.default.equal(!!rowModal, true, 'Should open a modal window');
         var textFieldInput = rowModal.querySelector('[name="data[editGrid][0][textField]"]');
         textFieldInput.value = 'test';
         //input value in one of required row fields
         textFieldInput.dispatchEvent(inputEvent);
         setTimeout(function () {
           //checking if the value was set inside the field
-          _powerAssert["default"].equal(textFieldInput.value, 'test');
+          _powerAssert.default.equal(textFieldInput.value, 'test');
           var saveModalBtn = rowModal.querySelector('.btn-primary');
           //clicking save button to save row draft
           saveModalBtn.dispatchEvent(clickEvent);
           setTimeout(function () {
             var editGridRows = formWithDraftModals.element.querySelectorAll('[ref="editgrid-editGrid-row"]');
             //checking if the editGrid row was created
-            _powerAssert["default"].equal(editGridRows.length, 1);
+            _powerAssert.default.equal(editGridRows.length, 1);
             var submitBtn = formWithDraftModals.element.querySelector('[name="data[submit]"]');
             //pushing submit button to trigger validation
             submitBtn.dispatchEvent(clickEvent);
             setTimeout(function () {
               //checking the number of appeared errors
-              _powerAssert["default"].equal(formWithDraftModals.errors.length, 2);
+              _powerAssert.default.equal(formWithDraftModals.errors.length, 2);
               var rowError = formWithDraftModals.element.querySelector('.editgrid-row-error').textContent.trim();
               var editGridError = formWithDraftModals.element.querySelector('[ref="messageContainer"]').querySelector('.error').textContent;
               //checking if right errors were shown in right places
-              _powerAssert["default"].equal(rowError, 'Invalid row. Please correct it or delete.');
-              _powerAssert["default"].equal(editGridError, 'Please correct invalid rows before proceeding.');
+              _powerAssert.default.equal(rowError, 'Invalid row. Please correct it or delete.');
+              _powerAssert.default.equal(editGridError, 'Please correct invalid rows before proceeding.');
               var rowEditBtn = editGridRows[0].querySelector('.editRow');
               //open row modal again to check if there are errors
               rowEditBtn.dispatchEvent(clickEvent);
@@ -998,12 +892,12 @@ describe('Webform tests', function () {
                 var rowModalAfterValidation = editGrid.editRows[0].dialog;
                 var alertWithErrorText = rowModalAfterValidation.querySelector('.alert-danger');
                 //checking if alert with errors list appeared inside the modal
-                _powerAssert["default"].equal(!!alertWithErrorText, true, 'Should show error alert');
+                _powerAssert.default.equal(!!alertWithErrorText, true, 'Should show error alert');
                 var alertErrorMessages = rowModalAfterValidation.querySelectorAll('[ref="messageRef"]');
-                _powerAssert["default"].equal(alertErrorMessages.length, 1);
+                _powerAssert.default.equal(alertErrorMessages.length, 1);
                 var numberComponentError = rowModalAfterValidation.querySelector('.formio-component-number').querySelector('.error').textContent;
                 //checking if error was shown for empty required field
-                _powerAssert["default"].equal(numberComponentError, 'Number is required');
+                _powerAssert.default.equal(numberComponentError, 'Number is required');
                 var numberInput = rowModalAfterValidation.querySelector('[name="data[editGrid][0][number]"]');
                 numberInput.value = 123;
                 //input value to make the field valid
@@ -1011,7 +905,7 @@ describe('Webform tests', function () {
                 setTimeout(function () {
                   var rowModalWithValidFields = document.querySelector(".editgrid-row-modal-".concat(editGrid.id));
                   var alertErrorMessagesAfterInputtingValidValues = rowModalWithValidFields.querySelectorAll('[ref="messageRef"]');
-                  _powerAssert["default"].equal(alertErrorMessagesAfterInputtingValidValues.length, 0);
+                  _powerAssert.default.equal(alertErrorMessagesAfterInputtingValidValues.length, 0);
 
                   //input values to make all row fields invalid
                   var validNumberInput = rowModalWithValidFields.querySelector('[name="data[editGrid][0][number]"]');
@@ -1022,7 +916,7 @@ describe('Webform tests', function () {
                   validTextInput.dispatchEvent(inputEvent);
                   setTimeout(function () {
                     var alertErrorMessagesAfterInputtingInvalidValues = document.querySelector(".editgrid-row-modal-".concat(editGrid.id)).querySelectorAll('[ref="messageRef"]');
-                    _powerAssert["default"].equal(alertErrorMessagesAfterInputtingInvalidValues.length, 2);
+                    _powerAssert.default.equal(alertErrorMessagesAfterInputtingInvalidValues.length, 2);
                     document.body.innerHTML = '';
                     done();
                   }, 280);
@@ -1032,13 +926,13 @@ describe('Webform tests', function () {
           }, 120);
         }, 80);
       }, 50);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not override calculated value', function (done) {
     var formElement = document.createElement('div');
-    var formWithCalculatedAmount = new _Webform["default"](formElement);
+    var formWithCalculatedAmount = new _Webform.default(formElement);
     formWithCalculatedAmount.setForm(_formtest.formWithCalculatedValueWithoutOverriding).then(function () {
       var inputEvent = new Event('input');
       var amountInput1 = formWithCalculatedAmount.element.querySelector('[name="data[amount1]"]');
@@ -1050,7 +944,7 @@ describe('Webform tests', function () {
       setTimeout(function () {
         var totalAmountInput = formWithCalculatedAmount.element.querySelector('[name="data[currency]"]');
         //checking if the value was calculated correctly
-        _powerAssert["default"].equal(totalAmountInput.value, '$10.00');
+        _powerAssert.default.equal(totalAmountInput.value, '$10.00');
         var inputEvent = new Event('input');
         //trying to override calculated value
         totalAmountInput.value = 55;
@@ -1058,18 +952,18 @@ describe('Webform tests', function () {
         setTimeout(function () {
           var totalAmountInput = formWithCalculatedAmount.element.querySelector('[name="data[currency]"]');
           //checking if the value was overridden
-          _powerAssert["default"].equal(totalAmountInput.value, '$10.00');
+          _powerAssert.default.equal(totalAmountInput.value, '$10.00');
           done();
         }, 400);
       }, 300);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should modify calculated value only if it was not manually modified when allowCalculateOverride is true', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    form.setForm(_formWithAllowCalculateOverride["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_formWithAllowCalculateOverride.default).then(function () {
       var labelComp = form.getComponent('label');
       var valueComp = form.getComponent('value');
       var inputEvent = new Event('input');
@@ -1078,66 +972,66 @@ describe('Webform tests', function () {
       labelInput.value = 'Hello';
       labelInput.dispatchEvent(inputEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(labelComp.dataValue, 'Hello');
-        _powerAssert["default"].equal(valueComp.dataValue, 'hello');
+        _powerAssert.default.equal(labelComp.dataValue, 'Hello');
+        _powerAssert.default.equal(valueComp.dataValue, 'hello');
         valueInput.value = 'hello123';
         valueInput.dispatchEvent(inputEvent);
         setTimeout(function () {
-          _powerAssert["default"].equal(valueComp.dataValue, 'hello123');
+          _powerAssert.default.equal(valueComp.dataValue, 'hello123');
           labelInput.value = 'HeLLo World';
           labelInput.dispatchEvent(inputEvent);
           setTimeout(function () {
-            _powerAssert["default"].equal(labelComp.dataValue, 'HeLLo World');
-            _powerAssert["default"].equal(valueComp.dataValue, 'hello123');
+            _powerAssert.default.equal(labelComp.dataValue, 'HeLLo World');
+            _powerAssert.default.equal(valueComp.dataValue, 'hello123');
             done();
           }, 500);
         }, 500);
       }, 500);
-    })["catch"](done);
+    }).catch(done);
   });
   it("Should show field only in container where radio component has 'yes' value when containers contain radio\n  components with the same key", function (done) {
     var formElement = document.createElement('div');
-    var formWithCondition = new _Webform["default"](formElement);
+    var formWithCondition = new _Webform.default(formElement);
     formWithCondition.setForm(_formtest.formWithConditionalLogic).then(function () {
-      _harness["default"].clickElement(formWithCondition, formWithCondition.element.querySelector('.formio-component-container1').querySelector('[value="yes"]'));
+      _harness.default.clickElement(formWithCondition, formWithCondition.element.querySelector('.formio-component-container1').querySelector('[value="yes"]'));
       setTimeout(function () {
         var conditionalFieldInContainer1 = formWithCondition.element.querySelector('[name="data[container1][textField]"]');
         var conditionalFieldInContainer2 = formWithCondition.element.querySelector('[name="data[container2][textField]"]');
-        _powerAssert["default"].equal(!!conditionalFieldInContainer1, true);
-        _powerAssert["default"].equal(!!conditionalFieldInContainer2, false);
+        _powerAssert.default.equal(!!conditionalFieldInContainer1, true);
+        _powerAssert.default.equal(!!conditionalFieldInContainer2, false);
         done();
       }, 400);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should show only "required field" error when submitting empty required field with pattern validation', function (done) {
     var formElement = document.createElement('div');
-    var formWithPattern = new _Webform["default"](formElement);
+    var formWithPattern = new _Webform.default(formElement);
     formWithPattern.setForm(_formtest.formWithPatternValidation).then(function () {
-      _harness["default"].clickElement(formWithPattern, formWithPattern.element.querySelector('[name="data[submit]"]'));
+      _harness.default.clickElement(formWithPattern, formWithPattern.element.querySelector('[name="data[submit]"]'));
       setTimeout(function () {
-        _powerAssert["default"].equal(formWithPattern.element.querySelector('.formio-component-textField').querySelectorAll('.error').length, 1);
-        _powerAssert["default"].equal(formWithPattern.errors[0].messages.length, 1);
-        _powerAssert["default"].equal(formWithPattern.errors[0].messages[0].message, 'Text Field is required');
-        _powerAssert["default"].equal(formWithPattern.element.querySelector('[ref="errorRef"]').textContent.trim(), 'Text Field is required');
+        _powerAssert.default.equal(formWithPattern.element.querySelector('.formio-component-textField').querySelectorAll('.error').length, 1);
+        _powerAssert.default.equal(formWithPattern.errors[0].messages.length, 1);
+        _powerAssert.default.equal(formWithPattern.errors[0].messages[0].message, 'Text Field is required');
+        _powerAssert.default.equal(formWithPattern.element.querySelector('[ref="errorRef"]').textContent.trim(), 'Text Field is required');
         done();
       }, 500);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should disable field applying advanced logic if dot is used inside component key', function (done) {
     var formElement = document.createElement('div');
-    var formWithLogic = new _Webform["default"](formElement);
+    var formWithLogic = new _Webform.default(formElement);
     formWithLogic.setForm(_formtest.formWithAdvancedLogic).then(function () {
-      _powerAssert["default"].equal(formWithLogic.components[1].disabled, false);
-      _harness["default"].clickElement(formWithLogic, formWithLogic.element.querySelector('[name="data[requestedCovers.HOUSECONTENT_JEWELRY]"]'));
+      _powerAssert.default.equal(formWithLogic.components[1].disabled, false);
+      _harness.default.clickElement(formWithLogic, formWithLogic.element.querySelector('[name="data[requestedCovers.HOUSECONTENT_JEWELRY]"]'));
       setTimeout(function () {
-        _powerAssert["default"].equal(formWithLogic.components[1].disabled, true);
+        _powerAssert.default.equal(formWithLogic.components[1].disabled, true);
         done();
       }, 500);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
@@ -1164,13 +1058,13 @@ describe('Webform tests', function () {
       }]
     };
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
-    var scrollIntoView = _sinon["default"].spy(form, 'scrollIntoView');
+    var form = new _Webform.default(formElement);
+    var scrollIntoView = _sinon.default.spy(form, 'scrollIntoView');
     form.setForm(formJson).then(function () {
-      _harness["default"].clickElement(form, form.element.querySelector('[name="data[submit]"]'));
+      _harness.default.clickElement(form, form.element.querySelector('[name="data[submit]"]'));
       setTimeout(function () {
-        _powerAssert["default"].equal(form.errors[0].messages.length, 1);
-        (0, _powerAssert["default"])(scrollIntoView.calledOnceWith(form.root.alert));
+        _powerAssert.default.equal(form.errors[0].messages.length, 1);
+        (0, _powerAssert.default)(scrollIntoView.calledOnceWith(form.root.alert));
 
         //changes do not trigger scrolling
         var inputEvent = new Event('input');
@@ -1180,29 +1074,29 @@ describe('Webform tests', function () {
         input1.value = 55;
         input1.dispatchEvent(inputEvent);
         setTimeout(function () {
-          _powerAssert["default"].equal(form.errors[0].messages.length, 1);
-          _powerAssert["default"].equal(scrollIntoView.callCount, 1);
+          _powerAssert.default.equal(form.errors[0].messages.length, 1);
+          _powerAssert.default.equal(scrollIntoView.callCount, 1);
 
           //valid input value
           input1.value = 5;
           input1.dispatchEvent(inputEvent);
           setTimeout(function () {
-            _powerAssert["default"].equal(form.errors.length, 0);
-            _powerAssert["default"].equal(scrollIntoView.callCount, 1);
+            _powerAssert.default.equal(form.errors.length, 0);
+            _powerAssert.default.equal(scrollIntoView.callCount, 1);
             done();
           }, 250);
         }, 250);
       }, 250);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   var formWithCalculatedValue;
   it('Should calculate the field value after validation errors appeared on submit', function (done) {
     var formElement = document.createElement('div');
-    formWithCalculatedValue = new _Webform["default"](formElement);
+    formWithCalculatedValue = new _Webform.default(formElement);
     formWithCalculatedValue.setForm(_formtest.manualOverride).then(function () {
-      _harness["default"].clickElement(formWithCalculatedValue, formWithCalculatedValue.components[2].refs.button);
+      _harness.default.clickElement(formWithCalculatedValue, formWithCalculatedValue.components[2].refs.button);
       setTimeout(function () {
         var inputEvent = new Event('input');
         var input1 = formWithCalculatedValue.components[0].refs.input[0];
@@ -1210,18 +1104,18 @@ describe('Webform tests', function () {
         input1.dispatchEvent(inputEvent);
         setTimeout(function () {
           var input2 = formElement.querySelector('input[name="data[number2]"]');
-          _powerAssert["default"].equal(input2.value, '55');
-          _powerAssert["default"].equal(input1.value, 55);
+          _powerAssert.default.equal(input2.value, '55');
+          _powerAssert.default.equal(input1.value, 55);
           done();
         }, 250);
       }, 250);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should calculate the value when editing set values with possibility of manual override', function (done) {
     var formElement = document.createElement('div');
-    formWithCalculatedValue = new _Webform["default"](formElement);
+    formWithCalculatedValue = new _Webform.default(formElement);
     formWithCalculatedValue.setForm(_formtest.manualOverride).then(function () {
       formWithCalculatedValue.setSubmission({
         data: {
@@ -1232,22 +1126,22 @@ describe('Webform tests', function () {
         setTimeout(function () {
           var input1 = formElement.querySelector('input[name="data[number1]"]');
           var input2 = formElement.querySelector('input[name="data[number2]"]');
-          _powerAssert["default"].equal(input2.value, '66');
-          _powerAssert["default"].equal(input1.value, 66);
+          _powerAssert.default.equal(input2.value, '66');
+          _powerAssert.default.equal(input1.value, 66);
           var inputEvent = new Event('input');
           input1.value = "".concat(input1.value) + '78';
           input1.dispatchEvent(inputEvent);
           setTimeout(function () {
-            _powerAssert["default"].equal(input2.value, '66');
-            _powerAssert["default"].equal(input1.value, 6678);
+            _powerAssert.default.equal(input2.value, '66');
+            _powerAssert.default.equal(input1.value, 6678);
             //set a number as calculated value
             formWithCalculatedValue.components[1].calculatedValue = 6678;
             //change the value
             input1.value = +("".concat(input1.value) + '90');
             input1.dispatchEvent(inputEvent);
             setTimeout(function () {
-              _powerAssert["default"].equal(input2.value, '66');
-              _powerAssert["default"].equal(input1.value, 667890);
+              _powerAssert.default.equal(input2.value, '66');
+              _powerAssert.default.equal(input1.value, 667890);
               done();
             }, 250);
           }, 250);
@@ -1258,7 +1152,7 @@ describe('Webform tests', function () {
   var simpleForm = null;
   it('Should create a simple form', function (done) {
     var formElement = document.createElement('div');
-    simpleForm = new _Webform["default"](formElement);
+    simpleForm = new _Webform.default(formElement);
     simpleForm.setForm({
       title: 'Simple Form',
       components: [{
@@ -1271,14 +1165,14 @@ describe('Webform tests', function () {
         input: true
       }]
     }).then(function () {
-      _harness["default"].testElements(simpleForm, 'input[type="text"]', 2);
-      _harness["default"].testElements(simpleForm, 'input[name="data[firstName]"]', 1);
-      _harness["default"].testElements(simpleForm, 'input[name="data[lastName]"]', 1);
+      _harness.default.testElements(simpleForm, 'input[type="text"]', 2);
+      _harness.default.testElements(simpleForm, 'input[name="data[firstName]"]', 1);
+      _harness.default.testElements(simpleForm, 'input[name="data[lastName]"]', 1);
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should set a submission to the form.', function () {
-    _harness["default"].testSubmission(simpleForm, {
+    _harness.default.testSubmission(simpleForm, {
       data: {
         firstName: 'Joe',
         lastName: 'Smith'
@@ -1287,7 +1181,7 @@ describe('Webform tests', function () {
   });
   it('Should translate a form from options', function (done) {
     var formElement = document.createElement('div');
-    var translateForm = new _Webform["default"](formElement, {
+    var translateForm = new _Webform.default(formElement, {
       template: 'bootstrap3',
       language: 'es',
       i18n: {
@@ -1308,35 +1202,33 @@ describe('Webform tests', function () {
       }]
     }).then(function () {
       var label = formElement.querySelector('.control-label');
-      _powerAssert["default"].equal(label.innerHTML.trim(), 'Spanish Label');
+      _powerAssert.default.equal(label.innerHTML.trim(), 'Spanish Label');
       done();
-    })["catch"](function (err) {
-      done(err);
-    });
+    }).catch(done);
   });
   it('Should treat double colons as i18next namespace separators', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
+    var form = new _Webform.default(formElement);
     form.setForm({
       title: 'Test Form',
       components: []
     }).then(function () {
       var str = 'Test: this is only a test';
-      _powerAssert["default"].equal(form.t(str), str);
-      _powerAssert["default"].equal(form.t("Namespace::".concat(str)), str);
+      _powerAssert.default.equal(form.t(str), str);
+      _powerAssert.default.equal(form.t("Namespace::".concat(str)), str);
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should get the language passed via options', function () {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'es'
     });
-    _powerAssert["default"].equal(form.language, 'es');
+    _powerAssert.default.equal(form.language, 'es');
   });
   it('Should translate form errors in alerts', function () {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'es',
       i18n: {
         es: {
@@ -1358,16 +1250,16 @@ describe('Webform tests', function () {
       }]
     }).then(function () {
       return form.submit();
-    })["catch"](function () {
+    }).catch(function () {
       // console.warn('nooo:', error)
     }).then(function () {
       var ref = formElement.querySelector('[ref="errorRef"]');
-      _powerAssert["default"].equal(ref.textContent.trim(), 'Field Label es obligatorio');
+      _powerAssert.default.equal(ref.textContent.trim(), 'Field Label es obligatorio');
     });
   });
   it('Should translate a form after instantiate', function (done) {
     var formElement = document.createElement('div');
-    var translateForm = new _Webform["default"](formElement, {
+    var translateForm = new _Webform.default(formElement, {
       template: 'bootstrap3',
       i18n: {
         es: {
@@ -1388,13 +1280,13 @@ describe('Webform tests', function () {
     }).then(function () {
       translateForm.language = 'es';
       var label = formElement.querySelector('.control-label');
-      _powerAssert["default"].equal(label.innerHTML.trim(), 'Spanish Label');
+      _powerAssert.default.equal(label.innerHTML.trim(), 'Spanish Label');
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should add a translation after instantiate', function (done) {
     var formElement = document.createElement('div');
-    var translateForm = new _Webform["default"](formElement, {
+    var translateForm = new _Webform.default(formElement, {
       template: 'bootstrap3',
       i18n: {
         language: 'es',
@@ -1419,13 +1311,13 @@ describe('Webform tests', function () {
     }).then(function () {
       translateForm.language = 'fr';
       var label = formElement.querySelector('.control-label');
-      _powerAssert["default"].equal(label.innerHTML.trim(), 'French Label');
+      _powerAssert.default.equal(label.innerHTML.trim(), 'French Label');
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should switch a translation after instantiate', function (done) {
     var formElement = document.createElement('div');
-    var translateForm = new _Webform["default"](formElement, {
+    var translateForm = new _Webform.default(formElement, {
       template: 'bootstrap3'
     });
     translateForm.setForm({
@@ -1443,13 +1335,13 @@ describe('Webform tests', function () {
         'Default Label': 'Spanish Label'
       }, true);
       var label = formElement.querySelector('.control-label');
-      _powerAssert["default"].equal(label.innerHTML.trim(), 'Spanish Label');
+      _powerAssert.default.equal(label.innerHTML.trim(), 'Spanish Label');
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should keep translation after redraw', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       template: 'bootstrap3'
     });
     var schema = {
@@ -1476,7 +1368,7 @@ describe('Webform tests', function () {
         (0, _chai.expect)(form.options.language).to.equal('ru');
         (0, _chai.expect)(formElement.querySelector('.control-label').innerHTML.trim()).to.equal('Russian Label');
         done();
-      }, done)["catch"](done);
+      }, done).catch(done);
     } catch (error) {
       done(error);
     }
@@ -1484,7 +1376,7 @@ describe('Webform tests', function () {
   it('Should fire languageChanged event when language is set', function (done) {
     var isLanguageChangedEventFired = false;
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       template: 'bootstrap3'
     });
     var schema = {
@@ -1508,16 +1400,16 @@ describe('Webform tests', function () {
         });
         return form.language = 'ru';
       }, done).then(function () {
-        (0, _powerAssert["default"])(isLanguageChangedEventFired);
+        (0, _powerAssert.default)(isLanguageChangedEventFired);
         done();
-      }, done)["catch"](done);
+      }, done).catch(done);
     } catch (error) {
       done(error);
     }
   });
   it('When submitted should strip fields with persistent: client-only from submission', function (done) {
     var formElement = document.createElement('div');
-    simpleForm = new _Webform["default"](formElement);
+    simpleForm = new _Webform.default(formElement);
     /* eslint-disable quotes */
     simpleForm.setForm({
       title: 'Simple Form',
@@ -1545,14 +1437,14 @@ describe('Webform tests', function () {
     });
     /* eslint-enable quotes */
 
-    _harness["default"].testSubmission(simpleForm, {
+    _harness.default.testSubmission(simpleForm, {
       data: {
         name: 'noname',
         age: '1'
       }
     });
     simpleForm.submit().then(function (submission) {
-      _powerAssert["default"].deepEqual(submission.data, {
+      _powerAssert.default.deepEqual(submission.data, {
         name: 'noname'
       });
       done();
@@ -1561,53 +1453,51 @@ describe('Webform tests', function () {
   it('Should not mutate the global i18next if it gets an instance', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var instance, formElement, translateForm;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return _i18next["default"].init({
-              lng: 'en'
-            });
-          case 2:
-            instance = _i18next["default"].createInstance();
-            formElement = document.createElement('div');
-            translateForm = new _Webform["default"](formElement, {
-              template: 'bootstrap3',
-              language: 'es',
-              i18next: instance,
-              i18n: {
-                es: {
-                  'Default Label': 'Spanish Label'
-                }
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return _i18next.default.init({
+            lng: 'en'
+          });
+        case 2:
+          instance = _i18next.default.createInstance();
+          formElement = document.createElement('div');
+          translateForm = new _Webform.default(formElement, {
+            template: 'bootstrap3',
+            language: 'es',
+            i18next: instance,
+            i18n: {
+              es: {
+                'Default Label': 'Spanish Label'
               }
-            });
-            return _context.abrupt("return", translateForm.setForm({
-              title: 'Translate Form',
-              components: [{
-                type: 'textfield',
-                label: 'Default Label',
-                key: 'myfield',
-                input: true,
-                inputType: 'text',
-                validate: {}
-              }]
-            }).then(function () {
-              _powerAssert["default"].equal(_i18next["default"].language, 'en');
-              _powerAssert["default"].equal(translateForm.i18next.language, 'es');
-              _powerAssert["default"].equal(translateForm.i18next, instance);
-              var label = formElement.querySelector('.control-label');
-              _powerAssert["default"].equal(label.innerHTML.trim(), 'Spanish Label');
-            }));
-          case 6:
-          case "end":
-            return _context.stop();
-        }
+            }
+          });
+          return _context.abrupt("return", translateForm.setForm({
+            title: 'Translate Form',
+            components: [{
+              type: 'textfield',
+              label: 'Default Label',
+              key: 'myfield',
+              input: true,
+              inputType: 'text',
+              validate: {}
+            }]
+          }).then(function () {
+            _powerAssert.default.equal(_i18next.default.language, 'en');
+            _powerAssert.default.equal(translateForm.i18next.language, 'es');
+            _powerAssert.default.equal(translateForm.i18next, instance);
+            var label = formElement.querySelector('.control-label');
+            _powerAssert.default.equal(label.innerHTML.trim(), 'Spanish Label');
+          }));
+        case 6:
+        case "end":
+          return _context.stop();
       }
     }, _callee);
   })));
   it('Should keep components valid if they are pristine', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1622,19 +1512,19 @@ describe('Webform tests', function () {
         input.dispatchEvent(inputEvent);
       }
       setTimeout(function () {
-        _powerAssert["default"].equal(form.errors.length, 0);
-        _harness["default"].setInputValue(form, 'data[textField]', '');
+        _powerAssert.default.equal(form.errors.length, 0);
+        _harness.default.setInputValue(form, 'data[textField]', '');
         setTimeout(function () {
-          _powerAssert["default"].equal(form.errors.length, 1);
+          _powerAssert.default.equal(form.errors.length, 1);
           done();
         }, 250);
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should delete value of hidden component if clearOnHide is turned on', function (done) {
     var _this = this;
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1662,10 +1552,10 @@ describe('Webform tests', function () {
       textField.dispatchEvent(inputEvent);
       _this.timeout(1000);
       setTimeout(function () {
-        _powerAssert["default"].deepEqual(form.data, visibleData.data);
-        _harness["default"].setInputValue(form, 'data[visible]', 'no');
+        _powerAssert.default.deepEqual(form.data, visibleData.data);
+        _harness.default.setInputValue(form, 'data[visible]', 'no');
         setTimeout(function () {
-          _powerAssert["default"].deepEqual(form.data, hiddenData.data);
+          _powerAssert.default.deepEqual(form.data, hiddenData.data);
           done();
         }, 250);
       }, 250);
@@ -1684,57 +1574,53 @@ describe('Webform tests', function () {
         (0, _chai.expect)(form.errors.length).to.equal(numErrors);
         done();
       }, 100);
-    })["catch"](done);
+    }).catch(done);
   };
-
-  //BUG - uncomment once fixed (ticket FIO-6042)
-  // it('Should not fire validations when fields are either protected or not persistent.', (done) => {
-  //   const form = new Webform(formElement,{ language: 'en', template: 'bootstrap3' });
-  //   form.setForm(
-  //     {
-  //       title: 'protected and persistent',
-  //       components: [
-  //         {
-  //           type: 'textfield',
-  //           label: 'A',
-  //           key: 'a',
-  //           validate: {
-  //             required: true
-  //           }
-  //         },
-  //         {
-  //           type: 'textfield',
-  //           label: 'B',
-  //           key: 'b',
-  //           protected: true,
-  //           validate: {
-  //             required: true
-  //           }
-  //         }
-  //       ],
-  //     }).then(() => {
-  //       checkForErrors(form, {}, {}, 0, () => {
-  //         checkForErrors(form, {}, {
-  //           data: {
-  //             a: 'Testing',
-  //             b: ''
-  //           }
-  //         }, 1, () => {
-  //           checkForErrors(form, {}, {
-  //             _id: '123123123',
-  //             data: {
-  //               a: 'Testing',
-  //               b: ''
-  //             }
-  //           }, 0, done);
-  //         });
-  //       });
-  //   });
-  // });
-
+  it('Should not fire validations when fields are either protected or not persistent.', function (done) {
+    var form = new _Webform.default(formElement, {
+      language: 'en',
+      template: 'bootstrap3'
+    });
+    form.setForm({
+      title: 'protected and persistent',
+      components: [{
+        type: 'textfield',
+        label: 'A',
+        key: 'a',
+        validate: {
+          required: true
+        }
+      }, {
+        type: 'textfield',
+        label: 'B',
+        key: 'b',
+        protected: true,
+        validate: {
+          required: true
+        }
+      }]
+    }).then(function () {
+      checkForErrors(form, {}, {}, 0, function () {
+        checkForErrors(form, {}, {
+          data: {
+            a: 'Testing',
+            b: ''
+          }
+        }, 1, function () {
+          checkForErrors(form, {}, {
+            _id: '123123123',
+            data: {
+              a: 'Testing',
+              b: ''
+            }
+          }, 0, done);
+        });
+      });
+    });
+  });
   it('Should not fire validation on init.', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1765,7 +1651,7 @@ describe('Webform tests', function () {
   });
   it('Should validation on init when alwaysDirty flag is set.', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3',
       alwaysDirty: true
@@ -1797,7 +1683,7 @@ describe('Webform tests', function () {
   });
   it('Should validation on init when dirty flag is set.', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1830,7 +1716,7 @@ describe('Webform tests', function () {
   });
   it('Should not show any errors on setSubmission when providing an empty data object', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1861,7 +1747,7 @@ describe('Webform tests', function () {
   });
   it('Should not show errors when providing empty data object with data set.', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1894,7 +1780,7 @@ describe('Webform tests', function () {
   });
   it('Should show errors on setSubmission when providing explicit data values.', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1930,7 +1816,7 @@ describe('Webform tests', function () {
   });
   it('Should not show errors on setSubmission with noValidate:TRUE', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -1966,51 +1852,9 @@ describe('Webform tests', function () {
       }, 0, done);
     });
   });
-  it('Should not fire validation on calculated values init.', function (done) {
-    formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement, {
-      language: 'en'
-    });
-    form.setForm({
-      title: 'noValidation flag',
-      components: [{
-        label: 'minMax',
-        calculateValue: 'value = {minAmount: \'5.00\', maxAmount: \'50000.00\'};',
-        calculateServer: true,
-        key: 'minMax',
-        type: 'hidden',
-        input: true
-      }, {
-        label: 'A',
-        key: 'a',
-        type: 'number',
-        input: true
-      }, {
-        label: 'B',
-        key: 'b',
-        type: 'number',
-        input: true
-      }, {
-        label: 'Sum',
-        validate: {
-          required: true,
-          min: 10
-        },
-        calculateValue: 'var total = _.isNumber(data.a) ? data.a : 0;\ntotal += _.isNumber(data.b) ? data.b : 0;\n\nvalue = parseFloat(total.toFixed(2));',
-        calculateServer: true,
-        key: 'sum',
-        type: 'number',
-        input: true
-      }]
-    }).then(function () {
-      checkForErrors(form, {}, {
-        data: {}
-      }, 0, done);
-    });
-  });
   it('Should set calculated value correctly', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement);
+    var form = new _Webform.default(formElement);
     form.setForm(_formtest.calculateZeroValue).then(function () {
       var a = form.components[0];
       var b = form.components[1];
@@ -2018,47 +1862,47 @@ describe('Webform tests', function () {
       a.setValue(10);
       b.setValue(5);
       setTimeout(function () {
-        _powerAssert["default"].equal(a.dataValue, 10);
-        _powerAssert["default"].equal(b.dataValue, 5);
-        _powerAssert["default"].equal(sum.dataValue, 15);
+        _powerAssert.default.equal(a.dataValue, 10);
+        _powerAssert.default.equal(b.dataValue, 5);
+        _powerAssert.default.equal(sum.dataValue, 15);
         a.setValue('0');
         b.setValue('0');
         setTimeout(function () {
-          _powerAssert["default"].equal(a.dataValue, 0);
-          _powerAssert["default"].equal(b.dataValue, 0);
-          _powerAssert["default"].equal(sum.dataValue, 0);
+          _powerAssert.default.equal(a.dataValue, 0);
+          _powerAssert.default.equal(b.dataValue, 0);
+          _powerAssert.default.equal(sum.dataValue, 0);
           done();
         }, 250);
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should render Nested Modal Wizard Form correctly', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement);
-    form.setForm(_nestedModalWizard["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_nestedModalWizard.default).then(function () {
       var openModalRef = form.element.querySelector('[ref="openModal"]');
-      (0, _powerAssert["default"])(openModalRef, 'Should render Open Modal button');
+      (0, _powerAssert.default)(openModalRef, 'Should render Open Modal button');
       var wizard = form.components[1].subForm;
       wizard.setPage(1);
       setTimeout(function () {
         var openModalRef = form.element.querySelector('[ref="openModal"]');
-        (0, _powerAssert["default"])(openModalRef, 'Should render Open Modal button after the page was changed');
+        (0, _powerAssert.default)(openModalRef, 'Should render Open Modal button after the page was changed');
         done();
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should set calculated value correctly', function (done) {
     formElement.innerHTML = '';
-    var form = new _Webform["default"](formElement);
-    form.setForm(_disableSubmitButton["default"]).then(function () {
+    var form = new _Webform.default(formElement);
+    form.setForm(_disableSubmitButton.default).then(function () {
       var textField = form.getComponent(['textField']);
       var fileA = form.getComponent(['upload']);
       var fileB = form.getComponent(['file']);
       var submitButton = form.getComponent(['submit']);
-      _powerAssert["default"].equal(submitButton.disabled, false, 'Button should be enabled at the beginning');
+      _powerAssert.default.equal(submitButton.disabled, false, 'Button should be enabled at the beginning');
       var simulateFileUploading = function simulateFileUploading(comp) {
         var debounce = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 250;
-        var filePromise = new _nativePromiseOnly["default"](function (resolve) {
+        var filePromise = new _nativePromiseOnly.default(function (resolve) {
           setTimeout(function () {
             return resolve();
           }, debounce);
@@ -2071,37 +1915,37 @@ describe('Webform tests', function () {
       simulateFileUploading(fileA, 1000);
       textField.setValue('12345');
       setTimeout(function () {
-        _powerAssert["default"].equal(submitButton.filesUploading.length, 1);
-        _powerAssert["default"].equal(submitButton.isDisabledOnInvalid, true, 'Should be disabled on invalid due to the invalid TextField\'s value');
-        _powerAssert["default"].equal(submitButton.disabled, true, 'Should be disabled');
+        _powerAssert.default.equal(submitButton.filesUploading.length, 1);
+        _powerAssert.default.equal(submitButton.isDisabledOnInvalid, true, 'Should be disabled on invalid due to the invalid TextField\'s value');
+        _powerAssert.default.equal(submitButton.disabled, true, 'Should be disabled');
         simulateFileUploading(fileB, 500);
         setTimeout(function () {
-          _powerAssert["default"].equal(submitButton.filesUploading.length, 2);
-          _powerAssert["default"].equal(submitButton.disabled, true, 'Should be disabled');
+          _powerAssert.default.equal(submitButton.filesUploading.length, 2);
+          _powerAssert.default.equal(submitButton.disabled, true, 'Should be disabled');
           setTimeout(function () {
-            _powerAssert["default"].equal(submitButton.filesUploading.length, 0);
-            _powerAssert["default"].equal(submitButton.disabled, true, 'Should be disabled since TextField is still invalid');
+            _powerAssert.default.equal(submitButton.filesUploading.length, 0);
+            _powerAssert.default.equal(submitButton.disabled, true, 'Should be disabled since TextField is still invalid');
             textField.setValue('123');
             setTimeout(function () {
-              _powerAssert["default"].equal(submitButton.disabled, false, 'Should be enabled');
+              _powerAssert.default.equal(submitButton.disabled, false, 'Should be enabled');
               done();
             }, 250);
           }, 650);
         }, 100);
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   describe('set/get nosubmit', function () {
     it('should set/get nosubmit flag and emit nosubmit event', function () {
-      var form = new _Webform["default"](null, {});
-      var emit = _sinon["default"].spy(form, 'emit');
-      (0, _chai.expect)(form.nosubmit).to.be["false"];
+      var form = new _Webform.default(null, {});
+      var emit = _sinon.default.spy(form, 'emit');
+      (0, _chai.expect)(form.nosubmit).to.be.false;
       form.nosubmit = true;
-      (0, _chai.expect)(form.nosubmit).to.be["true"];
+      (0, _chai.expect)(form.nosubmit).to.be.true;
       (0, _chai.expect)(emit.callCount).to.equal(1);
       (0, _chai.expect)(emit.args[0]).to.deep.equal(['nosubmit', true]);
       form.nosubmit = false;
-      (0, _chai.expect)(form.nosubmit).to.be["false"];
+      (0, _chai.expect)(form.nosubmit).to.be.false;
       (0, _chai.expect)(emit.callCount).to.equal(2);
       (0, _chai.expect)(emit.args[1]).to.deep.equal(['nosubmit', false]);
     });
@@ -2109,7 +1953,7 @@ describe('Webform tests', function () {
   describe('getValue and setValue', function () {
     it('should setValue and getValue', function (done) {
       formElement.innerHTML = '';
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -2151,7 +1995,7 @@ describe('Webform tests', function () {
         };
 
         // Ensure that it says it changes.
-        _powerAssert["default"].equal(form.setValue({
+        _powerAssert.default.equal(form.setValue({
           a: 'a',
           b: {
             c: [{
@@ -2171,7 +2015,7 @@ describe('Webform tests', function () {
         }), true);
         setTimeout(function () {
           // It should have only updated once.
-          _powerAssert["default"].equal(count, 1);
+          _powerAssert.default.equal(count, 1);
           done();
         }, 500);
       });
@@ -2179,16 +2023,16 @@ describe('Webform tests', function () {
   });
   describe('ReadOnly Form', function () {
     it('Should apply conditionals when in readOnly mode.', function (done) {
-      done = _lodash["default"].once(done);
-      var Conditions = require('../test/forms/conditions')["default"];
+      done = _lodash.default.once(done);
+      var Conditions = require('../test/forms/conditions').default;
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         readOnly: true,
         language: 'en',
         template: 'bootstrap3'
       });
       form.setForm(Conditions.form).then(function () {
-        _harness["default"].testConditionals(form, {
+        _harness.default.testConditionals(form, {
           data: {
             typeShow: 'Show',
             typeMe: 'Me',
@@ -2208,7 +2052,7 @@ describe('Webform tests', function () {
   describe('Validate onBlur', function () {
     it('Should keep component valid onChange', function (done) {
       formElement.innerHTML = '';
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -2216,34 +2060,34 @@ describe('Webform tests', function () {
         var field = form.components[0];
         var field2 = form.components[1];
         var fieldInput = field.refs.input[0];
-        _harness["default"].setInputValue(field, 'data[textField]', '12');
+        _harness.default.setInputValue(field, 'data[textField]', '12');
         setTimeout(function () {
-          (0, _powerAssert["default"])(!field.error, 'Should be valid while changing');
+          (0, _powerAssert.default)(!field.error, 'Should be valid while changing');
           var blurEvent = new Event('blur');
           fieldInput.dispatchEvent(blurEvent);
           setTimeout(function () {
-            (0, _powerAssert["default"])(field.error, 'Should set error aftre component was blured');
-            _harness["default"].setInputValue(field2, 'data[textField1]', 'ab');
+            (0, _powerAssert.default)(field.error, 'Should set error aftre component was blured');
+            _harness.default.setInputValue(field2, 'data[textField1]', 'ab');
             setTimeout(function () {
-              (0, _powerAssert["default"])(field.error, 'Should keep error when editing another component');
+              (0, _powerAssert.default)(field.error, 'Should keep error when editing another component');
               done();
             }, 250);
           }, 250);
         }, 250);
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should keep components inside DataGrid valid onChange', function (done) {
       formElement.innerHTML = '';
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
-      form.setForm(_dataGridOnBlurValidation["default"]).then(function () {
+      form.setForm(_dataGridOnBlurValidation.default).then(function () {
         var component = form.components[0];
-        _harness["default"].setInputValue(component, 'data[dataGrid][0][textField]', '12');
+        _harness.default.setInputValue(component, 'data[dataGrid][0][textField]', '12');
+        var textField = component.iteratableRows[0].components.textField;
         setTimeout(function () {
-          var textField = component.iteratableRows[0].components.textField;
-          _powerAssert["default"].equal(!!textField.error, false, 'Should stay valid on input');
+          _powerAssert.default.equal(textField.error, '', 'Should stay valid on input');
           var blur = new Event('blur', {
             bubbles: true,
             cancelable: true
@@ -2252,17 +2096,17 @@ describe('Webform tests', function () {
           input.dispatchEvent(blur);
           textField.element.dispatchEvent(blur);
           setTimeout(function () {
-            (0, _powerAssert["default"])(textField.error, 'Should be validated after blur');
+            (0, _powerAssert.default)(textField.error, 'Should be validated after blur');
             done();
           }, 250);
         }, 250);
-      })["catch"](done);
+      }).catch(done);
     });
   });
   describe('Reset values', function () {
     it('Should reset all values correctly.', function () {
       formElement.innerHTML = '';
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -2352,388 +2196,6 @@ describe('Webform tests', function () {
       });
     });
   });
-  describe('New Simple Conditions', function () {
-    it('Should show field if all conditions are met', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      form.setForm(_formsWithNewSimpleConditions["default"].form1).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, false, '(1) Component should be conditionally hidden');
-        form.setValue({
-          data: {
-            number: 11,
-            email: 'test@form.io',
-            radio: 'one'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, true, '(2) Component should be conditionally visible');
-          var emailComponent = form.getComponent('email');
-          emailComponent.setValue('test@form1.io');
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, false, '(3) Component should be conditionally hidden');
-            done();
-          }, 300);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should show field if any condition is met', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      var formCopy = (0, _utils.fastCloneDeep)(_formsWithNewSimpleConditions["default"].form1);
-      _lodash["default"].set(formCopy, 'components[0].conditional.conjunction', 'any');
-      form.setForm(formCopy).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, false, '(1) Component should be conditionally hidden');
-        form.setValue({
-          data: {
-            number: 1100,
-            email: 'test@form.io'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, true, '(2) Component should be conditionally visible');
-          form.setValue({
-            data: {
-              number: 10,
-              email: 'test@form1.io'
-            }
-          });
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, true, '(3) Component should be conditionally visible');
-            form.setValue({
-              data: {
-                number: 10000
-              }
-            });
-            setTimeout(function () {
-              _powerAssert["default"].equal(conditionalComponent.visible, false, '(4) Component should be conditionally hidden');
-              form.setValue({
-                data: {
-                  radio: 'one'
-                }
-              });
-              setTimeout(function () {
-                _powerAssert["default"].equal(conditionalComponent.visible, true, '(5) Component should be conditionally visible');
-                done();
-              }, 450);
-            }, 400);
-          }, 350);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should hide field if any condition is met', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      var formCopy = (0, _utils.fastCloneDeep)(_formsWithNewSimpleConditions["default"].form1);
-      _lodash["default"].set(formCopy, 'components[0].conditional.show', false);
-      _lodash["default"].set(formCopy, 'components[0].conditional.conjunction', 'any');
-      form.setForm(formCopy).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-        form.setValue({
-          data: {
-            number: 1100,
-            email: 'test@form.io'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-          form.setValue({
-            data: {
-              number: 10,
-              email: 'test@form1.io'
-            }
-          });
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-            form.setValue({
-              data: {
-                number: 10000
-              }
-            });
-            setTimeout(function () {
-              _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-              form.setValue({
-                data: {
-                  radio: 'one'
-                }
-              });
-              setTimeout(function () {
-                _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-                done();
-              }, 300);
-            }, 300);
-          }, 300);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should hide field if all conditions are met', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      var formCopy = (0, _utils.fastCloneDeep)(_formsWithNewSimpleConditions["default"].form1);
-      _lodash["default"].set(formCopy, 'components[0].conditional.show', false);
-      form.setForm(formCopy).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-        form.setValue({
-          data: {
-            number: 11,
-            email: 'test@form.io',
-            radio: 'one'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-          var emailComponent = form.getComponent('email');
-          emailComponent.setValue('test@form1.io');
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-            done();
-          }, 300);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should show field if all conditions are met (test with different component types + multiple components)', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      form.setForm(_formsWithNewSimpleConditions["default"].form2).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-        form.setValue({
-          data: {
-            email: 'test@form.io',
-            day: '10/06/2022',
-            survey: {
-              q1: 'true'
-            },
-            number: [100, 25, 350],
-            checkbox: true,
-            selectBoxes: {
-              one: true,
-              two: false,
-              three: false,
-              four: false,
-              five: false
-            },
-            radio: 'two',
-            tags: 'test,newtag',
-            selectValues: 'one',
-            selectCustomWithValuesOfNumberType: 1,
-            submit: true,
-            currency: 35
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-          var dayComponent = form.getComponent('day');
-          dayComponent.setValue('8/09/2022');
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-            done();
-          }, 300);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should show/hide field inside datagrid rows', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      form.setForm(_formsWithNewSimpleConditions["default"].form4).then(function () {
-        var dataGrid = form.getComponent('dataGrid');
-        dataGrid.setValue([{
-          number: 50
-        }, {
-          number: 55
-        }, {
-          number: 12
-        }, {
-          number: 105
-        }]);
-        setTimeout(function () {
-          var expectedValues = {
-            '0': true,
-            '1': false,
-            '2': true,
-            '3': false
-          };
-          _lodash["default"].each(dataGrid.rows, function (row, index) {
-            _powerAssert["default"].equal(row['textField'].visible, expectedValues["".concat(index)], "Component should be conditionally ".concat(expectedValues["".concat(index)] ? 'visible' : 'hidden', " in row ").concat(index));
-          });
-          done();
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should set component value through logic triggered by simple condition', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      form.setForm(_formsWithNewSimpleConditions["default"].form3).then(function () {
-        var componentWithLogic = form.getComponent('fieldWithLogic');
-        _powerAssert["default"].equal(componentWithLogic.isEmpty(), true, 'Component should be empty');
-        form.setValue({
-          data: {
-            number: 2,
-            radio: 'two'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(componentWithLogic.dataValue, 'logic works', 'Component should have value set by logic');
-          done();
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should show field if all conditions are met (test all operators)', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      form.setForm(_formsWithNewSimpleConditions["default"].form5).then(function () {
-        var conditionalComponent = form.getComponent('conditionalField');
-        _powerAssert["default"].equal(conditionalComponent.visible, false, '(1) Component should be conditionally hidden');
-        form.setValue({
-          data: {
-            dateTime: '2022-09-29T12:00:00+03:00',
-            day: '09/29/2022',
-            dateTime1: '2022-09-29T12:00:00+03:00',
-            day1: '09/29/2022',
-            url: 'portal.form.io',
-            number: 100,
-            currency: 100,
-            textField1: 'some test text',
-            day2: '09/29/2022',
-            select: '',
-            radio: 'one',
-            dateTime3: '2022-09-12T12:00:00+03:00',
-            textArea: 'test',
-            textField2: 'test2',
-            number2: [100],
-            currency2: 100,
-            email: 'some@form.io',
-            url2: 'portal.form.io'
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, true, '(2) Component should be conditionally visible');
-          var selectComponent = form.getComponent('select');
-          selectComponent.setValue('one');
-          setTimeout(function () {
-            _powerAssert["default"].equal(conditionalComponent.visible, false, '(3) Component should be conditionally hidden');
-            done();
-          }, 300);
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should show field when condition is based on the values of select resource with object value', function (done) {
-      var element = document.createElement('div');
-      var values = [{
-        _id: '656daabeebc67ecca1141569',
-        form: '656daab0ebc67ecca1141226',
-        data: {
-          number: 4,
-          notes: 'notes 4'
-        },
-        project: '656daa20ebc67ecca1140e8d',
-        state: 'submitted',
-        created: '2023-12-04T10:32:30.821Z',
-        modified: '2023-12-06T14:25:00.886Z'
-      }, {
-        _id: '656daabbebc67ecca11414a7',
-        form: '656daab0ebc67ecca1141226',
-        data: {
-          number: 3,
-          notes: 'notes 3'
-        },
-        project: '656daa20ebc67ecca1140e8d',
-        state: 'submitted',
-        created: '2023-12-04T10:32:27.322Z',
-        modified: '2023-12-06T14:25:07.494Z'
-      }, {
-        _id: '656daab8ebc67ecca11413e5',
-        form: '656daab0ebc67ecca1141226',
-        data: {
-          number: 2,
-          notes: 'notes 2'
-        },
-        project: '656daa20ebc67ecca1140e8d',
-        state: 'submitted',
-        created: '2023-12-04T10:32:24.514Z',
-        modified: '2023-12-06T14:25:13.610Z'
-      }, {
-        _id: '656daab5ebc67ecca1141322',
-        form: '656daab0ebc67ecca1141226',
-        data: {
-          number: 1,
-          notes: 'notes 1'
-        },
-        project: '656daa20ebc67ecca1140e8d',
-        state: 'submitted',
-        created: '2023-12-04T10:32:21.205Z',
-        modified: '2023-12-06T14:25:20.930Z'
-      }];
-      var originalMakeRequest = _Formio["default"].makeRequest;
-      _Formio["default"].makeRequest = function () {
-        return new Promise(function (resolve) {
-          setTimeout(function () {
-            resolve(values);
-          }, 50);
-        });
-      };
-      _Formio["default"].createForm(element, _formtest.formWithObjectValueSelect).then(function (form) {
-        var numberComp = form.getComponent('number');
-        _powerAssert["default"].equal(numberComp.visible, false);
-        var selectRef = form.getComponent('selectRef');
-        selectRef.setValue((0, _utils.fastCloneDeep)(values[3]));
-        var selectNoValuePropertyMult = form.getComponent('selectNoValueProperty');
-        selectNoValuePropertyMult.setValue([(0, _utils.fastCloneDeep)(values[2])]);
-        var selectEntireObject = form.getComponent('selectEntireObject');
-        selectEntireObject.setValue((0, _utils.fastCloneDeep)(values[1].data));
-        var selectEntireObjectMult = form.getComponent('selectEntireObjectMult');
-        selectEntireObjectMult.setValue([(0, _utils.fastCloneDeep)(values[0].data)]);
-        setTimeout(function () {
-          _powerAssert["default"].equal(numberComp.visible, true);
-          selectRef.setValue((0, _utils.fastCloneDeep)(values[2]));
-          setTimeout(function () {
-            _powerAssert["default"].equal(numberComp.visible, false);
-            _Formio["default"].makeRequest = originalMakeRequest;
-            done();
-          }, 400);
-        }, 400);
-      })["catch"](done);
-    });
-    it('Should hide field if the checkbox based condition with string value is met', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement);
-      var formCopy = (0, _utils.fastCloneDeep)(_formsWithNewSimpleConditions["default"].form7);
-      form.setForm(formCopy).then(function () {
-        var conditionalComponent = form.getComponent('textField');
-        _powerAssert["default"].equal(conditionalComponent.visible, true, 'Component should be conditionally visible');
-        form.setValue({
-          data: {
-            checkbox: true
-          }
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(conditionalComponent.visible, false, 'Component should be conditionally hidden');
-          done();
-        }, 300);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-  });
   describe('Calculate Value with allowed manual override', function () {
     var initialSubmission = {
       data: {
@@ -2779,7 +2241,7 @@ describe('Webform tests', function () {
     };
     it('Should reset all values correctly.', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -2815,31 +2277,11 @@ describe('Webform tests', function () {
             }, 250);
           }, 250);
         }, 250);
-      })["catch"](done);
-    });
-    it('Should apply submission metadata value in calculation.', function (done) {
-      var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
-        language: 'en',
-        template: 'bootstrap3'
-      });
-      form.setForm(_formtest.calculateValueWithSubmissionMetadata).then(function () {
-        var textField = form.getComponent('textField');
-        textField.setValue('test value');
-        form.submit(false, {});
-        setTimeout(function () {
-          (0, _chai.expect)(form.submission.metadata).to.exist;
-          (0, _chai.expect)(form.submission.metadata.timezone).to.be.not.empty;
-          (0, _chai.expect)(form.submission.data.textField).to.be.not.empty;
-          (0, _chai.expect)(form.submission.data.textArea).to.be.not.empty;
-          (0, _chai.expect)(form.submission.data.textArea).to.equal(form.submission.data.textField + form.submission.metadata.timezone);
-          done();
-        }, 250);
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should allow to change value.', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -2847,16 +2289,16 @@ describe('Webform tests', function () {
         var radio = form.getComponent(['radio']);
         radio.setValue('a');
         setTimeout(function () {
-          _powerAssert["default"].equal(radio.dataValue, 'a');
+          _powerAssert.default.equal(radio.dataValue, 'a');
           var selectBoxes = form.getComponent(['selectBoxes']);
-          _powerAssert["default"].equal(selectBoxes.dataValue['a'], true, 'Should calculate value and set it to "a"');
+          _powerAssert.default.equal(selectBoxes.dataValue['a'], true, 'Should calculate value and set it to "a"');
           selectBoxes.setValue({
             'a': true,
             'b': true,
             'c': false
           });
           setTimeout(function () {
-            _powerAssert["default"].deepEqual(selectBoxes.dataValue, {
+            _powerAssert.default.deepEqual(selectBoxes.dataValue, {
               'a': true,
               'b': true,
               'c': false
@@ -2864,249 +2306,7 @@ describe('Webform tests', function () {
             done();
           }, 250);
         }, 250);
-      })["catch"](done);
-    });
-    it('Should recalculate values for components with "allow override" after first and only dataGrid row is removed/reset', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, _formsWithAllowOverrideComps["default"].withDataGrid).then(function (form) {
-        var calculatedValues = {
-          number: 11111,
-          textField: 'test DataGrid',
-          textArea: 'test'
-        };
-        var overridenValues = {
-          number: 11111222,
-          textField: 'test DataGrid 222',
-          textArea: 'test 222'
-        };
-        var number = form.getComponent('number');
-        var textArea = form.getComponent('textArea');
-        var textField = form.getComponent('textField');
-        var dgRadio = form.getComponent('dgRadio');
-        var dataGrid = form.getComponent('dataGrid');
-        // check if values are calculated on form load
-        _powerAssert["default"].deepEqual(dataGrid.dataValue, [_objectSpread(_objectSpread({}, calculatedValues), {}, {
-          textField: textField.emptyValue,
-          dgRadio: dgRadio.emptyValue
-        })], 1);
-        dgRadio.setValue('a');
-        setTimeout(function () {
-          // check if values are calculated correctly
-          _powerAssert["default"].deepEqual(dataGrid.dataValue, [_objectSpread(_objectSpread({}, calculatedValues), {}, {
-            dgRadio: 'a'
-          })]);
-
-          // override calculated values
-          var numberInput = number.refs.input[0];
-          var textFieldInput = textField.refs.input[0];
-          var textAreaInput = textArea.refs.input[0];
-          numberInput.value = overridenValues.number;
-          textFieldInput.value = overridenValues.textField;
-          textAreaInput.value = overridenValues.textArea;
-          var inputEvent = new Event('input');
-          numberInput.dispatchEvent(inputEvent);
-          textFieldInput.dispatchEvent(inputEvent);
-          textAreaInput.dispatchEvent(inputEvent);
-          setTimeout(function () {
-            // check if values are overriden
-            _powerAssert["default"].deepEqual(dataGrid.dataValue, [_objectSpread(_objectSpread({}, overridenValues), {}, {
-              dgRadio: 'a'
-            })], 2);
-
-            // clear first row
-            dataGrid.removeRow(0);
-            setTimeout(function () {
-              var dgRadio = form.getComponent('dgRadio');
-              // make sure values are reset and recalculated
-              _powerAssert["default"].deepEqual(dataGrid.dataValue, [_objectSpread(_objectSpread({}, calculatedValues), {}, {
-                textField: textField.emptyValue,
-                dgRadio: dgRadio.emptyValue
-              })], 3);
-              dgRadio.setValue('a');
-              setTimeout(function () {
-                // check if all values are calculated correctly
-                _powerAssert["default"].deepEqual(dataGrid.dataValue, [_objectSpread(_objectSpread({}, calculatedValues), {}, {
-                  dgRadio: 'a'
-                })], 4);
-                document.body.innerHTML = '';
-                done();
-              }, 400);
-            }, 400);
-          }, 400);
-        }, 400);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should recalculate values for components with "allow override" after the form is reset', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, _formsWithAllowOverrideComps["default"].withResetBtn).then(function (form) {
-        var calculatedValues = {
-          number: 11111,
-          textField: 'test DataGrid',
-          textArea: 'test',
-          radio: 'one'
-        };
-        var overridenValues = {
-          number: 11111222,
-          textField: 'test DataGrid 222',
-          textArea: 'test 222',
-          radio: 'two'
-        };
-        var checkbox = form.getComponent('checkbox');
-        var number = form.getComponent('number');
-        var textArea = form.getComponent('textArea');
-        var radio = form.getComponent('radio');
-        var textField = form.getComponent('textField');
-        var dgRadio = form.getComponent('dgRadio');
-        var resetBtn = form.getComponent('reset');
-        dgRadio.setValue('a');
-        checkbox.setValue(true);
-        setTimeout(function () {
-          // check if values were calculated correctly
-          _powerAssert["default"].equal(number.dataValue, calculatedValues.number);
-          _powerAssert["default"].equal(textField.dataValue, calculatedValues.textField);
-          _powerAssert["default"].equal(textArea.dataValue, calculatedValues.textArea);
-          _powerAssert["default"].equal(radio.dataValue, calculatedValues.radio);
-
-          // override calculated values
-          var numberInput = number.refs.input[0];
-          var textFieldInput = textField.refs.input[0];
-          var textAreaInput = textArea.refs.input[0];
-          var radioInput = radio.refs.input[1];
-          numberInput.value = overridenValues.number;
-          textFieldInput.value = overridenValues.textField;
-          textAreaInput.value = overridenValues.textArea;
-          radioInput.checked = true;
-          var inputEvent = new Event('input');
-          var clickEvent = new Event('click');
-          numberInput.dispatchEvent(inputEvent);
-          textFieldInput.dispatchEvent(inputEvent);
-          textAreaInput.dispatchEvent(inputEvent);
-          radioInput.dispatchEvent(clickEvent);
-          setTimeout(function () {
-            // check if values were overriden
-            _powerAssert["default"].equal(number.getValue(), overridenValues.number);
-            _powerAssert["default"].equal(textField.dataValue, overridenValues.textField);
-            _powerAssert["default"].equal(textArea.dataValue, overridenValues.textArea);
-            _powerAssert["default"].equal(radio.dataValue, overridenValues.radio);
-            checkbox.setValue(false);
-            setTimeout(function () {
-              // reset form
-              resetBtn.refs.button.dispatchEvent(clickEvent);
-              setTimeout(function () {
-                // make sure that values are reset
-                _powerAssert["default"].equal(number.dataValue, calculatedValues.number);
-                _powerAssert["default"].equal(textArea.dataValue, calculatedValues.textArea);
-                _powerAssert["default"].equal(textField.dataValue, textField.emptyValue);
-                _powerAssert["default"].equal(radio.dataValue, radio.emptyValue);
-                _powerAssert["default"].equal(dgRadio.dataValue, dgRadio.emptyValue);
-                _powerAssert["default"].equal(checkbox.dataValue, checkbox.emptyValue);
-
-                // trigger values calculation
-                dgRadio.setValue('a');
-                checkbox.setValue(true);
-                setTimeout(function () {
-                  // make sure that values are recalculated
-                  _powerAssert["default"].equal(number.dataValue, calculatedValues.number);
-                  _powerAssert["default"].equal(textField.dataValue, calculatedValues.textField);
-                  _powerAssert["default"].equal(textArea.dataValue, calculatedValues.textArea);
-                  _powerAssert["default"].equal(radio.dataValue, calculatedValues.radio);
-                  document.body.innerHTML = '';
-                  done();
-                }, 300);
-              }, 300);
-            }, 300);
-          }, 300);
-        }, 400);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should recalculate values for conditional components with "allow override" and "clear on hide" enabled when components become visible again', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, _formsWithAllowOverrideComps["default"].withClearOnHide).then(function (form) {
-        var calculatedValues = {
-          number: 111,
-          textField: 'test',
-          textArea: 'test value',
-          radio: 'a'
-        };
-        var overridenValues = {
-          number: 11123,
-          textField: 'test123',
-          textArea: 'test123',
-          radio: 'b'
-        };
-        var checkbox = form.getComponent('checkbox');
-        var number = form.getComponent('number');
-        var textField = form.getComponent('textField');
-        var textArea = form.getComponent('textArea');
-        var radio = form.getComponent('radio');
-        _powerAssert["default"].equal(number.visible, false);
-        _powerAssert["default"].equal(textField.visible, false);
-        _powerAssert["default"].equal(textArea.visible, false);
-        _powerAssert["default"].equal(radio.visible, false);
-        checkbox.setValue(true);
-        setTimeout(function () {
-          _powerAssert["default"].equal(number.visible, true);
-          _powerAssert["default"].equal(textField.visible, true);
-          _powerAssert["default"].equal(textArea.visible, true);
-          _powerAssert["default"].equal(radio.visible, true);
-          // check if values were calculated correctly
-          _powerAssert["default"].equal(number.dataValue, calculatedValues.number);
-          _powerAssert["default"].equal(textField.dataValue, calculatedValues.textField);
-          _powerAssert["default"].equal(textArea.dataValue, calculatedValues.textArea);
-          _powerAssert["default"].equal(radio.dataValue, calculatedValues.radio);
-
-          // override calculated values
-          var numberInput = number.refs.input[0];
-          var textFieldInput = textField.refs.input[0];
-          var textAreaInput = textArea.refs.input[0];
-          var radioInput = radio.refs.input[1];
-          numberInput.value = overridenValues.number;
-          textFieldInput.value = overridenValues.textField;
-          textAreaInput.value = overridenValues.textArea;
-          radioInput.checked = true;
-          var inputEvent = new Event('input');
-          var clickEvent = new Event('click');
-          numberInput.dispatchEvent(inputEvent);
-          textFieldInput.dispatchEvent(inputEvent);
-          textAreaInput.dispatchEvent(inputEvent);
-          radioInput.dispatchEvent(clickEvent);
-          setTimeout(function () {
-            // check if values were overriden
-            _powerAssert["default"].equal(number.getValue(), overridenValues.number);
-            _powerAssert["default"].equal(textField.dataValue, overridenValues.textField);
-            _powerAssert["default"].equal(textArea.dataValue, overridenValues.textArea);
-            _powerAssert["default"].equal(radio.dataValue, overridenValues.radio);
-            checkbox.setValue(false);
-            setTimeout(function () {
-              // check if conditional components were hidden
-              _powerAssert["default"].equal(number.visible, false);
-              _powerAssert["default"].equal(textField.visible, false);
-              _powerAssert["default"].equal(textArea.visible, false);
-              _powerAssert["default"].equal(radio.visible, false);
-              checkbox.setValue(true);
-              setTimeout(function () {
-                // make sure that components appear again and values were recalculated
-                _powerAssert["default"].equal(number.visible, true);
-                _powerAssert["default"].equal(textField.visible, true);
-                _powerAssert["default"].equal(textArea.visible, true);
-                _powerAssert["default"].equal(radio.visible, true);
-                _powerAssert["default"].equal(number.dataValue, calculatedValues.number);
-                _powerAssert["default"].equal(textField.dataValue, calculatedValues.textField);
-                _powerAssert["default"].equal(textArea.dataValue, calculatedValues.textArea);
-                _powerAssert["default"].equal(radio.dataValue, calculatedValues.radio);
-                document.body.innerHTML = '';
-                done();
-              }, 300);
-            }, 300);
-          }, 300);
-        }, 400);
-      })["catch"](function (err) {
-        return done(err);
-      });
+      }).catch(done);
     });
   });
   describe('Modal Edit', function () {
@@ -3132,7 +2332,7 @@ describe('Webform tests', function () {
     };
     it('Test rendering previews after the submission is set', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -3142,18 +2342,18 @@ describe('Webform tests', function () {
         }).then(function () {
           componentsKeys.forEach(function (key) {
             var comp = form.getComponent([key]);
-            (0, _powerAssert["default"])(comp);
+            (0, _powerAssert.default)(comp);
             var preview = comp.componentModal.refs.openModal;
-            (0, _powerAssert["default"])(preview);
-            _powerAssert["default"].equal(preview.textContent.replace(/\n|\t/g, '').trim(), expectedValues[key]);
+            (0, _powerAssert.default)(preview);
+            _powerAssert.default.equal(preview.textContent.replace(/\n|\t/g, '').trim(), expectedValues[key]);
           });
           done();
         });
-      })["catch"](done);
+      }).catch(done);
     });
     it('Test updating previews after aboting changes', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3'
       });
@@ -3163,7 +2363,7 @@ describe('Webform tests', function () {
         }).then(function () {
           var comp = form.getComponent(['textfield']);
           comp.componentModal.openModal();
-          _harness["default"].dispatchEvent('input', comp.componentModal.refs.modalContents, '[name="data[textfield]"]', function (el) {
+          _harness.default.dispatchEvent('input', comp.componentModal.refs.modalContents, '[name="data[textfield]"]', function (el) {
             el.value = 'My Text v2';
           });
           setTimeout(function () {
@@ -3172,16 +2372,16 @@ describe('Webform tests', function () {
             };
             comp.componentModal.closeModalHandler(fakeEvent);
             var preview = comp.componentModal.refs.openModal;
-            _powerAssert["default"].equal(preview.textContent.replace(/\n|\t/g, '').trim(), 'My Text');
+            _powerAssert.default.equal(preview.textContent.replace(/\n|\t/g, '').trim(), 'My Text');
             done();
           }, 100);
         });
-      })["catch"](done);
+      }).catch(done);
     });
   });
   describe('Initially Collapsed Panel', function () {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -3189,31 +2389,31 @@ describe('Webform tests', function () {
       it('Should be collapsed', function (done) {
         try {
           var panelBody = form.element.querySelector('[ref=nested-panel]');
-          _powerAssert["default"].equal(panelBody, null, 'Should not render the panel\'s body when initially collapsed');
+          _powerAssert.default.equal(panelBody, null, 'Should not render the panel\'s body when initially collapsed');
           done();
         } catch (err) {
           done(err);
         }
       });
       it('Should open when an Error occured', function (done) {
-        form.executeSubmit()["catch"](function () {
+        form.executeSubmit().catch(function () {
           try {
             var panelBody = form.element.querySelector('[ref=nested-panel]');
-            (0, _powerAssert["default"])(panelBody, 'Should open the panel when an error occured');
+            (0, _powerAssert.default)(panelBody, 'Should open the panel when an error occured');
             done();
           } catch (err) {
             done(err);
           }
         });
       });
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return console.error(err);
     });
   });
   describe('Calculate Value', function () {
     it('Should calculate value when set submission if the component is not persistent', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3',
         pdf: true
@@ -3227,16 +2427,16 @@ describe('Webform tests', function () {
         });
         setTimeout(function () {
           var persistentField = form.getComponent(['a']);
-          _powerAssert["default"].equal(persistentField.dataValue, 'testValue', 'Should set the value from the submission');
+          _powerAssert.default.equal(persistentField.dataValue, 'testValue', 'Should set the value from the submission');
           var notPersistentFieldInput = form.element.querySelector('input[name="data[textField]"]');
-          _powerAssert["default"].equal(notPersistentFieldInput.value, 'testValue', 'Should calculate the value');
+          _powerAssert.default.equal(notPersistentFieldInput.value, 'testValue', 'Should calculate the value');
           done();
         }, 550);
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should calculate value by datasouce component when editing mode is on', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3',
         pdf: true
@@ -3262,20 +2462,20 @@ describe('Webform tests', function () {
           });
           setTimeout(function () {
             var dataSourceDisplay = form.getComponent('dataSourceDisplay');
-            _powerAssert["default"].equal(dataSourceDisplay.dataValue, 'some value', 'Should set and keep the value');
+            _powerAssert.default.equal(dataSourceDisplay.dataValue, 'some value', 'Should set and keep the value');
             done();
           }, 1000);
         });
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should calculate value properly in editing mode', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3',
         pdf: true
       });
-      form.setForm(_calculatedValue["default"]).then(function () {
+      form.setForm(_calculatedValue.default).then(function () {
         form.editing = true;
         form.setSubmission({
           data: {
@@ -3287,26 +2487,26 @@ describe('Webform tests', function () {
         });
         setTimeout(function () {
           var total = form.getComponent(['total']);
-          _powerAssert["default"].equal(total.dataValue, 9, 'Should set and keep the value');
+          _powerAssert.default.equal(total.dataValue, 9, 'Should set and keep the value');
           var b = form.getComponent(['b']);
-          _harness["default"].dispatchEvent('input', b.element, 'input', function (i) {
+          _harness.default.dispatchEvent('input', b.element, 'input', function (i) {
             return i.value = '6';
           });
           setTimeout(function () {
-            _powerAssert["default"].equal(total.dataValue, 10, 'Should recalculate the value');
+            _powerAssert.default.equal(total.dataValue, 10, 'Should recalculate the value');
           }, 300);
           done();
         }, 1000);
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should not override value which was set from submission', function (done) {
       var formElement = document.createElement('div');
-      var form = new _Webform["default"](formElement, {
+      var form = new _Webform.default(formElement, {
         language: 'en',
         template: 'bootstrap3',
         pdf: true
       });
-      form.setForm(_calculateValueWithManualOverrideLableValueDataGrid["default"]).then(function () {
+      form.setForm(_calculateValueWithManualOverrideLableValueDataGrid.default).then(function () {
         form.editing = true;
         form.setSubmission({
           state: 'submitted',
@@ -3325,68 +2525,68 @@ describe('Webform tests', function () {
         });
         setTimeout(function () {
           var value1 = form.getComponent(['dataGrid', 0, 'value']);
-          _powerAssert["default"].equal(value1.dataValue, '1a', 'Should have a value set from submission');
+          _powerAssert.default.equal(value1.dataValue, '1a', 'Should have a value set from submission');
           var value2 = form.getComponent(['dataGrid', 1, 'value']);
-          _powerAssert["default"].equal(value2.dataValue, '2a', 'Should have a value set from submission');
+          _powerAssert.default.equal(value2.dataValue, '2a', 'Should have a value set from submission');
           var value3 = form.getComponent(['dataGrid', 2, 'value']);
-          _powerAssert["default"].equal(value3.dataValue, '3a', 'Should have a value set from submission');
+          _powerAssert.default.equal(value3.dataValue, '3a', 'Should have a value set from submission');
           done();
         }, 1000);
-      })["catch"](done);
+      }).catch(done);
     });
   });
   it('Should set different ids for components inside different Table rows', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3',
       pdf: true
     });
-    form.setForm(_conditionalDataGridWithTableAndRadio["default"]).then(function () {
+    form.setForm(_conditionalDataGridWithTableAndRadio.default).then(function () {
       var radioInspection0 = form.getComponent(['inspectionDataGrid', 0, 'initialExam']);
-      _harness["default"].dispatchEvent('click', radioInspection0.element, 'input[value="reject"]', function (i) {
+      _harness.default.dispatchEvent('click', radioInspection0.element, 'input[value="reject"]', function (i) {
         return i.checked = true;
       });
       setTimeout(function () {
         var repairDataGrid0 = form.getComponent(['inspectionDataGrid', 0, 'repairDataGrid']);
-        _powerAssert["default"].equal(radioInspection0.dataValue, 'reject', 'Should set value');
-        _powerAssert["default"].equal(repairDataGrid0.visible, true, 'Should become visible');
+        _powerAssert.default.equal(radioInspection0.dataValue, 'reject', 'Should set value');
+        _powerAssert.default.equal(repairDataGrid0.visible, true, 'Should become visible');
         var radioRepair0 = form.getComponent(['inspectionDataGrid', 0, 'repairDataGrid', 0, 'repairExam']);
-        _harness["default"].dispatchEvent('click', radioRepair0.element, 'input[value="accept"]', function (i) {
+        _harness.default.dispatchEvent('click', radioRepair0.element, 'input[value="accept"]', function (i) {
           return i.checked = true;
         });
         setTimeout(function () {
-          _powerAssert["default"].equal(radioRepair0.dataValue, 'accept', 'Should set value');
+          _powerAssert.default.equal(radioRepair0.dataValue, 'accept', 'Should set value');
           var inspectionDataGrid = form.getComponent(['inspectionDataGrid']);
           inspectionDataGrid.addRow();
           setTimeout(function () {
-            _powerAssert["default"].equal(inspectionDataGrid.rows.length, 2, 'Should add a row');
+            _powerAssert.default.equal(inspectionDataGrid.rows.length, 2, 'Should add a row');
             var radioInspection1 = form.getComponent(['inspectionDataGrid', 1, 'initialExam']);
-            _harness["default"].dispatchEvent('click', radioInspection1.element, 'input[value="reject"]', function (i) {
+            _harness.default.dispatchEvent('click', radioInspection1.element, 'input[value="reject"]', function (i) {
               return i.checked = true;
             });
             setTimeout(function () {
               var repairDataGrid1 = form.getComponent(['inspectionDataGrid', 1, 'repairDataGrid']);
-              _powerAssert["default"].equal(radioInspection1.dataValue, 'reject', 'Should set value');
-              _powerAssert["default"].equal(repairDataGrid1.visible, true, 'Should become visible');
+              _powerAssert.default.equal(radioInspection1.dataValue, 'reject', 'Should set value');
+              _powerAssert.default.equal(repairDataGrid1.visible, true, 'Should become visible');
               var radioRepair1 = form.getComponent(['inspectionDataGrid', 1, 'repairDataGrid', 0, 'repairExam']);
-              _harness["default"].dispatchEvent('click', form.element, form.element.querySelector("#".concat(radioRepair1.root.id, "-").concat(radioRepair1.id, "-").concat(radioRepair1.row, "-accept")), function (i) {
+              _harness.default.dispatchEvent('click', form.element, form.element.querySelector("#".concat(radioRepair1.root.id, "-").concat(radioRepair1.id, "-").concat(radioRepair1.row, "-accept")), function (i) {
                 return i.checked = true;
               });
               setTimeout(function () {
-                _powerAssert["default"].equal(radioRepair1.dataValue, 'accept', 'Should set value of the clicked radio');
-                _powerAssert["default"].equal(radioRepair0.dataValue, 'accept', 'Value of the radio inside another row should stay the same');
+                _powerAssert.default.equal(radioRepair1.dataValue, 'accept', 'Should set value of the clicked radio');
+                _powerAssert.default.equal(radioRepair0.dataValue, 'accept', 'Value of the radio inside another row should stay the same');
                 done();
               }, 300);
             }, 350);
           }, 300);
         }, 250);
       }, 350);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should render components properly', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
@@ -3401,34 +2601,34 @@ describe('Webform tests', function () {
       setTimeout(function () {
         var textarea = form.getComponent(['textArea2']);
         var panel = form.getComponent(['behavioralIssues']);
-        _powerAssert["default"].equal(panel.visible, true, 'Should be visible');
-        _powerAssert["default"].deepEqual(textarea.dataValue, ['test'], 'Should set the value from the submission');
+        _powerAssert.default.equal(panel.visible, true, 'Should be visible');
+        _powerAssert.default.deepEqual(textarea.dataValue, ['test'], 'Should set the value from the submission');
         var inputRows = textarea.element.querySelectorAll('[ref="input"]');
-        _powerAssert["default"].equal(inputRows.length, 1, 'Should render all the rows of the Textarea');
+        _powerAssert.default.equal(inputRows.length, 1, 'Should render all the rows of the Textarea');
         done();
       }, 750);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should disable all the components inside Nested Form if it is disabled', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
     form.setForm(_formtest.disabledNestedForm).then(function () {
-      _powerAssert["default"].equal(form.components[0].disabled, false, 'Component that is outside of disabled Nested Form should be editable');
+      _powerAssert.default.equal(form.components[0].disabled, false, 'Component that is outside of disabled Nested Form should be editable');
       var subFormComponents = form.components[1].subForm.components;
-      _powerAssert["default"].deepEqual([subFormComponents[0].disabled, subFormComponents[1].disabled], [true, true], 'Components that are inside of disabled Nested Form should be disabled');
+      _powerAssert.default.deepEqual([subFormComponents[0].disabled, subFormComponents[1].disabled], [true, true], 'Components that are inside of disabled Nested Form should be disabled');
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should restore value correctly if NestedForm is saved as reference', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
-    form.setForm(_dataGridNestedForm["default"]).then(function () {
+    form.setForm(_dataGridNestedForm.default).then(function () {
       var nestedForm = form.getComponent(['dataGrid', 0, 'form1']);
       var submissionWithIdOnly = {
         _id: '1232',
@@ -3437,14 +2637,14 @@ describe('Webform tests', function () {
       nestedForm.dataValue = _objectSpread({}, submissionWithIdOnly);
       nestedForm.restoreValue();
       setTimeout(function () {
-        _powerAssert["default"].deepEqual(nestedForm.dataValue, submissionWithIdOnly, 'Should not set to defaultValue after restore');
+        _powerAssert.default.deepEqual(nestedForm.dataValue, submissionWithIdOnly, 'Should not set to defaultValue after restore');
         done();
       }, 350);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not set the default value if there is only Radio with False value', function (done) {
     var formElement = document.createElement('div');
-    _Formio["default"].createForm(formElement, _fixtures.nestedFormInWizard).then(function (form) {
+    _Formio.default.createForm(formElement, _fixtures.nestedFormInWizard).then(function (form) {
       var nestedForm = form.getComponent(['form']);
       var submission = {
         data: {
@@ -3453,57 +2653,57 @@ describe('Webform tests', function () {
       };
       nestedForm.dataValue = _objectSpread({}, submission);
       setTimeout(function () {
-        _powerAssert["default"].deepEqual(nestedForm.dataValue, submission, 'Should set submission');
+        _powerAssert.default.deepEqual(nestedForm.dataValue, submission, 'Should set submission');
         nestedForm.valueChanged = true;
         form.setPage(1);
         setTimeout(function () {
-          _powerAssert["default"].deepEqual(nestedForm.dataValue.data, submission.data, 'Should not set to defaultValue after restore');
+          _powerAssert.default.deepEqual(nestedForm.dataValue.data, submission.data, 'Should not set to defaultValue after restore');
           done();
         }, 300);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should add and clear input error classes correctly', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
-    form.setForm(_updateErrorClassesWidgets["default"]).then(function () {
+    form.setForm(_updateErrorClassesWidgets.default).then(function () {
       var checkbox = form.getComponent('showDate');
       checkbox.setValue(true);
       setTimeout(function () {
         var dateTimeComponent = form.getComponent('condtionalDate');
         var dateComponentElement = dateTimeComponent.element;
-        _powerAssert["default"].equal(!dateComponentElement.className.includes('formio-hidden'), true, 'Should not be hidden');
+        _powerAssert.default.equal(!dateComponentElement.className.includes('formio-hidden'), true, 'Should not be hidden');
         form.submit();
         setTimeout(function () {
           var dateVisibleInput = dateComponentElement.querySelector('.input');
           var flatpickerInput = dateComponentElement.querySelector('.flatpickr-input');
-          (0, _powerAssert["default"])(dateVisibleInput.className.includes('is-invalid'), 'Visible field should have invalid class');
-          (0, _powerAssert["default"])(flatpickerInput.className.includes('is-invalid'), 'Flatpickr field should have invalid class as well');
+          (0, _powerAssert.default)(dateVisibleInput.className.includes('is-invalid'), 'Visible field should have invalid class');
+          (0, _powerAssert.default)(flatpickerInput.className.includes('is-invalid'), 'Flatpickr field should have invalid class as well');
           dateTimeComponent.setValue('2020-12-09T00:00:00');
           setTimeout(function () {
-            _powerAssert["default"].equal(dateTimeComponent.dataValue, '2020-12-09T00:00:00', 'Should set value');
-            (0, _powerAssert["default"])(!dateVisibleInput.className.includes('is-invalid'), 'Invalid class should be removed');
-            (0, _powerAssert["default"])(!flatpickerInput.className.includes('is-invalid'), 'Invalid class should be removed from flatpickr field as well');
+            _powerAssert.default.equal(dateTimeComponent.dataValue, '2020-12-09T00:00:00', 'Should set value');
+            (0, _powerAssert.default)(!dateVisibleInput.className.includes('is-invalid'), 'Invalid class should be removed');
+            (0, _powerAssert.default)(!flatpickerInput.className.includes('is-invalid'), 'Invalid class should be removed from flatpickr field as well');
             checkbox.setValue(false);
             setTimeout(function () {
               var dateComponentElement = dateTimeComponent.element;
-              _powerAssert["default"].equal(dateComponentElement.className.includes('formio-hidden'), true, 'Should be hidden');
+              _powerAssert.default.equal(dateComponentElement.className.includes('formio-hidden'), true, 'Should be hidden');
               checkbox.setValue(true);
               setTimeout(function () {
                 var dateComponentElement = dateTimeComponent.element;
-                _powerAssert["default"].equal(!dateComponentElement.className.includes('formio-hidden'), true, 'Should be visible');
+                _powerAssert.default.equal(!dateComponentElement.className.includes('formio-hidden'), true, 'Should be visible');
                 var dateVisibleInput = dateComponentElement.querySelector('.input:not([type="hidden"])');
                 var flatpickerInput = dateComponentElement.querySelector('.flatpickr-input');
-                (0, _powerAssert["default"])(dateVisibleInput.className.includes('is-invalid'), 'Visible field should has invalid class');
-                (0, _powerAssert["default"])(flatpickerInput.className.includes('is-invalid'), 'Flatpickr field should has invalid class as well');
+                (0, _powerAssert.default)(dateVisibleInput.className.includes('is-invalid'), 'Visible field should has invalid class');
+                (0, _powerAssert.default)(flatpickerInput.className.includes('is-invalid'), 'Flatpickr field should has invalid class as well');
                 dateTimeComponent.setValue('2020-10-19T00:00:00');
                 setTimeout(function () {
-                  _powerAssert["default"].equal(dateTimeComponent.dataValue, '2020-10-19T00:00:00', 'Should set value');
-                  (0, _powerAssert["default"])(!dateVisibleInput.className.includes('is-invalid'), 'Invalid class should be removed');
-                  (0, _powerAssert["default"])(!flatpickerInput.className.includes('is-invalid'), 'Invalid class should be removed from flatpickr field as well');
+                  _powerAssert.default.equal(dateTimeComponent.dataValue, '2020-10-19T00:00:00', 'Should set value');
+                  (0, _powerAssert.default)(!dateVisibleInput.className.includes('is-invalid'), 'Invalid class should be removed');
+                  (0, _powerAssert.default)(!flatpickerInput.className.includes('is-invalid'), 'Invalid class should be removed from flatpickr field as well');
                   done();
                 }, 300);
               }, 400);
@@ -3511,11 +2711,11 @@ describe('Webform tests', function () {
           }, 300);
         }, 300);
       }, 350);
-    })["catch"](done);
+    }).catch(done);
   }).timeout(3000);
   it('Should have number and currency fields in empty form submission', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
+    var form = new _Webform.default(formElement);
     var formJson = {
       components: [{
         label: 'Number',
@@ -3532,6 +2732,8 @@ describe('Webform tests', function () {
       }]
     };
     var emptySubmissionData = {
+      number: '',
+      currency: '',
       submit: true
     };
     form.setForm(formJson).then(function () {
@@ -3539,89 +2741,49 @@ describe('Webform tests', function () {
       var submitBtn = form.element.querySelector('[name="data[submit]"]');
       submitBtn.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].deepEqual(form.data, emptySubmissionData);
+        _powerAssert.default.deepEqual(form.data, emptySubmissionData);
         done();
-      }, 400);
-    })["catch"](function (err) {
+      }, 200);
+    }).catch(function (err) {
       return done(err);
     });
   });
-  xit('Test Truncate Multiple Spaces', /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(done) {
-      var _formElement, form, setOwnTimeout, textFieldRequired, textFieldMinMaxLength, textAreaMinMaxLength;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.prev = 0;
-              _formElement = document.createElement('div');
-              form = new _Webform["default"](_formElement);
-              setOwnTimeout = function setOwnTimeout(timeout) {
-                return new Promise(function (resolve) {
-                  setTimeout(function () {
-                    resolve();
-                  }, timeout);
-                });
-              };
-              _context2.next = 6;
-              return form.setForm(_truncateMultipleSpaces["default"]);
-            case 6:
-              textFieldRequired = form.getComponent(['textField1']);
-              textFieldMinMaxLength = form.getComponent(['textField']);
-              textAreaMinMaxLength = form.getComponent(['textArea']);
-              _harness["default"].dispatchEvent('input', textFieldRequired.element, 'input', function (i) {
-                return i.value = '        ';
-              });
-              _harness["default"].dispatchEvent('input', textFieldMinMaxLength.element, 'input', function (i) {
-                return i.value = '     546       456     ';
-              });
-              _harness["default"].dispatchEvent('input', textAreaMinMaxLength.element, 'textarea', function (i) {
-                return i.value = '     546       456     ';
-              });
-              _context2.next = 14;
-              return setOwnTimeout(200);
-            case 14:
-              _powerAssert["default"].equal(textFieldRequired.dataValue, '        ', 'Should set value');
-              _powerAssert["default"].equal(textFieldMinMaxLength.dataValue, '     546       456     ', 'Should set value');
-              _powerAssert["default"].equal(textAreaMinMaxLength.dataValue, '     546       456     ', 'Should set value');
-              _powerAssert["default"].equal(textFieldRequired.errors.length, 1, 'Should be invalid since it does not have a value');
-              _powerAssert["default"].equal(textFieldMinMaxLength.errors.length, 0, 'Should be valid since it value does not exceed the max length after truncating spaces');
-              _powerAssert["default"].equal(textAreaMinMaxLength.errors.length, 0, 'Should be valid since it value does not exceed the max length after truncating spaces');
-              _context2.prev = 20;
-              _context2.next = 23;
-              return form.submit(false, {});
-            case 23:
-              _context2.next = 27;
-              break;
-            case 25:
-              _context2.prev = 25;
-              _context2.t0 = _context2["catch"](20);
-            case 27:
-              _powerAssert["default"].equal(textFieldRequired.dataValue, '', 'Should truncate the value before submit');
-              _powerAssert["default"].equal(textFieldMinMaxLength.dataValue, '546 456', 'Should truncate the value before submit');
-              _powerAssert["default"].equal(textAreaMinMaxLength.dataValue, '546 456', 'Should truncate the value before submit');
-              done();
-              _context2.next = 36;
-              break;
-            case 33:
-              _context2.prev = 33;
-              _context2.t1 = _context2["catch"](0);
-              return _context2.abrupt("return", done(_context2.t1));
-            case 36:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[0, 33], [20, 25]]);
-    }));
-    return function (_x) {
-      return _ref2.apply(this, arguments);
-    };
-  }());
+  it('Test Truncate Multiple Spaces', function (done) {
+    var formElement = document.createElement('div');
+    var form = new _Webform.default(formElement);
+    form.setForm(_truncateMultipleSpaces.default).then(function () {
+      var textFieldRequired = form.getComponent(['textField1']);
+      var textFieldMinMaxLength = form.getComponent(['textField']);
+      var textAreaMinMaxLength = form.getComponent(['textArea']);
+      _harness.default.dispatchEvent('input', textFieldRequired.element, 'input', function (i) {
+        return i.value = '        ';
+      });
+      _harness.default.dispatchEvent('input', textFieldMinMaxLength.element, 'input', function (i) {
+        return i.value = '     546       456     ';
+      });
+      _harness.default.dispatchEvent('input', textAreaMinMaxLength.element, 'textarea', function (i) {
+        return i.value = '     546       456     ';
+      });
+      setTimeout(function () {
+        _powerAssert.default.equal(textFieldRequired.dataValue, '        ', 'Should set value');
+        _powerAssert.default.equal(textFieldMinMaxLength.dataValue, '     546       456     ', 'Should set value');
+        _powerAssert.default.equal(textAreaMinMaxLength.dataValue, '     546       456     ', 'Should set value');
+        _powerAssert.default.equal(textFieldRequired.errors.length, 1, 'Should be invalid since it does not have a value');
+        _powerAssert.default.equal(textFieldMinMaxLength.errors.length, 0, 'Should be valid since it value does not exceed the max length after truncating spaces');
+        _powerAssert.default.equal(textAreaMinMaxLength.errors.length, 0, 'Should be valid since it value does not exceed the max length after truncating spaces');
+        form.submit(false, {}).finally(function () {
+          _powerAssert.default.equal(textFieldRequired.dataValue, '', 'Should truncate the value before submit');
+          _powerAssert.default.equal(textFieldMinMaxLength.dataValue, '546 456', 'Should truncate the value before submit');
+          _powerAssert.default.equal(textAreaMinMaxLength.dataValue, '546 456', 'Should truncate the value before submit');
+          done();
+        });
+      }, 400);
+    }).catch(done);
+  });
   it('HTML render mode for Webform', function (done) {
     var element = document.createElement('div');
-    var originalMakeRequest = _Formio["default"].makeRequest;
-    _Formio["default"].makeRequest = function () {
+    var originalMakeRequest = _Formio.default.makeRequest;
+    _Formio.default.makeRequest = function () {
       return new Promise(function (resolve) {
         setTimeout(function () {
           var values = [{
@@ -3689,7 +2851,7 @@ describe('Webform tests', function () {
         }, 50);
       });
     };
-    _Formio["default"].createForm(element, _htmlRenderMode["default"], {
+    _Formio.default.createForm(element, _htmlRenderMode.default, {
       readOnly: true,
       renderMode: 'html'
     }).then(function (form) {
@@ -3730,19 +2892,19 @@ describe('Webform tests', function () {
         var htmlSelectValueEl = htmlSelectEl.querySelector('[ref="value"]');
         var checkboxEl = form.element.querySelector('.formio-component-page3Iagreetothefollowtherules');
         var checkboxValueEl = checkboxEl.querySelector('[ref="value"]');
-        _powerAssert["default"].equal(customerSelectValueEl.textContent.trim(), 'Bob Thompson', 'Should render Select value properly');
-        _powerAssert["default"].equal(htmlSelectValueEl.textContent.trim(), 'Banana', 'Should render HTML5 Select value properly');
-        _powerAssert["default"].equal(checkboxValueEl.textContent.trim(), 'True', 'Should render Checkbox value properly');
-        _Formio["default"].makeRequest = originalMakeRequest;
+        _powerAssert.default.equal(customerSelectValueEl.textContent.trim(), 'Bob Thompson', 'Should render Select value properly');
+        _powerAssert.default.equal(htmlSelectValueEl.textContent.trim(), 'Banana', 'Should render HTML5 Select value properly');
+        _powerAssert.default.equal(checkboxValueEl.textContent.trim(), 'True', 'Should render Checkbox value properly');
+        _Formio.default.makeRequest = originalMakeRequest;
         done();
       }, 400);
-    })["catch"](done);
+    }).catch(done);
   });
   it('HTML render mode for Wizard', function (done) {
     var element = document.createElement('div');
-    _htmlRenderMode["default"].display = 'wizard';
-    var originalMakeRequest = _Formio["default"].makeRequest;
-    _Formio["default"].makeRequest = function () {
+    _htmlRenderMode.default.display = 'wizard';
+    var originalMakeRequest = _Formio.default.makeRequest;
+    _Formio.default.makeRequest = function () {
       return new Promise(function (resolve) {
         setTimeout(function () {
           var values = [{
@@ -3810,7 +2972,7 @@ describe('Webform tests', function () {
         }, 50);
       });
     };
-    _Formio["default"].createForm(element, _htmlRenderMode["default"], {
+    _Formio.default.createForm(element, _htmlRenderMode.default, {
       readOnly: true,
       renderMode: 'html'
     }).then(function (form) {
@@ -3849,49 +3011,49 @@ describe('Webform tests', function () {
         setTimeout(function () {
           var customerSelectEl = form.element.querySelector('.formio-component-page2Customer');
           var customerSelectValueEl = customerSelectEl.querySelector('[ref="value"]');
-          _powerAssert["default"].equal(customerSelectValueEl.textContent.trim(), 'Bob Thompson', 'Should render Select value properly');
+          _powerAssert.default.equal(customerSelectValueEl.textContent.trim(), 'Bob Thompson', 'Should render Select value properly');
           form.setPage(2);
           setTimeout(function () {
             var htmlSelectEl = form.element.querySelector('.formio-component-panelHtml5Select');
             var htmlSelectValueEl = htmlSelectEl.querySelector('[ref="value"]');
-            _powerAssert["default"].equal(htmlSelectValueEl.textContent.trim(), 'Banana', 'Should render HTML5 Select value properly');
-            _Formio["default"].makeRequest = originalMakeRequest;
+            _powerAssert.default.equal(htmlSelectValueEl.textContent.trim(), 'Banana', 'Should render HTML5 Select value properly');
+            _Formio.default.makeRequest = originalMakeRequest;
             done();
           }, 400);
         }, 400);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Test optional sanitize', function (done) {
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, _optionalSanitize["default"], {
+    _Formio.default.createForm(element, _optionalSanitize.default, {
       sanitize: false
     }).then(function (form) {
-      var sanitize = _sinon["default"].spy(FormioUtils, 'sanitize');
+      var sanitize = _sinon.default.spy(FormioUtils, 'sanitize');
       form.redraw();
       setTimeout(function () {
-        _powerAssert["default"].equal(sanitize.callCount, 0, 'Should not sanitize templates when sanitize in not turned on');
+        _powerAssert.default.equal(sanitize.callCount, 0, 'Should not sanitize templates when sanitize in not turned on');
         element.innerHTML = '';
-        _Formio["default"].createForm(element, _optionalSanitize["default"], {
+        _Formio.default.createForm(element, _optionalSanitize.default, {
           sanitize: true
         }).then(function (form) {
           sanitize.resetHistory();
           form.redraw();
           setTimeout(function () {
-            _powerAssert["default"].equal(sanitize.callCount, 1, 'Should sanitize templates when sanitize in turned on');
+            _powerAssert.default.equal(sanitize.callCount, 1, 'Should sanitize templates when sanitize in turned on');
             done();
           }, 250);
         }, 250);
       });
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should execute clearOnHide if visibility of the component inside an EditGrid has changed', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement, {
+    var form = new _Webform.default(formElement, {
       language: 'en',
       template: 'bootstrap3'
     });
-    form.setForm(_clearOnHideInsideEditGrid["default"]).then(function () {
+    form.setForm(_clearOnHideInsideEditGrid.default).then(function () {
       form.submission = {
         state: 'submitted',
         data: {
@@ -3908,44 +3070,44 @@ describe('Webform tests', function () {
       setTimeout(function () {
         var clearOnHideField = form.getComponent(['subsidiaryEditGrid', 0, 'subsidiaryEntityContainer', 'ifOtherEntityPleaseExplain']);
         var radioTrigger = form.getComponent(['subsidiaryEditGrid', 0, 'subsidiaryEntityContainer', 'entityType']);
-        _powerAssert["default"].equal(form.rootPristine, true, 'Should not change this prop  after setting a submission');
-        _powerAssert["default"].equal(clearOnHideField.visible, true, 'Should become visible');
-        _powerAssert["default"].equal(clearOnHideField.dataValue, 'test', 'Should set a value from  the submission');
+        _powerAssert.default.equal(form.rootPristine, true, 'Should not change this prop  after setting a submission');
+        _powerAssert.default.equal(clearOnHideField.visible, true, 'Should become visible');
+        _powerAssert.default.equal(clearOnHideField.dataValue, 'test', 'Should set a value from  the submission');
         radioTrigger.setValue('subsidiary', {
           modified: true
         });
         setTimeout(function () {
-          _powerAssert["default"].equal(clearOnHideField.visible, false, 'Should become invisible');
+          _powerAssert.default.equal(clearOnHideField.visible, false, 'Should become invisible');
           radioTrigger.setValue('otherEntity', {
             modified: true
           });
           setTimeout(function () {
-            _powerAssert["default"].equal(clearOnHideField.visible, true, 'Should become visible');
-            _powerAssert["default"].equal(clearOnHideField.dataValue, '', 'Should clear a value due to the clearOnHide');
+            _powerAssert.default.equal(clearOnHideField.visible, true, 'Should become visible');
+            _powerAssert.default.equal(clearOnHideField.dataValue, '', 'Should clear a value due to the clearOnHide');
             done();
           }, 250);
         }, 250);
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should show values in editGrid rows with nested dataGrid when viewing submission with initEmpty option', function (done) {
     var formElement = document.createElement('div');
-    var formWithNestedDataGridInitEmptyOption = new _Webform["default"](formElement);
-    formWithNestedDataGridInitEmptyOption.setForm(_nestedDataGridWithInitEmpty["default"].form).then(function () {
-      formWithNestedDataGridInitEmptyOption.setSubmission(_nestedDataGridWithInitEmpty["default"].submission);
+    var formWithNestedDataGridInitEmptyOption = new _Webform.default(formElement);
+    formWithNestedDataGridInitEmptyOption.setForm(_nestedDataGridWithInitEmpty.default.form).then(function () {
+      formWithNestedDataGridInitEmptyOption.setSubmission(_nestedDataGridWithInitEmpty.default.submission);
       setTimeout(function () {
         var nestedDataGridFirstRowComponentValue = formWithNestedDataGridInitEmptyOption.element.querySelector('[ref="editgrid-editGrid-row"]').querySelectorAll('.col-sm-2');
-        _powerAssert["default"].equal(nestedDataGridFirstRowComponentValue[1].textContent.trim(), 'email');
-        _powerAssert["default"].equal(nestedDataGridFirstRowComponentValue[2].textContent.trim(), 'hhh@gmail.com');
+        _powerAssert.default.equal(nestedDataGridFirstRowComponentValue[1].textContent.trim(), 'email');
+        _powerAssert.default.equal(nestedDataGridFirstRowComponentValue[2].textContent.trim(), 'hhh@gmail.com');
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
   it('Should not refetch options for Select if there was an error', function (done) {
     var formElement = document.createElement('div');
-    var form = new _Webform["default"](formElement);
+    var form = new _Webform.default(formElement);
     var formJson = {
       components: [{
         label: 'Select',
@@ -3967,8 +3129,8 @@ describe('Webform tests', function () {
       }]
     };
     var counter = 0;
-    var originalMakeRequest = _Formio["default"].makeRequest;
-    _Formio["default"].makeRequest = function () {
+    var originalMakeRequest = _Formio.default.makeRequest;
+    _Formio.default.makeRequest = function () {
       return new Promise(function (_, reject) {
         setTimeout(function () {
           counter++;
@@ -3987,16 +3149,16 @@ describe('Webform tests', function () {
           setTimeout(function () {
             select.visible = true;
             setTimeout(function () {
-              (0, _chai.expect)(select.networkError).to.be["true"];
-              (0, _chai.expect)(select.loadingError).to.be["true"];
+              (0, _chai.expect)(select.networkError).to.be.true;
+              (0, _chai.expect)(select.loadingError).to.be.true;
               (0, _chai.expect)(counter).to.equal(1);
-              _Formio["default"].makeRequest = originalMakeRequest;
+              _Formio.default.makeRequest = originalMakeRequest;
               done();
             }, 200);
           }, 200);
         }, 200);
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
@@ -4030,16 +3192,16 @@ describe('Webform tests', function () {
       }]
     };
     var element = document.createElement('div');
-    var form = new _Webform["default"](element);
+    var form = new _Webform.default(element);
     form.setForm(formJson).then(function () {
-      _harness["default"].clickElement(form, form.element.querySelector('[name="data[submit]"]'));
+      _harness.default.clickElement(form, form.element.querySelector('[name="data[submit]"]'));
       setTimeout(function () {
-        _powerAssert["default"].equal(form.errors[0].messages.length, 1);
-        _powerAssert["default"].equal(form.errors[0].messages[0].message, 'will be showed once');
-        _powerAssert["default"].equal(form.element.querySelector('[ref="errorRef"]').textContent.trim().includes('will be showed once'), true);
+        _powerAssert.default.equal(form.errors[0].messages.length, 1);
+        _powerAssert.default.equal(form.errors[0].messages[0].message, 'will be showed once');
+        _powerAssert.default.equal(form.element.querySelector('[ref="errorRef"]').textContent.trim().includes('will be showed once'), true);
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
@@ -4070,300 +3232,67 @@ describe('Webform tests', function () {
       }]
     };
     var element = document.createElement('div');
-    var form = new _Webform["default"](element);
+    var form = new _Webform.default(element);
     form.setForm(formJson).then(function () {
-      _harness["default"].setInputValue(form, 'data[number]', '-_');
-      _harness["default"].clickElement(form, form.element.querySelector('[name="data[submit]"]'));
+      _harness.default.setInputValue(form, 'data[number]', '-_');
+      _harness.default.clickElement(form, form.element.querySelector('[name="data[submit]"]'));
       setTimeout(function () {
-        _powerAssert["default"].equal(form.errors[0].messages.length, 1);
-        _powerAssert["default"].equal(form.errors[0].messages[0].message, 'Number is required');
-        _powerAssert["default"].equal(form.element.querySelector('[ref="errorRef"]').textContent.trim().includes('Number is required'), true);
+        _powerAssert.default.equal(form.errors[0].messages.length, 1);
+        _powerAssert.default.equal(form.errors[0].messages[0].message, 'Number is required');
+        _powerAssert.default.equal(form.element.querySelector('[ref="errorRef"]').textContent.trim().includes('Number is required'), true);
         done();
       }, 200);
-    })["catch"](function (err) {
+    }).catch(function (err) {
       return done(err);
     });
   });
-  describe('SaveDraft functionality', function () {
-    var originalMakeRequest = _Formio["default"].makeRequest;
-    var saveDraftCalls = 0;
-    var restoreDraftCalls = 0;
-    var state = null;
-    var scenario = {
-      restoreDraftError: false,
-      saveDraftError: false
-    };
-    var restoredDraftData = {
-      textField: 'test',
-      number: 1234,
-      textArea: 'test',
-      submit: false
-    };
-    before(function (done) {
-      _Formio["default"].setUser({
-        _id: '123'
-      });
-      _Formio["default"].makeRequest = function (formio, type, url, method, data) {
-        if (type === 'submission' && method === 'put') {
-          saveDraftCalls = ++saveDraftCalls;
-          return scenario.saveDraftError ? Promise.reject('Save Draft Error') : Promise.resolve((0, _utils.fastCloneDeep)(data));
-        }
-        if (type === 'submission' && method === 'post') {
-          state = data.state;
-          saveDraftCalls = ++saveDraftCalls;
-          return Promise.resolve((0, _utils.fastCloneDeep)(data));
-        }
-        if (type === 'form' && method === 'get') {
-          return Promise.resolve((0, _utils.fastCloneDeep)({
-            _id: '65cdd69efb1b9683c216fa1d',
-            title: 'test draft errors',
-            name: 'testDraftErrors',
-            path: 'testdrafterrors',
-            type: 'form',
-            display: 'form',
-            components: [{
-              label: 'Text Field',
-              applyMaskOn: 'change',
-              tableView: true,
-              validate: {
-                required: true
-              },
-              key: 'textField',
-              type: 'textfield',
-              input: true
-            }, {
-              label: 'Number',
-              applyMaskOn: 'change',
-              mask: false,
-              tableView: false,
-              delimiter: false,
-              requireDecimal: false,
-              inputFormat: 'plain',
-              truncateMultipleSpaces: false,
-              validate: {
-                min: 800
-              },
-              key: 'number',
-              type: 'number',
-              input: true
-            }, {
-              label: 'Text Area',
-              applyMaskOn: 'change',
-              autoExpand: false,
-              tableView: true,
-              key: 'textArea',
-              type: 'textarea',
-              input: true
-            }, {
-              label: 'Submit',
-              disableOnInvalid: true,
-              tableView: false,
-              key: 'submit',
-              type: 'button',
-              input: true,
-              saveOnEnter: false
-            }],
-            project: '65b0ccbaf019a907ac01a869',
-            machineName: 'zarbzxibjafpcjb:testDraftErrors'
-          }));
-        }
-        if (type === 'submissions' && method === 'get') {
-          restoreDraftCalls = ++restoreDraftCalls;
-          return scenario.restoreDraftError ? Promise.reject('Restore Draft Error') : Promise.resolve([(0, _utils.fastCloneDeep)({
-            _id: '65d31f8da08cff1b9fc35966',
-            form: '65cdd69efb1b9683c216fa1d',
-            owner: '637b2e6b48c1227e60b1f910',
-            data: restoredDraftData,
-            project: '65b0ccbaf019a907ac01a869',
-            state: 'draft'
-          })]);
-        }
-      };
-      done();
-    });
-    afterEach(function () {
-      saveDraftCalls = 0;
-      restoreDraftCalls = 0;
-      state = null;
-      scenario.restoreDraftError = false;
-      scenario.saveDraftError = false;
-    });
-    after(function (done) {
-      _Formio["default"].makeRequest = originalMakeRequest;
-      _Formio["default"].setUser();
-      done();
-    });
-    it('Should restore draft', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, 'http://localhost:3000/zarbzxibjafpcjb/testdrafterrors', {
-        saveDraft: true
-      }).then(function (form) {
-        setTimeout(function () {
-          _powerAssert["default"].equal(restoreDraftCalls, 1);
-          _powerAssert["default"].equal(saveDraftCalls, 0);
-          _powerAssert["default"].equal(form.submission.state, 'draft');
-          _powerAssert["default"].deepEqual(form.data, restoredDraftData);
-          done();
-        }, 200);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should save draft after data is changed', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, 'http://localhost:3000/zarbzxibjafpcjb/testdrafterrors', {
-        saveDraft: true
-      }).then(function (form) {
-        setTimeout(function () {
-          _powerAssert["default"].equal(restoreDraftCalls, 1);
-          _powerAssert["default"].equal(saveDraftCalls, 0);
-          _powerAssert["default"].equal(form.submission.state, 'draft');
-          var tfInput = form.getComponent('textField').refs.input[0];
-          tfInput.value = 'test resaved';
-          var inputEvent = new Event('input');
-          tfInput.dispatchEvent(inputEvent);
-          setTimeout(function () {
-            _powerAssert["default"].equal(restoreDraftCalls, 1);
-            _powerAssert["default"].equal(saveDraftCalls, 1);
-            _powerAssert["default"].equal(form.submission.state, 'draft');
-            done();
-          }, 300);
-        }, 200);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should emit restoreDraftEvent on the restore draft error', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, 'http://localhost:3000/zarbzxibjafpcjb/testdrafterrors', {
-        saveDraft: true
-      }).then(function (form) {
-        scenario.restoreDraftError = true;
-        form.on('restoreDraftError', function (err) {
-          _powerAssert["default"].equal(err, 'Restore Draft Error');
-          _powerAssert["default"].equal(restoreDraftCalls, 1);
-          _powerAssert["default"].equal(saveDraftCalls, 0);
-          done();
-        });
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should emit saveDraftEvent on the save draft error', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, 'http://localhost:3000/zarbzxibjafpcjb/testdrafterrors', {
-        saveDraft: true
-      }).then(function (form) {
-        scenario.saveDraftError = true;
-        form.on('saveDraftError', function (err) {
-          _powerAssert["default"].equal(err, 'Save Draft Error');
-          _powerAssert["default"].equal(saveDraftCalls, 1);
-          _powerAssert["default"].equal(restoreDraftCalls, 1);
-          _powerAssert["default"].equal(form.submission.state, 'draft');
-          done();
-        });
-        setTimeout(function () {
-          _powerAssert["default"].equal(saveDraftCalls, 0);
-          _powerAssert["default"].equal(restoreDraftCalls, 1);
-          var tfInput = form.getComponent('textField').refs.input[0];
-          tfInput.value = 'test resaved';
-          var inputEvent = new Event('input');
-          tfInput.dispatchEvent(inputEvent);
-        }, 200);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-    it('Should save the draft after changing the data if skipDraftRestore is set as true', function (done) {
-      var formElement = document.createElement('div');
-      _Formio["default"].createForm(formElement, 'http://localhost:3000/zarbzxibjafpcjb/testdrafterrors', {
-        saveDraft: true,
-        skipDraftRestore: true
-      }).then(function (form) {
-        setTimeout(function () {
-          _powerAssert["default"].equal(restoreDraftCalls, 0, 'Should not restore Draft');
-          _powerAssert["default"].equal(saveDraftCalls, 0);
-          _powerAssert["default"].equal(_lodash["default"].isUndefined(form.submission.state), true);
-          var tfInput = form.getComponent('textField').refs.input[0];
-          tfInput.value = 'test';
-          var inputEvent = new Event('input');
-          tfInput.dispatchEvent(inputEvent);
-          setTimeout(function () {
-            _powerAssert["default"].equal(restoreDraftCalls, 0);
-            _powerAssert["default"].equal(saveDraftCalls, 1, 'Should save Draft');
-            _powerAssert["default"].equal(state, 'draft');
-            done();
-          }, 300);
-        }, 200);
-      })["catch"](function (err) {
-        return done(err);
-      });
-    });
-  });
-  var _iterator = _createForOfIteratorHelper(_forms["default"]),
-    _step;
-  try {
-    var _loop = function _loop() {
-      var formTest = _step.value;
-      var useDoneInsteadOfPromise = formTest.useDone;
-      if (useDoneInsteadOfPromise) {
-        describe(formTest.title || '', function () {
-          var _loop2 = function _loop2(title) {
-            var formTestTest = formTest.tests[title];
-            it(title, function (done) {
-              var self = this;
-              var formElement = document.createElement('div');
-              var form = new _Webform["default"](formElement, _lodash["default"].cloneDeep(formTest.formOptions || {}));
-              form.setForm(formTest.form).then(function () {
-                formTestTest(form, function (error) {
-                  form = null;
-                  formElement.innerHTML = '';
-                  if (error) {
-                    return done(error);
-                  }
-                  done();
-                }, self);
-              })["catch"](done);
-            });
-          };
-          for (var title in formTest.tests) {
-            _loop2(title);
+  (0, _each.default)(_forms.default, function (formTest) {
+    var useDoneInsteadOfPromise = formTest.useDone;
+    if (useDoneInsteadOfPromise) {
+      describe(formTest.title || '', function () {
+        (0, _each.default)(formTest.tests, function (formTestTest, title) {
+          if (title === 'Email Action Test') {
+            console.log('Email Action Test');
           }
+          it(title, function (done) {
+            var self = this;
+            var formElement = document.createElement('div');
+            var form = new _Webform.default(formElement, _lodash.default.cloneDeep(formTest.formOptions || {}));
+            form.setForm(formTest.form).then(function () {
+              formTestTest(form, function (error) {
+                form = null;
+                formElement.innerHTML = '';
+                if (error) {
+                  throw new Error(error);
+                }
+                done();
+              }, self);
+            });
+          });
         });
-      } else {
-        describe(formTest.title || '', function () {
-          var _loop3 = function _loop3(title) {
-            var formTestTest = formTest.tests[title];
-            it(title, function () {
-              var formElement = document.createElement('div');
-              var form = new _Webform["default"](formElement, {
-                template: 'bootstrap3',
-                language: 'en'
-              });
-              return form.setForm(formTest.form).then(function () {
-                formTestTest(form, function (error) {
-                  form.destroy();
-                  if (error) {
-                    throw new Error(error);
-                  }
-                });
+      });
+    } else {
+      describe(formTest.title || '', function () {
+        (0, _each.default)(formTest.tests, function (formTestTest, title) {
+          it(title, function () {
+            var formElement = document.createElement('div');
+            var form = new _Webform.default(formElement, {
+              template: 'bootstrap3',
+              language: 'en'
+            });
+            return form.setForm(formTest.form).then(function () {
+              formTestTest(form, function (error) {
+                form.destroy();
+                if (error) {
+                  throw new Error(error);
+                }
               });
             });
-          };
-          for (var title in formTest.tests) {
-            _loop3(title);
-          }
+          });
         });
-      }
-    };
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      _loop();
+      });
     }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
+  });
 });
 
 // describe('Test the saveDraft and restoreDraft feature', () => {

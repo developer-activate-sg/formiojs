@@ -1,14 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.regexp.flags.js");
+exports.default = void 0;
 var _builder = _interopRequireDefault(require("../../../utils/builder"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   key: 'labelPosition',
   ignore: true
@@ -17,12 +15,6 @@ var _default = [{
   ignore: true
 }, {
   key: 'hideLabel',
-  customConditional: function customConditional(context) {
-    var _context$instance$opt, _context$instance$opt2;
-    return (_context$instance$opt = context.instance.options) === null || _context$instance$opt === void 0 ? void 0 : (_context$instance$opt2 = _context$instance$opt.flags) === null || _context$instance$opt2 === void 0 ? void 0 : _context$instance$opt2.inDataGrid;
-  }
-}, {
-  key: 'dataGridLabel',
   ignore: true
 }, {
   type: 'select',
@@ -79,7 +71,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'oauth']
     }
   }
@@ -94,7 +86,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'saveState']
     }
   }
@@ -109,7 +101,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'submit']
     }
   }
@@ -124,7 +116,7 @@ var _default = [{
   conditional: {
     json: {
       '!==': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'submit']
     }
   }
@@ -138,7 +130,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'event']
     }
   }
@@ -154,7 +146,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'url']
     }
   }
@@ -180,7 +172,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'url']
     }
   }
@@ -197,7 +189,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.action'
+        var: 'data.action'
       }, 'custom']
     }
   }
@@ -281,7 +273,7 @@ var _default = [{
   template: '{{ item.label }}',
   data: {
     custom: function custom(context) {
-      return _builder["default"].getAvailableShortcuts(_lodash["default"].get(context, 'instance.options.editForm', {}), _lodash["default"].get(context, 'instance.options.editComponent', {}));
+      return _builder.default.getAvailableShortcuts(_lodash.default.get(context, 'instance.options.editForm', {}), _lodash.default.get(context, 'instance.options.editComponent', {}));
     }
   }
 }, {
@@ -299,4 +291,4 @@ var _default = [{
   input: true,
   weight: 620
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,12 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _Evaluator = _interopRequireDefault(require("../../../utils/Evaluator"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   key: 'placeholder',
   ignore: true
@@ -20,7 +19,7 @@ var _default = [{
   conditional: {
     json: {
       '!==': [{
-        "var": 'data.modal'
+        var: 'data.modal'
       }, true]
     }
   }
@@ -41,7 +40,7 @@ var _default = [{
   weight: 1002,
   input: false,
   customConditional: function customConditional() {
-    return !_Evaluator["default"].noeval;
+    return !_Evaluator.default.noeval;
   }
 }, {
   weight: 1010,
@@ -57,4 +56,4 @@ var _default = [{
     minLines: 3
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

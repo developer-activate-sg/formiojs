@@ -1,14 +1,13 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 var _Formio = require("../../../Formio");
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   type: 'select',
   input: true,
@@ -21,56 +20,12 @@ var _default = [{
   dataSrc: 'custom',
   data: {
     custom: function custom() {
-      return _lodash["default"].map(_Formio.GlobalFormio.Providers.getProviders('storage'), function (storage, key) {
+      return _lodash.default.map(_Formio.GlobalFormio.Providers.getProviders('storage'), function (storage, key) {
         return {
           label: storage.title,
           value: key
         };
       });
-    }
-  }
-}, {
-  type: 'checkbox',
-  input: true,
-  key: 'useMultipartUpload',
-  label: 'Use the S3 Multipart Upload API',
-  tooltip: "The <a href='https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html'>S3 Multipart Upload API</a> is designed to improve the upload experience for larger objects (> 5GB).",
-  conditional: {
-    json: {
-      '===': [{
-        "var": 'data.storage'
-      }, 's3']
-    }
-  }
-}, {
-  label: 'Multipart Upload',
-  tableView: false,
-  key: 'multipart',
-  type: 'container',
-  input: true,
-  components: [{
-    label: 'Part Size (MB)',
-    applyMaskOn: 'change',
-    mask: false,
-    tableView: false,
-    delimiter: false,
-    requireDecimal: false,
-    inputFormat: 'plain',
-    truncateMultipleSpaces: false,
-    validate: {
-      min: 5,
-      max: 5000
-    },
-    key: 'partSize',
-    type: 'number',
-    input: true,
-    defaultValue: 500
-  }],
-  conditional: {
-    json: {
-      '===': [{
-        "var": 'data.useMultipartUpload'
-      }, true]
     }
   }
 }, {
@@ -84,7 +39,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'url']
     }
   }
@@ -97,8 +52,8 @@ var _default = [{
   placeholder: 'Enter the indexeddb database name',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.storage'
+      in: [{
+        var: 'data.storage'
       }, ['indexeddb']]
     }
   }
@@ -111,8 +66,8 @@ var _default = [{
   placeholder: 'Enter the name for indexeddb table',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.storage'
+      in: [{
+        var: 'data.storage'
       }, ['indexeddb']]
     }
   }
@@ -125,11 +80,11 @@ var _default = [{
   editor: 'ace',
   input: true,
   weight: 15,
-  placeholder: "{\n      \"withCredentials\": true,\n      \"headers\": {\n        \"Authorization\": \"Basic <key>\"\n      }\n    }",
+  placeholder: "{\n  \"withCredentials\": true\n}",
   conditional: {
     json: {
       '===': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'url']
     }
   }
@@ -144,7 +99,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'url']
     }
   }
@@ -159,7 +114,7 @@ var _default = [{
   conditional: {
     json: {
       '!==': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'googledrive']
     }
   }
@@ -174,7 +129,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'googledrive']
     }
   }
@@ -210,7 +165,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.storage'
+        var: 'data.storage'
       }, 'url']
     }
   }
@@ -225,7 +180,7 @@ var _default = [{
   conditional: {
     json: {
       '==': [{
-        "var": 'data.image'
+        var: 'data.image'
       }, true]
     }
   }
@@ -247,7 +202,7 @@ var _default = [{
   conditional: {
     json: {
       '==': [{
-        "var": 'data.webcam'
+        var: 'data.webcam'
       }, true]
     }
   }
@@ -294,4 +249,4 @@ var _default = [{
   tooltip: 'See <a href=\'https://github.com/danialfarid/ng-file-upload#full-reference\' target=\'_blank\'>https://github.com/danialfarid/ng-file-upload#full-reference</a> for how to specify file sizes.',
   weight: 70
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,11 +1,8 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -16,7 +13,6 @@ require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -24,15 +20,11 @@ require("core-js/modules/es.symbol.async-iterator.js");
 require("core-js/modules/es.symbol.to-string-tag.js");
 require("core-js/modules/es.json.to-string-tag.js");
 require("core-js/modules/es.math.to-string-tag.js");
-require("core-js/modules/es.array.reverse.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/web.timers.js");
+exports.default = void 0;
 require("core-js/modules/es.array.iterator.js");
-require("core-js/modules/es.array-buffer.slice.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.typed-array.uint8-array.js");
 require("core-js/modules/es.typed-array.copy-within.js");
@@ -60,13 +52,8 @@ require("core-js/modules/es.typed-array.to-locale-string.js");
 require("core-js/modules/es.typed-array.to-string.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.date.now.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
@@ -80,14 +67,10 @@ require("core-js/modules/es.string.starts-with.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.search.js");
-require("core-js/modules/es.parse-float.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.slice.js");
-require("core-js/modules/esnext.string.replace-all.js");
 require("core-js/modules/es.promise.js");
-require("core-js/modules/es.array.some.js");
+require("core-js/modules/esnext.string.replace-all.js");
 require("core-js/modules/es.array.find-index.js");
-require("core-js/modules/es.array.index-of.js");
 var _Field2 = _interopRequireDefault(require("../_classes/field/Field"));
 var _utils = require("../../utils/utils");
 var _downloadjs = _interopRequireDefault(require("downloadjs"));
@@ -95,8 +78,8 @@ var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _fileProcessor = _interopRequireDefault(require("../../providers/processor/fileProcessor"));
 var _browserMd5File = _interopRequireDefault(require("browser-md5-file"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -173,7 +156,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
   }, {
     key: "dataReady",
     get: function get() {
-      return this.filesReady || _nativePromiseOnly["default"].resolve();
+      return this.filesReady || _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "defaultSchema",
@@ -184,7 +167,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
     key: "loadImage",
     value: function loadImage(fileInfo) {
       if (this.component.privateDownload) {
-        fileInfo["private"] = true;
+        fileInfo.private = true;
       }
       return this.fileService.downloadFile(fileInfo).then(function (result) {
         return result.url;
@@ -198,10 +181,10 @@ var FileComponent = /*#__PURE__*/function (_Field) {
   }, {
     key: "getValueAsString",
     value: function getValueAsString(value) {
-      if (_lodash["default"].isArray(value)) {
-        return _lodash["default"].map(value, 'originalName').join(', ');
+      if (_lodash.default.isArray(value)) {
+        return _lodash.default.map(value, 'originalName').join(', ');
       }
-      return _lodash["default"].get(value, 'originalName', '');
+      return _lodash.default.get(value, 'originalName', '');
     }
   }, {
     key: "getValue",
@@ -272,7 +255,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
   }, {
     key: "getFrame",
     value: function getFrame(videoPlayer) {
-      return new _nativePromiseOnly["default"](function (resolve) {
+      return new _nativePromiseOnly.default(function (resolve) {
         var canvas = document.createElement('canvas');
         canvas.height = videoPlayer.videoHeight;
         canvas.width = videoPlayer.videoWidth;
@@ -298,7 +281,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
         var width = parseInt(_this.component.webcamSize) || 320;
         videoPlayer.setAttribute('width', width);
         videoPlayer.play();
-      })["catch"](function (err) {
+      }).catch(function (err) {
         console.error(err);
         _this.cameraMode = false;
         _this.redraw();
@@ -335,7 +318,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
     value: function browseFiles() {
       var _this3 = this;
       var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      return new _nativePromiseOnly["default"](function (resolve) {
+      return new _nativePromiseOnly.default(function (resolve) {
         var fileInput = _this3.ce('input', _objectSpread({
           type: 'file',
           style: 'height: 0; width: 0; visibility: hidden;',
@@ -484,10 +467,8 @@ var FileComponent = /*#__PURE__*/function (_Field) {
       this.refs.fileStatusRemove.forEach(function (fileStatusRemove, index) {
         _this4.addEventListener(fileStatusRemove, 'click', function (event) {
           event.preventDefault();
-          var fileUpload = _this4.statuses[index];
-          _lodash["default"].pull(_this4.filesUploading, fileUpload.originalName);
-          if (fileUpload.abort) {
-            fileUpload.abort();
+          if (_this4.abortUpload) {
+            _this4.abortUpload();
           }
           _this4.statuses.splice(index, 1);
           _this4.redraw();
@@ -571,7 +552,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
       var fileService = this.fileService;
       if (fileService) {
         var loadingImages = [];
-        this.filesReady = new _nativePromiseOnly["default"](function (resolve, reject) {
+        this.filesReady = new _nativePromiseOnly.default(function (resolve, reject) {
           _this4.filesReadyResolve = resolve;
           _this4.filesReadyReject = reject;
         });
@@ -581,9 +562,9 @@ var FileComponent = /*#__PURE__*/function (_Field) {
           }));
         });
         if (loadingImages.length) {
-          _nativePromiseOnly["default"].all(loadingImages).then(function () {
+          _nativePromiseOnly.default.all(loadingImages).then(function () {
             _this4.filesReadyResolve();
-          })["catch"](function () {
+          }).catch(function () {
             return _this4.filesReadyReject();
           });
         } else {
@@ -682,11 +663,11 @@ var FileComponent = /*#__PURE__*/function (_Field) {
       var valid = true;
       if (pattern.regexp && pattern.regexp.length) {
         var regexp = new RegExp(pattern.regexp, 'i');
-        valid = !_lodash["default"].isNil(file.type) && regexp.test(file.type) || !_lodash["default"].isNil(file.name) && regexp.test(file.name);
+        valid = !_lodash.default.isNil(file.type) && regexp.test(file.type) || !_lodash.default.isNil(file.name) && regexp.test(file.name);
       }
       valid = pattern.excludes.reduce(function (result, excludePattern) {
         var exclude = new RegExp(excludePattern, 'i');
-        return result && (_lodash["default"].isNil(file.type) || !exclude.test(file.type)) && (_lodash["default"].isNil(file.name) || !exclude.test(file.name));
+        return result && (_lodash.default.isNil(file.type) || !exclude.test(file.type)) && (_lodash.default.isNil(file.name) || !exclude.test(file.name));
       }, valid);
       return valid;
     }
@@ -718,225 +699,183 @@ var FileComponent = /*#__PURE__*/function (_Field) {
         /* eslint-disable max-statements */
         Array.prototype.forEach.call(files, /*#__PURE__*/function () {
           var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(file) {
-            var fileName, escapedFileName, fileUpload, bmf, hash, fileWithSameNameUploading, fileWithSameNameUploaded, fileWithSameNameUploadedWithError, dir, fileService, _this5$component, storage, _this5$component$opti, options, url, groupKey, groupPermissions, fileKey, groupResourceId, processedFile, fileProcessorHandler, count, multipartOptions, filePromise;
+            var bmf, hash, fileName, escapedFileName, fileUpload, fileWithSameNameUploaded, fileWithSameNameUploadedWithError, dir, fileService, _this5$component, storage, _this5$component$opti, options, url, groupKey, groupPermissions, fileKey, groupResourceId, processedFile, fileProcessorHandler, filePromise;
             return _regeneratorRuntime().wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    fileName = (0, _utils.uniqueName)(file.name, _this5.component.fileNameTemplate, _this5.evalContext());
-                    escapedFileName = file.name ? file.name.replaceAll('<', '&lt;').replaceAll('>', '&gt;') : file.name;
-                    fileUpload = {
-                      abort: function abort() {
-                        return null;
-                      },
-                      originalName: escapedFileName,
-                      name: fileName,
-                      size: file.size,
-                      status: 'info',
-                      message: _this5.t('Processing file. Please wait...'),
-                      hash: ''
-                    };
-                    if (!(_this5.root.form.submissionRevisions === 'true')) {
-                      _context.next = 12;
-                      break;
-                    }
-                    _this5.statuses.push(fileUpload);
-                    _this5.redraw();
-                    bmf = new _browserMd5File["default"]();
-                    _context.next = 9;
-                    return new Promise(function (resolve, reject) {
-                      _this5.emit('fileUploadingStart');
-                      bmf.md5(file, function (err, md5) {
-                        if (err) {
-                          return reject(err);
-                        }
-                        return resolve(md5);
-                      });
-                    });
-                  case 9:
-                    hash = _context.sent;
-                    _this5.emit('fileUploadingEnd');
-                    fileUpload.hash = hash;
-                  case 12:
-                    // Check if file with the same name is being uploaded
-                    if (!_this5.filesUploading) {
-                      _this5.filesUploading = [];
-                    }
-                    fileWithSameNameUploading = _this5.filesUploading.some(function (fileUploading) {
-                      return fileUploading === file.name;
-                    });
-                    _this5.filesUploading.push(file.name);
-                    fileWithSameNameUploaded = _this5.dataValue.some(function (fileStatus) {
-                      return fileStatus.originalName === file.name;
-                    });
-                    fileWithSameNameUploadedWithError = _this5.statuses.findIndex(function (fileStatus) {
-                      return fileStatus.originalName === file.name && fileStatus.status === 'error';
-                    });
-                    if (fileWithSameNameUploaded || fileWithSameNameUploading) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = _this5.t("File with the same name is already ".concat(fileWithSameNameUploading ? 'being ' : '', "uploaded"));
-                    }
-                    if (fileWithSameNameUploadedWithError !== -1) {
-                      _this5.statuses.splice(fileWithSameNameUploadedWithError, 1);
-                      _this5.redraw();
-                    }
-
-                    // Check file pattern
-                    if (_this5.component.filePattern && !_this5.validatePattern(file, _this5.component.filePattern)) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = _this5.t('File is the wrong type; it must be {{ pattern }}', {
-                        pattern: _this5.component.filePattern
-                      });
-                    }
-                    // Check file minimum size
-                    if (_this5.component.fileMinSize && !_this5.validateMinSize(file, _this5.component.fileMinSize)) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = _this5.t('File is too small; it must be at least {{ size }}', {
-                        size: _this5.component.fileMinSize
-                      });
-                    }
-
-                    // Check file maximum size
-                    if (_this5.component.fileMaxSize && !_this5.validateMaxSize(file, _this5.component.fileMaxSize)) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = _this5.t('File is too big; it must be at most {{ size }}', {
-                        size: _this5.component.fileMaxSize
-                      });
-                    }
-
-                    // Get a unique name for this file to keep file collisions from occurring.
-                    dir = _this5.interpolate(_this5.component.dir || '');
-                    fileService = _this5.fileService;
-                    if (!fileService) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = _this5.t('File Service not provided.');
-                    }
-                    if (_this5.root.form.submissionRevisions !== 'true') {
-                      _this5.statuses.push(fileUpload);
-                      _this5.redraw();
-                    }
-                    if (!(fileUpload.status !== 'error')) {
-                      _context.next = 62;
-                      break;
-                    }
-                    if (_this5.component.privateDownload) {
-                      file["private"] = true;
-                    }
-                    _this5$component = _this5.component, storage = _this5$component.storage, _this5$component$opti = _this5$component.options, options = _this5$component$opti === void 0 ? {} : _this5$component$opti;
-                    url = _this5.interpolate(_this5.component.url, {
-                      file: fileUpload
-                    });
-                    groupKey = null;
-                    groupPermissions = null; //Iterate through form components to find group resource if one exists
-                    _this5.root.everyComponent(function (element) {
-                      var _element$component, _element$component2;
-                      if ((_element$component = element.component) !== null && _element$component !== void 0 && _element$component.submissionAccess || (_element$component2 = element.component) !== null && _element$component2 !== void 0 && _element$component2.defaultPermission) {
-                        groupPermissions = !element.component.submissionAccess ? [{
-                          type: element.component.defaultPermission,
-                          roles: []
-                        }] : element.component.submissionAccess;
-                        groupPermissions.forEach(function (permission) {
-                          groupKey = ['admin', 'write', 'create'].includes(permission.type) ? element.component.key : null;
-                        });
+              while (1) switch (_context.prev = _context.next) {
+                case 0:
+                  bmf = new _browserMd5File.default();
+                  _context.next = 3;
+                  return new Promise(function (resolve, reject) {
+                    bmf.md5(file, function (err, md5) {
+                      if (err) {
+                        return reject(err);
                       }
+                      return resolve(md5);
                     });
-                    fileKey = _this5.component.fileKey || 'file';
-                    groupResourceId = groupKey ? _this5.currentForm.submission.data[groupKey]._id : null;
-                    processedFile = null;
-                    if (!_this5.root.options.fileProcessor) {
-                      _context.next = 55;
-                      break;
-                    }
-                    _context.prev = 37;
-                    if (_this5.refs.fileProcessingLoader) {
-                      _this5.refs.fileProcessingLoader.style.display = 'block';
-                    }
-                    fileProcessorHandler = (0, _fileProcessor["default"])(_this5.fileService, _this5.root.options.fileProcessor);
-                    _context.next = 42;
-                    return fileProcessorHandler(file, _this5.component.properties);
-                  case 42:
-                    processedFile = _context.sent;
-                    _context.next = 52;
-                    break;
-                  case 45:
-                    _context.prev = 45;
-                    _context.t0 = _context["catch"](37);
+                  });
+                case 3:
+                  hash = _context.sent;
+                  fileName = (0, _utils.uniqueName)(file.name, _this5.component.fileNameTemplate, _this5.evalContext());
+                  escapedFileName = file.name ? file.name.replaceAll('<', '&lt;').replaceAll('>', '&gt;') : file.name;
+                  fileUpload = {
+                    originalName: escapedFileName,
+                    name: fileName,
+                    size: file.size,
+                    status: 'info',
+                    message: _this5.t('Processing file. Please wait...'),
+                    hash: hash
+                  }; // Check if file with the same name is being uploaded
+                  fileWithSameNameUploaded = _this5.dataValue.some(function (fileStatus) {
+                    return fileStatus.originalName === file.name;
+                  });
+                  fileWithSameNameUploadedWithError = _this5.statuses.findIndex(function (fileStatus) {
+                    return fileStatus.originalName === file.name && fileStatus.status === 'error';
+                  });
+                  if (fileWithSameNameUploaded) {
                     fileUpload.status = 'error';
-                    fileUpload.message = _this5.t('File processing has been failed.');
+                    fileUpload.message = _this5.t('File with the same name is already uploaded');
+                  }
+                  if (fileWithSameNameUploadedWithError !== -1) {
+                    _this5.statuses.splice(fileWithSameNameUploadedWithError, 1);
+                    _this5.redraw();
+                  }
+
+                  // Check file pattern
+                  if (_this5.component.filePattern && !_this5.validatePattern(file, _this5.component.filePattern)) {
+                    fileUpload.status = 'error';
+                    fileUpload.message = _this5.t('File is the wrong type; it must be {{ pattern }}', {
+                      pattern: _this5.component.filePattern
+                    });
+                  }
+
+                  // Check file minimum size
+                  if (_this5.component.fileMinSize && !_this5.validateMinSize(file, _this5.component.fileMinSize)) {
+                    fileUpload.status = 'error';
+                    fileUpload.message = _this5.t('File is too small; it must be at least {{ size }}', {
+                      size: _this5.component.fileMinSize
+                    });
+                  }
+
+                  // Check file maximum size
+                  if (_this5.component.fileMaxSize && !_this5.validateMaxSize(file, _this5.component.fileMaxSize)) {
+                    fileUpload.status = 'error';
+                    fileUpload.message = _this5.t('File is too big; it must be at most {{ size }}', {
+                      size: _this5.component.fileMaxSize
+                    });
+                  }
+
+                  // Get a unique name for this file to keep file collisions from occurring.
+                  dir = _this5.interpolate(_this5.component.dir || '');
+                  fileService = _this5.fileService;
+                  if (!fileService) {
+                    fileUpload.status = 'error';
+                    fileUpload.message = _this5.t('File Service not provided.');
+                  }
+                  _this5.statuses.push(fileUpload);
+                  _this5.redraw();
+                  if (!(fileUpload.status !== 'error')) {
+                    _context.next = 51;
+                    break;
+                  }
+                  if (_this5.component.privateDownload) {
+                    file.private = true;
+                  }
+                  _this5$component = _this5.component, storage = _this5$component.storage, _this5$component$opti = _this5$component.options, options = _this5$component$opti === void 0 ? {} : _this5$component$opti;
+                  url = _this5.interpolate(_this5.component.url, {
+                    file: fileUpload
+                  });
+                  groupKey = null;
+                  groupPermissions = null; //Iterate through form components to find group resource if one exists
+                  _this5.root.everyComponent(function (element) {
+                    var _element$component, _element$component2;
+                    if ((_element$component = element.component) !== null && _element$component !== void 0 && _element$component.submissionAccess || (_element$component2 = element.component) !== null && _element$component2 !== void 0 && _element$component2.defaultPermission) {
+                      groupPermissions = !element.component.submissionAccess ? [{
+                        type: element.component.defaultPermission,
+                        roles: []
+                      }] : element.component.submissionAccess;
+                      groupPermissions.forEach(function (permission) {
+                        groupKey = ['admin', 'write', 'create'].includes(permission.type) ? element.component.key : null;
+                      });
+                    }
+                  });
+                  fileKey = _this5.component.fileKey || 'file';
+                  groupResourceId = groupKey ? _this5.currentForm.submission.data[groupKey]._id : null;
+                  processedFile = null;
+                  if (!_this5.root.options.fileProcessor) {
+                    _context.next = 48;
+                    break;
+                  }
+                  _context.prev = 30;
+                  if (_this5.refs.fileProcessingLoader) {
+                    _this5.refs.fileProcessingLoader.style.display = 'block';
+                  }
+                  fileProcessorHandler = (0, _fileProcessor.default)(_this5.fileService, _this5.root.options.fileProcessor);
+                  _context.next = 35;
+                  return fileProcessorHandler(file, _this5.component.properties);
+                case 35:
+                  processedFile = _context.sent;
+                  _context.next = 45;
+                  break;
+                case 38:
+                  _context.prev = 38;
+                  _context.t0 = _context["catch"](30);
+                  fileUpload.status = 'error';
+                  fileUpload.message = _this5.t('File processing has been failed.');
+                  _this5.fileDropHidden = false;
+                  _this5.redraw();
+                  return _context.abrupt("return");
+                case 45:
+                  _context.prev = 45;
+                  if (_this5.refs.fileProcessingLoader) {
+                    _this5.refs.fileProcessingLoader.style.display = 'none';
+                  }
+                  return _context.finish(45);
+                case 48:
+                  fileUpload.message = _this5.t('Starting upload.');
+                  _this5.redraw();
+                  filePromise = fileService.uploadFile(storage, processedFile || file, fileName, dir,
+                  // Progress callback
+                  function (evt) {
+                    fileUpload.status = 'progress';
+                    fileUpload.progress = parseInt(100.0 * evt.loaded / evt.total);
+                    delete fileUpload.message;
+                    _this5.redraw();
+                  }, url, options, fileKey, groupPermissions, groupResourceId,
+                  // Upload start callback
+                  function () {
+                    _this5.emit('fileUploadingStart', filePromise);
+                  },
+                  // Abort upload callback
+                  function (abort) {
+                    return _this5.abortUpload = abort;
+                  }).then(function (fileInfo) {
+                    var index = _this5.statuses.indexOf(fileUpload);
+                    if (index !== -1) {
+                      _this5.statuses.splice(index, 1);
+                    }
+                    fileInfo.originalName = escapedFileName;
+                    fileInfo.hash = fileUpload.hash;
+                    if (!_this5.hasValue()) {
+                      _this5.dataValue = [];
+                    }
+                    _this5.dataValue.push(fileInfo);
                     _this5.fileDropHidden = false;
                     _this5.redraw();
-                    return _context.abrupt("return");
-                  case 52:
-                    _context.prev = 52;
-                    if (_this5.refs.fileProcessingLoader) {
-                      _this5.refs.fileProcessingLoader.style.display = 'none';
-                    }
-                    return _context.finish(52);
-                  case 55:
-                    count = 0;
-                    multipartOptions = _this5.component.useMultipartUpload && _this5.component.multipart ? _objectSpread(_objectSpread({}, _this5.component.multipart), {}, {
-                      progressCallback: function progressCallback(total) {
-                        count++;
-                        fileUpload.status = 'progress';
-                        fileUpload.progress = parseInt(100 * count / total);
-                        delete fileUpload.message;
-                        _this5.redraw();
-                      },
-                      changeMessage: function changeMessage(message) {
-                        fileUpload.message = message;
-                        _this5.redraw();
-                      }
-                    }) : false;
-                    fileUpload.message = _this5.t('Starting upload...');
+                    _this5.triggerChange();
+                    _this5.emit('fileUploadingEnd', filePromise);
+                  }).catch(function (response) {
+                    fileUpload.status = 'error';
+                    fileUpload.message = typeof response === 'string' ? response : response.toString();
+                    delete fileUpload.progress;
+                    _this5.fileDropHidden = false;
                     _this5.redraw();
-                    filePromise = fileService.uploadFile(storage, processedFile || file, fileName, dir,
-                    // Progress callback
-                    function (evt) {
-                      fileUpload.status = 'progress';
-                      fileUpload.progress = parseInt(100.0 * evt.loaded / evt.total);
-                      delete fileUpload.message;
-                      _this5.redraw();
-                    }, url, options, fileKey, groupPermissions, groupResourceId,
-                    // Upload start callback
-                    function () {
-                      _this5.emit('fileUploadingStart', filePromise);
-                    }, function (abort) {
-                      return fileUpload.abort = abort;
-                    }, multipartOptions).then(function (fileInfo) {
-                      var index = _this5.statuses.indexOf(fileUpload);
-                      if (index !== -1) {
-                        _this5.statuses.splice(index, 1);
-                      }
-                      fileInfo.originalName = escapedFileName;
-                      fileInfo.hash = fileUpload.hash;
-                      if (!_this5.hasValue()) {
-                        _this5.dataValue = [];
-                      }
-                      _this5.dataValue.push(fileInfo);
-                      _lodash["default"].pull(_this5.filesUploading, fileInfo.originalName);
-                      _this5.fileDropHidden = false;
-                      _this5.redraw();
-                      _this5.triggerChange();
-                      _this5.emit('fileUploadingEnd', filePromise);
-                    })["catch"](function (response) {
-                      fileUpload.status = 'error';
-                      fileUpload.message = typeof response === 'string' ? response : response.toString();
-                      delete fileUpload.progress;
-                      _this5.fileDropHidden = false;
-                      _lodash["default"].pull(_this5.filesUploading, file.name);
-                      _this5.redraw();
-                      _this5.emit('fileUploadingEnd', filePromise);
-                    });
-                    _context.next = 63;
-                    break;
-                  case 62:
-                    _this5.filesUploading.splice(_this5.filesUploading.indexOf(file.name), 1);
-                  case 63:
-                  case "end":
-                    return _context.stop();
-                }
+                    _this5.emit('fileUploadingEnd', filePromise);
+                  });
+                case 51:
+                case "end":
+                  return _context.stop();
               }
-            }, _callee, null, [[37, 45, 52, 55]]);
+            }, _callee, null, [[30, 38, 45, 48]]);
           }));
           return function (_x) {
             return _ref.apply(this, arguments);
@@ -954,17 +893,17 @@ var FileComponent = /*#__PURE__*/function (_Field) {
         return alert('File Service not provided');
       }
       if (this.component.privateDownload) {
-        fileInfo["private"] = true;
+        fileInfo.private = true;
       }
       fileService.downloadFile(fileInfo, options).then(function (file) {
         if (file) {
           if (['base64', 'indexeddb'].includes(file.storage)) {
-            (0, _downloadjs["default"])(file.url, file.originalName || file.name, file.type);
+            (0, _downloadjs.default)(file.url, file.originalName || file.name, file.type);
           } else {
             window.open(file.url, '_blank');
           }
         }
-      })["catch"](function (response) {
+      }).catch(function (response) {
         // Is alert the best way to do this?
         // User is expecting an immediate notification due to attempting to download a file.
         alert(response);
@@ -992,7 +931,7 @@ var FileComponent = /*#__PURE__*/function (_Field) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Field2["default"].schema.apply(_Field2["default"], [{
+      return _Field2.default.schema.apply(_Field2.default, [{
         type: 'file',
         label: 'Upload',
         key: 'file',
@@ -1012,30 +951,12 @@ var FileComponent = /*#__PURE__*/function (_Field) {
         title: 'File',
         group: 'premium',
         icon: 'file',
-        documentation: '/userguide/form-building/premium-components#file',
+        documentation: '/userguide/forms/premium-components#file',
         weight: 100,
         schema: FileComponent.schema()
       };
     }
-  }, {
-    key: "serverConditionSettings",
-    get: function get() {
-      return FileComponent.conditionOperatorsSettings;
-    }
-  }, {
-    key: "conditionOperatorsSettings",
-    get: function get() {
-      return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(FileComponent), "conditionOperatorsSettings", this)), {}, {
-        operators: ['isEmpty', 'isNotEmpty']
-      });
-    }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      schema = schema || {};
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes.object];
-    }
   }]);
   return FileComponent;
-}(_Field2["default"]);
-exports["default"] = FileComponent;
+}(_Field2.default);
+exports.default = FileComponent;

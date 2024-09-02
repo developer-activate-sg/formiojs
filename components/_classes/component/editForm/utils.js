@@ -1,19 +1,18 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.array.splice.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Evaluator = _interopRequireDefault(require("../../../../utils/Evaluator"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var EditFormUtils = {
   sortAndFilterComponents: function sortAndFilterComponents(components) {
-    return _lodash["default"].filter(_lodash["default"].sortBy(components, 'weight'), function (item) {
+    return _lodash.default.filter(_lodash.default.sortBy(components, 'weight'), function (item) {
       return !item.ignore;
     });
   },
@@ -24,25 +23,25 @@ var EditFormUtils = {
       }
       if (objValue.key === srcValue.key) {
         // Create complete objects by including missing keys.
-        _lodash["default"].each(objValue, function (value, prop) {
+        _lodash.default.each(objValue, function (value, prop) {
           if (objValue.overrideEditForm || !srcValue.hasOwnProperty(prop)) {
             srcValue[prop] = value;
           }
         });
-        _lodash["default"].each(srcValue, function (value, prop) {
+        _lodash.default.each(srcValue, function (value, prop) {
           if (srcValue.overrideEditForm || !objValue.hasOwnProperty(prop)) {
             objValue[prop] = value;
           }
         });
         if (objValue.components) {
-          srcValue.components = EditFormUtils.sortAndFilterComponents(_lodash["default"].unionWith(objValue.components, srcValue.components, EditFormUtils.unifyComponents));
+          srcValue.components = EditFormUtils.sortAndFilterComponents(_lodash.default.unionWith(objValue.components, srcValue.components, EditFormUtils.unifyComponents));
         }
         return true;
       } else {
         return false;
       }
     }
-    return _lodash["default"].isEqual(objValue, srcValue);
+    return _lodash.default.isEqual(objValue, srcValue);
   },
   logicVariablesTable: function logicVariablesTable(additional) {
     additional = additional || '';
@@ -50,7 +49,7 @@ var EditFormUtils = {
       type: 'htmlelement',
       tag: 'div',
       /* eslint-disable prefer-template */
-      content: '<p>The following variables are available in all scripts.</p>' + '<table class="table table-bordered table-condensed table-striped">' + additional + '<tr><th>form</th><td>The complete form JSON object</td></tr>' + '<tr><th>submission</th><td>The complete submission object.</td></tr>' + '<tr><th>data</th><td>The complete submission data object.</td></tr>' + '<tr><th>row</th><td>Contextual "row" data, used within DataGrid, EditGrid, and Container components</td></tr>' + '<tr><th>component</th><td>The current component JSON</td></tr>' + '<tr><th>instance</th><td>The current component instance.</td></tr>' + '<tr><th>value</th><td>The current value of the component.</td></tr>' + '<tr><th>moment</th><td>The moment.js library for date manipulation.</td></tr>' + '<tr><th>_</th><td>An instance of <a href="https://lodash.com/docs/" target="_blank" rel="noopener noreferrer">Lodash</a>.</td></tr>' + '<tr><th>utils</th><td>An instance of the <a href="http://formio.github.io/formio.js/docs/identifiers.html#utils" target="_blank" rel="noopener noreferrer">FormioUtils</a> object.</td></tr>' + '<tr><th>util</th><td>An alias for "utils".</td></tr>' + '</table><br/>'
+      content: '<p>The following variables are available in all scripts.</p>' + '<table class="table table-bordered table-condensed table-striped">' + additional + '<tr><th>form</th><td>The complete form JSON object</td></tr>' + '<tr><th>submission</th><td>The complete submission object.</td></tr>' + '<tr><th>data</th><td>The complete submission data object.</td></tr>' + '<tr><th>row</th><td>Contextual "row" data, used within DataGrid, EditGrid, and Container components</td></tr>' + '<tr><th>component</th><td>The current component JSON</td></tr>' + '<tr><th>instance</th><td>The current component instance.</td></tr>' + '<tr><th>value</th><td>The current value of the component.</td></tr>' + '<tr><th>moment</th><td>The moment.js library for date manipulation.</td></tr>' + '<tr><th>_</th><td>An instance of <a href="https://lodash.com/docs/" target="_blank">Lodash</a>.</td></tr>' + '<tr><th>utils</th><td>An instance of the <a href="http://formio.github.io/formio.js/docs/identifiers.html#utils" target="_blank">FormioUtils</a> object.</td></tr>' + '<tr><th>util</th><td>An alias for "utils".</td></tr>' + '</table><br/>'
       /* eslint-enable prefer-template */
     };
   },
@@ -67,7 +66,7 @@ var EditFormUtils = {
       },
       key: "".concat(property, "-js"),
       customConditional: function customConditional() {
-        return !_Evaluator["default"].noeval || _Evaluator["default"].protectedEval;
+        return !_Evaluator.default.noeval || _Evaluator.default.protectedEval;
       },
       components: [{
         type: 'textarea',
@@ -92,7 +91,7 @@ var EditFormUtils = {
         type: 'htmlelement',
         tag: 'div',
         /* eslint-disable prefer-template */
-        content: '<p>Execute custom logic using <a href="http://jsonlogic.com/" target="_blank" rel="noopener noreferrer">JSONLogic</a>.</p>' + '<p>Full <a href="https://lodash.com/docs" target="_blank" rel="noopener noreferrer">Lodash</a> support is provided using an "_" before each operation, such as <code>{"_sum": {var: "data.a"}}</code></p>' + exampleJSON
+        content: '<p>Execute custom logic using <a href="http://jsonlogic.com/" target="_blank">JSONLogic</a>.</p>' + '<p>Full <a href="https://lodash.com/docs" target="_blank">Lodash</a> support is provided using an "_" before each operation, such as <code>{"_sum": {var: "data.a"}}</code></p>' + exampleJSON
         /* eslint-enable prefer-template */
       }, {
         type: 'textarea',
@@ -120,4 +119,4 @@ var EditFormUtils = {
   }
 };
 var _default = EditFormUtils;
-exports["default"] = _default;
+exports.default = _default;

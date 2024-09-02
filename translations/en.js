@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   unsavedRowsError: 'Please save all rows before proceeding.',
   invalidRowsError: 'Please correct invalid rows before proceeding.',
@@ -70,12 +69,6 @@ var _default = {
   saveDraftInstanceError: 'Cannot save draft because there is no formio instance.',
   saveDraftAuthError: 'Cannot save draft unless a user is authenticated.',
   restoreDraftInstanceError: 'Cannot restore draft because there is no formio instance.',
-  saveDraftError: 'Unable to save draft.',
-  restoreDraftError: 'Unable to restore draft.',
-  time: 'Invalid time',
-  cancelButtonAriaLabel: 'Cancel button. Click to reset the form',
-  previousButtonAriaLabel: 'Previous button. Click to go back to the previous tab',
-  nextButtonAriaLabel: 'Next button. Click to go to the next tab',
-  submitButtonAriaLabel: 'Submit Form button. Click to submit the form'
+  time: 'Invalid time'
 };
-exports["default"] = _default;
+exports.default = _default;

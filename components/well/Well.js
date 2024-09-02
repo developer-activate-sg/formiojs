@@ -3,8 +3,6 @@
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -17,13 +15,11 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _NestedComponent2 = _interopRequireDefault(require("../_classes/nested/NestedComponent"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -70,7 +66,7 @@ var WellComponent = /*#__PURE__*/function (_NestedComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _NestedComponent2["default"].schema.apply(_NestedComponent2["default"], [{
+      return _NestedComponent2.default.schema.apply(_NestedComponent2.default, [{
         type: 'well',
         key: 'well',
         input: false,
@@ -85,18 +81,12 @@ var WellComponent = /*#__PURE__*/function (_NestedComponent) {
         title: 'Well',
         icon: 'square-o',
         group: 'layout',
-        documentation: '/userguide/form-building/layout-components#well',
-        showPreview: false,
+        documentation: '/userguide/forms/layout-components#well',
         weight: 60,
         schema: WellComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return WellComponent;
-}(_NestedComponent2["default"]);
-exports["default"] = WellComponent;
+}(_NestedComponent2.default);
+exports.default = WellComponent;

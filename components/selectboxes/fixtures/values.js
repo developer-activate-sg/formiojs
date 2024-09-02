@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   one: true,
   two: true,
@@ -22,4 +21,4 @@ var _default = [{
   two: true,
   three: false
 }];
-exports["default"] = _default;
+exports.default = _default;

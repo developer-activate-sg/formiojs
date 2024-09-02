@@ -3,8 +3,6 @@
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -12,49 +10,33 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.array.from.js");
-require("core-js/modules/es.array.slice.js");
-require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.is-array.js");
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.string.trim.js");
-require("core-js/modules/es.date.to-string.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.concat.js");
 require("core-js/modules/esnext.string.replace-all.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
+require("core-js/modules/es.string.trim.js");
+require("core-js/modules/es.object.to-string.js");
+require("core-js/modules/es.regexp.to-string.js");
+require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Input2 = _interopRequireDefault(require("../_classes/input/Input"));
 var _vanillaTextMask = require("@formio/vanilla-text-mask");
 var FormioUtils = _interopRequireWildcard(require("../../utils/utils"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-var _lodash = _interopRequireDefault(require("lodash"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -112,7 +94,7 @@ var TextFieldComponent = /*#__PURE__*/function (_Input) {
       } else {
         info.attr.type = this.component.inputType === 'password' ? 'password' : 'text';
       }
-      info.changeEvent = this.component.applyMaskOn === 'blur' ? 'blur' : 'input';
+      info.changeEvent = 'input';
       return info;
     }
   }, {
@@ -256,6 +238,14 @@ var TextFieldComponent = /*#__PURE__*/function (_Input) {
       };
     }
   }, {
+    key: "getValueAsString",
+    value: function getValueAsString(value, options) {
+      if (value && this.component.inputFormat === 'plain' && /<[^<>]+>/g.test(value)) {
+        value = value.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+      }
+      return _get(_getPrototypeOf(TextFieldComponent.prototype), "getValueAsString", this).call(this, value, options);
+    }
+  }, {
     key: "isHtmlRenderMode",
     value: function isHtmlRenderMode() {
       return _get(_getPrototypeOf(TextFieldComponent.prototype), "isHtmlRenderMode", this).call(this) || (this.options.readOnly || this.disabled) && this.component.inputFormat === 'html' && this.type === 'textfield';
@@ -292,25 +282,13 @@ var TextFieldComponent = /*#__PURE__*/function (_Input) {
       var _this3 = this;
       var value = this.dataValue;
       if (!this.component.truncateMultipleSpaces || !value) {
-        return _nativePromiseOnly["default"].resolve(value);
+        return _nativePromiseOnly.default.resolve(value);
       }
       value = this.truncateMultipleSpaces(value);
       this.dataValue = value;
-      return _nativePromiseOnly["default"].resolve(value).then(function () {
+      return _nativePromiseOnly.default.resolve(value).then(function () {
         return _get(_getPrototypeOf(TextFieldComponent.prototype), "beforeSubmit", _this3).call(_this3);
       });
-    }
-  }, {
-    key: "getValueAsString",
-    value: function getValueAsString(value, options) {
-      if (options !== null && options !== void 0 && options.email && this.visible && !this.skipInEmail && _lodash["default"].isObject(value)) {
-        var result = "\n        <table border=\"1\" style=\"width:100%\">\n          <tbody>\n          <tr>\n            <th style=\"padding: 5px 10px;\">".concat(value.maskName, "</th>\n            <td style=\"width:100%;padding:5px 10px;\">").concat(value.value, "</td>\n          </tr>\n          </tbody>\n        </table>\n      ");
-        return result;
-      }
-      if (value && this.component.inputFormat === 'plain' && /<[^<>]+>/g.test(value)) {
-        value = value.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-      }
-      return _get(_getPrototypeOf(TextFieldComponent.prototype), "getValueAsString", this).call(this, value, options);
     }
   }], [{
     key: "schema",
@@ -318,7 +296,7 @@ var TextFieldComponent = /*#__PURE__*/function (_Input) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Input2["default"].schema.apply(_Input2["default"], [{
+      return _Input2.default.schema.apply(_Input2.default, [{
         label: 'Text Field',
         key: 'textField',
         type: 'textfield',
@@ -344,29 +322,12 @@ var TextFieldComponent = /*#__PURE__*/function (_Input) {
         title: 'Text Field',
         icon: 'terminal',
         group: 'basic',
-        documentation: '/userguide/form-building/form-components#text-field',
+        documentation: '/userguide/forms/form-components#text-field',
         weight: 0,
         schema: TextFieldComponent.schema()
       };
     }
-  }, {
-    key: "serverConditionSettings",
-    get: function get() {
-      return TextFieldComponent.conditionOperatorsSettings;
-    }
-  }, {
-    key: "conditionOperatorsSettings",
-    get: function get() {
-      return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(TextFieldComponent), "conditionOperatorsSettings", this)), {}, {
-        operators: [].concat(_toConsumableArray(_get(_getPrototypeOf(TextFieldComponent), "conditionOperatorsSettings", this).operators), ['includes', 'notIncludes', 'endsWith', 'startsWith'])
-      });
-    }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      return FormioUtils.getComponentSavedTypes(schema) || [FormioUtils.componentValueTypes.string];
-    }
   }]);
   return TextFieldComponent;
-}(_Input2["default"]);
-exports["default"] = TextFieldComponent;
+}(_Input2.default);
+exports.default = TextFieldComponent;

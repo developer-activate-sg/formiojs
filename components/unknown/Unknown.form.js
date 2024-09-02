@@ -1,12 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = _default;
+exports.default = _default;
 var _UnknownEdit = _interopRequireDefault(require("./editForm/Unknown.edit.display"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _default() {
   return {
     components: [{
@@ -16,7 +15,7 @@ function _default() {
         label: 'Custom',
         key: 'display',
         weight: 0,
-        components: _UnknownEdit["default"]
+        components: _UnknownEdit.default
       }]
     }]
   };

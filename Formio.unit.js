@@ -2,34 +2,29 @@
 
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.string.starts-with.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.regexp.exec.js");
-require("core-js/modules/es.date.to-iso-string.js");
-require("core-js/modules/es.date.to-string.js");
-require("core-js/modules/es.date.now.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.timers.js");
-var _index = require("./index");
+var _Formio = _interopRequireDefault(require("./Formio"));
 var _utils = require("./utils/utils");
 var _each2 = _interopRequireDefault(require("lodash/each"));
 var _powerAssert = _interopRequireDefault(require("power-assert"));
 var _sinon = _interopRequireDefault(require("sinon"));
+var _chance = _interopRequireDefault(require("chance"));
 var _server = _interopRequireDefault(require("fetch-mock/es5/server"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-var _chance = _interopRequireDefault(require("chance"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var chance = (0, _chance["default"])();
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var chance = (0, _chance.default)();
 var protocol = 'https';
 var domain = 'localhost:3000';
 var baseUrl = "".concat(protocol, "://api.").concat(domain);
-_index.Formio.setBaseUrl(baseUrl);
-_index.Formio.setToken(null);
-_index.Formio.fetch = _server["default"].fetchHandler;
+_Formio.default.setBaseUrl(baseUrl);
+_Formio.default.setToken(null);
+_Formio.default.fetch = _server.default.fetchHandler;
 var projectId = '59bbe2ec8c246100079191aa';
 var formId = '59bbe2ec8c246100079191ab';
 var submissionId = '59bbe2ec8c246100079191ac';
@@ -45,19 +40,19 @@ var runTests = function runTests(fn, options) {
   var noBefore = fn(tests);
   if (!noBefore) {
     beforeEach(function () {
-      _index.Formio.setBaseUrl(baseUrl);
-      _index.Formio.projectUrlSet = false;
-      _index.Formio.projectUrl = 'https://api.form.io';
+      _Formio.default.setBaseUrl(baseUrl);
+      _Formio.default.projectUrlSet = false;
+      _Formio.default.projectUrl = 'https://api.form.io';
     });
   }
-  (0, _each2["default"])(tests, function (test, path) {
+  (0, _each2.default)(tests, function (test, path) {
     it("Should initialize for ".concat(path), function (done) {
       if (typeof test === 'function') {
         test();
       } else {
-        var formio = new _index.Formio(path, options);
+        var formio = new _Formio.default(path, options);
         for (var param in test) {
-          _powerAssert["default"].equal(formio[param], test[param], "".concat(param, " is not equal. ").concat(formio[param], " == ").concat(test[param], "\n"));
+          _powerAssert.default.equal(formio[param], test[param], "".concat(param, " is not equal. ").concat(formio[param], " == ").concat(test[param], "\n"));
         }
       }
       done();
@@ -459,9 +454,9 @@ describe('Formio.js Tests', function () {
   describe('Simple Form Constructor Tests', function () {
     runTests(function (tests) {
       tests['init'] = function () {
-        _index.Formio.setBaseUrl('https://api.form.io');
-        _index.Formio.projectUrlSet = false;
-        _index.Formio.projectUrl = 'https://api.form.io';
+        _Formio.default.setBaseUrl('https://api.form.io');
+        _Formio.default.projectUrlSet = false;
+        _Formio.default.projectUrl = 'https://api.form.io';
       };
       tests['https://examples.form.io/example'] = {
         projectUrl: 'https://examples.form.io',
@@ -522,24 +517,24 @@ describe('Formio.js Tests', function () {
   describe('Plugins', function () {
     var plugin = null;
     beforeEach(function () {
-      _powerAssert["default"].equal(_index.Formio.getPlugin('test-plugin'), undefined, 'No plugin may be returned under the name `test-plugin`');
+      _powerAssert.default.equal(_Formio.default.getPlugin('test-plugin'), undefined, 'No plugin may be returned under the name `test-plugin`');
       plugin = {
-        init: _sinon["default"].spy()
+        init: _sinon.default.spy()
       };
-      _index.Formio.registerPlugin(plugin, 'test-plugin');
-      _powerAssert["default"].ok(plugin.init.calledOnce, 'plugin.init must be called exactly once');
-      _powerAssert["default"].ok(plugin.init.calledOn(plugin), 'plugin.init must be called on plugin as `this`');
-      _powerAssert["default"].ok(plugin.init.calledWithExactly(_index.Formio), 'plugin.init must be given Formio as argument');
-      _powerAssert["default"].equal(_index.Formio.getPlugin('test-plugin'), plugin, 'getPlugin must return plugin');
+      _Formio.default.registerPlugin(plugin, 'test-plugin');
+      _powerAssert.default.ok(plugin.init.calledOnce, 'plugin.init must be called exactly once');
+      _powerAssert.default.ok(plugin.init.calledOn(plugin), 'plugin.init must be called on plugin as `this`');
+      _powerAssert.default.ok(plugin.init.calledWithExactly(_Formio.default), 'plugin.init must be given Formio as argument');
+      _powerAssert.default.equal(_Formio.default.getPlugin('test-plugin'), plugin, 'getPlugin must return plugin');
     });
     afterEach(function () {
-      _powerAssert["default"].equal(_index.Formio.getPlugin('test-plugin'), plugin, 'getPlugin must return plugin');
-      plugin.deregister = _sinon["default"].spy();
-      _index.Formio.deregisterPlugin(plugin, 'test-plugin');
-      _powerAssert["default"].ok(plugin.deregister.calledOnce, 'plugin.deregister must be called exactly once');
-      _powerAssert["default"].ok(plugin.deregister.calledOn(plugin), 'plugin.deregister must be called on plugin as `this`');
-      _powerAssert["default"].ok(plugin.deregister.calledWithExactly(_index.Formio), 'plugin.deregister must be given Formio as argument');
-      _powerAssert["default"].equal(_index.Formio.getPlugin('test-plugin'), undefined, 'No plugin may be returned under the name `test-plugin`');
+      _powerAssert.default.equal(_Formio.default.getPlugin('test-plugin'), plugin, 'getPlugin must return plugin');
+      plugin.deregister = _sinon.default.spy();
+      _Formio.default.deregisterPlugin(plugin, 'test-plugin');
+      _powerAssert.default.ok(plugin.deregister.calledOnce, 'plugin.deregister must be called exactly once');
+      _powerAssert.default.ok(plugin.deregister.calledOn(plugin), 'plugin.deregister must be called on plugin as `this`');
+      _powerAssert.default.ok(plugin.deregister.calledWithExactly(_Formio.default), 'plugin.deregister must be given Formio as argument');
+      _powerAssert.default.equal(_Formio.default.getPlugin('test-plugin'), undefined, 'No plugin may be returned under the name `test-plugin`');
     });
 
     // Test a request to see if the plugin flow order is correct
@@ -547,19 +542,19 @@ describe('Formio.js Tests', function () {
       var fnName;
       switch (method) {
         case 'GET':
-          fnName = "load".concat(_lodash["default"].capitalize(type));
+          fnName = "load".concat(_lodash.default.capitalize(type));
           break;
         case 'POST':
         case 'PUT':
-          fnName = "save".concat(_lodash["default"].capitalize(type));
+          fnName = "save".concat(_lodash.default.capitalize(type));
           break;
         case 'DELETE':
-          fnName = "delete".concat(_lodash["default"].capitalize(type));
+          fnName = "delete".concat(_lodash.default.capitalize(type));
           break;
       }
       it("Plugin ".concat(method, " ").concat(fnName), function (done) {
         var step = 0;
-        var formio = new _index.Formio(url);
+        var formio = new _Formio.default(url);
         method = method.toUpperCase();
         var testData = {
           testRequest: 'TEST_REQUEST'
@@ -576,48 +571,48 @@ describe('Formio.js Tests', function () {
           type: type,
           method: method,
           url: formio[type + (method === 'POST' ? 'sUrl' : 'Url')],
-          data: _lodash["default"].startsWith(fnName, 'save') ? testData : null,
+          data: _lodash.default.startsWith(fnName, 'save') ? testData : null,
           opts: testOpts
         };
 
         // Set up plugin hooks
         plugin.preRequest = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 1, 'preRequest hook should be called first');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 3, 'preRequest promise should resolve third');
+          _powerAssert.default.equal(++step, 1, 'preRequest hook should be called first');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 3, 'preRequest promise should resolve third');
             // TODO
           });
         };
 
         plugin.request = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 4, 'request hook should be called fourth');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 5, 'request promise should resolve fifth');
+          _powerAssert.default.equal(++step, 4, 'request hook should be called fourth');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 5, 'request promise should resolve fifth');
             return testResult;
           });
         };
         plugin.wrapRequestPromise = function (promise, requestArgs) {
-          _powerAssert["default"].equal(++step, 2, 'wrapRequestPromise hook should be called second');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          _powerAssert.default.equal(++step, 2, 'wrapRequestPromise hook should be called second');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
           return promise.then(function (result) {
-            _powerAssert["default"].equal(++step, 6, 'wrapRequestPromise post-result promise should resolve sixth');
-            _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+            _powerAssert.default.equal(++step, 6, 'wrapRequestPromise post-result promise should resolve sixth');
+            _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
             return result;
           });
         };
         var promise;
-        if (_lodash["default"].startsWith(fnName, 'save')) {
+        if (_lodash.default.startsWith(fnName, 'save')) {
           promise = formio[fnName](testData, testOpts);
-        } else if (_lodash["default"].startsWith(fnName, 'load')) {
+        } else if (_lodash.default.startsWith(fnName, 'load')) {
           promise = formio[fnName](null, testOpts);
         } else {
           promise = formio[fnName](testOpts);
         }
         promise.then(function (result) {
-          _powerAssert["default"].equal(++step, 7, 'post request promise should resolve last');
-          _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+          _powerAssert.default.equal(++step, 7, 'post request promise should resolve last');
+          _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
           done();
         });
       });
@@ -718,34 +713,34 @@ describe('Formio.js Tests', function () {
 
         // Set up plugin hooks
         plugin.preRequest = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 1, 'preRequest hook should be called first');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 3, 'preRequest promise should resolve third');
+          _powerAssert.default.equal(++step, 1, 'preRequest hook should be called first');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 3, 'preRequest promise should resolve third');
             // TODO
           });
         };
 
         plugin.staticRequest = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 4, 'request hook should be called fourth');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 5, 'request promise should resolve fifth');
+          _powerAssert.default.equal(++step, 4, 'request hook should be called fourth');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 5, 'request promise should resolve fifth');
             return testResult;
           });
         };
         plugin.wrapStaticRequestPromise = function (promise, requestArgs) {
-          _powerAssert["default"].equal(++step, 2, 'wrapRequestPromise hook should be called second');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          _powerAssert.default.equal(++step, 2, 'wrapRequestPromise hook should be called second');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
           return promise.then(function (result) {
-            _powerAssert["default"].equal(++step, 6, 'wrapRequestPromise post-result promise should resolve sixth');
-            _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+            _powerAssert.default.equal(++step, 6, 'wrapRequestPromise post-result promise should resolve sixth');
+            _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
             return result;
           });
         };
-        _index.Formio[fnName]().then(function (result) {
-          _powerAssert["default"].equal(++step, 7, 'post request promise should resolve last');
-          _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+        _Formio.default[fnName]().then(function (result) {
+          _powerAssert.default.equal(++step, 7, 'post request promise should resolve last');
+          _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
           done();
         });
       });
@@ -787,35 +782,35 @@ describe('Formio.js Tests', function () {
 
         // Set up plugin hooks
         plugin.preRequest = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 1, 'preRequest hook should be called first');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 3, 'preRequest promise should resolve third');
+          _powerAssert.default.equal(++step, 1, 'preRequest hook should be called first');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 3, 'preRequest promise should resolve third');
             // TODO
           });
         };
 
         plugin.fileRequest = function (requestArgs) {
-          _powerAssert["default"].equal(++step, 4, 'request hook should be called fourth');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
-          return _nativePromiseOnly["default"].resolve().then(function () {
-            _powerAssert["default"].equal(++step, 5, 'request promise should resolve fifth');
+          _powerAssert.default.equal(++step, 4, 'request hook should be called fourth');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          return _nativePromiseOnly.default.resolve().then(function () {
+            _powerAssert.default.equal(++step, 5, 'request promise should resolve fifth');
             return testResult;
           });
         };
         plugin.wrapFileRequestPromise = function (promise, requestArgs) {
-          _powerAssert["default"].equal(++step, 2, 'wrapFileRequestPromise hook should be called second');
-          _powerAssert["default"].deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
+          _powerAssert.default.equal(++step, 2, 'wrapFileRequestPromise hook should be called second');
+          _powerAssert.default.deepEqual(requestArgs, expectedArgs, 'Request hook arguments match expected arguments');
           return promise.then(function (result) {
-            _powerAssert["default"].equal(++step, 6, 'wrapFileRequestPromise post-result promise should resolve sixth');
-            _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+            _powerAssert.default.equal(++step, 6, 'wrapFileRequestPromise post-result promise should resolve sixth');
+            _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
             return result;
           });
         };
-        var formio = new _index.Formio(formUrl);
+        var formio = new _Formio.default(formUrl);
         formio[fnName].apply(null, args).then(function (result) {
-          _powerAssert["default"].equal(++step, 7, 'post request promise should resolve last');
-          _powerAssert["default"].deepEqual(result, testResult, 'Result should match result from request hook');
+          _powerAssert.default.equal(++step, 7, 'post request promise should resolve last');
+          _powerAssert.default.deepEqual(result, testResult, 'Result should match result from request hook');
           done();
         });
       });
@@ -851,31 +846,31 @@ describe('Formio.js Tests', function () {
     var testCapability = function testCapability(test) {
       it(test.name, function (done) {
         // need to clear Formio cache before every test, otherwise mock results might be ignored for same URLs
-        _index.Formio.clearCache();
+        _Formio.default.clearCache();
         if (test.mock) {
           var mock = test.mock();
           if (mock instanceof Array) {
-            _lodash["default"].each(mock, function (_mock) {
-              _server["default"].mock(_mock.url, _mock.response, {
+            _lodash.default.each(mock, function (_mock) {
+              _server.default.mock(_mock.url, _mock.response, {
                 method: _mock.method
               });
             });
           } else {
-            _server["default"].mock(mock.url, mock.response, {
+            _server.default.mock(mock.url, mock.response, {
               method: mock.method
             });
           }
         }
-        _nativePromiseOnly["default"].resolve().then(function () {
+        _nativePromiseOnly.default.resolve().then(function () {
           return test.test();
         }).then(function () {
           if (test.mock) {
-            _server["default"].restore();
+            _server.default.restore();
           }
           done();
-        })["catch"](function (err) {
+        }).catch(function (err) {
           if (test.mock) {
-            _server["default"].restore();
+            _server.default.restore();
           }
           done(typeof err === 'string' ? new Error(err) : err);
         });
@@ -905,16 +900,16 @@ describe('Formio.js Tests', function () {
             })
           }
         };
-        _index.Formio.setProjectUrl(_index.Formio.getBaseUrl());
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/user/register"));
+        _Formio.default.setProjectUrl(_Formio.default.getBaseUrl());
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/user/register"));
         return formio.saveSubmission(req).then(function (response) {
-          _powerAssert["default"].deepEqual(response, user, 'saveSubmission response should match test user');
-          _powerAssert["default"].equal(_index.Formio.getToken(), userToken, 'Formio should save the user token');
+          _powerAssert.default.deepEqual(response, user, 'saveSubmission response should match test user');
+          _powerAssert.default.equal(_Formio.default.getToken(), userToken, 'Formio should save the user token');
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/current"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/current"),
           method: 'GET',
           response: function response() {
             return {
@@ -926,7 +921,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/user/register/submission"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/user/register/submission"),
           method: 'POST',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -964,23 +959,23 @@ describe('Formio.js Tests', function () {
             'user.password': userPassword
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/user/login"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/user/login"));
         return formio.saveSubmission(req).then(function (response) {
-          _powerAssert["default"].deepEqual(response, user, 'saveSubmission response should match test user');
-          _powerAssert["default"].equal(_index.Formio.getToken(), userToken, 'Formio should save the user token');
+          _powerAssert.default.deepEqual(response, user, 'saveSubmission response should match test user');
+          _powerAssert.default.equal(_Formio.default.getToken(), userToken, 'Formio should save the user token');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/user/login/submission"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/user/login/submission"),
           method: 'POST',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
             userToken = chance.string({
               length: 450
             });
-            _powerAssert["default"].equal(body.data['user.email'], user.data.email, 'Login email must be correct.');
-            _powerAssert["default"].equal(body.data['user.password'], userPassword, 'Login password must be correct.');
+            _powerAssert.default.equal(body.data['user.email'], user.data.email, 'Login email must be correct.');
+            _powerAssert.default.equal(body.data['user.password'], userPassword, 'Login password must be correct.');
             return {
               headers: {
                 'Content-Type': 'application/json',
@@ -994,20 +989,20 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Current user.',
       test: function test() {
-        return _index.Formio.currentUser().then(function (response) {
-          _powerAssert["default"].deepEqual(response, user, 'currentUser response should match test user');
-          return _index.Formio.currentUser();
+        return _Formio.default.currentUser().then(function (response) {
+          _powerAssert.default.deepEqual(response, user, 'currentUser response should match test user');
+          return _Formio.default.currentUser();
         }).then(function (response) {
-          _powerAssert["default"].deepEqual(response, user, 'currentUser response should match test user');
+          _powerAssert.default.deepEqual(response, user, 'currentUser response should match test user');
         });
       },
       mock: function mock() {
         var called = false;
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/current"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/current"),
           method: 'GET',
           response: function response() {
-            _powerAssert["default"].ok(!called, 'User should be requested only once.');
+            _powerAssert.default.ok(!called, 'User should be requested only once.');
             called = true;
             return {
               headers: {
@@ -1022,7 +1017,7 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Create Project',
       test: function test() {
-        var formio = new _index.Formio();
+        var formio = new _Formio.default();
         var req = {
           title: chance.string({
             length: 10,
@@ -1041,12 +1036,12 @@ describe('Formio.js Tests', function () {
           template: 'http://help.form.io/templates/empty.json'
         };
         return formio.saveProject(req).then(function (response) {
-          _powerAssert["default"].deepEqual(response, project, 'saveProject response should match test user');
+          _powerAssert.default.deepEqual(response, project, 'saveProject response should match test user');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project"),
           method: 'POST',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1082,17 +1077,17 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Getting Projects',
       test: function test() {
-        return _index.Formio.loadProjects().then(function (projects) {
-          _powerAssert["default"].equal(projects.length, 1, 'Should return only one project.');
-          _powerAssert["default"].equal(projects.skip, 0, 'skip should be 0.');
-          _powerAssert["default"].equal(projects.limit, 1, 'limit should be 1.');
-          _powerAssert["default"].equal(projects.serverCount, 1, 'serverCount should be 1.');
-          _powerAssert["default"].deepEqual(projects[0], project, 'Should match project');
+        return _Formio.default.loadProjects().then(function (projects) {
+          _powerAssert.default.equal(projects.length, 1, 'Should return only one project.');
+          _powerAssert.default.equal(projects.skip, 0, 'skip should be 0.');
+          _powerAssert.default.equal(projects.limit, 1, 'limit should be 1.');
+          _powerAssert.default.equal(projects.serverCount, 1, 'serverCount should be 1.');
+          _powerAssert.default.deepEqual(projects[0], project, 'Should match project');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project"),
           method: 'GET',
           response: function response() {
             return {
@@ -1110,14 +1105,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Read Project',
       test: function test() {
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id));
         return formio.loadProject().then(function (response) {
-          _powerAssert["default"].deepEqual(response, project, 'Should match project');
+          _powerAssert.default.deepEqual(response, project, 'Should match project');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id),
           method: 'GET',
           response: function response() {
             return {
@@ -1133,7 +1128,7 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Update Project',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id));
+        var formio = new _Formio.default("/project/".concat(project._id));
         var newProject = (0, _utils.fastCloneDeep)(project);
         newProject.name = chance.string({
           length: 10,
@@ -1147,12 +1142,12 @@ describe('Formio.js Tests', function () {
           sentences: 1
         });
         return formio.saveProject(newProject).then(function (response) {
-          _powerAssert["default"].deepEqual(response, project, 'Project should match');
+          _powerAssert.default.deepEqual(response, project, 'Project should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id),
           method: 'PUT',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1170,7 +1165,7 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Create Form',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form"));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form"));
         var req = {
           title: chance.string({
             length: 10,
@@ -1196,7 +1191,7 @@ describe('Formio.js Tests', function () {
             persistent: true,
             placeholder: '',
             prefix: '',
-            "protected": false,
+            protected: false,
             suffix: '',
             tableView: true,
             type: 'textfield',
@@ -1228,18 +1223,18 @@ describe('Formio.js Tests', function () {
           submissionAccess: []
         };
         return formio.saveForm(req).then(function (response) {
-          _powerAssert["default"].deepEqual(response, form, 'Form should match');
+          _powerAssert.default.deepEqual(response, form, 'Form should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form"),
           method: 'POST',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
             var formId = generateID();
             form = (0, _utils.fastCloneDeep)(body);
-            _lodash["default"].assign(form, {
+            _lodash.default.assign(form, {
               _id: formId,
               created: new Date().toISOString(),
               modified: new Date().toISOString(),
@@ -1259,18 +1254,18 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Load Forms',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form"));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form"));
         return formio.loadForms().then(function (forms) {
-          _powerAssert["default"].equal(forms.length, 1, 'Should return only one form.');
-          _powerAssert["default"].equal(forms.skip, 0, 'skip should be 0.');
-          _powerAssert["default"].equal(forms.limit, 1, 'limit should be 1.');
-          _powerAssert["default"].equal(forms.serverCount, 1, 'serverCount should be 1.');
-          _powerAssert["default"].deepEqual(forms[0], form, 'Should match form');
+          _powerAssert.default.equal(forms.length, 1, 'Should return only one form.');
+          _powerAssert.default.equal(forms.skip, 0, 'skip should be 0.');
+          _powerAssert.default.equal(forms.limit, 1, 'limit should be 1.');
+          _powerAssert.default.equal(forms.serverCount, 1, 'serverCount should be 1.');
+          _powerAssert.default.deepEqual(forms[0], form, 'Should match form');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form"),
           method: 'GET',
           response: function response() {
             return {
@@ -1288,14 +1283,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Read Form',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id));
         return formio.loadForm().then(function (response) {
-          _powerAssert["default"].deepEqual(response, form, 'Form should match');
+          _powerAssert.default.deepEqual(response, form, 'Form should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
           method: 'GET',
           response: function response() {
             return {
@@ -1311,7 +1306,7 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Update Form',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id));
         var newForm = (0, _utils.fastCloneDeep)(form);
         newForm.title = chance.string({
           length: 10,
@@ -1326,12 +1321,12 @@ describe('Formio.js Tests', function () {
           pool: 'abcdefghijklmnopqrstuvwxyz'
         });
         return formio.saveForm(newForm).then(function (response) {
-          _powerAssert["default"].deepEqual(response, form, 'Form should match');
+          _powerAssert.default.deepEqual(response, form, 'Form should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
           method: 'PUT',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1349,19 +1344,19 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Create Submission',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id, "/submission"));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id, "/submission"));
         var req = {
           data: {
             fieldLabel: chance.string()
           }
         };
         return formio.saveSubmission(req).then(function (response) {
-          _powerAssert["default"].deepEqual(response, submission, 'Submission should match');
+          _powerAssert.default.deepEqual(response, submission, 'Submission should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission"),
           method: 'POST',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1390,18 +1385,18 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Load Submissions',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id, "/submission"));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id, "/submission"));
         return formio.loadSubmissions().then(function (submissions) {
-          _powerAssert["default"].equal(submissions.length, 1, 'Should return only one submission.');
-          _powerAssert["default"].equal(submissions.skip, 0, 'skip should be 0.');
-          _powerAssert["default"].equal(submissions.limit, 1, 'limit should be 1.');
-          _powerAssert["default"].equal(submissions.serverCount, 1, 'serverCount should be 1.');
-          _powerAssert["default"].deepEqual(submissions[0], submission, 'Should match submission');
+          _powerAssert.default.equal(submissions.length, 1, 'Should return only one submission.');
+          _powerAssert.default.equal(submissions.skip, 0, 'skip should be 0.');
+          _powerAssert.default.equal(submissions.limit, 1, 'limit should be 1.');
+          _powerAssert.default.equal(submissions.serverCount, 1, 'serverCount should be 1.');
+          _powerAssert.default.deepEqual(submissions[0], submission, 'Should match submission');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission"),
           method: 'GET',
           response: function response() {
             return {
@@ -1419,14 +1414,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Read Submission',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
         return formio.loadSubmission().then(function (response) {
-          _powerAssert["default"].deepEqual(response, submission, 'Submission should match');
+          _powerAssert.default.deepEqual(response, submission, 'Submission should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
           method: 'GET',
           response: function response() {
             return {
@@ -1442,16 +1437,16 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Update Submission',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
         var newSubmission = (0, _utils.fastCloneDeep)(submission);
         newSubmission.data.fieldLabel = chance.string();
         return formio.saveSubmission(newSubmission).then(function (response) {
-          _powerAssert["default"].deepEqual(response, submission, 'Submission should match');
+          _powerAssert.default.deepEqual(response, submission, 'Submission should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
           method: 'PUT',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1469,16 +1464,16 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Update Submission without ID',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id));
         var newSubmission = (0, _utils.fastCloneDeep)(submission);
         newSubmission.data.fieldLabel = chance.string();
         return formio.saveSubmission(newSubmission).then(function (response) {
-          _powerAssert["default"].deepEqual(response, submission, 'Submission should match');
+          _powerAssert.default.deepEqual(response, submission, 'Submission should match');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
           method: 'PUT',
           response: function response(url, opts) {
             var body = JSON.parse(opts.body);
@@ -1494,20 +1489,20 @@ describe('Formio.js Tests', function () {
         };
       }
     },
-    // Actions
-    // Available Actions
-    // Action Info
+    // // Actions
+    // // Available Actions
+    // // Action Info
     {
       name: 'Delete Submission',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id));
         return formio.deleteSubmission().then(function (response) {
-          _powerAssert["default"].equal(response, 'OK', 'Submission should be deleted.');
+          _powerAssert.default.equal(response, 'OK', 'Submission should be deleted.');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id, "/submission/").concat(submission._id),
           method: 'DELETE',
           response: {
             status: 200,
@@ -1522,14 +1517,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Delete Form',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id, "/form/").concat(form._id));
+        var formio = new _Formio.default("/project/".concat(project._id, "/form/").concat(form._id));
         return formio.deleteForm().then(function (response) {
-          _powerAssert["default"].equal(response, 'OK', 'Submission should be deleted.');
+          _powerAssert.default.equal(response, 'OK', 'Submission should be deleted.');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/form/").concat(form._id),
           method: 'DELETE',
           response: {
             status: 200,
@@ -1544,14 +1539,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Delete Project',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id));
+        var formio = new _Formio.default("/project/".concat(project._id));
         return formio.deleteProject().then(function (response) {
-          _powerAssert["default"].equal(response, 'OK', 'Submission should be deleted.');
+          _powerAssert.default.equal(response, 'OK', 'Submission should be deleted.');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id),
           method: 'DELETE',
           response: {
             status: 200,
@@ -1566,16 +1561,16 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Getting Projects',
       test: function test() {
-        return _index.Formio.loadProjects().then(function (projects) {
-          _powerAssert["default"].equal(projects.length, 0, 'Should return no projects.');
-          _powerAssert["default"].equal(projects.skip, undefined, 'skip should be undefined.');
-          _powerAssert["default"].equal(projects.limit, undefined, 'limit should be undefined.');
-          _powerAssert["default"].equal(projects.serverCount, 0, 'serverCount should be 0.');
+        return _Formio.default.loadProjects().then(function (projects) {
+          _powerAssert.default.equal(projects.length, 0, 'Should return no projects.');
+          _powerAssert.default.equal(projects.skip, undefined, 'skip should be undefined.');
+          _powerAssert.default.equal(projects.limit, undefined, 'limit should be undefined.');
+          _powerAssert.default.equal(projects.serverCount, 0, 'serverCount should be 0.');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project"),
           method: 'GET',
           response: function response() {
             return {
@@ -1593,14 +1588,14 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Temporary Token',
       test: function test() {
-        var formio = new _index.Formio("/project/".concat(project._id));
+        var formio = new _Formio.default("/project/".concat(project._id));
         return formio.getTempToken(200, 'GET:/current').then(function (tempToken) {
-          _powerAssert["default"].equal(tempToken, userToken);
+          _powerAssert.default.equal(tempToken, userToken);
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/project/").concat(project._id, "/token"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/project/").concat(project._id, "/token"),
           method: 'GET',
           response: function response() {
             return {
@@ -1617,13 +1612,13 @@ describe('Formio.js Tests', function () {
     }, {
       name: 'Logging Out',
       test: function test() {
-        return _index.Formio.logout().then(function () {
-          _powerAssert["default"].equal(_index.Formio.getToken(), '', 'Logged out');
+        return _Formio.default.logout().then(function () {
+          _powerAssert.default.equal(_Formio.default.getToken(), null, 'Logged out');
         });
       },
       mock: function mock() {
         return {
-          url: "".concat(_index.Formio.getBaseUrl(), "/logout"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/logout"),
           method: 'GET',
           response: function response() {
             userToken = null;
@@ -1645,17 +1640,17 @@ describe('Formio.js Tests', function () {
           _id: 'test_user_id',
           roles: ['test_role_id']
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
-          _powerAssert["default"].equal(permissions.read, false);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.delete, false);
+          _powerAssert.default.equal(permissions.read, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1669,7 +1664,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1692,17 +1687,17 @@ describe('Formio.js Tests', function () {
         var submission = {
           owner: userId
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions.read, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.read, false);
+          _powerAssert.default.equal(permissions.delete, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1716,7 +1711,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1735,17 +1730,17 @@ describe('Formio.js Tests', function () {
           _id: false,
           roles: []
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions.read, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.read, false);
+          _powerAssert.default.equal(permissions.delete, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1759,7 +1754,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1767,7 +1762,7 @@ describe('Formio.js Tests', function () {
               body: {
                 roles: [{
                   _id: 'test_anonymous_role_id',
-                  "default": true
+                  default: true
                 }]
               }
             };
@@ -1780,17 +1775,17 @@ describe('Formio.js Tests', function () {
         var user = {
           roles: ['test_admin_role']
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, true);
-          _powerAssert["default"].equal(permissions["delete"], true);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, true);
+          _powerAssert.default.equal(permissions.delete, true);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1801,7 +1796,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1829,17 +1824,17 @@ describe('Formio.js Tests', function () {
             }
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, false);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, false);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.delete, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1854,7 +1849,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1879,17 +1874,17 @@ describe('Formio.js Tests', function () {
             }
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.delete, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1904,7 +1899,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1929,17 +1924,17 @@ describe('Formio.js Tests', function () {
             }
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, true);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, true);
+          _powerAssert.default.equal(permissions.delete, false);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -1954,7 +1949,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -1979,17 +1974,17 @@ describe('Formio.js Tests', function () {
             }
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
         return formio.userPermissions(user, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, true);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, true);
-          _powerAssert["default"].equal(permissions["delete"], true);
+          _powerAssert.default.equal(permissions.create, true);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, true);
+          _powerAssert.default.equal(permissions.delete, true);
         });
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -2004,7 +1999,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -2034,22 +2029,22 @@ describe('Formio.js Tests', function () {
             }]
           }
         };
-        var formio = new _index.Formio("".concat(_index.Formio.getBaseUrl(), "/testform"));
-        return _nativePromiseOnly["default"].all([formio.userPermissions(user1, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, false);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+        var formio = new _Formio.default("".concat(_Formio.default.getBaseUrl(), "/testform"));
+        return _nativePromiseOnly.default.all([formio.userPermissions(user1, undefined, submission).then(function (permissions) {
+          _powerAssert.default.equal(permissions.create, false);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.delete, false);
         }), formio.userPermissions(user2, undefined, submission).then(function (permissions) {
-          _powerAssert["default"].equal(permissions.create, false);
-          _powerAssert["default"].equal(permissions.read, true);
-          _powerAssert["default"].equal(permissions.edit, false);
-          _powerAssert["default"].equal(permissions["delete"], false);
+          _powerAssert.default.equal(permissions.create, false);
+          _powerAssert.default.equal(permissions.read, true);
+          _powerAssert.default.equal(permissions.edit, false);
+          _powerAssert.default.equal(permissions.delete, false);
         })]);
       },
       mock: function mock() {
         return [{
-          url: "".concat(_index.Formio.getBaseUrl(), "/testform"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/testform"),
           method: 'GET',
           response: function response() {
             return {
@@ -2064,7 +2059,7 @@ describe('Formio.js Tests', function () {
             };
           }
         }, {
-          url: "".concat(_index.Formio.getBaseUrl(), "/access"),
+          url: "".concat(_Formio.default.getBaseUrl(), "/access"),
           method: 'GET',
           response: function response() {
             return {
@@ -2076,48 +2071,6 @@ describe('Formio.js Tests', function () {
           }
         }];
       }
-    }, {
-      name: 'Should return correct options for form url with Subdirectories path',
-      test: function test() {
-        var form = new _index.Formio.Form();
-        var options = form.getFormInitOptions('http://localhost:3000/fakeproject/fakeform', {
-          path: 'fakeform'
-        });
-        _powerAssert["default"].deepEqual(options, {
-          base: 'http://localhost:3000',
-          project: 'http://localhost:3000/fakeproject'
-        });
-        form = new _index.Formio.Form();
-        options = form.getFormInitOptions("".concat(_index.Formio.baseUrl, "/fakeproject/fakeform"), {
-          path: 'fakeform'
-        });
-        _powerAssert["default"].deepEqual(options, {});
-      }
-    }, {
-      name: 'Should set correct formio base and project url for form with Subdirectories path',
-      test: function test() {
-        var formElement = document.createElement('div');
-        return _index.Formio.createForm(formElement, 'http://localhost:3000/fakeproject/fakeform').then(function (form) {
-          _powerAssert["default"].equal(form.formio.base, 'http://localhost:3000');
-          _powerAssert["default"].equal(form.formio.projectUrl, 'http://localhost:3000/fakeproject');
-        });
-      },
-      mock: function mock() {
-        return {
-          url: 'http://localhost:3000/fakeproject/fakeform',
-          method: 'GET',
-          response: function response() {
-            return {
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: {
-                path: 'fakeform'
-              }
-            };
-          }
-        };
-      }
     }];
     tests.forEach(testCapability);
   });
@@ -2125,13 +2078,13 @@ describe('Formio.js Tests', function () {
     var plugin = null;
     beforeEach(function () {
       plugin = {
-        wrapStaticRequestPromise: _sinon["default"].spy(function (promise) {
+        wrapStaticRequestPromise: _sinon.default.spy(function (promise) {
           return promise;
         }),
-        staticRequest: _sinon["default"].spy(function () {
+        staticRequest: _sinon.default.spy(function () {
           // Return dummy user
           var userId = generateID();
-          return _nativePromiseOnly["default"].resolve({
+          return _nativePromiseOnly.default.resolve({
             _id: userId,
             created: new Date().toISOString(),
             modified: new Date().toISOString(),
@@ -2146,29 +2099,29 @@ describe('Formio.js Tests', function () {
           });
         })
       };
-      _index.Formio.registerPlugin(plugin, 'currentUserTestPlugin');
+      _Formio.default.registerPlugin(plugin, 'currentUserTestPlugin');
     });
     afterEach(function () {
-      _index.Formio.deregisterPlugin(plugin);
+      _Formio.default.deregisterPlugin(plugin);
     });
     it('Initial currentUser() should make static request', function (done) {
       // Force token
-      _index.Formio.token = chance.string({
+      _Formio.default.token = chance.string({
         length: 30
       });
-      _index.Formio.currentUser().then(function () {
-        _powerAssert["default"].ok(plugin.staticRequest.calledOnce, 'staticRequest should be called once');
+      _Formio.default.currentUser().then(function () {
+        _powerAssert.default.ok(plugin.staticRequest.calledOnce, 'staticRequest should be called once');
         done();
       });
-      _powerAssert["default"].ok(plugin.wrapStaticRequestPromise.calledOnce, 'wrapStaticRequestPromise should be called once');
+      _powerAssert.default.ok(plugin.wrapStaticRequestPromise.calledOnce, 'wrapStaticRequestPromise should be called once');
     });
     it('Next currentUser() should return cached value', function (done) {
       // Clear token
-      _index.Formio.currentUser().then(function () {
-        _powerAssert["default"].ok(!plugin.staticRequest.called, 'staticRequest should not be called');
+      _Formio.default.currentUser().then(function () {
+        _powerAssert.default.ok(!plugin.staticRequest.called, 'staticRequest should not be called');
         done();
       });
-      _powerAssert["default"].ok(plugin.wrapStaticRequestPromise.calledOnce, 'wrapStaticRequestPromise should be called once');
+      _powerAssert.default.ok(plugin.wrapStaticRequestPromise.calledOnce, 'wrapStaticRequestPromise should be called once');
     });
     it('Should render after form submission if renderMode = \'html\'', function (done) {
       var formJson = {
@@ -2187,13 +2140,13 @@ describe('Formio.js Tests', function () {
         }]
       };
       var element = document.createElement('div');
-      _index.Formio.createForm(element, formJson, {
+      _Formio.default.createForm(element, formJson, {
         renderMode: 'html'
       }).then(function (form) {
         var textField = form.getComponent('textField');
         var phoneNumber = form.getComponent('phoneNumber');
-        _powerAssert["default"].equal(textField.element.querySelector('[ref=value]').innerHTML, '-');
-        _powerAssert["default"].equal(phoneNumber.element.querySelector('[ref=value]').innerHTML, '-');
+        _powerAssert.default.equal(textField.element.querySelector('[ref=value]').innerHTML, '-');
+        _powerAssert.default.equal(phoneNumber.element.querySelector('[ref=value]').innerHTML, '-');
         form.submission = {
           data: {
             textField: 'textField',
@@ -2201,11 +2154,11 @@ describe('Formio.js Tests', function () {
           }
         };
         setTimeout(function () {
-          _powerAssert["default"].equal(textField.element.querySelector('[ref=value]').innerHTML, 'textField');
-          _powerAssert["default"].equal(phoneNumber.element.querySelector('[ref=value]').innerHTML, '88005553535');
+          _powerAssert.default.equal(textField.element.querySelector('[ref=value]').innerHTML, 'textField');
+          _powerAssert.default.equal(phoneNumber.element.querySelector('[ref=value]').innerHTML, '88005553535');
           done();
         }, 300);
-      })["catch"](done);
+      }).catch(done);
     });
     it('Should render after form submission if renderMode = \'html\' with Nested Form', function (done) {
       var formJson = {
@@ -2232,11 +2185,11 @@ describe('Formio.js Tests', function () {
         }]
       };
       var element = document.createElement('div');
-      _index.Formio.createForm(element, formJson, {
+      _Formio.default.createForm(element, formJson, {
         renderMode: 'html'
       }).then(function (form) {
-        _powerAssert["default"].equal(form.getComponent('textField').element.querySelector('[ref=value]').innerHTML, '-');
-        _powerAssert["default"].equal(form.getComponent('password').element.querySelector('[ref=value]').innerHTML, '-');
+        _powerAssert.default.equal(form.getComponent('textField').element.querySelector('[ref=value]').innerHTML, '-');
+        _powerAssert.default.equal(form.getComponent('password').element.querySelector('[ref=value]').innerHTML, '-');
         form.submission = {
           data: {
             form: {
@@ -2248,11 +2201,11 @@ describe('Formio.js Tests', function () {
           }
         };
         setTimeout(function () {
-          _powerAssert["default"].equal(form.getComponent('textField').element.querySelector('[ref=value]').innerHTML, 'textField');
-          _powerAssert["default"].equal(form.getComponent('password').element.querySelector('[ref=value]').innerHTML, 'password');
+          _powerAssert.default.equal(form.getComponent('textField').element.querySelector('[ref=value]').innerHTML, 'textField');
+          _powerAssert.default.equal(form.getComponent('password').element.querySelector('[ref=value]').innerHTML, 'password');
           done();
         }, 300);
-      })["catch"](done);
+      }).catch(done);
     });
   });
 });

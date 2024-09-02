@@ -18,7 +18,7 @@ __p +=
 ((__t = (ctx.component.height)) == null ? '' : __t) +
 '" ref="canvas"></canvas>\n  ';
  if (ctx.required) { ;
-__p += '\n  <span class="form-control-feedback text-danger">\n    <i class="' +
+__p += '\n  <span class="form-control-feedback field-required-inline text-danger">\n    <i class="' +
 ((__t = (ctx.iconClass('asterisk'))) == null ? '' : __t) +
 '"></i>\n  </span>\n  ';
  } ;

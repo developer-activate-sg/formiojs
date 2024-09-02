@@ -1,65 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.find.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.for-each.js");
-require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.timers.js");
+exports.default = void 0;
 require("core-js/modules/es.regexp.flags.js");
-var _lodash = _interopRequireDefault(require("lodash"));
 var _utils = require("../../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var calculateSingleSelectData = function calculateSingleSelectData(context, defaultValue) {
-  var instance = context.instance,
-    data = context.data;
-  var rawDefaultValue = instance.downloadedResources.find(function (resource) {
-    return _lodash["default"].get(resource, data.valueProperty) === defaultValue;
-  });
-  var options = {
-    data: {},
-    noeval: true
-  };
-  instance.interpolate(data.template, {
-    item: rawDefaultValue
-  }, options);
-  return options.data.item;
-};
-var calculateSelectData = function calculateSelectData(context) {
-  var instance = context.instance;
-  var defaultValue = instance.getValue();
-  if (instance.component.multiple) {
-    var multiSelectData = {};
-    (defaultValue !== null && defaultValue !== void 0 ? defaultValue : []).forEach(function (defaultValueItem) {
-      multiSelectData[defaultValueItem] = calculateSingleSelectData(context, defaultValueItem);
-    });
-    return multiSelectData;
-  } else {
-    return calculateSingleSelectData(context, defaultValue);
-  }
-};
-var setSelectData = function setSelectData(context) {
-  // Wait before downloadedResources will be set
-  setTimeout(function () {
-    var _instance$downloadedR;
-    var instance = context.instance,
-      data = context.data;
-    var selectDataComponent = instance === null || instance === void 0 ? void 0 : instance.root.getComponent('selectData');
-    // nothing can set if don't have downloaded resources
-    if (!selectDataComponent || !instance.getValue() || !((_instance$downloadedR = instance.downloadedResources) !== null && _instance$downloadedR !== void 0 && _instance$downloadedR.length)) {
-      return;
-    }
-    // if valueProperty is not provided, we have entire object
-    var shouldCalculateUrlData = data.dataSrc === 'url' && data.data.url && data.valueProperty;
-    var shouldCalculateResourceData = data.dataSrc === 'resource' && data.data.resource && data.valueProperty;
-    var newValue = shouldCalculateUrlData || shouldCalculateResourceData ? calculateSelectData(context) : undefined;
-    selectDataComponent.setValue(newValue);
-  }, 0);
-};
 var _default = [{
   key: 'dataSrc',
   data: {
@@ -90,7 +36,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'indexeddb']
     }
   }
@@ -104,7 +50,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'indexeddb']
     }
   }
@@ -121,7 +67,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'indexeddb']
     }
   }
@@ -138,7 +84,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'json']
     }
   }
@@ -152,12 +98,12 @@ var _default = [{
   conditional: {
     json: {
       and: [{
-        "in": [{
-          "var": 'data.dataSrc'
+        in: [{
+          var: 'data.dataSrc'
         }, ['resource', 'url']]
       }, {
         '!==': [{
-          "var": 'data.widget'
+          var: 'data.widget'
         }, 'html5']
       }]
     }
@@ -190,7 +136,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'values']
     }
   }
@@ -213,7 +159,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'resource']
     }
   }
@@ -228,7 +174,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
@@ -278,14 +224,14 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'resource']
       }, {
         '!==': [{
-          "var": 'data.reference'
+          var: 'data.reference'
         }, true]
       }, {
-        "var": 'data.data.resource'
+        var: 'data.data.resource'
       }]
     }
   }
@@ -337,11 +283,11 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'resource']
       }, {
         '===': [{
-          "var": 'data.valueProperty'
+          var: 'data.valueProperty'
         }, '']
       }]
     }
@@ -356,7 +302,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
@@ -370,8 +316,8 @@ var _default = [{
   tooltip: 'The name of the search querystring parameter used when sending a request to filter results with. The server at the URL must handle this query parameter.',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource']]
     }
   }
@@ -395,8 +341,8 @@ var _default = [{
   defaultValue: 0.3,
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource']]
     }
   }
@@ -412,11 +358,11 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'url']
       }, {
         '!=': [{
-          "var": 'data.searchField'
+          var: 'data.searchField'
         }, '']
       }]
     }
@@ -431,8 +377,8 @@ var _default = [{
   tooltip: 'Use this to provide additional filtering using query parameters.',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource']]
     }
   }
@@ -446,8 +392,8 @@ var _default = [{
   tooltip: 'Use this to provide additional sorting using query parameters',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource']]
     }
   }
@@ -463,12 +409,12 @@ var _default = [{
   conditional: {
     json: {
       and: [{
-        "in": [{
-          "var": 'data.dataSrc'
+        in: [{
+          var: 'data.dataSrc'
         }, ['url', 'resource']]
       }, {
         '!==': [{
-          "var": 'data.disableLimit'
+          var: 'data.disableLimit'
         }, true]
       }]
     }
@@ -486,7 +432,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'custom']
     }
   }
@@ -519,8 +465,8 @@ var _default = [{
   },
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource', 'values', 'custom']]
     }
   }
@@ -553,8 +499,8 @@ var _default = [{
   },
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource', 'values']]
     }
   }
@@ -568,8 +514,8 @@ var _default = [{
   tooltip: 'When the Refresh On field is changed, clear this components value.',
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['url', 'resource', 'values', 'custom']]
     }
   }
@@ -592,12 +538,12 @@ var _default = [{
   conditional: {
     json: {
       and: [{
-        "in": [{
-          "var": 'data.dataSrc'
+        in: [{
+          var: 'data.dataSrc'
         }, ['url', 'resource']]
       }, {
         '===': [{
-          "var": 'data.searchEnabled'
+          var: 'data.searchEnabled'
         }, true]
       }]
     }
@@ -632,7 +578,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'resource']
     }
   }
@@ -648,11 +594,11 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'resource']
       }, {
         '!!': {
-          "var": 'data.addResource'
+          var: 'data.addResource'
         }
       }]
     }
@@ -667,7 +613,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'resource']
     }
   }
@@ -695,41 +641,5 @@ var _default = [{
   key: 'useExactSearch',
   label: 'Use exact search',
   tooltip: 'Disables search algorithm threshold.'
-}, {
-  key: 'defaultValue',
-  onSetItems: function onSetItems(component) {
-    setSelectData(component.evalContext());
-  },
-  onChange: function onChange(context) {
-    if (context && context.flags && context.flags.modified) {
-      setSelectData(context);
-    }
-  }
-}, {
-  key: 'selectData',
-  conditional: {
-    json: {
-      'and': [{
-        '!==': [{
-          "var": 'data.valueProperty'
-        }, null]
-      }, {
-        '!==': [{
-          "var": 'data.valueProperty'
-        }, '']
-      }]
-    }
-  }
-}, {
-  key: 'template',
-  onChange: function onChange(context) {
-    if (context && context.flags && context.flags.modified) {
-      var defaultValueComponent = context.instance.root.getComponent('defaultValue');
-      if (!defaultValueComponent) {
-        return;
-      }
-      setSelectData(defaultValueComponent.evalContext());
-    }
-  }
 }];
-exports["default"] = _default;
+exports.default = _default;

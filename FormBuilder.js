@@ -1,11 +1,7 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -13,7 +9,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
@@ -24,7 +20,7 @@ require("core-js/modules/es.number.constructor.js");
 var _Formio = require("./Formio");
 var _builders = _interopRequireDefault(require("./builders"));
 var _Form2 = _interopRequireDefault(require("./Form"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52,16 +48,16 @@ var FormBuilder = /*#__PURE__*/function (_Form) {
   _createClass(FormBuilder, [{
     key: "create",
     value: function create(display) {
-      if (_builders["default"].builders[display]) {
-        return new _builders["default"].builders[display](this.element, this.options);
+      if (_builders.default.builders[display]) {
+        return new _builders.default.builders[display](this.element, this.options);
       } else {
         // eslint-disable-next-line new-cap
-        return new _builders["default"].builders['webform'](this.element, this.options);
+        return new _builders.default.builders['webform'](this.element, this.options);
       }
     }
   }]);
   return FormBuilder;
-}(_Form2["default"]);
+}(_Form2.default);
 /**
  * Factory that creates a new form builder based on the form parameter.
  *
@@ -71,7 +67,7 @@ var FormBuilder = /*#__PURE__*/function (_Form) {
  *
  * @return {Promise} - When the form is instance is ready.
  */
-exports["default"] = FormBuilder;
+exports.default = FormBuilder;
 _defineProperty(FormBuilder, "options", {});
 _Formio.GlobalFormio.builder = function () {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {

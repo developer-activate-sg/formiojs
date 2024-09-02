@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'select',
   input: true,
@@ -47,7 +46,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.displayInTimezone'
+        var: 'data.displayInTimezone'
       }, 'location']
     }
   }
@@ -71,7 +70,7 @@ var _default = [{
   key: 'format',
   label: 'Format',
   placeholder: 'Format',
-  description: 'Use formats provided by <a href="https://github.com/angular-ui/bootstrap/tree/master/src/dateparser/docs#uibdateparsers-format-codes" target="_blank" rel="noopener noreferrer">DateParser Codes</a>',
+  description: 'Use formats provided by <a href="https://github.com/angular-ui/bootstrap/tree/master/src/dateparser/docs#uibdateparsers-format-codes" target="_blank">DateParser Codes</a>',
   tooltip: 'The date format for displaying the datetime value.',
   weight: 52
 }, {
@@ -104,4 +103,4 @@ var _default = [{
   }],
   defaultValue: []
 }];
-exports["default"] = _default;
+exports.default = _default;

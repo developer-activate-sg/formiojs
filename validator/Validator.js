@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -11,31 +10,24 @@ require("core-js/modules/es.array.from.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.ValidationChecker = void 0;
-require("core-js/modules/es.array.some.js");
+exports.default = exports.ValidationChecker = void 0;
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.split.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.date.to-string.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.number.is-nan.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.string.match.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.values.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -49,7 +41,7 @@ var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _fetchPonyfill2 = _interopRequireDefault(require("fetch-ponyfill"));
 var _calendarUtils = require("../utils/calendarUtils");
 var _Rules = _interopRequireDefault(require("./Rules"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -58,16 +50,16 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-var _fetchPonyfill = (0, _fetchPonyfill2["default"])({
-    Promise: _nativePromiseOnly["default"]
+var _fetchPonyfill = (0, _fetchPonyfill2.default)({
+    Promise: _nativePromiseOnly.default
   }),
   fetch = _fetchPonyfill.fetch,
   Headers = _fetchPonyfill.Headers,
@@ -76,7 +68,7 @@ var ValidationChecker = /*#__PURE__*/function () {
   function ValidationChecker() {
     var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     _classCallCheck(this, ValidationChecker);
-    this.config = _lodash["default"].defaults(config, ValidationChecker.config);
+    this.config = _lodash.default.defaults(config, ValidationChecker.config);
     this.validators = {
       required: {
         key: 'validate.required',
@@ -132,7 +124,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           }
 
           // Skip if value is empty object or falsy
-          if (!value || _lodash["default"].isObjectLike(value) && _lodash["default"].isEmpty(value)) {
+          if (!value || _lodash.default.isObjectLike(value) && _lodash.default.isEmpty(value)) {
             return true;
           }
 
@@ -140,7 +132,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           if (!this.config.db) {
             return true;
           }
-          return new _nativePromiseOnly["default"](function (resolve) {
+          return new _nativePromiseOnly.default(function (resolve) {
             var form = _this.config.form;
             var submission = _this.config.submission;
             var path = "data.".concat(component.path);
@@ -151,11 +143,11 @@ var ValidationChecker = /*#__PURE__*/function () {
               if (needValuesInArray) {
                 pathToValue = pathArray.shift();
                 var pathQueryObj = {};
-                _lodash["default"].reduce(pathArray, function (pathQueryPath, pathPart, index) {
+                _lodash.default.reduce(pathArray, function (pathQueryPath, pathPart, index) {
                   var isLastPathPart = index === pathArray.length - 1;
-                  var obj = _lodash["default"].get(pathQueryObj, pathQueryPath, pathQueryObj);
+                  var obj = _lodash.default.get(pathQueryObj, pathQueryPath, pathQueryObj);
                   var addedPath = "$elemMatch['".concat(pathPart, "']");
-                  _lodash["default"].set(obj, addedPath, isLastPathPart ? pathQueryParams : {});
+                  _lodash.default.set(obj, addedPath, isLastPathPart ? pathQueryParams : {});
                   return pathQueryPath ? "".concat(pathQueryPath, ".").concat(addedPath) : addedPath;
                 }, '');
                 query[pathToValue] = pathQueryObj;
@@ -168,23 +160,9 @@ var ValidationChecker = /*#__PURE__*/function () {
             var query = {
               form: form._id
             };
-            var collationOptions = {};
-            if (_lodash["default"].isString(value)) {
-              var _component$component$;
+            if (_lodash.default.isString(value)) {
               if (component.component.dbIndex) {
                 addPathQueryParams(value, query, path);
-              }
-              // These are kind of hacky but provides for a more efficient "unique" validation when the string is an email,
-              // because we (by and large) only have to worry about ASCII and partial unicode; this way, we can use collation-
-              // aware indexes with case insensitive email searches to make things like login and registration a whole lot faster
-              else if (component.component.type === 'email' || component.component.type === 'textfield' && ((_component$component$ = component.component.validate) === null || _component$component$ === void 0 ? void 0 : _component$component$.pattern) === '[A-Za-z0-9]+') {
-                addPathQueryParams(value, query, path);
-                collationOptions = {
-                  collation: {
-                    locale: 'en',
-                    strength: 2
-                  }
-                };
               } else {
                 addPathQueryParams({
                   $regex: new RegExp("^".concat((0, _utils.escapeRegExCharacters)(value), "$")),
@@ -193,18 +171,18 @@ var ValidationChecker = /*#__PURE__*/function () {
               }
             }
             // FOR-213 - Pluck the unique location id
-            else if (_lodash["default"].isPlainObject(value) && value.address && value.address['address_components'] && value.address['place_id']) {
+            else if (_lodash.default.isPlainObject(value) && value.address && value.address['address_components'] && value.address['place_id']) {
               addPathQueryParams({
                 $regex: new RegExp("^".concat((0, _utils.escapeRegExCharacters)(value.address['place_id']), "$")),
                 $options: 'i'
               }, query, "".concat(path, ".address.place_id"));
             }
             // Compare the contents of arrays vs the order.
-            else if (_lodash["default"].isArray(value)) {
+            else if (_lodash.default.isArray(value)) {
               addPathQueryParams({
                 $all: value
               }, query, path);
-            } else if (_lodash["default"].isObject(value) || _lodash["default"].isNumber(value)) {
+            } else if (_lodash.default.isObject(value) || _lodash.default.isNumber(value)) {
               addPathQueryParams({
                 $eq: value
               }, query, path);
@@ -213,8 +191,8 @@ var ValidationChecker = /*#__PURE__*/function () {
             query.deleted = {
               $eq: null
             };
-            query.state = 'submitted';
-            var uniqueValidationCallback = function uniqueValidationCallback(err, result) {
+            // Try to find an existing value within the form
+            _this.config.db.findOne(query, function (err, result) {
               if (err) {
                 return resolve(false);
               } else if (result) {
@@ -228,22 +206,8 @@ var ValidationChecker = /*#__PURE__*/function () {
               } else {
                 return resolve(true);
               }
-            };
-            // Try to find an existing value within the form
-            _this.config.db.findOne(query, null, collationOptions, function (err, result) {
-              if (err && collationOptions.collation) {
-                // presume this error comes from db compatibility, try again as regex
-                delete query[path];
-                addPathQueryParams({
-                  $regex: new RegExp("^".concat((0, _utils.escapeRegExCharacters)(value), "$")),
-                  $options: 'i'
-                }, query, path);
-                _this.config.db.findOne(query, uniqueValidationCallback);
-              } else {
-                return uniqueValidationCallback(err, result);
-              }
             });
-          })["catch"](function () {
+          }).catch(function () {
             return false;
           });
         }
@@ -274,7 +238,7 @@ var ValidationChecker = /*#__PURE__*/function () {
               return isRequired ? !!value.length : true;
             } else {
               // Null/undefined is ok if this value isn't required; anything else should fail
-              return _lodash["default"].isNil(value) ? !isRequired : false;
+              return _lodash.default.isNil(value) ? !isRequired : false;
             }
           } else {
             return canBeArray || !isArray;
@@ -297,7 +261,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           }
 
           // Skip if value is empty
-          if (!value || _lodash["default"].isEmpty(value)) {
+          if (!value || _lodash.default.isEmpty(value)) {
             return true;
           }
 
@@ -317,7 +281,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           };
 
           // If the url is a boolean value
-          if (_lodash["default"].isBoolean(requestOptions.url)) {
+          if (_lodash.default.isBoolean(requestOptions.url)) {
             requestOptions.url = !!requestOptions.url;
             if (!requestOptions.url || schema.dataSrc !== 'url' || !schema.data.url || !schema.searchField) {
               return true;
@@ -349,13 +313,13 @@ var ValidationChecker = /*#__PURE__*/function () {
           });
 
           // Add query string to URL
-          requestOptions.url += (requestOptions.url.includes('?') ? '&' : '?') + _lodash["default"].chain(requestOptions.qs).map(function (val, key) {
+          requestOptions.url += (requestOptions.url.includes('?') ? '&' : '?') + _lodash.default.chain(requestOptions.qs).map(function (val, key) {
             return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(val));
           }).join('&').value();
 
           // Set custom headers.
           if (schema.data && schema.data.headers) {
-            _lodash["default"].each(schema.data.headers, function (header) {
+            _lodash.default.each(schema.data.headers, function (header) {
               if (header.key) {
                 requestOptions.headers[header.key] = header.value;
               }
@@ -375,7 +339,7 @@ var ValidationChecker = /*#__PURE__*/function () {
             return response.json();
           }).then(function (results) {
             return results && results.length;
-          })["catch"](function () {
+          }).catch(function () {
             return false;
           });
         }
@@ -583,16 +547,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           });
         },
         check: function check(component, setting, value) {
-          if (!value) {
-            return true;
-          }
-          if (value === 'Invalid date' || value === 'Invalid Date') {
-            return false;
-          }
-          if (typeof value === 'string') {
-            value = new Date(value);
-          }
-          return value instanceof Date === true && value.toString() !== 'Invalid Date';
+          return value !== 'Invalid date';
         }
       },
       day: {
@@ -663,7 +618,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         key: 'validate.pattern',
         hasLabel: true,
         message: function message(component, setting) {
-          return component.t(_lodash["default"].get(component, 'component.validate.patternMessage', component.errorMessage('pattern')), {
+          return component.t(_lodash.default.get(component, 'component.validate.patternMessage', component.errorMessage('pattern')), {
             field: component.errorLabel,
             pattern: setting,
             data: component.data
@@ -721,8 +676,8 @@ var ValidationChecker = /*#__PURE__*/function () {
           inputMask = inputMask ? (0, _utils.getInputMask)(inputMask) : null;
           if (value && inputMask && !component.skipMaskValidation) {
             // If char which is used inside mask placeholder was used in the mask, replace it with space to prevent errors
-            inputMask = inputMask.map(function (_char) {
-              return _char === component.placeholderChar ? ' ' : _char;
+            inputMask = inputMask.map(function (char) {
+              return char === component.placeholderChar ? ' ' : char;
             });
             return (0, _utils.matchInputMask)(value, inputMask);
           }
@@ -761,7 +716,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           var date = (0, _utils.getDateSetting)(setting);
           return component.t(component.errorMessage('maxDate'), {
             field: component.errorLabel,
-            maxDate: (0, _moment["default"])(date).format(component.format)
+            maxDate: (0, _moment.default)(date).format(component.format)
           });
         },
         check: function check(component, setting, value) {
@@ -769,9 +724,9 @@ var ValidationChecker = /*#__PURE__*/function () {
           if (component.isPartialDay && component.isPartialDay(value)) {
             return true;
           }
-          var date = component.getValidationFormat ? (0, _moment["default"])(value, component.getValidationFormat()) : (0, _moment["default"])(value);
+          var date = component.getValidationFormat ? (0, _moment.default)(value, component.getValidationFormat()) : (0, _moment.default)(value);
           var maxDate = (0, _utils.getDateSetting)(setting);
-          if (_lodash["default"].isNull(maxDate)) {
+          if (_lodash.default.isNull(maxDate)) {
             return true;
           } else {
             maxDate.setHours(0, 0, 0, 0);
@@ -786,7 +741,7 @@ var ValidationChecker = /*#__PURE__*/function () {
           var date = (0, _utils.getDateSetting)(setting);
           return component.t(component.errorMessage('minDate'), {
             field: component.errorLabel,
-            minDate: (0, _moment["default"])(date).format(component.format)
+            minDate: (0, _moment.default)(date).format(component.format)
           });
         },
         check: function check(component, setting, value) {
@@ -794,9 +749,9 @@ var ValidationChecker = /*#__PURE__*/function () {
           if (component.isPartialDay && component.isPartialDay(value)) {
             return true;
           }
-          var date = component.getValidationFormat ? (0, _moment["default"])(value, component.getValidationFormat()) : (0, _moment["default"])(value);
+          var date = component.getValidationFormat ? (0, _moment.default)(value, component.getValidationFormat()) : (0, _moment.default)(value);
           var minDate = (0, _utils.getDateSetting)(setting);
-          if (_lodash["default"].isNull(minDate)) {
+          if (_lodash.default.isNull(minDate)) {
             return true;
           } else {
             minDate.setHours(0, 0, 0, 0);
@@ -849,7 +804,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         message: function message(component) {
           return component.t(component.errorMessage(this.validators.calendar.messageText), {
             field: component.errorLabel,
-            maxDate: (0, _moment["default"])(component.dataValue).format(component.format)
+            maxDate: (0, _moment.default)(component.dataValue).format(component.format)
           });
         },
         check: function check(component, setting, value, data, index) {
@@ -877,7 +832,7 @@ var ValidationChecker = /*#__PURE__*/function () {
             }
           }
           if (value && enteredDate) {
-            if ((0, _moment["default"])(value).format() !== (0, _moment["default"])(enteredDate, momentFormat, true).format() && enteredDate.match(/_/gi)) {
+            if ((0, _moment.default)(value).format() !== (0, _moment.default)(enteredDate, momentFormat, true).format() && enteredDate.match(/_/gi)) {
               this.validators.calendar.messageText = _calendarUtils.CALENDAR_ERROR_MESSAGES.INCOMPLETE;
               return false;
             } else {
@@ -898,24 +853,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         },
         check: function check(component, setting, value) {
           if (component.isEmpty(value)) return true;
-          return (0, _moment["default"])(value, component.component.format).isValid();
-        }
-      },
-      availableValueProperty: {
-        key: 'validate.availableValueProperty',
-        method: 'validateValueProperty',
-        messageText: 'Invalid Value Property',
-        hasLabel: true,
-        message: function message(component) {
-          return component.t(component.errorMessage(this.validators.availableValueProperty.messageText), {
-            field: component.errorLabel
-          });
-        },
-        check: function check(component, setting, value) {
-          if (component.component.dataSrc === 'url' && (_lodash["default"].isUndefined(value) || _lodash["default"].isObject(value))) {
-            return false;
-          }
-          return true;
+          return (0, _moment.default)(value, component.component.format).isValid();
         }
       }
     };
@@ -942,7 +880,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         return '';
       };
       if (async) {
-        return _nativePromiseOnly["default"].resolve(resultOrPromise).then(processResult);
+        return _nativePromiseOnly.default.resolve(resultOrPromise).then(processResult);
       } else {
         return processResult(resultOrPromise);
       }
@@ -955,14 +893,14 @@ var ValidationChecker = /*#__PURE__*/function () {
         return false;
       }
       var validator = this.validators[validatorName];
-      var setting = _lodash["default"].get(validationObj || component.component, validator.key, null);
+      var setting = _lodash.default.get(validationObj || component.component, validator.key, null);
       var resultOrPromise = this.checkValidator(component, validator, setting, value, data, index, row, async);
       var processResult = function processResult(result) {
         if (result) {
           var _component$refs$input;
           var resultData = {
-            message: (0, _utils.unescapeHTML)(_lodash["default"].get(result, 'message', result)),
-            level: _lodash["default"].get(result, 'level') === 'warning' ? 'warning' : 'error',
+            message: (0, _utils.unescapeHTML)(_lodash.default.get(result, 'message', result)),
+            level: _lodash.default.get(result, 'level') === 'warning' ? 'warning' : 'error',
             path: (0, _utils.getArrayFromComponentPath)(component.path || ''),
             context: {
               validator: validatorName,
@@ -984,7 +922,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         }
       };
       if (async) {
-        return _nativePromiseOnly["default"].resolve(resultOrPromise).then(processResult);
+        return _nativePromiseOnly.default.resolve(resultOrPromise).then(processResult);
       } else {
         return processResult(resultOrPromise);
       }
@@ -996,11 +934,11 @@ var ValidationChecker = /*#__PURE__*/function () {
         _this3 = this;
       var includeWarnings = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
       var async = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-      var isServerSidePersistent = typeof process !== 'undefined' && _lodash["default"].get(process, 'release.name') === 'node' && !_lodash["default"].defaultTo(component.component.persistent, true);
+      var isServerSidePersistent = typeof process !== 'undefined' && _lodash.default.get(process, 'release.name') === 'node' && !_lodash.default.defaultTo(component.component.persistent, true);
 
       // If we're server-side and it's not a persistent component, don't run validation at all
       if (isServerSidePersistent || component.component.validate === false) {
-        return async ? _nativePromiseOnly["default"].resolve([]) : [];
+        return async ? _nativePromiseOnly.default.resolve([]) : [];
       }
       data = data || component.rootValue;
       row = row || component.data;
@@ -1018,19 +956,19 @@ var ValidationChecker = /*#__PURE__*/function () {
       }
 
       // If this component has the new validation system enabled, use it instead.
-      var validations = _lodash["default"].get(component, 'component.validations');
+      var validations = _lodash.default.get(component, 'component.validations');
       var nextGenResultsOrPromises = [];
       if (validations && Array.isArray(validations) && validations.length) {
-        var validationsGroupedByMode = _lodash["default"].chain(validations).groupBy(function (validation) {
+        var validationsGroupedByMode = _lodash.default.chain(validations).groupBy(function (validation) {
           return validation.mode;
         }).value();
         if (component.calculateCondition) {
           includeWarnings = true;
-          var uiGroupedValidation = _lodash["default"].chain(validationsGroupedByMode.ui).filter('active').groupBy(function (validation) {
+          var uiGroupedValidation = _lodash.default.chain(validationsGroupedByMode.ui).filter('active').groupBy(function (validation) {
             return validation.group || null;
           }).value();
-          var commonValidations = uiGroupedValidation["null"] || [];
-          delete uiGroupedValidation["null"];
+          var commonValidations = uiGroupedValidation.null || [];
+          delete uiGroupedValidation.null;
           commonValidations.forEach(function (_ref3) {
             var condition = _ref3.condition,
               message = _ref3.message,
@@ -1043,8 +981,8 @@ var ValidationChecker = /*#__PURE__*/function () {
               });
             }
           });
-          _lodash["default"].forEach(uiGroupedValidation, function (validationGroup) {
-            _lodash["default"].forEach(validationGroup, function (_ref4) {
+          _lodash.default.forEach(uiGroupedValidation, function (validationGroup) {
+            _lodash.default.forEach(validationGroup, function (_ref4) {
               var condition = _ref4.condition,
                 message = _ref4.message,
                 severity = _ref4.severity;
@@ -1062,25 +1000,25 @@ var ValidationChecker = /*#__PURE__*/function () {
           nextGenResultsOrPromises = this.checkValidations(component, validations, data, row, values, async);
         }
         if (component.validators.includes('custom') && validationsGroupedByMode.js) {
-          _lodash["default"].each(validationsGroupedByMode.js, function (validation) {
-            nextGenResultsOrPromises.push(_lodash["default"].map(values, function (value, index) {
+          _lodash.default.each(validationsGroupedByMode.js, function (validation) {
+            nextGenResultsOrPromises.push(_lodash.default.map(values, function (value, index) {
               return _this3.validate(component, 'custom', value, data, index, row, async, conditionallyVisible, validation);
             }));
           });
         }
         if (component.validators.includes('json') && validationsGroupedByMode.json) {
-          _lodash["default"].each(validationsGroupedByMode.json, function (validation) {
-            nextGenResultsOrPromises.push(_lodash["default"].map(values, function (value, index) {
+          _lodash.default.each(validationsGroupedByMode.json, function (validation) {
+            nextGenResultsOrPromises.push(_lodash.default.map(values, function (value, index) {
               return _this3.validate(component, 'json', value, data, index, row, async, conditionallyVisible, validation);
             }));
           });
         }
       }
-      var validateCustom = _lodash["default"].get(component, 'component.validate.custom');
-      var customErrorMessage = _lodash["default"].get(component, 'component.validate.customMessage');
+      var validateCustom = _lodash.default.get(component, 'component.validate.custom');
+      var customErrorMessage = _lodash.default.get(component, 'component.validate.customMessage');
 
       // Run primary validators
-      var resultsOrPromises = (0, _lodash["default"])(component.validators).chain().map(function (validatorName) {
+      var resultsOrPromises = (0, _lodash.default)(component.validators).chain().map(function (validatorName) {
         if (!_this3.validators.hasOwnProperty(validatorName)) {
           return {
             message: "Validator for \"".concat(validatorName, "\" is not defined"),
@@ -1097,7 +1035,7 @@ var ValidationChecker = /*#__PURE__*/function () {
         if (validatorName === 'required' && !values.length) {
           return [_this3.validate(component, validatorName, null, data, 0, row, async, conditionallyVisible)];
         }
-        return _lodash["default"].map(values, function (value, index) {
+        return _lodash.default.map(values, function (value, index) {
           return _this3.validate(component, validatorName, value, data, index, row, async, conditionallyVisible);
         });
       }).flatten().value();
@@ -1116,9 +1054,9 @@ var ValidationChecker = /*#__PURE__*/function () {
       // Define how results should be formatted
       var formatResults = function formatResults(results) {
         // Condense to a single flat array
-        results = (0, _lodash["default"])(results).chain().flatten().compact().value();
+        results = (0, _lodash.default)(results).chain().flatten().compact().value();
         if (customErrorMessage || validateCustom) {
-          _lodash["default"].each(results, function (result) {
+          _lodash.default.each(results, function (result) {
             result.message = component.t(customErrorMessage || result.message, {
               field: component.errorLabel,
               data: data,
@@ -1128,13 +1066,13 @@ var ValidationChecker = /*#__PURE__*/function () {
             result.context.hasLabel = false;
           });
         }
-        return includeWarnings ? results : _lodash["default"].reject(results, function (result) {
+        return includeWarnings ? results : _lodash.default.reject(results, function (result) {
           return result.level === 'warning';
         });
       };
       // Wait for results if using async mode, otherwise process and return immediately
       if (async) {
-        return _nativePromiseOnly["default"].all(resultsOrPromises).then(formatResults);
+        return _nativePromiseOnly.default.all(resultsOrPromises).then(formatResults);
       } else {
         return formatResults(resultsOrPromises);
       }
@@ -1179,7 +1117,7 @@ var ValidationChecker = /*#__PURE__*/function () {
   }, {
     key: "checkRule",
     value: function checkRule(component, validation, data, row, values, async) {
-      var Rule = _Rules["default"].getRule(validation.rule);
+      var Rule = _Rules.default.getRule(validation.rule);
       var results = [];
       if (Rule) {
         var rule = new Rule(component, validation.settings, this.config);
@@ -1216,17 +1154,17 @@ var ValidationChecker = /*#__PURE__*/function () {
   }, {
     key: "get",
     value: function get() {
-      _lodash["default"].get.call(this, arguments);
+      _lodash.default.get.call(this, arguments);
     }
   }, {
     key: "each",
     value: function each() {
-      _lodash["default"].each.call(this, arguments);
+      _lodash.default.each.call(this, arguments);
     }
   }, {
     key: "has",
     value: function has() {
-      _lodash["default"].has.call(this, arguments);
+      _lodash.default.has.call(this, arguments);
     }
   }]);
   return ValidationChecker;
@@ -1239,4 +1177,4 @@ ValidationChecker.config = {
   submission: null
 };
 var instance = new ValidationChecker();
-exports["default"] = instance;
+exports.default = instance;

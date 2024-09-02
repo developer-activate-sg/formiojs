@@ -1,22 +1,20 @@
 "use strict";
 
-require("core-js/modules/es.symbol.js");
-require("core-js/modules/es.symbol.description.js");
-require("core-js/modules/es.symbol.iterator.js");
-require("core-js/modules/es.array.iterator.js");
-require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.define-getter.js");
 require("core-js/modules/es.object.define-setter.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.string.split.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.array.join.js");
+require("core-js/modules/es.symbol.js");
+require("core-js/modules/es.symbol.description.js");
+require("core-js/modules/es.symbol.iterator.js");
+require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 // Using polyfill from https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
 /* eslint-disable */
@@ -35,6 +33,7 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
     };
   }
 }
+
 
 /* Polyfill service v3.52.1
  * For detailed credits and licence information see https://github.com/financial-times/polyfill-service.
@@ -66,6 +65,7 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
       var ERR_ACCESSORS_NOT_SUPPORTED = 'Getters & setters cannot be defined on this javascript engine';
       var ERR_VALUE_ACCESSORS = 'A property cannot both have accessors and be writable or have a value';
 
+      // This does not use CreateMethodProperty because our CreateMethodProperty function uses Object.defineProperty.
       Object.defineProperty = function defineProperty(object, property, descriptor) {
         // Where native support exists, assume it
         if (nativeDefineProperty && (object === window || object === document || object === Element.prototype || object instanceof Element)) {
@@ -170,13 +170,11 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
         var rSpace = /\s+/;
 
         /** Validate the token/s passed to an instance method, if any. */
-        if (args.length) for (i = 0; i < args.length; ++i) {
-          if (rSpace.test(args[i])) {
-            error = new SyntaxError('String "' + args[i] + '" ' + "contains" + ' an invalid character');
-            error.code = 5;
-            error.name = "InvalidCharacterError";
-            throw error;
-          }
+        if (args.length) for (i = 0; i < args.length; ++i) if (rSpace.test(args[i])) {
+          error = new SyntaxError('String "' + args[i] + '" ' + "contains" + ' an invalid character');
+          error.code = 5;
+          error.name = "InvalidCharacterError";
+          throw error;
         }
 
         /** Split the new value apart by whitespace*/
@@ -191,9 +189,7 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
 
         /** Repopulate the internal token lists */
         tokenMap = {};
-        for (i = 0; i < tokens.length; ++i) {
-          tokenMap[tokens[i]] = true;
-        }
+        for (i = 0; i < tokens.length; ++i) tokenMap[tokens[i]] = true;
         length = tokens.length;
         reindex();
       };
@@ -251,9 +247,7 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
         }
 
         /** Run through our tokens list and reassign only those that aren't defined in the hash declared above. */
-        for (i = 0; i < tokens.length; ++i) {
-          if (!ignore[tokens[i]]) t.push(tokens[i]);
-        }
+        for (i = 0; i < tokens.length; ++i) if (!ignore[tokens[i]]) t.push(tokens[i]);
         tokens = t;
         length = t.length >>> 0;
 
@@ -329,12 +323,12 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
         if (!('classList' in e)) return;
         e.classList.add('a', 'b');
         if (e.classList.contains('b')) return;
-        var _native = e.classList.constructor.prototype.add;
+        var native = e.classList.constructor.prototype.add;
         e.classList.constructor.prototype.add = function () {
           var args = arguments;
           var l = arguments.length;
           for (var i = 0; i < l; i++) {
-            _native.call(this, args[i]);
+            native.call(this, args[i]);
           }
         };
       })();
@@ -347,12 +341,12 @@ if (typeof window !== 'undefined' && typeof window.document !== 'undefined') {
         e.classList.add('b');
         e.classList.remove('a', 'b');
         if (!e.classList.contains('b')) return;
-        var _native2 = e.classList.constructor.prototype.remove;
+        var native = e.classList.constructor.prototype.remove;
         e.classList.constructor.prototype.remove = function () {
           var args = arguments;
           var l = arguments.length;
           for (var i = 0; i < l; i++) {
-            _native2.call(this, args[i]);
+            native.call(this, args[i]);
           }
         };
       })();

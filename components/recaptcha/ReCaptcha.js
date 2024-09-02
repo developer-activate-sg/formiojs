@@ -3,8 +3,6 @@
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -14,10 +12,8 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -25,18 +21,16 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Component2 = _interopRequireDefault(require("../_classes/component/Component"));
 var _Formio = require("../../Formio");
 var _get3 = _interopRequireDefault(require("lodash/get"));
 var _debounce2 = _interopRequireDefault(require("lodash/debounce"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -78,7 +72,7 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
         // We need to see it in builder mode.
         this.append(this.text(this.name));
       } else {
-        var siteKey = (0, _get3["default"])(this.root.form, 'settings.recaptcha.siteKey');
+        var siteKey = (0, _get3.default)(this.root.form, 'settings.recaptcha.siteKey');
         if (siteKey) {
           var recaptchaApiScriptUrl = "https://www.google.com/recaptcha/api.js?render=".concat(siteKey);
           this.recaptchaApiReady = _Formio.GlobalFormio.requireLibrary('googleRecaptcha', 'grecaptcha', recaptchaApiScriptUrl, true);
@@ -93,29 +87,24 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
       return;
     }
   }, {
-    key: "skipInEmail",
-    get: function get() {
-      return true;
-    }
-  }, {
     key: "verify",
     value: function verify(actionName) {
       var _this = this;
-      var siteKey = (0, _get3["default"])(this.root.form, 'settings.recaptcha.siteKey');
+      var siteKey = (0, _get3.default)(this.root.form, 'settings.recaptcha.siteKey');
       if (!siteKey) {
         console.warn('There is no Site Key specified in settings in form JSON');
         return;
       }
       if (!this.recaptchaApiReady) {
-        var recaptchaApiScriptUrl = "https://www.google.com/recaptcha/api.js?render=".concat((0, _get3["default"])(this.root.form, 'settings.recaptcha.siteKey'));
+        var recaptchaApiScriptUrl = "https://www.google.com/recaptcha/api.js?render=".concat((0, _get3.default)(this.root.form, 'settings.recaptcha.siteKey'));
         this.recaptchaApiReady = _Formio.GlobalFormio.requireLibrary('googleRecaptcha', 'grecaptcha', recaptchaApiScriptUrl, true);
       }
       if (this.recaptchaApiReady) {
-        this.recaptchaVerifiedPromise = new _nativePromiseOnly["default"](function (resolve, reject) {
+        this.recaptchaVerifiedPromise = new _nativePromiseOnly.default(function (resolve, reject) {
           _this.recaptchaApiReady.then(function () {
             if (!_this.isLoading) {
               _this.isLoading = true;
-              grecaptcha.ready((0, _debounce2["default"])(function () {
+              grecaptcha.ready((0, _debounce2.default)(function () {
                 grecaptcha.execute(siteKey, {
                   action: actionName
                 }).then(function (token) {
@@ -128,12 +117,12 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
                     _this.updateValue(_this.recaptchaResult);
                     return resolve(verificationResult);
                   });
-                })["catch"](function () {
+                }).catch(function () {
                   _this.isLoading = false;
                 });
               }, 1000));
             }
-          })["catch"](function () {
+          }).catch(function () {
             return reject();
           });
         }).then(function () {
@@ -179,17 +168,17 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
       var componentData = row[this.component.key];
       if (!componentData || !componentData.token) {
         this.setCustomValidity('ReCAPTCHA: Token is not specified in submission');
-        return _nativePromiseOnly["default"].resolve(false);
+        return _nativePromiseOnly.default.resolve(false);
       }
       if (!componentData.success) {
         this.setCustomValidity('ReCAPTCHA: Token validation error');
-        return _nativePromiseOnly["default"].resolve(false);
+        return _nativePromiseOnly.default.resolve(false);
       }
       return this.hook('validateReCaptcha', componentData.token, function () {
-        return _nativePromiseOnly["default"].resolve(true);
+        return _nativePromiseOnly.default.resolve(true);
       }).then(function (success) {
         return success;
-      })["catch"](function (err) {
+      }).catch(function (err) {
         _this3.setCustomValidity(err.message || err);
         return false;
       });
@@ -206,7 +195,7 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Component2["default"].schema.apply(_Component2["default"], [{
+      return _Component2.default.schema.apply(_Component2.default, [{
         type: 'recaptcha',
         key: 'recaptcha',
         label: 'reCAPTCHA'
@@ -219,17 +208,12 @@ var ReCaptchaComponent = /*#__PURE__*/function (_Component) {
         title: 'reCAPTCHA',
         group: 'premium',
         icon: 'refresh',
-        documentation: '/userguide/form-building/premium-components#recaptcha',
+        documentation: '/userguide/forms/premium-components#recaptcha',
         weight: 40,
         schema: ReCaptchaComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return ReCaptchaComponent;
-}(_Component2["default"]);
-exports["default"] = ReCaptchaComponent;
+}(_Component2.default);
+exports.default = ReCaptchaComponent;

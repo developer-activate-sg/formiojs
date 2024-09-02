@@ -7,30 +7,23 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.set.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.some.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.object.keys.js");
@@ -39,13 +32,9 @@ require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.slice.js");
-require("core-js/modules/es.promise.js");
 require("core-js/modules/es.array.splice.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.date.to-string.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
@@ -54,7 +43,7 @@ var _Component = _interopRequireDefault(require("../_classes/component/Component
 var _Alert = _interopRequireDefault(require("../alert/Alert"));
 var _utils = require("../../utils/utils");
 var _templates = _interopRequireDefault(require("./templates"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -63,7 +52,7 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -74,7 +63,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -122,9 +111,9 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     get: function get() {
       var rowTemplate;
       if (_utils.Evaluator.noeval) {
-        rowTemplate = this.displayAsTable ? _templates["default"].tableRow : _templates["default"].row;
+        rowTemplate = this.displayAsTable ? _templates.default.tableRow : _templates.default.row;
       } else {
-        rowTemplate = this.displayAsTable ? _lodash["default"].get(this.component, 'templates.tableRow', this.defaultRowTemplate) : _lodash["default"].get(this.component, 'templates.row', this.defaultRowTemplate);
+        rowTemplate = this.displayAsTable ? _lodash.default.get(this.component, 'templates.tableRow', this.defaultRowTemplate) : _lodash.default.get(this.component, 'templates.row', this.defaultRowTemplate);
       }
       return rowTemplate;
     }
@@ -133,9 +122,9 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     get: function get() {
       var headerTemplate;
       if (_utils.Evaluator.noeval) {
-        headerTemplate = this.displayAsTable ? _templates["default"].tableHeader : _templates["default"].header;
+        headerTemplate = this.displayAsTable ? _templates.default.tableHeader : _templates.default.header;
       } else {
-        headerTemplate = this.displayAsTable ? _lodash["default"].get(this.component, 'templates.tableHeader', this.defaultHeaderTemplate) : _lodash["default"].get(this.component, 'templates.header', this.defaultHeaderTemplate);
+        headerTemplate = this.displayAsTable ? _lodash.default.get(this.component, 'templates.tableHeader', this.defaultHeaderTemplate) : _lodash.default.get(this.component, 'templates.header', this.defaultHeaderTemplate);
       }
       return headerTemplate;
     }
@@ -221,7 +210,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "minLength",
     get: function get() {
-      return this.builderMode ? 0 : _lodash["default"].get(this.component, 'validate.minLength', 0);
+      return _lodash.default.get(this.component, 'validate.minLength', 0);
     }
   }, {
     key: "data",
@@ -265,7 +254,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     get: function get() {
       var value = _get(_getPrototypeOf(EditGridComponent.prototype), "defaultValue", this);
       var defaultValue = Array.isArray(value) ? value : [];
-      _lodash["default"].times(this.minLength - defaultValue.length, function () {
+      _lodash.default.times(this.minLength - defaultValue.length, function () {
         return defaultValue.push({});
       });
       return defaultValue;
@@ -273,7 +262,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "hasRemoveButtons",
     value: function hasRemoveButtons() {
-      return !this.component.disableAddingRemovingRows && !this.options.readOnly && !this.disabled && this.fullMode && this.dataValue.length > _lodash["default"].get(this.component, 'validate.minLength', 0);
+      return !this.component.disableAddingRemovingRows && !this.options.readOnly && !this.disabled && this.fullMode && this.dataValue.length > _lodash.default.get(this.component, 'validate.minLength', 0);
     }
   }, {
     key: "init",
@@ -297,42 +286,12 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
             data: row,
             state: EditRowState.Saved,
             backup: null,
-            error: null,
-            rowIndex: rowIndex
+            error: null
           };
         });
       }
       this.prevHasAddButton = this.hasAddButton();
       this.checkData();
-      this.setVariableTypeComponents();
-      if (this.variableTypeComponentsIndexes.length) {
-        _lodash["default"].each(this.editRows || [], function (editRow, rowIndex) {
-          return _this2.checkRowVariableTypeComponents(editRow, rowIndex);
-        });
-      }
-    }
-  }, {
-    key: "checkRowVariableTypeComponents",
-    value: function checkRowVariableTypeComponents(editRow, rowIndex) {
-      var rowComponents = editRow.components;
-      if (_lodash["default"].some(this.variableTypeComponentsIndexes, function (compIndex) {
-        var variableTypeComp = rowComponents[compIndex];
-        return variableTypeComp.type !== variableTypeComp.component.type;
-      })) {
-        editRow.components = this.createRowComponents(editRow.data, rowIndex, true);
-      }
-    }
-  }, {
-    key: "setVariableTypeComponents",
-    value: function setVariableTypeComponents() {
-      var _this3 = this;
-      //set components which type is changing within a row (e.g.,by mergeComponentSchema action)
-      this.variableTypeComponentsIndexes = [];
-      _lodash["default"].each(this.component.components, function (comp, index) {
-        if (comp.typeChangeEnabled) {
-          _this3.variableTypeComponentsIndexes.push(index);
-        }
-      });
     }
   }, {
     key: "isOpen",
@@ -342,24 +301,24 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "isComponentVisibleInSomeRow",
     value: function isComponentVisibleInSomeRow(component) {
-      var _this4 = this;
+      var _this3 = this;
       var rows = this.editRows;
       var savedStates = [EditRowState.Saved, EditRowState.Editing, EditRowState.Draft];
       var savedRows = rows.filter(function (row) {
-        return _lodash["default"].includes(savedStates, row.state);
+        return _lodash.default.includes(savedStates, row.state);
       });
       this.visibleInHeader = this.visibleInHeader || [];
       var changeVisibleInHeader = function changeVisibleInHeader(component, isVisible) {
         if (!isVisible) {
-          _lodash["default"].remove(_this4.visibleInHeader, function (key) {
+          _lodash.default.remove(_this3.visibleInHeader, function (key) {
             return key === component.key;
           });
         }
-        if (isVisible && !_lodash["default"].includes(_this4.visibleInHeader, component.key)) {
-          _this4.visibleInHeader.push(component.key);
+        if (isVisible && !_lodash.default.includes(_this3.visibleInHeader, component.key)) {
+          _this3.visibleInHeader.push(component.key);
         }
       };
-      if (_lodash["default"].isEmpty(rows)) {
+      if (_lodash.default.isEmpty(rows)) {
         var rowComponents = this.createRowComponents({}, 0);
         var checkComponent;
         (0, _utils.eachComponent)(rowComponents, function (comp) {
@@ -370,25 +329,25 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         });
         var isVisible = checkComponent ? checkComponent.visible : true;
         _toConsumableArray(this.components).forEach(function (comp) {
-          return _this4.removeComponent(comp, _this4.components);
+          return _this3.removeComponent(comp, _this3.components);
         });
         changeVisibleInHeader(component, isVisible);
         return isVisible;
       }
-      var isOpenRowWhenEmpty = _lodash["default"].get(this.component, 'openWhenEmpty') && rows.length === 1 && rows[0].state === EditRowState.New;
-      if (!_lodash["default"].isEmpty(rows) && _lodash["default"].isEmpty(savedRows) && !isOpenRowWhenEmpty) {
-        return _lodash["default"].includes(this.visibleInHeader, component.key);
+      var isOpenRowWhenEmpty = _lodash.default.get(this.component, 'openWhenEmpty') && rows.length === 1 && rows[0].state === EditRowState.New;
+      if (!_lodash.default.isEmpty(rows) && _lodash.default.isEmpty(savedRows) && !isOpenRowWhenEmpty) {
+        return _lodash.default.includes(this.visibleInHeader, component.key);
       }
-      return _lodash["default"].some(isOpenRowWhenEmpty ? rows : savedRows, function (row, index) {
+      return _lodash.default.some(isOpenRowWhenEmpty ? rows : savedRows, function (row, index) {
         var editingRow = row.state === EditRowState.Editing;
         var isVisible;
         if (!editingRow) {
-          var flattenedComponents = _this4.flattenComponents(index);
+          var flattenedComponents = _this3.flattenComponents(index);
           var instance = flattenedComponents[component.key];
           isVisible = instance ? instance.visible : true;
           changeVisibleInHeader(component, isVisible);
         } else {
-          isVisible = _lodash["default"].includes(_this4.visibleInHeader, component.key);
+          isVisible = _lodash.default.includes(_this3.visibleInHeader, component.key);
         }
         return isVisible;
       });
@@ -396,7 +355,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "render",
     value: function render(children) {
-      var _this5 = this;
+      var _this4 = this;
       if (this.builderMode) {
         return _get(_getPrototypeOf(EditGridComponent.prototype), "render", this).call(this);
       }
@@ -413,20 +372,20 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         },
         header: this.renderString(headerTemplate, {
           displayValue: function displayValue(component) {
-            return _this5.displayComponentValue(component, true);
+            return _this4.displayComponentValue(component, true);
           },
           components: this.component.components,
           value: dataValue,
           t: t
         }),
-        footer: this.renderString(_lodash["default"].get(this.component, 'templates.footer'), {
+        footer: this.renderString(_lodash.default.get(this.component, 'templates.footer'), {
           components: this.component.components,
           value: dataValue,
           t: t
         }),
         rows: this.editRows.map(this.renderRow.bind(this)),
         openRows: this.editRows.map(function (row) {
-          return _this5.isOpen(row);
+          return _this4.isOpen(row);
         }),
         errors: this.editRows.map(function (row) {
           return row.error;
@@ -452,29 +411,29 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     key: "attach",
     value: function attach(element) {
       var _this$loadRefs,
-        _this6 = this;
+        _this5 = this;
       if (this.builderMode) {
         return _get(_getPrototypeOf(EditGridComponent.prototype), "attach", this).call(this, element);
       }
       this.loadRefs(element, (_this$loadRefs = {}, _defineProperty(_this$loadRefs, this.addRowRef, 'multiple'), _defineProperty(_this$loadRefs, this.saveRowRef, 'multiple'), _defineProperty(_this$loadRefs, this.cancelRowRef, 'multiple'), _defineProperty(_this$loadRefs, this.rowRef, 'multiple'), _this$loadRefs));
       this.addRowElements.forEach(function (addButton) {
-        _this6.addEventListener(addButton, 'click', function () {
-          return _this6.addRow();
+        _this5.addEventListener(addButton, 'click', function () {
+          return _this5.addRow();
         });
       });
       var openRowCount = 0;
       this.rowElements.forEach(function (row, rowIndex) {
-        var editRow = _this6.editRows[rowIndex];
+        var editRow = _this5.editRows[rowIndex];
         if (editRow !== null && editRow !== void 0 && editRow.isRowSelected) {
           row.classList.add('selected');
         }
-        if (_this6.isOpen(editRow)) {
-          _this6.attachComponents(row, editRow.components);
-          _this6.addEventListener(_this6.saveRowElements[openRowCount], 'click', function () {
-            return _this6.saveRow(rowIndex, true);
+        if (_this5.isOpen(editRow)) {
+          _this5.attachComponents(row, editRow.components);
+          _this5.addEventListener(_this5.saveRowElements[openRowCount], 'click', function () {
+            return _this5.saveRow(rowIndex, true);
           });
-          _this6.addEventListener(_this6.cancelRowElements[openRowCount], 'click', function () {
-            return _this6.cancelRow(rowIndex);
+          _this5.addEventListener(_this5.cancelRowElements[openRowCount], 'click', function () {
+            return _this5.cancelRow(rowIndex);
           });
           openRowCount++;
         } else {
@@ -483,20 +442,20 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
             className: 'removeRow',
             event: 'click',
             action: function action() {
-              return _this6.removeRow(rowIndex, true);
+              return _this5.removeRow(rowIndex, true);
             }
           }, {
             className: 'editRow',
             event: 'click',
             action: function action() {
-              _this6.editRow(rowIndex).then(function () {
-                if (_this6.component.rowDrafts) {
-                  var _this6$root;
-                  _this6.validateRow(editRow, false);
+              _this5.editRow(rowIndex).then(function () {
+                if (_this5.component.rowDrafts) {
+                  var _this5$root;
+                  _this5.validateRow(editRow, false);
                   var hasErrors = editRow.errors && !!editRow.errors.length;
-                  var shouldShowRowErrorsAlert = _this6.component.modal && hasErrors && ((_this6$root = _this6.root) === null || _this6$root === void 0 ? void 0 : _this6$root.submitted);
+                  var shouldShowRowErrorsAlert = _this5.component.modal && hasErrors && ((_this5$root = _this5.root) === null || _this5$root === void 0 ? void 0 : _this5$root.submitted);
                   if (shouldShowRowErrorsAlert) {
-                    _this6.alert.showErrors(editRow.errors, false);
+                    _this5.alert.showErrors(editRow.errors, false);
                     editRow.alerts = true;
                   }
                 }
@@ -514,9 +473,9 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
                 delete editRow.isRowSelected;
                 eventName = 'editGridUnSelectRow';
               }
-              _this6.emit(eventName, {
-                component: _this6.component,
-                data: _this6.dataValue[rowIndex]
+              _this5.emit(eventName, {
+                component: _this5.component,
+                data: _this5.dataValue[rowIndex]
               });
             }
           }].forEach(function (_ref) {
@@ -525,11 +484,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
               action = _ref.action;
             var elements = row.getElementsByClassName(className);
             Array.prototype.forEach.call(elements, function (element) {
-              if (_this6.options.pdf && _lodash["default"].intersection(element.classList, ['editRow', 'removeRow']).length) {
-                element.style.display = 'none';
-              } else {
-                _this6.addEventListener(element, event, action);
-              }
+              _this5.addEventListener(element, event, action);
             });
           });
         }
@@ -550,11 +505,11 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "flattenRowDataValue",
     value: function flattenRowDataValue(dataValue) {
-      var _this7 = this;
+      var _this6 = this;
       var flattened = {};
       Object.keys(dataValue).forEach(function (key) {
-        if (_lodash["default"].isObject(dataValue[key]) && !_lodash["default"].isNil(dataValue[key])) {
-          Object.assign(flattened, _this7.flattenRowDataValue(dataValue[key]));
+        if (_lodash.default.isObject(dataValue[key]) && !_lodash.default.isNil(dataValue[key])) {
+          Object.assign(flattened, _this6.flattenRowDataValue(dataValue[key]));
         } else {
           flattened[key] = dataValue[key];
         }
@@ -570,12 +525,12 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "displayComponentValue",
     value: function displayComponentValue(component, header) {
-      return !!((!component.hasOwnProperty('tableView') || component.tableView) && header ? this.isComponentVisibleInSomeRow(component) : _lodash["default"].includes(this.visibleInHeader, component.key));
+      return !!((!component.hasOwnProperty('tableView') || component.tableView) && header ? this.isComponentVisibleInSomeRow(component) : _lodash.default.includes(this.visibleInHeader, component.key));
     }
   }, {
     key: "renderRow",
     value: function renderRow(row, rowIndex) {
-      var _this8 = this;
+      var _this7 = this;
       var dataValue = this.dataValue;
       if (this.isOpen(row)) {
         return this.renderComponents(row.components);
@@ -589,10 +544,10 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
           components: this.component.components,
           flattenedComponents: flattenedComponents,
           displayValue: function displayValue(component) {
-            return _this8.displayComponentValue(component);
+            return _this7.displayComponentValue(component);
           },
           isVisibleInRow: function isVisibleInRow(component) {
-            return _this8.isComponentVisibleInRow(component, flattenedComponents);
+            return _this7.isComponentVisibleInRow(component, flattenedComponents);
           },
           getView: function getView(component, data) {
             var _instance$component, _instance$component2;
@@ -611,7 +566,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "eachComponent",
     value: function eachComponent(fn, rowIndex) {
-      _lodash["default"].each(this.getComponents(rowIndex), function (component, index) {
+      _lodash.default.each(this.getComponents(rowIndex), function (component, index) {
         if (fn(component, index) === false) {
           return false;
         }
@@ -620,11 +575,11 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "restoreComponentsContext",
     value: function restoreComponentsContext() {
-      var _this9 = this;
+      var _this8 = this;
       this.getComponents().forEach(function (component) {
-        var _this9$editRows$compo;
-        var rowData = _this9.dataValue[component.rowIndex];
-        var editRowData = (_this9$editRows$compo = _this9.editRows[component.rowIndex]) === null || _this9$editRows$compo === void 0 ? void 0 : _this9$editRows$compo.data;
+        var _this8$editRows$compo;
+        var rowData = _this8.dataValue[component.rowIndex];
+        var editRowData = (_this8$editRows$compo = _this8.editRows[component.rowIndex]) === null || _this8$editRows$compo === void 0 ? void 0 : _this8$editRows$compo.data;
         component.data = rowData || editRowData;
       });
     }
@@ -640,31 +595,22 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "getComponents",
     value: function getComponents(rowIndex) {
-      var _this$editRows$rowInd;
       // Ensure editrows is set.
       this.editRows = this.editRows || [];
-      return this.builderMode ? _get(_getPrototypeOf(EditGridComponent.prototype), "getComponents", this).call(this) : _lodash["default"].isNumber(rowIndex) ? ((_this$editRows$rowInd = this.editRows[rowIndex]) === null || _this$editRows$rowInd === void 0 ? void 0 : _this$editRows$rowInd.components) || [] : this.editRows.reduce(function (result, row) {
+      return this.builderMode ? _get(_getPrototypeOf(EditGridComponent.prototype), "getComponents", this).call(this) : _lodash.default.isNumber(rowIndex) ? this.editRows[rowIndex].components || [] : this.editRows.reduce(function (result, row) {
         return result.concat(row.components || []);
       }, []);
     }
   }, {
-    key: "destroy",
-    value: function destroy() {
-      var all = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-      this.calculatedValue = undefined;
-      _get(_getPrototypeOf(EditGridComponent.prototype), "destroy", this).call(this, all);
-    }
-  }, {
     key: "destroyComponents",
-    value: function destroyComponents() {
-      var _this10 = this;
-      var rowIndex = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    value: function destroyComponents(rowIndex) {
+      var _this9 = this;
       if (this.builderMode) {
         return _get(_getPrototypeOf(EditGridComponent.prototype), "destroyComponents", this).call(this);
       }
       var components = this.getComponents(rowIndex).slice();
       components.forEach(function (comp) {
-        return _this10.removeComponent(comp, _this10.components);
+        return _this9.removeComponent(comp, _this9.components);
       });
     }
   }, {
@@ -675,8 +621,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         data: dataObj,
         state: EditRowState.New,
         backup: null,
-        error: null,
-        rowIndex: rowIndex
+        error: null
       };
       this.editRows.push(editRow);
       if (this.inlineEditMode) {
@@ -693,9 +638,6 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       var dataObj = {};
       var rowIndex = this.editRows.length;
       var editRow = this.createRow(dataObj, rowIndex);
-      if (editRow.state === EditRowState.New) {
-        this.emptyRow = (0, _utils.fastCloneDeep)(editRow.data);
-      }
       if (this.inlineEditMode) {
         this.triggerChange();
       }
@@ -714,14 +656,14 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "addRowModal",
     value: function addRowModal(rowIndex) {
-      var _this11 = this;
+      var _this10 = this;
       var modalContent = this.ce('div');
       var editRow = this.editRows[rowIndex];
       editRow.willBeSaved = false;
       var components = editRow.components;
       modalContent.innerHTML = this.renderComponents(components);
       var dialog = this.component.modal ? this.createModal(modalContent, {}, function () {
-        return _this11.showDialog(rowIndex);
+        return _this10.showDialog(rowIndex);
       }) : undefined;
       dialog.classList.add("editgrid-row-modal-".concat(this.id));
       editRow.dialog = dialog;
@@ -729,19 +671,19 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         this.alert.clear();
         this.alert = null;
       }
-      this.alert = new _Alert["default"](dialog.refs.dialogContents, this);
+      this.alert = new _Alert.default(dialog.refs.dialogContents, this);
       this.addEventListener(dialog, 'close', function () {
         if (!editRow.willBeSaved) {
-          if (_this11.editRows[rowIndex] && _this11.editRows[rowIndex].state !== EditRowState.New) {
-            _this11.editRows[rowIndex].components.forEach(function (comp) {
+          if (_this10.editRows[rowIndex] && _this10.editRows[rowIndex].state !== EditRowState.New) {
+            _this10.editRows[rowIndex].components.forEach(function (comp) {
               comp.setPristine(true);
             });
           }
-          _this11.cancelRow(rowIndex);
+          _this10.cancelRow(rowIndex);
         }
-        if (_this11.alert) {
-          _this11.alert.clear();
-          _this11.alert = null;
+        if (_this10.alert) {
+          _this10.alert.clear();
+          _this10.alert = null;
         }
 
         // Remove references to dialog elements to prevent possible in some cases memory leaks
@@ -749,20 +691,20 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         delete editRow.dialog;
       });
       dialog.refs.dialogContents.appendChild(this.ce('button', {
-        "class": 'btn btn-primary',
+        class: 'btn btn-primary',
         onClick: function onClick() {
           // After an attempt to save, all the components inside the row should become not pristine
-          if (!_this11.component.rowDrafts) {
+          if (!_this10.component.rowDrafts) {
             editRow.components.forEach(function (comp) {
               return comp.setPristine(false);
             });
           }
-          if (_this11.validateRow(editRow, true) || _this11.component.rowDrafts) {
+          if (_this10.validateRow(editRow, true) || _this10.component.rowDrafts) {
             editRow.willBeSaved = true;
             dialog.close();
-            _this11.saveRow(rowIndex, true);
+            _this10.saveRow(rowIndex, true);
           } else {
-            _this11.alert.showErrors(editRow.errors, false);
+            _this10.alert.showErrors(editRow.errors, false);
             editRow.alerts = true;
           }
         }
@@ -773,8 +715,8 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     key: "showDialog",
     value: function showDialog(rowIndex) {
       var editRow = this.editRows[rowIndex];
-      if (editRow.state === EditRowState.New ? _lodash["default"].isEqual(this.emptyRow, editRow.data) : _lodash["default"].isEqual(editRow.backup, editRow.data)) {
-        return Promise.resolve();
+      if (_lodash.default.isEqual(editRow.backup, editRow.data)) {
+        return _nativePromiseOnly.default.resolve();
       }
       var wrapper = this.ce('div', {
         ref: 'confirmationDialog'
@@ -794,7 +736,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         dialog.close();
       };
       var dialogResult;
-      var promise = new _nativePromiseOnly["default"](function (resolve, reject) {
+      var promise = new _nativePromiseOnly.default(function (resolve, reject) {
         dialogResult = {
           resolve: resolve,
           reject: reject
@@ -817,7 +759,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       var editRow = this.editRows[rowIndex];
       var isAlreadyEditing = editRow.state === EditRowState.Editing || editRow.state === EditRowState.New;
       if (!editRow || isAlreadyEditing) {
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
       editRow.prevState = editRow.state;
       editRow.state = this.options.readOnly ? EditRowState.Viewing : EditRowState.Editing;
@@ -895,7 +837,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "saveRow",
     value: function saveRow(rowIndex, modified) {
-      var _this12 = this;
+      var _this11 = this;
       var editRow = this.editRows[rowIndex];
       if (this.options.readOnly) {
         return;
@@ -914,11 +856,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         }
       }
       if (this.saveEditMode) {
-        var _this$root, _this$root$focusedCom;
         var dataValue = this.dataValue;
-        if ((_this$root = this.root) !== null && _this$root !== void 0 && (_this$root$focusedCom = _this$root.focusedComponent) !== null && _this$root$focusedCom !== void 0 && _this$root$focusedCom.component.typeChangeEnabled) {
-          this.root.focusedComponent = null;
-        }
         switch (editRow.state) {
           case EditRowState.New:
             {
@@ -955,7 +893,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       });
       if (this.component.rowDrafts) {
         editRow.components.forEach(function (comp) {
-          return comp.setPristine(_this12.pristine);
+          return comp.setPristine(_this11.pristine);
         });
       }
       this.checkValidity(null, true);
@@ -973,15 +911,8 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       }
       var relativePath = this.getRelativePath(component.path);
       var arrayPath = (0, _utils.getArrayFromComponentPath)(relativePath);
-      var rowIndex = arrayPath[0];
-      var rowToEditIndex = arrayPath[0];
-      this.editRows.forEach(function (row, indexInArray) {
-        if (row.rowIndex === rowIndex) {
-          rowToEditIndex = indexInArray;
-        }
-      });
-      if (_lodash["default"].isNumber(rowToEditIndex)) {
-        this.editRow(rowToEditIndex);
+      if (_lodash.default.isNumber(arrayPath[0])) {
+        this.editRow(arrayPath[0]);
       }
     }
   }, {
@@ -995,9 +926,9 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "updateRowsComponents",
     value: function updateRowsComponents(rowIndex) {
-      var _this13 = this;
+      var _this12 = this;
       this.editRows.slice(rowIndex).forEach(function (row, index) {
-        _this13.updateComponentsRowIndex(row.components, rowIndex + index);
+        _this12.updateComponentsRowIndex(row.components, rowIndex + index);
       });
     }
   }, {
@@ -1035,67 +966,44 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     }
   }, {
     key: "createRowComponents",
-    value: function createRowComponents(row, rowIndex, recreatePartially) {
-      var _this14 = this;
-      // Iterate through existing components and destroy the ones with the same rowIndex.
-      if (this.components) {
-        for (var i = 0; i < this.components.length; i++) {
-          if (this.components[i].rowIndex === rowIndex) {
-            this.components[i].destroy();
-            this.components.splice(i, 1);
-          }
-        }
-      }
-      var currentRowComponents = _lodash["default"].get(this.editRows, "[".concat(rowIndex, "].components"), null);
+    value: function createRowComponents(row, rowIndex) {
+      var _this13 = this;
       return this.component.components.map(function (col, colIndex) {
-        if (recreatePartially && currentRowComponents && _this14.variableTypeComponentsIndexes.length) {
-          var _currentComp$componen;
-          var currentComp = currentRowComponents[colIndex];
-          var shouldRecreate = _lodash["default"].includes(_this14.variableTypeComponentsIndexes, colIndex) && (currentComp === null || currentComp === void 0 ? void 0 : currentComp.type) !== (currentComp === null || currentComp === void 0 ? void 0 : (_currentComp$componen = currentComp.component) === null || _currentComp$componen === void 0 ? void 0 : _currentComp$componen.type);
-          if (!shouldRecreate) {
-            return currentComp;
-          }
-          col = currentComp.component;
-        }
-        var column = _lodash["default"].clone(col);
-        var options = _lodash["default"].clone(_this14.options);
+        var column = _lodash.default.clone(col);
+        var options = _lodash.default.clone(_this13.options);
         options.name += "[".concat(rowIndex, "]");
         options.row = "".concat(rowIndex, "-").concat(colIndex);
         options.onChange = function () {
-          var _changed$instance$roo, _this14$root;
+          var _changed$instance$roo, _this13$root;
           var flags = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
           var changed = arguments.length > 1 ? arguments[1] : undefined;
           var modified = arguments.length > 2 ? arguments[2] : undefined;
-          if ((_changed$instance$roo = changed.instance.root) !== null && _changed$instance$roo !== void 0 && _changed$instance$roo.id && ((_this14$root = _this14.root) === null || _this14$root === void 0 ? void 0 : _this14$root.id) !== changed.instance.root.id) {
+          if ((_changed$instance$roo = changed.instance.root) !== null && _changed$instance$roo !== void 0 && _changed$instance$roo.id && ((_this13$root = _this13.root) === null || _this13$root === void 0 ? void 0 : _this13$root.id) !== changed.instance.root.id) {
             changed.instance.root.triggerChange(flags, changed, modified);
-          } else if (!_this14.component.modal) {
-            _this14.triggerRootChange(flags, changed, modified);
+          } else if (!_this13.component.modal) {
+            _this13.triggerRootChange(flags, changed, modified);
           }
-          if (_this14.inlineEditMode) {
+          if (_this13.inlineEditMode) {
             return;
           }
-          var editRow = _this14.editRows[rowIndex];
+          var editRow = _this13.editRows[rowIndex];
           if (editRow !== null && editRow !== void 0 && editRow.alerts) {
-            _this14.checkData(null, _objectSpread(_objectSpread({}, flags), {}, {
+            _this13.checkData(null, _objectSpread(_objectSpread({}, flags), {}, {
               changed: changed,
               rowIndex: rowIndex
-            }), _this14.data);
+            }), _this13.data);
           } else if (editRow) {
             // If drafts allowed, perform validation silently if there was no attempt to submit a form
-            var silentCheck = _this14.component.rowDrafts && !_this14.shouldValidateDraft(editRow);
-            _this14.checkRow('checkData', null, _objectSpread(_objectSpread({}, flags), {}, {
+            var silentCheck = _this13.component.rowDrafts && !_this13.shouldValidateDraft(editRow);
+            _this13.checkRow('checkData', null, _objectSpread(_objectSpread({}, flags), {}, {
               changed: changed,
               silentCheck: silentCheck
             }), editRow.data, editRow.components, silentCheck);
           }
-          if (_this14.variableTypeComponentsIndexes.length) {
-            _this14.checkRowVariableTypeComponents(editRow, rowIndex);
-            _this14.redraw();
-          }
         };
-        var comp = _this14.createComponent(_lodash["default"].assign({}, column, {
+        var comp = _this13.createComponent(_lodash.default.assign({}, column, {
           row: options.row
-        }), options, row, null, recreatePartially && currentRowComponents ? currentRowComponents[colIndex] : null);
+        }), options, row);
         comp.rowIndex = rowIndex;
         comp.inEditGrid = true;
         return comp;
@@ -1104,17 +1012,17 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "hasOpenRows",
     value: function hasOpenRows() {
-      var _this15 = this;
+      var _this14 = this;
       return this.editRows.some(function (row) {
-        return _this15.isOpen(row);
+        return _this14.isOpen(row);
       });
     }
   }, {
     key: "shouldValidateDraft",
     value: function shouldValidateDraft(editRow) {
-      var _this$root2, _this$root3;
+      var _this$root, _this$root2;
       // Draft rows should be validated only when there was an attempt to submit a form
-      return editRow.state === EditRowState.Draft && !this.pristine && !((_this$root2 = this.root) !== null && _this$root2 !== void 0 && _this$root2.pristine) && !this.hasOpenRows() || ((_this$root3 = this.root) === null || _this$root3 === void 0 ? void 0 : _this$root3.submitted);
+      return editRow.state === EditRowState.Draft && !this.pristine && !((_this$root = this.root) !== null && _this$root !== void 0 && _this$root.pristine) && !this.hasOpenRows() || ((_this$root2 = this.root) === null || _this$root2 === void 0 ? void 0 : _this$root2.submitted);
     }
   }, {
     key: "shouldValidateRow",
@@ -1124,13 +1032,13 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "validateRow",
     value: function validateRow(editRow, dirty, forceSilentCheck) {
-      var _this16 = this,
-        _this$root4;
+      var _this15 = this,
+        _this$root3;
       var valid = true;
       var errorsSnapshot = _toConsumableArray(this.errors);
       if (this.shouldValidateRow(editRow, dirty)) {
         editRow.components.forEach(function (comp) {
-          var silentCheck = _this16.component.rowDrafts && !_this16.shouldValidateDraft(editRow) || forceSilentCheck;
+          var silentCheck = _this15.component.rowDrafts && !_this15.shouldValidateDraft(editRow) || forceSilentCheck;
           valid &= comp.checkValidity(null, dirty, null, silentCheck);
         });
       }
@@ -1152,7 +1060,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       editRow.errors = !valid ? this.errors.filter(function (err) {
         return !errorsSnapshot.includes(err);
       }) : null;
-      if (!this.component.rowDrafts || (_this$root4 = this.root) !== null && _this$root4 !== void 0 && _this$root4.submitted) {
+      if (!this.component.rowDrafts || (_this$root3 = this.root) !== null && _this$root3 !== void 0 && _this$root3.submitted) {
         this.showRowErrorAlerts(editRow, !!valid);
       }
       return !!valid;
@@ -1188,9 +1096,9 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "checkComponentValidity",
     value: function checkComponentValidity(data, dirty, row) {
-      var _this17 = this,
+      var _this16 = this,
         _this$errors,
-        _this$root6;
+        _this$root5;
       var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
       var silentCheck = options.silentCheck;
       var errorsLength = this.errors.length;
@@ -1207,37 +1115,37 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       var rowsEditing = false;
       this.editRows.forEach(function (editRow, index) {
         // Trigger all errors on the row.
-        var rowValid = _this17.validateRow(editRow, dirty, silentCheck);
+        var rowValid = _this16.validateRow(editRow, dirty, silentCheck);
         rowsValid &= rowValid;
-        if (_this17.rowRefs) {
-          var rowContainer = _this17.rowRefs[index];
+        if (_this16.rowRefs) {
+          var rowContainer = _this16.rowRefs[index];
           if (rowContainer) {
             var errorContainer = rowContainer.querySelector('.editgrid-row-error');
-            if (!rowValid && errorContainer && (!_this17.component.rowDrafts || _this17.shouldValidateDraft(editRow))) {
-              _this17.addClass(errorContainer, 'help-block');
-              errorContainer.textContent = _this17.t(_this17.errorMessage('invalidRowError'));
+            if (!rowValid && errorContainer && (!_this16.component.rowDrafts || _this16.shouldValidateDraft(editRow))) {
+              _this16.addClass(errorContainer, 'help-block');
+              errorContainer.textContent = _this16.t('invalidRowError');
             } else if (errorContainer) {
               errorContainer.textContent = '';
             }
           }
         }
         // If this is a dirty check, and any rows are still editing, we need to throw validation error.
-        rowsEditing |= dirty && _this17.isOpen(editRow);
+        rowsEditing |= dirty && _this16.isOpen(editRow);
       });
       if (!rowsValid) {
-        var _this$root5;
-        if (!silentCheck && (!this.component.rowDrafts || (_this$root5 = this.root) !== null && _this$root5 !== void 0 && _this$root5.submitted)) {
-          this.setCustomValidity(this.t(this.errorMessage('invalidRowsError')), dirty);
+        var _this$root4;
+        if (!silentCheck && (!this.component.rowDrafts || (_this$root4 = this.root) !== null && _this$root4 !== void 0 && _this$root4.submitted)) {
+          this.setCustomValidity(this.t('invalidRowsError'), dirty);
           // Delete this class, because otherwise all the components inside EditGrid will has red border even if they are valid
           this.removeClass(this.element, 'has-error');
         }
         return false;
       } else if (rowsEditing && this.saveEditMode) {
-        this.setCustomValidity(this.t(this.errorMessage('unsavedRowsError')), dirty);
+        this.setCustomValidity(this.t('unsavedRowsError'), dirty);
         return false;
       }
       var message = this.invalid || this.invalidMessage(data, dirty);
-      if (((_this$errors = this.errors) === null || _this$errors === void 0 ? void 0 : _this$errors.length) !== errorsLength && (_this$root6 = this.root) !== null && _this$root6 !== void 0 && _this$root6.submitted && !message) {
+      if (((_this$errors = this.errors) === null || _this$errors === void 0 ? void 0 : _this$errors.length) !== errorsLength && (_this$root5 = this.root) !== null && _this$root5 !== void 0 && _this$root5.submitted && !message) {
         this.setCustomValidity(message, dirty);
         this.root.showErrors();
       } else {
@@ -1257,7 +1165,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "setValue",
     value: function setValue(value) {
-      var _this18 = this;
+      var _this17 = this;
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       if (!value) {
         value = this.defaultValue;
@@ -1277,16 +1185,16 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       this.dataValue = value;
       // Refresh editRow data when data changes.
       this.dataValue.forEach(function (row, rowIndex) {
-        var editRow = _this18.editRows[rowIndex];
+        var editRow = _this17.editRows[rowIndex];
         if (editRow) {
           editRow.data = row;
-          _this18.restoreRowContext(editRow, flags);
+          _this17.restoreRowContext(editRow, flags);
           editRow.state = EditRowState.Saved;
           editRow.backup = null;
           editRow.error = null;
         } else {
-          _this18.editRows[rowIndex] = {
-            components: _this18.lazyLoad ? [] : _this18.createRowComponents(row, rowIndex),
+          _this17.editRows[rowIndex] = {
+            components: _this17.lazyLoad ? [] : _this17.createRowComponents(row, rowIndex),
             data: row,
             state: EditRowState.Saved,
             backup: null,
@@ -1301,7 +1209,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         dataLength = dataLength + 1;
       }
       this.editRows.slice(dataLength).forEach(function (editRow, index) {
-        return _this18.baseRemoveRow(dataLength + index);
+        return _this17.baseRemoveRow(dataLength + index);
       });
       this.editRows = this.editRows.slice(0, dataLength);
       this.openWhenEmpty();
@@ -1323,19 +1231,19 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
   }, {
     key: "restoreRowContext",
     value: function restoreRowContext(editRow) {
-      var _this19 = this;
+      var _this18 = this;
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       editRow.components.forEach(function (component) {
         component.data = editRow.data;
-        _this19.setNestedValue(component, editRow.data, flags);
+        _this18.setNestedValue(component, editRow.data, flags);
       });
     }
   }, {
     key: "emptyRows",
     value: function emptyRows() {
-      var _this20 = this;
+      var _this19 = this;
       this.editRows.forEach(function (editRow, index) {
-        return _this20.destroyComponents(index);
+        return _this19.destroyComponents(index);
       });
       this.editRows = [];
     }
@@ -1351,7 +1259,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _NestedArrayComponent2["default"].schema.apply(_NestedArrayComponent2["default"], [{
+      return _NestedArrayComponent2.default.schema.apply(_NestedArrayComponent2.default, [{
         type: 'editgrid',
         label: 'Edit Grid',
         key: 'editGrid',
@@ -1380,8 +1288,7 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
         title: 'Edit Grid',
         icon: 'tasks',
         group: 'data',
-        documentation: '/userguide/form-building/data-components#edit-grid',
-        showPreview: false,
+        documentation: '/userguide/forms/data-components#edit-grid',
         weight: 30,
         schema: EditGridComponent.schema()
       };
@@ -1408,6 +1315,6 @@ var EditGridComponent = /*#__PURE__*/function (_NestedArrayComponent) {
     }
   }]);
   return EditGridComponent;
-}(_NestedArrayComponent2["default"]);
-exports["default"] = EditGridComponent;
-EditGridComponent.prototype.hasChanged = _Component["default"].prototype.hasChanged;
+}(_NestedArrayComponent2.default);
+exports.default = EditGridComponent;
+EditGridComponent.prototype.hasChanged = _Component.default.prototype.hasChanged;

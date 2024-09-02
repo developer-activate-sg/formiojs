@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,28 +16,22 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.is-array.js");
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _TextField = _interopRequireDefault(require("../textfield/TextField"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -132,11 +124,11 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
       newValue = this.getConvertedValue(this.trimBlanks(newValue));
       var dataValue = this.dataValue;
       if (this.component.multiple && Array.isArray(dataValue)) {
-        var newArray = _lodash["default"].clone(dataValue);
+        var newArray = _lodash.default.clone(dataValue);
         newArray[index] = newValue;
         newValue = newArray;
       }
-      if (!_lodash["default"].isEqual(newValue, dataValue) && (!_lodash["default"].isEmpty(newValue) || !_lodash["default"].isEmpty(dataValue))) {
+      if (!_lodash.default.isEqual(newValue, dataValue) && (!_lodash.default.isEmpty(newValue) || !_lodash.default.isEmpty(dataValue))) {
         this.updateValue(newValue, {
           modified: !this.autoModified
         }, index);
@@ -158,10 +150,10 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
       if (this.component.wysiwyg && !this.component.editor) {
         this.component.editor = 'ckeditor';
       }
-      var settings = _lodash["default"].isEmpty(this.component.wysiwyg) ? this.wysiwygDefault[this.component.editor] || this.wysiwygDefault["default"] : this.component.wysiwyg;
+      var settings = _lodash.default.isEmpty(this.component.wysiwyg) ? this.wysiwygDefault[this.component.editor] || this.wysiwygDefault.default : this.component.wysiwyg;
 
       // Keep track of when this editor is ready.
-      this.editorsReady[index] = new _nativePromiseOnly["default"](function (editorReady) {
+      this.editorsReady[index] = new _nativePromiseOnly.default(function (editorReady) {
         // Attempt to add a wysiwyg editor. In order to add one, it must be included on the global scope.
         switch (_this2.component.editor) {
           case 'ace':
@@ -178,7 +170,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
               ace.setValue(_this2.setConvertedValue(dataValue, index));
               editorReady(ace);
               return ace;
-            })["catch"](function (err) {
+            }).catch(function (err) {
               return console.warn(err);
             });
             break;
@@ -217,7 +209,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
               }));
               editorReady(quill);
               return quill;
-            })["catch"](function (err) {
+            }).catch(function (err) {
               return console.warn(err);
             });
             break;
@@ -240,7 +232,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
                 });
               } else {
                 var numRows = parseInt(_this2.component.rows, 10);
-                if (_lodash["default"].isFinite(numRows) && _lodash["default"].has(editor, 'ui.view.editable.editableElement')) {
+                if (_lodash.default.isFinite(numRows) && _lodash.default.has(editor, 'ui.view.editable.editableElement')) {
                   // Default height is 21px with 10px margin + a 14px top margin.
                   var editorHeight = numRows * 31 + 14;
                   editor.ui.view.editable.editableElement.style.height = "".concat(editorHeight, "px");
@@ -291,13 +283,13 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
         return _this3.fileService.downloadFile(result);
       }).then(function (result) {
         quillInstance.enable(true);
-        var Delta = Quill["import"]('delta');
-        quillInstance.updateContents(new Delta().retain(range.index)["delete"](range.length).insert({
+        var Delta = Quill.import('delta');
+        quillInstance.updateContents(new Delta().retain(range.index).delete(range.length).insert({
           image: result.url
         }, {
           alt: JSON.stringify(requestData)
         }), Quill.sources.USER);
-      })["catch"](function (error) {
+      }).catch(function (error) {
         console.warn('Quill image upload failed');
         console.warn(error);
         quillInstance.enable(true);
@@ -351,7 +343,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
             }
           };
         };
-        this.editorsReady[index].then(setEditorsValue(_lodash["default"].clone(flags)));
+        this.editorsReady[index].then(setEditorsValue(_lodash.default.clone(flags)));
       }
     }
   }, {
@@ -365,7 +357,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
         }) : this.setConvertedValue(value);
         return _get(_getPrototypeOf(TextAreaComponent.prototype), "setValue", this).call(this, value, flags);
       }
-      flags.skipWysiwyg = value === '' && flags.resetValue ? false : _lodash["default"].isEqual(value, this.getValue());
+      flags.skipWysiwyg = _lodash.default.isEqual(value, this.getValue());
       return _get(_getPrototypeOf(TextAreaComponent.prototype), "setValue", this).call(this, value, flags);
     }
   }, {
@@ -383,11 +375,11 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
       if (this.options.readOnly || this.disabled) {
         if (this.refs.input && this.refs.input[index]) {
           if (this.component.inputFormat === 'plain') {
-            this.refs.input[index].innerText = this.isPlain ? value : this.interpolate(value, {}, {
+            this.refs.input[index].innerText = this.interpolate(value, {}, {
               noeval: true
             });
           } else {
-            this.setContent(this.refs.input[index], this.isPlain ? value : this.interpolate(value, {}, {
+            this.setContent(this.refs.input[index], this.interpolate(value, {}, {
               noeval: true
             }), this.shouldSanitizeValue);
           }
@@ -402,14 +394,14 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
   }, {
     key: "setConvertedValue",
     value: function setConvertedValue(value, index) {
-      if (this.isJsonValue && !_lodash["default"].isNil(value)) {
+      if (this.isJsonValue && !_lodash.default.isNil(value)) {
         try {
           value = JSON.stringify(value, null, 2);
         } catch (err) {
           console.warn(err);
         }
       }
-      if (!_lodash["default"].isString(value)) {
+      if (!_lodash.default.isString(value)) {
         value = '';
       }
       this.setReadOnlyValue(value, index);
@@ -425,7 +417,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
           console.warn(err);
         }
       }
-      if (!_lodash["default"].isString(value)) {
+      if (!_lodash.default.isString(value)) {
         value = '';
       }
       var htmlDoc = new DOMParser().parseFromString(value, 'text/html');
@@ -436,14 +428,14 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
           return value;
         });
       } else {
-        return _nativePromiseOnly["default"].resolve(value);
+        return _nativePromiseOnly.default.resolve(value);
       }
     }
   }, {
     key: "setImagesUrl",
     value: function setImagesUrl(images) {
       var _this6 = this;
-      return _nativePromiseOnly["default"].all(_lodash["default"].map(images, function (image) {
+      return _nativePromiseOnly.default.all(_lodash.default.map(images, function (image) {
         var requestData;
         try {
           requestData = JSON.parse(image.getAttribute('alt'));
@@ -492,7 +484,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
           textarea.style.height = "".concat(textarea.scrollHeight + heightOffset, "px");
         });
       };
-      var update = _lodash["default"].debounce(function () {
+      var update = _lodash.default.debounce(function () {
         resize();
         var styleHeight = Math.round(parseFloat(textarea.style.height));
         var computed = window.getComputedStyle(textarea, null);
@@ -612,43 +604,26 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
   }, {
     key: "focus",
     value: function focus() {
-      var _this8 = this;
       _get(_getPrototypeOf(TextAreaComponent.prototype), "focus", this).call(this);
       switch (this.component.editor) {
         case 'ckeditor':
           {
-            var _this$editorsReady$;
-            // Wait for the editor to be ready.
-            (_this$editorsReady$ = this.editorsReady[0]) === null || _this$editorsReady$ === void 0 ? void 0 : _this$editorsReady$.then(function () {
-              var _this8$editors$0$edit, _this8$editors$0$edit2;
-              if ((_this8$editors$0$edit = _this8.editors[0].editing) !== null && _this8$editors$0$edit !== void 0 && (_this8$editors$0$edit2 = _this8$editors$0$edit.view) !== null && _this8$editors$0$edit2 !== void 0 && _this8$editors$0$edit2.focus) {
-                _this8.editors[0].editing.view.focus();
-              }
-              _this8.element.scrollIntoView();
-            })["catch"](function (err) {
-              console.warn('An editor did not initialize properly when trying to focus:', err);
-            });
+            var _this$editors$0$editi, _this$editors$0$editi2;
+            if ((_this$editors$0$editi = this.editors[0].editing) !== null && _this$editors$0$editi !== void 0 && (_this$editors$0$editi2 = _this$editors$0$editi.view) !== null && _this$editors$0$editi2 !== void 0 && _this$editors$0$editi2.focus) {
+              this.editors[0].editing.view.focus();
+            }
+            this.element.scrollIntoView();
             break;
           }
         case 'ace':
           {
-            var _this$editorsReady$2;
-            (_this$editorsReady$2 = this.editorsReady[0]) === null || _this$editorsReady$2 === void 0 ? void 0 : _this$editorsReady$2.then(function () {
-              _this8.editors[0].focus();
-              _this8.element.scrollIntoView();
-            })["catch"](function (err) {
-              console.warn('An editor did not initialize properly when trying to focus:', err);
-            });
+            this.editors[0].focus();
+            this.element.scrollIntoView();
             break;
           }
         case 'quill':
           {
-            var _this$editorsReady$3;
-            (_this$editorsReady$3 = this.editorsReady[0]) === null || _this$editorsReady$3 === void 0 ? void 0 : _this$editorsReady$3.then(function () {
-              _this8.editors[0].focus();
-            })["catch"](function (err) {
-              console.warn('An editor did not initialize properly when trying to focus:', err);
-            });
+            this.editors[0].focus();
             break;
           }
       }
@@ -659,7 +634,7 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _TextField["default"].schema.apply(_TextField["default"], [{
+      return _TextField.default.schema.apply(_TextField.default, [{
         type: 'textarea',
         label: 'Text Area',
         key: 'textArea',
@@ -681,12 +656,12 @@ var TextAreaComponent = /*#__PURE__*/function (_TextFieldComponent) {
         title: 'Text Area',
         group: 'basic',
         icon: 'font',
-        documentation: '/userguide/form-building/form-components#text-area',
+        documentation: '/userguide/forms/form-components#text-area',
         weight: 20,
         schema: TextAreaComponent.schema()
       };
     }
   }]);
   return TextAreaComponent;
-}(_TextField["default"]);
-exports["default"] = TextAreaComponent;
+}(_TextField.default);
+exports.default = TextAreaComponent;

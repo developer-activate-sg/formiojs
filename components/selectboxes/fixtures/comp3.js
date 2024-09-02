@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   _id: '61135ec3e4188f021c7ad390',
   label: 'Select Boxes',
@@ -31,4 +30,4 @@ var _default = {
   name: 'fio2959',
   path: 'fio2959'
 };
-exports["default"] = _default;
+exports.default = _default;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.sort.js");
 require("core-js/modules/es.array.iterator.js");
@@ -13,7 +12,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.function.name.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Formio = require("../../../Formio");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   type: 'select',
   input: true,
@@ -26,7 +25,7 @@ var _default = [{
   dataSrc: 'custom',
   data: {
     custom: function custom() {
-      return _lodash["default"].values(_Formio.GlobalFormio.Providers.getProviders('address')).sort().map(function (provider) {
+      return _lodash.default.values(_Formio.GlobalFormio.Providers.getProviders('address')).sort().map(function (provider) {
         return {
           label: provider.displayName,
           value: provider.name
@@ -51,7 +50,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'azure']
     }
   }
@@ -69,7 +68,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'custom']
     }
   }
@@ -85,7 +84,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'custom']
     }
   }
@@ -100,7 +99,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'custom']
     }
   }
@@ -115,7 +114,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'custom']
     }
   }
@@ -133,7 +132,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'custom']
     }
   }
@@ -151,7 +150,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'google']
     }
   }
@@ -170,7 +169,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.provider'
+        var: 'data.provider'
       }, 'google']
     }
   }
@@ -186,4 +185,4 @@ var _default = [{
   editor: 'ace',
   tooltip: 'Specify template which should be when quering view string for the component value entered in manual mode. This string is used in table view, CSV export and email rendering. When left blank combined value of all components joined with comma will be used.'
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   'conditional': {
     'eq': '',
@@ -16,8 +15,8 @@ var _default = {
   'validate': {
     'custom': ''
   },
-  'minDate': '2020-03-01',
-  'maxDate': '2021-01-03',
+  'minDate': '2020-02-04',
+  'maxDate': '2020-02-09',
   'clearOnHide': true,
   'persistent': true,
   'protected': false,
@@ -44,4 +43,4 @@ var _default = {
   'tableView': true,
   'input': true
 };
-exports["default"] = _default;
+exports.default = _default;

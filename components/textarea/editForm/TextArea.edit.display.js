@@ -1,14 +1,13 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Formio = require("../../../Formio");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   key: 'inputMask',
   ignore: true
@@ -66,7 +65,7 @@ var _default = [{
   conditional: {
     json: {
       '==': [{
-        "var": 'data.editor'
+        var: 'data.editor'
       }, '']
     }
   }
@@ -80,11 +79,11 @@ var _default = [{
     json: {
       or: [{
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'quill']
       }, {
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'ckeditor']
       }]
     }
@@ -101,7 +100,7 @@ var _default = [{
   dataSrc: 'custom',
   data: {
     custom: function custom() {
-      return _lodash["default"].map(_Formio.GlobalFormio.Providers.getProviders('storage'), function (storage, key) {
+      return _lodash.default.map(_Formio.GlobalFormio.Providers.getProviders('storage'), function (storage, key) {
         return {
           label: storage.title,
           value: key
@@ -112,7 +111,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.isUploadEnabled'
+        var: 'data.isUploadEnabled'
       }, true]
     }
   }
@@ -127,7 +126,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.uploadStorage'
+        var: 'data.uploadStorage'
       }, 'url']
     }
   }
@@ -144,7 +143,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.uploadStorage'
+        var: 'data.uploadStorage'
       }, 'url']
     }
   }
@@ -159,7 +158,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.isUploadEnabled'
+        var: 'data.isUploadEnabled'
       }, true]
     }
   }
@@ -176,15 +175,15 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'quill']
       }, {
         '===': [{
-          "var": 'data.isUploadEnabled'
+          var: 'data.isUploadEnabled'
         }, true]
       }, {
         '===': [{
-          "var": 'data.uploadStorage'
+          var: 'data.uploadStorage'
         }, 'url']
       }]
     }
@@ -213,11 +212,11 @@ var _default = [{
     json: {
       or: [{
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'quill']
       }, {
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'ace']
       }]
     }
@@ -239,19 +238,19 @@ var _default = [{
     json: {
       or: [{
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'ace']
       }, {
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'ckeditor']
       }, {
         '===': [{
-          "var": 'data.editor'
+          var: 'data.editor'
         }, 'quill']
       }]
     }
   },
   weight: 417
 }];
-exports["default"] = _default;
+exports.default = _default;

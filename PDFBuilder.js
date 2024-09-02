@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -11,8 +9,10 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
+require("core-js/modules/es.array.iterator.js");
+require("core-js/modules/es.string.iterator.js");
+require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.function.name.js");
@@ -20,22 +20,13 @@ require("core-js/modules/es.regexp.exec.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.iterator.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.string.iterator.js");
-require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/web.url.js");
-require("core-js/modules/web.url-search-params.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.array.for-each.js");
+require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/esnext.global-this.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
@@ -45,13 +36,13 @@ var _utils = require("./utils/utils");
 var _formUtils = require("./utils/formUtils");
 var _builder = _interopRequireDefault(require("./utils/builder"));
 var _PDF = _interopRequireDefault(require("./PDF"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -98,7 +89,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
         pdf: {
           title: 'PDF Fields',
           weight: 0,
-          "default": true,
+          default: true,
           components: {
             textfield: true,
             number: true,
@@ -127,7 +118,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
   }, {
     key: "hasPDF",
     get: function get() {
-      return _lodash["default"].has(this.webform.form, 'settings.pdf');
+      return _lodash.default.has(this.webform.form, 'settings.pdf');
     }
   }, {
     key: "projectUrl",
@@ -231,7 +222,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
             _this3.refs.hiddenFileInputElement.value = '';
           });
         }
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
 
       // Normal PDF Builder
@@ -295,32 +286,19 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
           }
         }
       }, "".concat(this.projectUrl, "/upload"), {}, 'file').then(function (result) {
-        var _result$data$formfiel;
-        var autoConversionComponentsAssigned = false;
-        if ((_result$data$formfiel = result.data.formfields) !== null && _result$data$formfiel !== void 0 && _result$data$formfiel.components && result.data.formfields.components.length) {
-          var _this5$webform$form$c, _this5$webform$form$c2, _this5$webform$form$c3;
-          var formInitState = ((_this5$webform$form$c = _this5.webform.form.components[0]) === null || _this5$webform$form$c === void 0 ? void 0 : _this5$webform$form$c.key) === 'submit';
-          var wizardInitState = ((_this5$webform$form$c2 = _this5.webform.form.components[0]) === null || _this5$webform$form$c2 === void 0 ? void 0 : _this5$webform$form$c2.key) === 'page1' && ((_this5$webform$form$c3 = _this5.webform.form.components[0]) === null || _this5$webform$form$c3 === void 0 ? void 0 : _this5$webform$form$c3.components.length) === 0;
-          var emptyFormState = _this5.webform.form.components.length === 0;
-          if (formInitState || wizardInitState || emptyFormState) {
-            autoConversionComponentsAssigned = true;
-            _this5.webform.form.components = result.data.formfields.components;
-          }
-        }
+        _lodash.default.set(_this5.webform.form, 'settings.pdf', {
+          id: result.data.file,
+          src: "".concat(result.data.filesServer).concat(result.data.path)
+        });
         if (_this5.refs.dragDropText) {
           _this5.refs.dragDropText.style.display = 'inherit';
         }
         if (_this5.refs.uploadProgressWrapper) {
           _this5.refs.uploadProgressWrapper.style.display = 'none';
         }
-        _lodash["default"].set(_this5.webform.form, 'settings.pdf', {
-          id: result.data.file,
-          src: result.data.filesServer ? "".concat(result.data.filesServer).concat(result.data.path) : "".concat(new URL(_this5.projectUrl).origin, "/pdf-proxy").concat(result.data.path),
-          nonFillableConversionUsed: autoConversionComponentsAssigned && result.data.formfields.nonFillableConversionUsed
-        });
         _this5.emit('pdfUploaded', result.data);
         _this5.redraw();
-      })["catch"](function (err) {
+      }).catch(function (err) {
         return _this5.setUploadError(err);
       });
     }
@@ -340,7 +318,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
       // Instantiate the webform from the PDF class instead of Webform
       options.skipInit = false;
       options.hideLoader = true;
-      this.webform = new _PDF["default"](this.element, options);
+      this.webform = new _PDF.default(this.element, options);
       this.webform.on('attach', function () {
         // If the dropzone exists but has been removed in a PDF rebuild, reinstate it
         if (_this6.refs.iframeDropzone && !_toConsumableArray(_this6.refs.form.children).includes(_this6.refs.iframeDropzone)) {
@@ -535,8 +513,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
       // If there hasn't been a drop event on the dropzone, we're done
       if (!this.dropEvent) {
         // a 'drop' event may not be emited in the chrome browser when using a Mac, therefore an additional check has been added
-        // eslint-disable-next-line no-undef
-        if (!this.dropEmitted && ((0, _utils.getBrowserInfo)().chrome || (0, _utils.getBrowserInfo)().edge) && globalThis.navigator.userAgentData.platform === 'macOS' && iframeRect.left < e.clientX && iframeRect.top < e.clientY) {
+        if (!this.dropEmitted && (0, _utils.getBrowserInfo)().chrome && global.navigator.userAgentData.platform === 'macOS' && iframeRect.left < e.clientX && iframeRect.top < e.clientY) {
           this.dropEvent = e;
           this.dropEvent.dataTransfer.effectAllowed = 'all';
           this.dropEmitted = true;
@@ -551,11 +528,11 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
       var schema = (0, _utils.fastCloneDeep)(this.schemas[type]);
       if (key && group) {
         var info = this.getComponentInfo(key, group);
-        _lodash["default"].merge(schema, info);
+        _lodash.default.merge(schema, info);
       }
 
       // Set a unique key for this component.
-      _builder["default"].uniquify([this.webform._form], schema);
+      _builder.default.uniquify([this.webform._form], schema);
       this.webform._form.components.push(schema);
       schema.overlay = {
         top: layerY ? layerY - this.itemOffsetY + HEIGHT : e.clientY - iframeRect.top - (this.itemOffsetY - HEIGHT) * 2,
@@ -581,7 +558,7 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
       var repeatablePaths = this.findRepeatablePaths();
 
       // update elements which path was duplicated if any pathes have been changed
-      if (!_lodash["default"].isEqual(this.repeatablePaths, repeatablePaths)) {
+      if (!_lodash.default.isEqual(this.repeatablePaths, repeatablePaths)) {
         (0, _formUtils.eachComponent)(this.webform.getComponents(), function (comp, path) {
           if (_this9.repeatablePaths.includes(path)) {
             _this9.webform.postMessage({
@@ -609,5 +586,5 @@ var PDFBuilder = /*#__PURE__*/function (_WebformBuilder) {
     }
   }]);
   return PDFBuilder;
-}(_WebformBuilder2["default"]);
-exports["default"] = PDFBuilder;
+}(_WebformBuilder2.default);
+exports.default = PDFBuilder;

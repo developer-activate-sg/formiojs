@@ -4,8 +4,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -14,7 +12,6 @@ require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -22,23 +19,18 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.reduce.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _builder = _interopRequireDefault(require("../../utils/builder"));
 var _NestedComponent2 = _interopRequireDefault(require("../_classes/nested/NestedComponent"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -78,7 +70,7 @@ var TableComponent = /*#__PURE__*/function (_NestedComponent) {
     key: "schema",
     get: function get() {
       var _this2 = this;
-      var schema = _lodash["default"].omit(_get(_getPrototypeOf(TableComponent.prototype), "schema", this), 'components');
+      var schema = _lodash.default.omit(_get(_getPrototypeOf(TableComponent.prototype), "schema", this), 'components');
       schema.rows = [];
       this.eachComponent(function (component) {
         if (!schema.rows || !schema.rows.length) {
@@ -149,19 +141,19 @@ var TableComponent = /*#__PURE__*/function (_NestedComponent) {
       this.component.rows = this.component.rows.slice(0, this.component.numRows);
       var lastNonEmptyRow = [];
       this.table = [];
-      _lodash["default"].each(this.component.rows, function (row, rowIndex) {
+      _lodash.default.each(this.component.rows, function (row, rowIndex) {
         _this3.table[rowIndex] = [];
-        _lodash["default"].each(row, function (column, colIndex) {
+        _lodash.default.each(row, function (column, colIndex) {
           _this3.table[rowIndex][colIndex] = [];
           if (_this3.component.cloneRows) {
             if (column.components.length) {
               lastNonEmptyRow[colIndex] = column;
             } else if (lastNonEmptyRow[colIndex]) {
-              column.components = _lodash["default"].cloneDeep(lastNonEmptyRow[colIndex].components);
-              _builder["default"].uniquify(_this3.root._form.components, column);
+              column.components = _lodash.default.cloneDeep(lastNonEmptyRow[colIndex].components);
+              _builder.default.uniquify(_this3.root._form.components, column);
             }
           }
-          _lodash["default"].each(column.components, function (comp) {
+          _lodash.default.each(column.components, function (comp) {
             var columnComponent;
             if (_this3.builderMode) {
               comp.id = comp.id + rowIndex;
@@ -238,7 +230,7 @@ var TableComponent = /*#__PURE__*/function (_NestedComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _NestedComponent2["default"].schema.apply(_NestedComponent2["default"], [{
+      return _NestedComponent2.default.schema.apply(_NestedComponent2.default, [{
         label: 'Table',
         type: 'table',
         input: false,
@@ -264,17 +256,11 @@ var TableComponent = /*#__PURE__*/function (_NestedComponent) {
         group: 'layout',
         icon: 'table',
         weight: 40,
-        documentation: '/userguide/form-building/layout-components#table',
-        showPreview: false,
+        documentation: '/userguide/forms/layout-components#table',
         schema: TableComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return TableComponent;
-}(_NestedComponent2["default"]);
-exports["default"] = TableComponent;
+}(_NestedComponent2.default);
+exports.default = TableComponent;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.regexp.flags.js");
 /* eslint-disable max-len */
 var _default = [{
@@ -17,8 +16,7 @@ var _default = [{
   tooltip: 'The label for this field that will appear next to it.',
   validate: {
     required: true
-  },
-  autofocus: true
+  }
 }, {
   type: 'select',
   input: true,
@@ -67,11 +65,11 @@ var _default = [{
     json: {
       and: [{
         '!==': [{
-          "var": 'data.labelPosition'
+          var: 'data.labelPosition'
         }, 'top']
       }, {
         '!==': [{
-          "var": 'data.labelPosition'
+          var: 'data.labelPosition'
         }, 'bottom']
       }]
     }
@@ -94,11 +92,11 @@ var _default = [{
     json: {
       and: [{
         '!==': [{
-          "var": 'data.labelPosition'
+          var: 'data.labelPosition'
         }, 'top']
       }, {
         '!==': [{
-          "var": 'data.labelPosition'
+          var: 'data.labelPosition'
         }, 'bottom']
       }]
     }
@@ -180,7 +178,7 @@ var _default = [{
   weight: 1370,
   type: 'checkbox',
   label: 'Show Label in DataGrid',
-  tooltip: 'Show the label inside each row when in a Datagrid.',
+  tooltip: 'Show the label when in a Datagrid.',
   key: 'dataGridLabel',
   input: true,
   customConditional: function customConditional(context) {
@@ -210,4 +208,4 @@ var _default = [{
   input: true
 }];
 /* eslint-enable max-len */
-exports["default"] = _default;
+exports.default = _default;

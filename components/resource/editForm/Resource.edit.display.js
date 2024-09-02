@@ -1,17 +1,16 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   key: 'resourceInfo',
   weight: -10,
   type: 'htmlelement',
   tag: 'div',
   className: 'alert alert-danger',
-  content: 'This component has been deprecated and will be removed in a future version of Formio.js.'
+  content: 'The Resource component is deprecated. Use the Select component with data source of "Resource" instead.'
 }, {
   type: 'select',
   input: true,
@@ -78,7 +77,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'resource']
     }
   }
@@ -94,14 +93,14 @@ var _default = [{
     json: {
       and: [{
         '===': [{
-          "var": 'data.dataSrc'
+          var: 'data.dataSrc'
         }, 'resource']
       }, {
         '!!': {
-          "var": 'data.addResource'
+          var: 'data.addResource'
         }
       }]
     }
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

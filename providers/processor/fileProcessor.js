@@ -1,16 +1,15 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.function.name.js");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var fileProcessor = function fileProcessor(formio, config) {
   return function (file, options) {
-    return new _nativePromiseOnly["default"](function (resolve, reject) {
+    return new _nativePromiseOnly.default(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
 
       // Fire on network error.
@@ -56,4 +55,4 @@ var fileProcessor = function fileProcessor(formio, config) {
   };
 };
 var _default = fileProcessor;
-exports["default"] = _default;
+exports.default = _default;

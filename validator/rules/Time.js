@@ -1,11 +1,7 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -18,7 +14,7 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
 var _moment = _interopRequireDefault(require("moment"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -51,7 +47,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
     key: "check",
     value: function check(value) {
       if (this.component.isEmpty(value)) return true;
-      return (0, _moment["default"])(value, this.component.component.format).isValid();
+      return (0, _moment.default)(value, this.component.component.format).isValid();
     }
   }]);
   return Time;

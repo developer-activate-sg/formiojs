@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   label: 'HTML5',
   tableView: false,
@@ -84,7 +83,7 @@ var _default = {
   suffix: '',
   multiple: false,
   defaultValue: null,
-  "protected": false,
+  protected: false,
   unique: false,
   persistent: true,
   hidden: false,
@@ -147,4 +146,4 @@ var _default = {
   },
   id: 'e7p0y9a'
 };
-exports["default"] = _default;
+exports.default = _default;

@@ -82,7 +82,7 @@ __p += '\n    <tr ref="' +
 ((__t = (ctx.datagridKey)) == null ? '' : __t) +
 '-row">\n      ';
  if (ctx.component.reorder) { ;
-__p += '\n        <td class="col-md-1">\n          <button type="button" class="formio-drag-button btn btn-default fa fa-bars" data-key="' +
+__p += '\n        <td>\n          <button type="button" class="formio-drag-button btn btn-default fa fa-bars" data-key="' +
 ((__t = (ctx.datagridKey)) == null ? '' : __t) +
 '"></button>\n        </td>\n      ';
  } ;
@@ -104,7 +104,7 @@ __p += '\n      ';
  if (ctx.hasExtraColumn) { ;
 __p += '\n        ';
  if (ctx.hasRemoveButtons) { ;
-__p += '\n        <td class="col-md-1">\n          <button type="button" class="btn btn-secondary formio-button-remove-row" ref="' +
+__p += '\n        <td>\n          <button type="button" class="btn btn-secondary formio-button-remove-row" ref="' +
 ((__t = (ctx.datagridKey)) == null ? '' : __t) +
 '-removeRow" tabindex="' +
 ((__t = (ctx.tabIndex)) == null ? '' : __t) +
@@ -118,7 +118,7 @@ __p += '\n        ';
  if (ctx.canAddColumn) { ;
 __p += '\n        <td ref="' +
 ((__t = (ctx.key)) == null ? '' : __t) +
-'-container" class="col-md-3">\n          ' +
+'-container">\n          ' +
 ((__t = (ctx.placeholder)) == null ? '' : __t) +
 '\n        </td>\n        ';
  } ;

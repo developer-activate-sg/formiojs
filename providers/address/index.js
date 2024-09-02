@@ -6,7 +6,6 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -15,7 +14,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.function.name.js");
 var _AzureAddressProvider2 = require("./AzureAddressProvider");
 var _CustomAddressProvider = require("./CustomAddressProvider");
@@ -26,4 +25,4 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var _default = (_AzureAddressProvider = {}, _defineProperty(_AzureAddressProvider, _AzureAddressProvider2.AzureAddressProvider.name, _AzureAddressProvider2.AzureAddressProvider), _defineProperty(_AzureAddressProvider, _CustomAddressProvider.CustomAddressProvider.name, _CustomAddressProvider.CustomAddressProvider), _defineProperty(_AzureAddressProvider, _GoogleAddressProvider.GoogleAddressProvider.name, _GoogleAddressProvider.GoogleAddressProvider), _defineProperty(_AzureAddressProvider, _NominatimAddressProvider.NominatimAddressProvider.name, _NominatimAddressProvider.NominatimAddressProvider), _AzureAddressProvider);
-exports["default"] = _default;
+exports.default = _default;

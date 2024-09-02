@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -18,18 +16,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.GoogleAddressProvider = void 0;
 require("core-js/modules/es.string.trim.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Formio = require("../../Formio");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _AddressProvider2 = require("./AddressProvider");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -80,8 +74,8 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
   }, {
     key: "setAutocompleteOptions",
     value: function setAutocompleteOptions() {
-      var options = _lodash["default"].get(this.options, 'params.autocompleteOptions', {});
-      if (!_lodash["default"].isObject(options)) {
+      var options = _lodash.default.get(this.options, 'params.autocompleteOptions', {});
+      if (!_lodash.default.isObject(options)) {
         options = {};
       }
       this.addRequiredProviderOptions(options);
@@ -102,8 +96,8 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
     key: "convertRegionToAutocompleteOption",
     value: function convertRegionToAutocompleteOption(options) {
       var providerOptions = options;
-      var region = _lodash["default"].get(providerOptions, 'params.region', '');
-      if (region && !_lodash["default"].has(options, 'params.autocompleteOptions')) {
+      var region = _lodash.default.get(providerOptions, 'params.region', '');
+      if (region && !_lodash.default.has(options, 'params.autocompleteOptions')) {
         region = region.toUpperCase().trim();
         // providing compatibility with ISO 3166-1 Alpha-2 county codes (for checking compatibility https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
         var countryCodes = {
@@ -112,7 +106,7 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
         if (countryCodes[region]) {
           region = countryCodes[region];
         }
-        _lodash["default"].set(providerOptions, 'params.autocompleteOptions.componentRestrictions.country', [region]);
+        _lodash.default.set(providerOptions, 'params.autocompleteOptions.componentRestrictions.country', [region]);
       }
     }
   }, {
@@ -124,7 +118,7 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
     key: "addRequiredProviderOptions",
     value: function addRequiredProviderOptions(options) {
       var addressProperties = this.getRequiredAddressProperties();
-      if (_lodash["default"].isArray(options.fields) && options.fields.length > 0) {
+      if (_lodash.default.isArray(options.fields) && options.fields.length > 0) {
         options.fields.forEach(function (optionalField) {
           if (!addressProperties.some(function (addressProp) {
             return optionalField === addressProp;
@@ -157,7 +151,7 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
         var autocomplete = new google.maps.places.Autocomplete(elem, _this2.autocompleteOptions);
         autocomplete.addListener('place_changed', function () {
           var place = _this2.filterPlace(autocomplete.getPlace());
-          place.formattedPlace = _lodash["default"].get(autocomplete, 'gm_accessors_.place.se.formattedPrediction', place[_this2.alternativeDisplayValueProperty]);
+          place.formattedPlace = _lodash.default.get(autocomplete, 'gm_accessors_.place.se.formattedPrediction', place[_this2.alternativeDisplayValueProperty]);
           onSelectAddress(place, elem, index);
         });
       });
@@ -165,18 +159,18 @@ var GoogleAddressProvider = /*#__PURE__*/function (_AddressProvider) {
   }, {
     key: "search",
     value: function search() {
-      return _nativePromiseOnly["default"].resolve();
+      return _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "makeRequest",
     value: function makeRequest() {
-      return _nativePromiseOnly["default"].resolve();
+      return _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "getDisplayValue",
     value: function getDisplayValue(address) {
-      var displayedProperty = _lodash["default"].has(address, this.displayValueProperty) ? this.displayValueProperty : this.alternativeDisplayValueProperty;
-      return _lodash["default"].get(address, displayedProperty, '');
+      var displayedProperty = _lodash.default.has(address, this.displayValueProperty) ? this.displayValueProperty : this.alternativeDisplayValueProperty;
+      return _lodash.default.get(address, displayedProperty, '');
     }
   }], [{
     key: "name",

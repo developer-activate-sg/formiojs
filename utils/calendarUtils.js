@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -17,10 +16,9 @@ require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.find-index.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.index-of.js");
 var _moment = _interopRequireDefault(require("moment"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var CALENDAR_ERROR_MESSAGES = {
   INVALID: 'You entered the Invalid Date',
   INCOMPLETE: 'You entered an incomplete date.',
@@ -66,14 +64,14 @@ function lessOrGreater(value, format, maxDate, minDate) {
   var message = '';
   var result = true;
   if (maxDate && value.isValid()) {
-    var maxDateMoment = (0, _moment["default"])(maxDate, format);
+    var maxDateMoment = (0, _moment.default)(maxDate, format);
     if (value > maxDateMoment) {
       message = CALENDAR_ERROR_MESSAGES.greater(maxDateMoment, format);
       result = false;
     }
   }
   if (minDate && value.isValid()) {
-    var minDateMoment = (0, _moment["default"])(minDate, format);
+    var minDateMoment = (0, _moment.default)(minDate, format);
     if (value < minDateMoment) {
       message = CALENDAR_ERROR_MESSAGES.less(minDateMoment, format);
       result = false;
@@ -99,17 +97,17 @@ function lessOrGreater(value, format, maxDate, minDate) {
  * * @return {{message: string, result: boolean}}
  */
 function checkInvalidDate(value, format, minDate, maxDate) {
-  var date = (0, _moment["default"])(value, format, true);
+  var date = (0, _moment.default)(value, format, true);
   var isValidDate = date.isValid();
   if (!isValidDate) {
     var delimeters = value.match(/[^a-z0-9_]/gi);
     var delimetersRegEx = new RegExp(delimeters.join('|'), 'gi');
     var inputParts = value.replace(/_*/gi, '').split(delimetersRegEx);
     var formatParts = format[1] ? format[1].split(delimetersRegEx) : format[0].split(delimetersRegEx);
-    var timeIndex = _lodash["default"].findIndex(formatParts, function (part, index) {
+    var timeIndex = _lodash.default.findIndex(formatParts, function (part, index) {
       return part.length === 1 && index === formatParts.length - 1;
     });
-    var yearIndex = _lodash["default"].findIndex(formatParts, function (part) {
+    var yearIndex = _lodash.default.findIndex(formatParts, function (part) {
       return part.match(/yyyy/gi);
     });
     if (inputParts[yearIndex] / 1000 < 1) {
@@ -128,7 +126,7 @@ function checkInvalidDate(value, format, minDate, maxDate) {
         }
         return partValue;
       });
-      var problemDate = (0, _moment["default"])(modifiedParts.join(''), format, true);
+      var problemDate = (0, _moment.default)(modifiedParts.join(''), format, true);
       if (problemDate.isValid()) {
         var checkedLessOrGreater = lessOrGreater(problemDate, format[0], maxDate, minDate);
         if (!checkedLessOrGreater.result) {

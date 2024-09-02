@@ -28,7 +28,6 @@ export class Formio {
   static projectUrlSet: boolean;
   static plugins: any;
   static cache: any;
-  static license: string;
   static providers: any;
   static events: any; // EventEmitter3
   static namespace: string;
@@ -116,5 +115,4 @@ export class Formio {
   static ssoInit(type: any, options?: Object): any;
   static requireLibrary(name: any, property: any, src: any, polling?: boolean): any;
   static libraryReady(name: string): any;
-  oauthLogoutURI(uri: string, options?: any): any;
 }

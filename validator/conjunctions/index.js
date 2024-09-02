@@ -1,13 +1,10 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -15,7 +12,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -58,5 +55,5 @@ var Conjunctions = /*#__PURE__*/function () {
   }]);
   return Conjunctions;
 }();
-exports["default"] = Conjunctions;
+exports.default = Conjunctions;
 _defineProperty(Conjunctions, "conjunctions", {});

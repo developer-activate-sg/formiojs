@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   '_id': '5ed8d0f9b507cf407c61f2d6',
   'type': 'form',
@@ -43,4 +42,4 @@ var _default = {
   'name': 'nestedModal',
   'path': 'nestedmodal'
 };
-exports["default"] = _default;
+exports.default = _default;

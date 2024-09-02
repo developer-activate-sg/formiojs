@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -22,27 +20,21 @@ require("core-js/modules/es.regexp.exec.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.every.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.reduce.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _NestedComponent2 = _interopRequireDefault(require("../_classes/nested/NestedComponent"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -73,10 +65,10 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
     get: function get() {
       var _schema$columns,
         _this2 = this;
-      var schema = _lodash["default"].omit(_get(_getPrototypeOf(ColumnsComponent.prototype), "schema", this), ['components']);
+      var schema = _lodash.default.omit(_get(_getPrototypeOf(ColumnsComponent.prototype), "schema", this), ['components']);
       (_schema$columns = schema.columns) === null || _schema$columns === void 0 ? void 0 : _schema$columns.map(function (column, colIndex) {
         column.components.map(function (comp, compIndex) {
-          var clonedComp = _lodash["default"].clone(comp);
+          var clonedComp = _lodash.default.clone(comp);
           clonedComp.internal = true;
           var component = _this2.createComponent(clonedComp);
           delete component.component.internal;
@@ -106,17 +98,17 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
       var _this3 = this;
       _get(_getPrototypeOf(ColumnsComponent.prototype), "init", this).call(this);
       this.columns = [];
-      _lodash["default"].each(this.component.columns, function (column, index) {
+      _lodash.default.each(this.component.columns, function (column, index) {
         _this3.columns[index] = [];
         if (!column.size) {
           column.size = 'md';
         }
-        column.currentWidth = _this3.options.condensedMode ? _this3.gridSize : column.width || 0;
+        column.currentWidth = column.width || 0;
         // Ensure there is a components array.
         if (!Array.isArray(column.components)) {
           column.components = [];
         }
-        _lodash["default"].each(column.components, function (comp) {
+        _lodash.default.each(column.components, function (comp) {
           var component = _this3.createComponent(comp);
           component.column = index;
           _this3.columns[index].push(component);
@@ -146,12 +138,12 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
   }, {
     key: "justifyColumn",
     value: function justifyColumn(items, index) {
-      var toAdjust = _lodash["default"].every(items, function (item) {
+      var toAdjust = _lodash.default.every(items, function (item) {
         return !item.visible;
       });
       var column = this.component.columns[index];
       var width = toAdjust && items.length ? 0 : column.width;
-      var shouldRedraw = !_lodash["default"].isEqual(width, column.currentWidth);
+      var shouldRedraw = !_lodash.default.isEqual(width, column.currentWidth);
       column.currentWidth = width;
       return shouldRedraw;
     }
@@ -197,9 +189,9 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
       var width = function width(x) {
         return x.component.width;
       };
-      var result = _lodash["default"].reduce(this.components, function (acc, next) {
+      var result = _lodash.default.reduce(this.components, function (acc, next) {
         var stack = [].concat(_toConsumableArray(acc.stack), [next]);
-        if (_lodash["default"].sumBy(stack, width) <= _this7.gridSize) {
+        if (_lodash.default.sumBy(stack, width) <= _this7.gridSize) {
           acc.stack = stack;
           return acc;
         } else {
@@ -208,7 +200,7 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
           return acc;
         }
       }, initVal);
-      return _lodash["default"].concat(result.rows, [result.stack]);
+      return _lodash.default.concat(result.rows, [result.stack]);
     }
   }, {
     key: "checkData",
@@ -239,7 +231,7 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _NestedComponent2["default"].schema.apply(_NestedComponent2["default"], [{
+      return _NestedComponent2.default.schema.apply(_NestedComponent2.default, [{
         label: 'Columns',
         key: 'columns',
         type: 'columns',
@@ -272,18 +264,12 @@ var ColumnsComponent = /*#__PURE__*/function (_NestedComponent) {
         title: 'Columns',
         icon: 'columns',
         group: 'layout',
-        documentation: '/userguide/form-building/layout-components#columns',
-        showPreview: false,
+        documentation: '/userguide/forms/layout-components#columns',
         weight: 10,
         schema: ColumnsComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return ColumnsComponent;
-}(_NestedComponent2["default"]);
-exports["default"] = ColumnsComponent;
+}(_NestedComponent2.default);
+exports.default = ColumnsComponent;

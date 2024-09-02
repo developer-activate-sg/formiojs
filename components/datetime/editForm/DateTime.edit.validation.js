@@ -1,11 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.index-of.js");
+exports.default = void 0;
 var _default = [{
   type: 'checkbox',
   input: true,
@@ -89,4 +87,4 @@ var _default = [{
     return data.enableMaxDateInput;
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

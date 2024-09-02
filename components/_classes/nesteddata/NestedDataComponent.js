@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -14,7 +12,6 @@ require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -22,23 +19,19 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Component = _interopRequireDefault(require("../component/Component"));
 var _NestedComponent2 = _interopRequireDefault(require("../nested/NestedComponent"));
 var _lodash = _interopRequireDefault(require("lodash"));
-var _utils = require("../../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -70,7 +63,7 @@ var NestedDataComponent = /*#__PURE__*/function (_NestedComponent) {
       if (newValue !== undefined && newValue !== null && !this.hasValue()) {
         return true;
       }
-      return !_lodash["default"].isEqual(newValue, oldValue);
+      return !_lodash.default.isEqual(newValue, oldValue);
     }
   }, {
     key: "allowData",
@@ -102,7 +95,7 @@ var NestedDataComponent = /*#__PURE__*/function (_NestedComponent) {
         result += "\n          </tbody>\n        </table>\n      ";
         return result;
       }
-      if (_lodash["default"].isEmpty(value)) {
+      if (_lodash.default.isEmpty(value)) {
         return '';
       }
       if (options !== null && options !== void 0 && options.modalPreview) {
@@ -156,7 +149,7 @@ var NestedDataComponent = /*#__PURE__*/function (_NestedComponent) {
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       // Intentionally skip over nested component updateValue method to keep
       // recursive update from occurring with sub components.
-      return _Component["default"].prototype.updateValue.call(this, value, flags);
+      return _Component.default.prototype.updateValue.call(this, value, flags);
     }
   }, {
     key: "setValue",
@@ -164,10 +157,10 @@ var NestedDataComponent = /*#__PURE__*/function (_NestedComponent) {
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var changed = false;
       var hasValue = this.hasValue();
-      if (hasValue && _lodash["default"].isEmpty(this.dataValue)) {
+      if (hasValue && _lodash.default.isEmpty(this.dataValue)) {
         flags.noValidate = true;
       }
-      if (!value || !_lodash["default"].isObject(value) || !hasValue) {
+      if (!value || !_lodash.default.isObject(value) || !hasValue) {
         changed = true;
         this.dataValue = this.defaultValue;
       }
@@ -175,12 +168,7 @@ var NestedDataComponent = /*#__PURE__*/function (_NestedComponent) {
       this.updateOnChange(flags, changed);
       return changed;
     }
-  }], [{
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes.object];
-    }
   }]);
   return NestedDataComponent;
-}(_NestedComponent2["default"]);
-exports["default"] = NestedDataComponent;
+}(_NestedComponent2.default);
+exports.default = NestedDataComponent;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   type: 'form',
   owner: '5e05a6b7549cdc2ece30c6b0',
@@ -61,7 +60,7 @@ var _default = {
       key: 'password',
       type: 'password',
       input: true,
-      "protected": true
+      protected: true
     }, {
       label: 'Checkbox',
       tableView: true,
@@ -194,4 +193,4 @@ var _default = {
   display: 'form',
   name: 'testEg2'
 };
-exports["default"] = _default;
+exports.default = _default;

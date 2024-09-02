@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   '_id': '5ece2d11b8c2fe102c726057',
   'type': 'form',
@@ -50,4 +49,4 @@ var _default = {
   'name': 'modalEditGridConfirm',
   'path': 'modaleditgridconfirm'
 };
-exports["default"] = _default;
+exports.default = _default;

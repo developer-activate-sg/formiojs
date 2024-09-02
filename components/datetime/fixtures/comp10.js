@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   _id: '62d5264f8673caaf3e7afc14',
   title: 'dateTime2',
@@ -88,4 +87,4 @@ var _default = {
   modified: '2022-11-14T13:40:52.276Z',
   machineName: 'tmcogwpnxqfxgxy:dateTime2'
 };
-exports["default"] = _default;
+exports.default = _default;

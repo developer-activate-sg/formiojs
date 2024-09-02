@@ -1,18 +1,17 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _xhr = require("./xhr");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var dropbox = function dropbox(formio) {
   return {
     uploadFile: function uploadFile(file, fileName, dir, progressCallback, url, options, fileKey, groupPermissions, groupId, abortCallback) {
-      return new _nativePromiseOnly["default"](function (resolve, reject) {
+      return new _nativePromiseOnly.default(function (resolve, reject) {
         // Send the file with data.
         var xhr = new XMLHttpRequest();
         if (typeof progressCallback === 'function') {
@@ -60,10 +59,10 @@ var dropbox = function dropbox(formio) {
     downloadFile: function downloadFile(file) {
       var token = formio.getToken();
       file.url = "".concat(formio.formUrl, "/storage/dropbox?path_lower=").concat(file.path_lower).concat(token ? "&x-jwt-token=".concat(token) : '');
-      return _nativePromiseOnly["default"].resolve(file);
+      return _nativePromiseOnly.default.resolve(file);
     }
   };
 };
 dropbox.title = 'Dropbox';
 var _default = dropbox;
-exports["default"] = _default;
+exports.default = _default;

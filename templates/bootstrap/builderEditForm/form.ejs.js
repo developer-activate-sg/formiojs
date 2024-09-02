@@ -12,7 +12,7 @@ __p += '<div class="row">\n  <div class="col col-sm-6">\n    <p class="lead">' +
  if (ctx.helplinks) { ;
 __p += '\n  <div class="col col-sm-6">\n    <div class="float-right" style="margin-right: 20px; margin-top: 10px">\n      <a href="' +
 ((__t = (ctx.t(ctx.helplinks + ctx.componentInfo.documentation))) == null ? '' : __t) +
-'" target="_blank" rel="noopener noreferrer">\n        <i class="' +
+'" target="_blank">\n        <i class="' +
 ((__t = (ctx.iconClass('new-window'))) == null ? '' : __t) +
 '"></i> ' +
 ((__t = (ctx.t('Help'))) == null ? '' : __t) +

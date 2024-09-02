@@ -1,12 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -17,9 +14,7 @@ require("core-js/modules/es.function.name.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.array.for-each.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.concat.js");
@@ -33,18 +28,18 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -85,7 +80,7 @@ var Alert = /*#__PURE__*/function () {
       var errors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
       var triggerEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-      errors = _lodash["default"].isArray(errors) ? errors : [errors];
+      errors = _lodash.default.isArray(errors) ? errors : [errors];
       var messagesList = this.createMessagesList('error', errors);
       this.showAlert('error', messagesList, options);
       if (triggerEvent) {
@@ -165,7 +160,7 @@ var Alert = /*#__PURE__*/function () {
           customClasses = _options$customClasse === void 0 ? "alert alert-".concat(alertType) : _options$customClasse;
         this.alert = this.parentComponent.ce('div', {
           id: id,
-          "class": customClasses
+          class: customClasses
         });
         if (messagesList instanceof HTMLElement) {
           this.parentComponent.appendTo(messagesList, this.alert);
@@ -238,7 +233,7 @@ var Alert = /*#__PURE__*/function () {
         var _this$parentComponent;
         var path = this.parentComponent._parentPath ? keyOrPath.replace(this.parentComponent._parentPath, '') : keyOrPath;
         var component = (_this$parentComponent = this.parentComponent.root) === null || _this$parentComponent === void 0 ? void 0 : _this$parentComponent.getComponent(path, null, keyOrPath);
-        if (component && _lodash["default"].isFunction(component.focus)) {
+        if (component && _lodash.default.isFunction(component.focus)) {
           component.focus();
         }
       }
@@ -263,7 +258,7 @@ var Alert = /*#__PURE__*/function () {
       };
       var li = this.parentComponent.ce('li', params);
       this.parentComponent.setContent(li, message);
-      var messageFromIndex = !_lodash["default"].isUndefined(index) && (err === null || err === void 0 ? void 0 : (_err$messages = err.messages) === null || _err$messages === void 0 ? void 0 : _err$messages[index]);
+      var messageFromIndex = !_lodash.default.isUndefined(index) && (err === null || err === void 0 ? void 0 : (_err$messages = err.messages) === null || _err$messages === void 0 ? void 0 : _err$messages[index]);
       var keyOrPath = (messageFromIndex === null || messageFromIndex === void 0 ? void 0 : messageFromIndex.path) || (err === null || err === void 0 ? void 0 : (_err$component = err.component) === null || _err$component === void 0 ? void 0 : _err$component.key);
       if (keyOrPath) {
         var formattedKeyOrPath = (0, _utils.getStringFromComponentPath)(keyOrPath);
@@ -282,11 +277,11 @@ var Alert = /*#__PURE__*/function () {
           _this4.createMessage('error', ul, message, index, err);
         });
       } else if (err) {
-        var message = _lodash["default"].isObject(err) ? err.message || '' : err;
+        var message = _lodash.default.isObject(err) ? err.message || '' : err;
         this.createMessage('error', ul, message);
       }
     }
   }]);
   return Alert;
 }();
-exports["default"] = Alert;
+exports.default = Alert;

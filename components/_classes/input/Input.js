@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,8 +16,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
+exports.default = void 0;
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.find.js");
@@ -29,14 +26,13 @@ require("core-js/modules/es.string.split.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Multivalue2 = _interopRequireDefault(require("../multivalue/Multivalue"));
 var _utils = require("../../../utils/utils");
 var _widgets = _interopRequireDefault(require("../../../widgets"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -58,7 +54,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
     var _this;
     _classCallCheck(this, Input);
     _this = _super.call(this, component, options, data);
-    _this.triggerUpdateValueAt = _lodash["default"].debounce(_this.updateValueAt.bind(_assertThisInitialized(_this)), 100);
+    _this.triggerUpdateValueAt = _lodash.default.debounce(_this.updateValueAt.bind(_assertThisInitialized(_this)), 100);
     return _this;
   }
   _createClass(Input, [{
@@ -67,17 +63,19 @@ var Input = /*#__PURE__*/function (_Multivalue) {
       var attr = {
         name: this.options.name,
         type: this.component.inputType || 'text',
-        "class": 'form-control',
+        class: 'form-control',
         lang: this.options.language
       };
-      if (this.options.attachMode === 'builder' || this.options.building || _lodash["default"].get(this.root, 'form.settings.disableAutocomplete')) {
+      if (this.options.attachMode === 'builder' || this.options.building || _lodash.default.get(this.root, 'form.settings.disableAutocomplete')) {
         attr.autocomplete = this.autocompleteDisableAttrName;
       }
       if (this.component.inputMode) {
         attr.inputmode = this.component.inputMode;
       }
       if (this.component.placeholder) {
-        attr.placeholder = this.getFormattedAttribute(this.component.placeholder);
+        attr.placeholder = this.t(this.component.placeholder, {
+          _userInput: true
+        });
       }
       if (this.component.tabindex) {
         attr.tabindex = this.component.tabindex;
@@ -88,7 +86,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
       if (this.component.autocomplete) {
         attr.autocomplete = this.component.autocomplete;
       }
-      _lodash["default"].defaults(attr, this.component.attributes);
+      _lodash.default.defaults(attr, this.component.attributes);
       return {
         id: this.key,
         type: 'input',
@@ -105,7 +103,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
   }, {
     key: "maskOptions",
     get: function get() {
-      return _lodash["default"].map(this.component.inputMasks, function (mask) {
+      return _lodash.default.map(this.component.inputMasks, function (mask) {
         return {
           label: mask.label,
           value: mask.label
@@ -120,7 +118,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
   }, {
     key: "getMaskByName",
     value: function getMaskByName(maskName) {
-      var inputMask = _lodash["default"].find(this.component.inputMasks, function (inputMask) {
+      var inputMask = _lodash.default.find(this.component.inputMasks, function (inputMask) {
         return inputMask.label === maskName;
       });
       return inputMask ? inputMask.mask : undefined;
@@ -149,7 +147,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
   }, {
     key: "remainingWords",
     get: function get() {
-      var maxWords = _lodash["default"].parseInt(_lodash["default"].get(this.component, 'validate.maxWords'), 10);
+      var maxWords = _lodash.default.parseInt(_lodash.default.get(this.component, 'validate.maxWords'), 10);
       var wordCount = this.getWordCount(this.dataValue);
       return maxWords - wordCount;
     }
@@ -190,7 +188,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
       var displayMask = this.component.displayMask;
       var hasDifferentDisplayAndSaveFormats = valueMask && displayMask && valueMask !== displayMask;
       if (this.isMultipleMasksField) {
-        info.attr["class"] += ' formio-multiple-mask-input';
+        info.attr.class += ' formio-multiple-mask-input';
       }
       return this.isMultipleMasksField ? this.renderTemplate('multipleMasksInput', {
         input: info,
@@ -229,15 +227,15 @@ var Input = /*#__PURE__*/function (_Multivalue) {
     key: "updateValueAt",
     value: function updateValueAt(value, flags, index) {
       flags = flags || {};
-      if (_lodash["default"].get(this.component, 'showWordCount', false)) {
+      if (_lodash.default.get(this.component, 'showWordCount', false)) {
         if (this.refs.wordcount && this.refs.wordcount[index]) {
-          var maxWords = _lodash["default"].parseInt(_lodash["default"].get(this.component, 'validate.maxWords', 0), 10);
+          var maxWords = _lodash.default.parseInt(_lodash.default.get(this.component, 'validate.maxWords', 0), 10);
           this.setCounter(this.t('words'), this.refs.wordcount[index], this.getWordCount(value), maxWords);
         }
       }
-      if (_lodash["default"].get(this.component, 'showCharCount', false)) {
+      if (_lodash.default.get(this.component, 'showCharCount', false)) {
         if (this.refs.charcount && this.refs.charcount[index]) {
-          var maxChars = _lodash["default"].parseInt(_lodash["default"].get(this.component, 'validate.maxLength', 0), 10);
+          var maxChars = _lodash.default.parseInt(_lodash.default.get(this.component, 'validate.maxLength', 0), 10);
           this.setCounter(this.t('characters'), this.refs.charcount[index], value.length, maxChars);
         }
       }
@@ -298,7 +296,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
         element.widget.destroy();
       }
       // Attach the widget.
-      var promise = _nativePromiseOnly["default"].resolve();
+      var promise = _nativePromiseOnly.default.resolve();
       element.widget = this.createWidget(index);
       if (element.widget) {
         promise = element.widget.attach(element);
@@ -350,12 +348,12 @@ var Input = /*#__PURE__*/function (_Multivalue) {
       }
 
       // Make sure we have a widget.
-      if (!_widgets["default"].hasOwnProperty(settings.type)) {
+      if (!_widgets.default.hasOwnProperty(settings.type)) {
         return null;
       }
 
       // Create the widget.
-      var widget = new _widgets["default"][settings.type](settings, this.component, this, index);
+      var widget = new _widgets.default[settings.type](settings, this.component, this, index);
       widget.on('update', function () {
         return _this3.updateValue(_this3.getValue(), {
           modified: true
@@ -386,7 +384,7 @@ var Input = /*#__PURE__*/function (_Multivalue) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Multivalue2["default"].schema.apply(_Multivalue2["default"], [{
+      return _Multivalue2.default.schema.apply(_Multivalue2.default, [{
         widget: {
           type: 'input'
         }
@@ -394,5 +392,5 @@ var Input = /*#__PURE__*/function (_Multivalue) {
     }
   }]);
   return Input;
-}(_Multivalue2["default"]);
-exports["default"] = Input;
+}(_Multivalue2.default);
+exports.default = Input;

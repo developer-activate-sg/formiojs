@@ -13,8 +13,8 @@ __p += '\n    ';
 __p += '\n    <li>\n      <button class="btn btn-secondary btn-wizard-nav-cancel" ref="' +
 ((__t = (ctx.wizardKey)) == null ? '' : __t) +
 '-cancel" aria-label="' +
-((__t = (ctx.t('cancelButtonAriaLabel'))) == null ? '' : __t) +
-'">' +
+((__t = (ctx.t('cancel'))) == null ? '' : __t) +
+' button. Click to reset the form">' +
 ((__t = (ctx.t('cancel'))) == null ? '' : __t) +
 '</button>\n    </li>\n    ';
  } ;
@@ -23,8 +23,8 @@ __p += '\n    ';
 __p += '\n    <li>\n      <button class="btn btn-primary btn-wizard-nav-previous" ref="' +
 ((__t = (ctx.wizardKey)) == null ? '' : __t) +
 '-previous" aria-label="' +
-((__t = (ctx.t('previousButtonAriaLabel'))) == null ? '' : __t) +
-'">' +
+((__t = (ctx.t('previous'))) == null ? '' : __t) +
+' button. Click to go back to the previous tab">' +
 ((__t = (ctx.t('previous'))) == null ? '' : __t) +
 '</button>\n    </li>\n    ';
  } ;
@@ -33,8 +33,8 @@ __p += '\n    ';
 __p += '\n    <li>\n      <button class="btn btn-primary btn-wizard-nav-next" ref="' +
 ((__t = (ctx.wizardKey)) == null ? '' : __t) +
 '-next" aria-label="' +
-((__t = (ctx.t('nextButtonAriaLabel'))) == null ? '' : __t) +
-'">' +
+((__t = (ctx.t('next'))) == null ? '' : __t) +
+' button. Click to go to the next tab">' +
 ((__t = (ctx.t('next'))) == null ? '' : __t) +
 '</button>\n    </li>\n    ';
  } ;

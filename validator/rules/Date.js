@@ -1,17 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -50,7 +45,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
   _createClass(DateRule, [{
     key: "check",
     value: function check(value) {
-      if (!value) {
+      if (!value || value instanceof Date) {
         return true;
       }
       if (value === 'Invalid date' || value === 'Invalid Date') {
@@ -59,7 +54,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
       if (typeof value === 'string') {
         value = new Date(value);
       }
-      return value instanceof Date === true && value.toString() !== 'Invalid Date';
+      return value.toString() !== 'Invalid Date';
     }
   }]);
   return DateRule;

@@ -1,17 +1,16 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = _default;
+exports.default = _default;
 var _Components = _interopRequireDefault(require("../Components"));
 var _ReCaptchaEdit = _interopRequireDefault(require("./editForm/ReCaptcha.edit.display"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _default() {
-  return _Components["default"].baseEditForm([{
+  return _Components.default.baseEditForm([{
     key: 'display',
-    components: _ReCaptchaEdit["default"]
+    components: _ReCaptchaEdit.default
   }, {
     key: 'data',
     ignore: true
@@ -23,6 +22,9 @@ function _default() {
     ignore: true
   }, {
     key: 'logic',
+    ignore: true
+  }, {
+    key: 'addons',
     ignore: true
   }]);
 }

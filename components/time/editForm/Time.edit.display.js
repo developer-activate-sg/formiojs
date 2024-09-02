@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'select',
   input: true,
@@ -35,7 +34,7 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.inputType'
+        var: 'data.inputType'
       }, 'text']
     }
   }
@@ -43,4 +42,4 @@ var _default = [{
   key: 'placeholder',
   ignore: true
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,13 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _utils = _interopRequireDefault(require("./utils"));
 var _Evaluator = _interopRequireDefault(require("../../../../utils/Evaluator"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* eslint-disable quotes, max-len */
 var _default = [{
   weight: 10,
@@ -68,9 +67,9 @@ var _default = [{
   key: 'custom-validation-js',
   weight: 300,
   customConditional: function customConditional() {
-    return !_Evaluator["default"].noeval || _Evaluator["default"].protectedEval;
+    return !_Evaluator.default.noeval || _Evaluator.default.protectedEval;
   },
-  components: [_utils["default"].logicVariablesTable('<tr><th>input</th><td>The value that was input into this component</td></tr>'), {
+  components: [_utils.default.logicVariablesTable('<tr><th>input</th><td>The value that was input into this component</td></tr>'), {
     type: 'textarea',
     key: 'validate.custom',
     rows: 5,
@@ -105,7 +104,7 @@ var _default = [{
     type: 'htmlelement',
     tag: 'div',
     /* eslint-disable prefer-template */
-    content: '<p>Execute custom logic using <a href="http://jsonlogic.com/" target="_blank" rel="noopener noreferrer">JSONLogic</a>.</p>' + '<h5>Example:</h5>' + '<pre>' + JSON.stringify({
+    content: '<p>Execute custom logic using <a href="http://jsonlogic.com/" target="_blank">JSONLogic</a>.</p>' + '<h5>Example:</h5>' + '<pre>' + JSON.stringify({
       "if": [{
         "===": [{
           "var": "input"
@@ -144,4 +143,4 @@ var _default = [{
   }]
 }];
 /* eslint-enable quotes, max-len */
-exports["default"] = _default;
+exports.default = _default;

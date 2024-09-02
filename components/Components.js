@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -8,8 +7,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.is-array.js");
+exports.default = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -20,7 +18,7 @@ var _Component = _interopRequireDefault(require("./_classes/component/Component"
 var _utils = _interopRequireDefault(require("./_classes/component/editForm/utils"));
 var _Component2 = _interopRequireDefault(require("./_classes/component/Component.form"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -74,7 +72,7 @@ var Components = /*#__PURE__*/function () {
           return comp.getView(value);
         };
       }
-      _lodash["default"].assign(Components.components, comps);
+      _lodash.default.assign(Components.components, comps);
     }
   }, {
     key: "addComponent",
@@ -105,13 +103,13 @@ var Components = /*#__PURE__*/function () {
         // eslint-disable-next-line new-cap
         comp = new Components.components['hidden'](component, options, data);
       } else {
-        comp = new _Component["default"](component, options, data);
+        comp = new _Component.default(component, options, data);
       }
       return comp;
     }
   }]);
   return Components;
 }();
-exports["default"] = Components;
-_defineProperty(Components, "_editFormUtils", _utils["default"]);
-_defineProperty(Components, "_baseEditForm", _Component2["default"]);
+exports.default = Components;
+_defineProperty(Components, "_editFormUtils", _utils.default);
+_defineProperty(Components, "_baseEditForm", _Component2.default);

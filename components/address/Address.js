@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -13,8 +11,6 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -24,19 +20,16 @@ require("core-js/modules/es.array.slice.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.AddressComponentMode = void 0;
+exports.default = exports.AddressComponentMode = void 0;
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.join.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.search.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _autocompleter = _interopRequireDefault(require("autocompleter"));
 var _lodash = _interopRequireDefault(require("lodash"));
@@ -45,18 +38,17 @@ var _GoogleAddressProvider = require("../../providers/address/GoogleAddressProvi
 var _Field = _interopRequireDefault(require("../_classes/field/Field"));
 var _NestedComponent = _interopRequireDefault(require("../_classes/nested/NestedComponent"));
 var _Container = _interopRequireDefault(require("../container/Container"));
-var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -94,18 +86,18 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
       var component = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       var defaultSchema = this.defaultSchema;
       if (component.components) {
-        defaultSchema = _lodash["default"].omit(defaultSchema, 'components');
+        defaultSchema = _lodash.default.omit(defaultSchema, 'components');
       }
-      return _lodash["default"].defaultsDeep(component, defaultSchema);
+      return _lodash.default.defaultsDeep(component, defaultSchema);
     }
   }, {
     key: "init",
     value: function init() {
       this.components = this.components || [];
       if (this.builderMode || this.manualModeEnabled) {
-        _NestedComponent["default"].prototype.addComponents.call(this, this.manualMode ? this.address : {});
+        _NestedComponent.default.prototype.addComponents.call(this, this.manualMode ? this.address : {});
       }
-      _Field["default"].prototype.init.call(this);
+      _Field.default.prototype.init.call(this);
       if (!this.builderMode) {
         if (this.component.provider) {
           var _this$component = this.component,
@@ -123,10 +115,10 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
           var key = map.key,
             region = map.region;
           if (key) {
-            _lodash["default"].set(_providerOptions, 'params.key', key);
+            _lodash.default.set(_providerOptions, 'params.key', key);
           }
           if (region) {
-            _lodash["default"].set(_providerOptions, 'params.region', region);
+            _lodash.default.set(_providerOptions, 'params.region', region);
           }
           this.provider = this.initializeProvider(_provider, _providerOptions);
         }
@@ -199,7 +191,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
     key: "address",
     get: function get() {
       if (this.isMultiple) {
-        return _lodash["default"].isArray(this.dataValue) ? this.dataValue : [this.dataValue];
+        return _lodash.default.isArray(this.dataValue) ? this.dataValue : [this.dataValue];
       }
       // Manual mode is not implementing for multiple value
       return this.manualModeEnabled && this.dataValue ? this.dataValue.address : this.dataValue;
@@ -216,7 +208,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
     get: function get() {
       var defaultValue = _get(_getPrototypeOf(AddressComponent.prototype), "defaultValue", this);
       if (this.isMultiple) {
-        defaultValue = _lodash["default"].isArray(defaultValue) ? defaultValue : [defaultValue];
+        defaultValue = _lodash.default.isArray(defaultValue) ? defaultValue : [defaultValue];
       }
       return defaultValue;
     }
@@ -242,11 +234,11 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
     key: "setValue",
     value: function setValue(value) {
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      var changed = _Field["default"].prototype.setValue.call(this, value, flags);
+      var changed = _Field.default.prototype.setValue.call(this, value, flags);
       if (this.manualMode) {
         this.restoreComponentsContext();
       }
-      if (changed || !_lodash["default"].isEmpty(value) && flags.fromSubmission) {
+      if (changed || !_lodash.default.isEmpty(value) && flags.fromSubmission) {
         this.redraw();
       }
       return changed;
@@ -282,7 +274,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
       var attr = {
         name: this.options.name,
         type: 'text',
-        "class": 'form-control',
+        class: 'form-control',
         lang: this.options.language,
         tabindex: this.component.tabindex || 0
       };
@@ -294,7 +286,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
       if (this.disabled) {
         attr.disabled = 'disabled';
       }
-      _lodash["default"].defaults(attr, this.component.attributes);
+      _lodash.default.defaults(attr, this.component.attributes);
       return attr;
     }
   }, {
@@ -395,7 +387,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
     value: function attach(element) {
       var _this$loadRefs,
         _this2 = this;
-      var result = (this.builderMode || this.manualMode ? _get(_getPrototypeOf(AddressComponent.prototype), "attach", this) : _Field["default"].prototype.attach).call(this, element);
+      var result = (this.builderMode || this.manualMode ? _get(_getPrototypeOf(AddressComponent.prototype), "attach", this) : _Field.default.prototype.attach).call(this, element);
       if (!this.builderMode) {
         if (!this.provider && this.component.provider) {
           var _this$component3 = this.component,
@@ -410,7 +402,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
           if (_this2.component.provider === 'google') {
             _this2.provider.attachAutocomplete(element, index, _this2.onSelectAddress.bind(_this2));
           } else {
-            (0, _autocompleter["default"])({
+            (0, _autocompleter.default)({
               input: element,
               debounceWaitMs: 300,
               fetch: function fetch(text, update) {
@@ -494,7 +486,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
             }
           });
         });
-        _lodash["default"].each(this.refs.searchInput || [], function (el) {
+        _lodash.default.each(this.refs.searchInput || [], function (el) {
           return _this2.addFocusBlurEvents(el);
         });
       }
@@ -587,7 +579,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
         return this.getComponents().filter(function (component) {
           return component.hasValue(address);
         }).map(function (component) {
-          return [component, _lodash["default"].get(address, component.key)];
+          return [component, _lodash.default.get(address, component.key)];
         }).filter(function (_ref3) {
           var _ref4 = _slicedToArray(_ref3, 2),
             component = _ref4[0],
@@ -615,7 +607,7 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Container["default"].schema.apply(_Container["default"], [{
+      return _Container.default.schema.apply(_Container.default, [{
         type: 'address',
         label: 'Address',
         key: 'address',
@@ -672,19 +664,13 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
       }].concat(extend));
     }
   }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      schema = schema || {};
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes.object];
-    }
-  }, {
     key: "builderInfo",
     get: function get() {
       return {
         title: 'Address',
         group: 'advanced',
         icon: 'home',
-        documentation: '/userguide/form-building/advanced-components#address',
+        documentation: '/userguide/forms/form-components#address',
         weight: 35,
         schema: AddressComponent.schema()
       };
@@ -716,5 +702,5 @@ var AddressComponent = /*#__PURE__*/function (_ContainerComponent) {
     }
   }]);
   return AddressComponent;
-}(_Container["default"]);
-exports["default"] = AddressComponent;
+}(_Container.default);
+exports.default = AddressComponent;

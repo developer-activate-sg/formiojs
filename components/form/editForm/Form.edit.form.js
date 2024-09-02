@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.object.to-string.js");
 var _default = [{
@@ -78,4 +77,4 @@ var _default = [{
   label: 'Save as reference',
   tooltip: 'Using this option will save this field as a reference and link its value to the value of the origin record.'
 }];
-exports["default"] = _default;
+exports.default = _default;

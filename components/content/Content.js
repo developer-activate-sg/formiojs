@@ -3,8 +3,6 @@
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -19,15 +17,13 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Component2 = _interopRequireDefault(require("../_classes/component/Component"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -60,7 +56,7 @@ var ContentComponent = /*#__PURE__*/function (_Component) {
       if (this.builderMode) {
         return this.component.html || 'Content';
       }
-      var submission = _lodash["default"].get(this.root, 'submission', {});
+      var submission = _lodash.default.get(this.root, 'submission', {});
       return this.component.html ? this.interpolate(this.component.html, {
         metadata: submission.metadata || {},
         submission: submission,
@@ -81,7 +77,7 @@ var ContentComponent = /*#__PURE__*/function (_Component) {
     key: "dataReady",
     get: function get() {
       var _this$root;
-      return ((_this$root = this.root) === null || _this$root === void 0 ? void 0 : _this$root.submissionReady) || _nativePromiseOnly["default"].resolve();
+      return ((_this$root = this.root) === null || _this$root === void 0 ? void 0 : _this$root.submissionReady) || _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "attach",
@@ -115,7 +111,7 @@ var ContentComponent = /*#__PURE__*/function (_Component) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Component2["default"].schema.apply(_Component2["default"], [{
+      return _Component2.default.schema.apply(_Component2.default, [{
         label: 'Content',
         type: 'content',
         key: 'content',
@@ -131,17 +127,12 @@ var ContentComponent = /*#__PURE__*/function (_Component) {
         group: 'layout',
         icon: 'html5',
         preview: false,
-        documentation: '/userguide/form-building/layout-components#content',
+        documentation: '/userguide/forms/layout-components#content',
         weight: 5,
         schema: ContentComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return ContentComponent;
-}(_Component2["default"]);
-exports["default"] = ContentComponent;
+}(_Component2.default);
+exports.default = ContentComponent;

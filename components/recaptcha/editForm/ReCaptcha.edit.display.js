@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _utils = require("../../../utils/utils");
 var _default = [{
   key: 'eventType',
@@ -88,4 +87,4 @@ var _default = [{
   key: 'tableView',
   ignore: true
 }];
-exports["default"] = _default;
+exports.default = _default;

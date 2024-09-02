@@ -3,8 +3,6 @@
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -18,34 +16,29 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.is-array.js");
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.array.splice.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Component = _interopRequireDefault(require("../_classes/component/Component"));
 var _DataGrid = _interopRequireDefault(require("../datagrid/DataGrid"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _eventemitter = _interopRequireDefault(require("eventemitter3"));
 var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -69,18 +62,13 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
     return _this;
   }
   _createClass(DataMapComponent, [{
-    key: "isRowsDataComponent",
-    get: function get() {
-      return true;
-    }
-  }, {
     key: "schema",
     get: function get() {
       var schema = _get(_getPrototypeOf(DataMapComponent.prototype), "schema", this);
       if (this.components && this.components.length > 0) {
         schema.valueComponent = this.components[this.components.length - 1].schema;
       }
-      return _lodash["default"].omit(schema, 'components');
+      return _lodash.default.omit(schema, 'components');
     }
   }, {
     key: "init",
@@ -112,7 +100,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
       if (!this.hasValue() && this.shouldAddDefaultValue) {
         this.dataValue = this.emptyValue;
       }
-      return _lodash["default"].get(this.data, this.key);
+      return _lodash.default.get(this.data, this.key);
     },
     set: function set(value) {
       _set(_getPrototypeOf(DataMapComponent.prototype), "dataValue", value, this, true);
@@ -150,7 +138,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
       if (this.builderMode) {
         return [dataValue];
       }
-      if (_lodash["default"].isEmpty(dataValue)) {
+      if (_lodash.default.isEmpty(dataValue)) {
         return [];
       }
       return Object.keys(dataValue).map(function () {
@@ -222,7 +210,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
   }, {
     key: "setRowComponentsData",
     value: function setRowComponentsData(rowIndex, rowData) {
-      _lodash["default"].each(this.rows[rowIndex], function (component) {
+      _lodash.default.each(this.rows[rowIndex], function (component) {
         if (component.key === '__key') {
           component.data = {
             '__key': Object.keys(rowData)[rowIndex]
@@ -236,7 +224,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "getValueAsString",
     value: function getValueAsString(value, options) {
       var _this2 = this;
-      if (options !== null && options !== void 0 && options.email && this.visible && !this.skipInEmail && _lodash["default"].isObject(value)) {
+      if (options !== null && options !== void 0 && options.email && this.visible && !this.skipInEmail && _lodash.default.isObject(value)) {
         var result = "\n        <table border=\"1\" style=\"width:100%\">\n          <tbody>\n      ";
         result = Object.keys(value).reduce(function (result, key) {
           result += "\n          <tr>\n            <th style=\"padding: 5px 10px;\">".concat(key, "</th>\n            <td style=\"width:100%;padding:5px 10px;\">").concat(_this2.getView(value[key], options), "</td>\n          </tr>\n        ");
@@ -245,7 +233,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
         result += "\n          </tbody>\n        </table>\n      ";
         return result;
       }
-      if (_lodash["default"].isEmpty(value)) {
+      if (_lodash.default.isEmpty(value)) {
         return '';
       }
       if (options !== null && options !== void 0 && options.modalPreview) {
@@ -259,7 +247,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
     value: function getDataValueAsTable(value, options) {
       var _this3 = this;
       var result = "\n      <table border=\"1\" style=\"width:100%\">\n        <tbody>\n    ";
-      if (this.visible && _lodash["default"].isObject(value)) {
+      if (this.visible && _lodash.default.isObject(value)) {
         Object.keys(value).forEach(function (key) {
           result += "\n          <tr>\n            <th style=\"padding: 5px 10px;\">".concat(key, "</th>\n            <td style=\"width:100%;padding:5px 10px;\">").concat(_this3.getView(value[key], options), "</td>\n          </tr>\n        ");
         });
@@ -275,8 +263,8 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
       var key = this.builderMode ? this.valueKey : this.getRowKey(rowIndex);
 
       // Create a new event emitter since fields are isolated.
-      var options = _lodash["default"].clone(this.options);
-      options.events = new _eventemitter["default"]();
+      var options = _lodash.default.clone(this.options);
+      options.events = new _eventemitter.default();
       options.name += "[".concat(rowIndex, "]");
       options.row = "".concat(rowIndex);
       var components = {};
@@ -293,7 +281,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
         comp.path = _this4.calculateComponentPath(comp);
         key = newKey;
       });
-      var valueComponent = _lodash["default"].clone(this.component.valueComponent);
+      var valueComponent = _lodash.default.clone(this.component.valueComponent);
       valueComponent.key = key;
       var componentOptions = this.options;
       componentOptions.row = options.row;
@@ -367,7 +355,7 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Component["default"].schema.apply(_Component["default"], [{
+      return _Component.default.schema.apply(_Component.default, [{
         label: 'Data Map',
         key: 'dataMap',
         type: 'datamap',
@@ -395,18 +383,12 @@ var DataMapComponent = /*#__PURE__*/function (_DataGridComponent) {
         title: 'Data Map',
         icon: 'th-list',
         group: 'data',
-        documentation: '/userguide/form-building/data-components#data-map',
-        showPreview: false,
+        documentation: '/userguide/forms/data-components#data-map',
         weight: 20,
         schema: DataMapComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes.object];
-    }
   }]);
   return DataMapComponent;
-}(_DataGrid["default"]);
-exports["default"] = DataMapComponent;
+}(_DataGrid.default);
+exports.default = DataMapComponent;

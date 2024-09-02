@@ -1,14 +1,13 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.object.assign.js");
 var _utils = _interopRequireDefault(require("./utils"));
 var _utils2 = require("../../../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* eslint-disable quotes, max-len */
 var _default = [{
   weight: 0,
@@ -342,7 +341,7 @@ var _default = [{
           var row = _ref9.row;
           return row.type === 'mergeComponentSchema';
         }
-      }, Object.assign(_utils["default"].logicVariablesTable('<tr><th>input</th><td>The value that was input into this component</td></tr>'), {
+      }, Object.assign(_utils.default.logicVariablesTable('<tr><th>input</th><td>The value that was input into this component</td></tr>'), {
         customConditional: function customConditional(_ref10) {
           var row = _ref10.row;
           return row.type === 'customAction';
@@ -366,4 +365,4 @@ var _default = [{
   }]
 }];
 /* eslint-enable quotes, max-len */
-exports["default"] = _default;
+exports.default = _default;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   key: 'placeholder',
   ignore: true
@@ -128,7 +127,7 @@ var _default = [{
   weight: 441,
   conditional: {
     json: {
-      "var": 'data.enableRowGroups'
+      var: 'data.enableRowGroups'
     }
   }
 }, {
@@ -139,7 +138,7 @@ var _default = [{
   weight: 442,
   conditional: {
     json: {
-      "var": 'data.enableRowGroups'
+      var: 'data.enableRowGroups'
     }
   }
 }, {
@@ -150,4 +149,4 @@ var _default = [{
   tooltip: 'The DataGrid will have no visible rows when initialized.',
   weight: 450
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   weight: 50,
   type: 'checkbox',
@@ -14,7 +13,7 @@ var _default = [{
   input: true,
   conditional: {
     json: {
-      "var": 'data.searchField'
+      var: 'data.searchField'
     }
   }
 }, {
@@ -26,10 +25,10 @@ var _default = [{
   input: true,
   conditional: {
     json: {
-      "in": [{
-        "var": 'data.dataSrc'
+      in: [{
+        var: 'data.dataSrc'
       }, ['values', 'json', 'custom']]
     }
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

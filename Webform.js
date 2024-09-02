@@ -1,15 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -17,20 +13,13 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.array.index-of.js");
+exports.default = void 0;
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/web.timers.js");
-require("core-js/modules/es.string.trim.js");
-require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
+require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.array.map.js");
@@ -52,7 +41,7 @@ var _Components = _interopRequireDefault(require("./components/Components"));
 var _NestedDataComponent2 = _interopRequireDefault(require("./components/_classes/nesteddata/NestedDataComponent"));
 var _utils = require("./utils/utils");
 var _formUtils = require("./utils/formUtils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -75,7 +64,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 _Formio.GlobalFormio.forms = {};
 
 // Allow people to register components.
-_Formio.GlobalFormio.registerComponent = _Components["default"].setComponent;
+_Formio.GlobalFormio.registerComponent = _Components.default.setComponent;
 function getIconSet(icons) {
   if (icons === 'fontawesome') {
     return 'fa';
@@ -83,10 +72,10 @@ function getIconSet(icons) {
   return icons || '';
 }
 function getOptions(options) {
-  options = _lodash["default"].defaults(options, {
+  options = _lodash.default.defaults(options, {
     submitOnEnter: false,
     iconset: getIconSet(options && options.icons ? options.icons : _Formio.GlobalFormio.icons),
-    i18next: _i18next["default"],
+    i18next: _i18next.default,
     saveDraft: false,
     alwaysDirty: false,
     saveDraftThrottle: 5000,
@@ -94,7 +83,7 @@ function getOptions(options) {
     cdnUrl: _Formio.GlobalFormio.cdn.baseUrl
   });
   if (!options.events) {
-    options.events = new _EventEmitter["default"]();
+    options.events = new _EventEmitter.default();
   }
   return options;
 }
@@ -135,19 +124,19 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       }
       var ctrl = event.ctrlKey || event.metaKey;
       var keyCode = event.keyCode;
-      var _char = '';
+      var char = '';
       if (65 <= keyCode && keyCode <= 90) {
-        _char = String.fromCharCode(keyCode);
+        char = String.fromCharCode(keyCode);
       } else if (keyCode === 13) {
-        _char = 'Enter';
+        char = 'Enter';
       } else if (keyCode === 27) {
-        _char = 'Esc';
+        char = 'Esc';
       }
-      _lodash["default"].each(_this2.shortcuts, function (shortcut) {
+      _lodash.default.each(_this2.shortcuts, function (shortcut) {
         if (shortcut.ctrl && !ctrl) {
           return;
         }
-        if (shortcut.shortcut === _char) {
+        if (shortcut.shortcut === char) {
           shortcut.element.click();
           event.preventDefault();
         }
@@ -166,22 +155,22 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     /**
      * The i18n configuration for this component.
      */
-    var i18n = _i18n["default"];
+    var i18n = _i18n.default;
     if (options && options.i18n && !options.i18nReady) {
       // Support legacy way of doing translations.
       if (options.i18n.resources) {
         i18n = options.i18n;
       } else {
-        _lodash["default"].each(options.i18n, function (lang, code) {
+        _lodash.default.each(options.i18n, function (lang, code) {
           if (code === 'options') {
-            _lodash["default"].merge(i18n, lang);
+            _lodash.default.merge(i18n, lang);
           } else if (!i18n.resources[code]) {
             // extend the default translations (validations, buttons etc.) in case they are not in the options.
             i18n.resources[code] = {
-              translation: _lodash["default"].assign((0, _utils.fastCloneDeep)(_i18n["default"].resources.en.translation), lang)
+              translation: _lodash.default.assign((0, _utils.fastCloneDeep)(_i18n.default.resources.en.translation), lang)
             };
           } else {
-            _lodash["default"].assign(i18n.resources[code].translation, lang);
+            _lodash.default.assign(i18n.resources[code].translation, lang);
           }
         });
       }
@@ -210,7 +199,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     _this2.draftEnabled = false;
     _this2.savingDraft = true;
     if (_this2.options.saveDraftThrottle) {
-      _this2.triggerSaveDraft = _lodash["default"].throttle(_this2.saveDraft.bind(_assertThisInitialized(_this2)), _this2.options.saveDraftThrottle);
+      _this2.triggerSaveDraft = _lodash.default.throttle(_this2.saveDraft.bind(_assertThisInitialized(_this2)), _this2.options.saveDraftThrottle);
     } else {
       _this2.triggerSaveDraft = _this2.saveDraft.bind(_assertThisInitialized(_this2));
     }
@@ -278,7 +267,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
      * });
      * form.src = 'https://examples.form.io/example';
      */
-    _this2.formReady = new _nativePromiseOnly["default"](function (resolve, reject) {
+    _this2.formReady = new _nativePromiseOnly.default(function (resolve, reject) {
       /**
        * Called when the formReady state of this form has been resolved.
        *
@@ -306,7 +295,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
      * });
      * form.src = 'https://examples.form.io/example/submission/234234234234234243';
      */
-    _this2.submissionReady = new _nativePromiseOnly["default"](function (resolve, reject) {
+    _this2.submissionReady = new _nativePromiseOnly.default(function (resolve, reject) {
       /**
        * Called when the formReady state of this form has been resolved.
        *
@@ -329,20 +318,12 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     });
 
     // See if we need to restore the draft from a user.
-    if (_this2.options.saveDraft) {
-      _this2.formReady.then(function () {
-        if (!_this2.options.skipDraftRestore) {
-          var user = _Formio.GlobalFormio.getUser();
-          // Only restore a draft if the submission isn't explicitly set.
-          if (user && !_this2.submissionSet) {
-            _this2.restoreDraft(user._id);
-          }
-        } else {
-          // Enable drafts
-          _this2.draftEnabled = true;
-          _this2.savingDraft = false;
-        }
-      });
+    if (_this2.options.saveDraft && !_this2.options.skipDraftRestore) {
+      var user = _Formio.GlobalFormio.getUser();
+      // Only restore a draft if the submission isn't explicitly set.
+      if (user && !_this2.submissionSet) {
+        _this2.restoreDraft(user._id);
+      }
     }
     _this2.component.clearOnHide = false;
 
@@ -375,7 +356,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           if (err) {
             return;
           }
-          _this3.rebuild();
+          _this3.redraw();
           _this3.emit('languageChanged');
         });
       } catch (err) {
@@ -415,7 +396,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     key: "addLanguage",
     value: function addLanguage(code, lang) {
       var active = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      var translations = _lodash["default"].assign((0, _utils.fastCloneDeep)(_i18n["default"].resources.en.translation), lang);
+      var translations = _lodash.default.assign((0, _utils.fastCloneDeep)(_i18n.default.resources.en.translation), lang);
       this.i18next.addResourceBundle(code, 'translation', translations, true, true);
       if (active) {
         this.language = code;
@@ -431,10 +412,10 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     value: function localize() {
       var _this4 = this;
       if (this.i18next.initialized) {
-        return _nativePromiseOnly["default"].resolve(this.i18next);
+        return _nativePromiseOnly.default.resolve(this.i18next);
       }
       this.i18next.initialized = true;
-      return new _nativePromiseOnly["default"](function (resolve, reject) {
+      return new _nativePromiseOnly.default(function (resolve, reject) {
         try {
           _this4.i18next.init(_objectSpread(_objectSpread({}, _this4.options.i18n), {
             compatibilityJSON: 'v3'
@@ -468,7 +449,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       if (!shortcut || !/^([A-Z]|Enter|Esc)$/i.test(shortcut)) {
         return;
       }
-      shortcut = _lodash["default"].capitalize(shortcut);
+      shortcut = _lodash.default.capitalize(shortcut);
       if (shortcut === 'Enter' || shortcut === 'Esc') {
         // Restrict Enter and Esc only for buttons
         if (element.tagName !== 'BUTTON') {
@@ -492,7 +473,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       if (!shortcut || !/^([A-Z]|Enter|Esc)$/i.test(shortcut)) {
         return;
       }
-      _lodash["default"].remove(this.shortcuts, {
+      _lodash.default.remove(this.shortcuts, {
         shortcut: shortcut,
         element: element
       });
@@ -545,7 +526,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           return _this5.setSubmission(submission);
         }, function (err) {
           return _this5.submissionReadyReject(err);
-        })["catch"](function (err) {
+        }).catch(function (err) {
           return _this5.submissionReadyReject(err);
         });
       } else {
@@ -574,12 +555,12 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           var setForm = _this6.setForm(form);
           _this6.loadSubmission();
           return setForm;
-        })["catch"](function (err) {
+        }).catch(function (err) {
           console.warn(err);
           _this6.formReadyReject(err);
         });
       }
-      return _nativePromiseOnly["default"].resolve();
+      return _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "url",
@@ -655,10 +636,10 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         this._loading = loading;
         if (!this.loader && loading) {
           this.loader = this.ce('div', {
-            "class": 'loader-wrapper'
+            class: 'loader-wrapper'
           });
           var spinner = this.ce('div', {
-            "class": 'loader text-center'
+            class: 'loader text-center'
           });
           this.loader.appendChild(spinner);
         }
@@ -723,24 +704,31 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         var _this$parent, _this$parent$componen;
         // Do not set the form again if it has been already set
         if (isFormAlreadySet && JSON.stringify(this._form) === JSON.stringify(form)) {
-          return _nativePromiseOnly["default"].resolve();
+          return _nativePromiseOnly.default.resolve();
         }
 
         // Create the form.
-        this._form = flags !== null && flags !== void 0 && flags.keepAsReference ? form : _lodash["default"].cloneDeep(form);
+        this._form = flags !== null && flags !== void 0 && flags.keepAsReference ? form : _lodash.default.cloneDeep(form);
         if (this.onSetForm) {
-          this.onSetForm(_lodash["default"].cloneDeep(this._form), form);
+          this.onSetForm(_lodash.default.cloneDeep(this._form), form);
         }
         if ((_this$parent = this.parent) !== null && _this$parent !== void 0 && (_this$parent$componen = _this$parent.component) !== null && _this$parent$componen !== void 0 && _this$parent$componen.modalEdit) {
-          return _nativePromiseOnly["default"].resolve();
+          return _nativePromiseOnly.default.resolve();
         }
       } catch (err) {
         console.warn(err);
         // If provided form is not a valid JSON object, do not set it too
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
-      this.setFormOptions(form);
-      if ('schema' in form && (0, _compareVersions["default"])(form.schema, '1.x') > 0) {
+
+      // Allow the form to provide component overrides.
+      if (form && form.settings && form.settings.components) {
+        this.options.components = form.settings.components;
+      }
+      if (form && form.properties) {
+        this.options.properties = form.properties;
+      }
+      if ('schema' in form && (0, _compareVersions.default)(form.schema, '1.x') > 0) {
         this.ready.then(function () {
           _this8.setAlert('alert alert-danger', 'Form schema is for a newer version, please upgrade your renderer. Some functionality may not work.');
         });
@@ -768,7 +756,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         }
       }
       this.initialized = false;
-      var rebuild = this.rebuild() || _nativePromiseOnly["default"].resolve();
+      var rebuild = this.rebuild() || _nativePromiseOnly.default.resolve();
       return rebuild.then(function () {
         _this8.emit('formLoad', form);
         _this8.triggerRecaptcha();
@@ -781,23 +769,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       });
     }
 
-    /**
-    * Sets options from the JSON schema .
-    *
-    * @param {Object} form - The JSON schema of the form.
-    * @returns {void}
-    */
-  }, {
-    key: "setFormOptions",
-    value: function setFormOptions(form) {
-      // Allow the form to provide component overrides.
-      if (form && form.settings && form.settings.components) {
-        this.options.components = form.settings.components;
-      }
-      if (form && form.properties) {
-        this.options.properties = form.properties;
-      }
-    }
     /**
      * Gets the form object.
      *
@@ -855,21 +826,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     }
 
     /**
-    * @param submission
-    * @param flags
-    * @return {void}
-    */
-  }, {
-    key: "onSetSubmission",
-    value: function onSetSubmission(submission) {
-      var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.submissionSet = true;
-      this.triggerChange(flags);
-      this.emit('beforeSetSubmission', submission);
-      this.setValue(submission, flags);
-    }
-
-    /**
      * Sets a submission and returns the promise when it is ready.
      * @param submission
      * @param flags
@@ -881,26 +837,22 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       var _this9 = this;
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       flags = _objectSpread(_objectSpread({}, flags), {}, {
-        fromSubmission: _lodash["default"].has(flags, 'fromSubmission') ? flags.fromSubmission : true
+        fromSubmission: _lodash.default.has(flags, 'fromSubmission') ? flags.fromSubmission : true
       });
       return this.onSubmission = this.formReady.then(function (resolveFlags) {
         if (resolveFlags) {
           flags = _objectSpread(_objectSpread({}, flags), resolveFlags);
         }
-        _this9.onSetSubmission(submission, flags);
+        _this9.submissionSet = true;
+        _this9.triggerChange(flags);
+        _this9.emit('beforeSetSubmission', submission);
+        _this9.setValue(submission, flags);
         return _this9.submissionReadyResolve(submission);
       }, function (err) {
         return _this9.submissionReadyReject(err);
-      })["catch"](function (err) {
+      }).catch(function (err) {
         return _this9.submissionReadyReject(err);
       });
-    }
-  }, {
-    key: "handleDraftError",
-    value: function handleDraftError(errName, errDetails, restoreDraft) {
-      var errorMessage = _lodash["default"].trim("".concat(this.t(errName), " ").concat(errDetails || ''));
-      console.warn(errorMessage);
-      this.emit(restoreDraft ? 'restoreDraftError' : 'saveDraftError', errDetails || errorMessage);
     }
 
     /**
@@ -914,16 +866,16 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         return;
       }
       if (!this.formio) {
-        this.handleDraftError('saveDraftInstanceError');
+        console.warn(this.t('saveDraftInstanceError'));
         return;
       }
       if (!_Formio.GlobalFormio.getUser()) {
-        this.handleDraftError('saveDraftAuthError');
+        console.warn(this.t('saveDraftAuthError'));
         return;
       }
       var draft = (0, _utils.fastCloneDeep)(this.submission);
       draft.state = 'draft';
-      if (!this.savingDraft && !this.submitting) {
+      if (!this.savingDraft) {
         this.emit('saveDraftBegin');
         this.savingDraft = true;
         this.formio.saveSubmission(draft).then(function (sub) {
@@ -931,9 +883,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           _this10.submission._id = sub._id;
           _this10.savingDraft = false;
           _this10.emit('saveDraft', sub);
-        })["catch"](function (err) {
-          _this10.savingDraft = false;
-          _this10.handleDraftError('saveDraftError', err);
         });
       }
     }
@@ -947,17 +896,15 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     key: "restoreDraft",
     value: function restoreDraft(userId) {
       var _this11 = this;
-      var formio = this.formio || this.options.formio;
-      if (!formio) {
-        this.handleDraftError('restoreDraftInstanceError', null, true);
+      if (!this.formio) {
+        console.warn(this.t('restoreDraftInstanceError'));
         return;
       }
       this.savingDraft = true;
-      formio.loadSubmissions({
+      this.formio.loadSubmissions({
         params: {
           state: 'draft',
-          owner: userId,
-          sort: '-created'
+          owner: userId
         }
       }).then(function (submissions) {
         if (submissions.length > 0 && !_this11.options.skipDraftRestore) {
@@ -972,16 +919,12 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         _this11.draftEnabled = true;
         _this11.savingDraft = false;
         _this11.emit('restoreDraft', null);
-      })["catch"](function (err) {
-        _this11.draftEnabled = true;
-        _this11.savingDraft = false;
-        _this11.handleDraftError('restoreDraftError', err, true);
       });
     }
   }, {
     key: "schema",
     get: function get() {
-      var schema = (0, _utils.fastCloneDeep)(_lodash["default"].omit(this._form, ['components']));
+      var schema = (0, _utils.fastCloneDeep)(_lodash.default.omit(this._form, ['components']));
       schema.components = [];
       this.eachComponent(function (component) {
         return schema.components.push(component.schema);
@@ -991,7 +934,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
   }, {
     key: "mergeData",
     value: function mergeData(_this, _that) {
-      _lodash["default"].mergeWith(_this, _that, function (thisValue, thatValue) {
+      _lodash.default.mergeWith(_this, _that, function (thisValue, thatValue) {
         if (Array.isArray(thisValue) && Array.isArray(thatValue) && thisValue.length !== thatValue.length) {
           return thatValue;
         }
@@ -1007,7 +950,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         };
       }
       // Metadata needs to be available before setValue
-      this._submission.metadata = submission.metadata ? _lodash["default"].cloneDeep(submission.metadata) : {};
+      this._submission.metadata = submission.metadata || {};
       this.editing = !!submission._id;
 
       // Set the timezone in the options if available.
@@ -1061,7 +1004,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       this.component.input = false;
       this.addComponents();
       this.on('submitButton', function (options) {
-        _this12.submit(false, options)["catch"](function (e) {
+        _this12.submit(false, options).catch(function (e) {
           return e !== false && console.log(e);
         });
       }, true);
@@ -1149,7 +1092,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     value: function redraw() {
       // Don't bother if we have not built yet.
       if (!this.element) {
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
       this.clear();
       this.setContent(this.element, this.render());
@@ -1189,13 +1132,11 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
   }, {
     key: "resetValue",
     value: function resetValue() {
-      _lodash["default"].each(this.getComponents(), function (comp) {
+      _lodash.default.each(this.getComponents(), function (comp) {
         return comp.resetValue();
       });
       this.setPristine(true);
-      this.onChange({
-        resetValue: true
-      });
+      this.onChange();
     }
 
     /**
@@ -1244,7 +1185,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       }
       if (message) {
         var attrs = {
-          "class": options && options.classes || "alert alert-".concat(type),
+          class: options && options.classes || "alert alert-".concat(type),
           id: "error-list-".concat(this.id)
         };
         var templateOptions = {
@@ -1318,7 +1259,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         errors = _get(_getPrototypeOf(Webform.prototype), "errors", this);
       }
       errors = errors.concat(this.customErrors);
-      errors = errors.concat(this.serverErrors || []);
       if (!errors.length) {
         this.setAlert(false);
         return;
@@ -1336,7 +1276,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         }
         components.forEach(function (path) {
           var originalPath = _this17._parentPath + (0, _utils.getStringFromComponentPath)(path);
-          var component = _this17.getComponent(path, _lodash["default"].identity, originalPath);
+          var component = _this17.getComponent(path, _lodash.default.identity, originalPath);
           if (err.fromServer) {
             if (component.serverErrors) {
               component.serverErrors.push(err);
@@ -1344,7 +1284,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
               component.serverErrors = [err];
             }
           }
-          var components = _lodash["default"].compact(Array.isArray(component) ? component : [component]);
+          var components = _lodash.default.compact(Array.isArray(component) ? component : [component]);
           components.forEach(function (component) {
             return component.setCustomValidity(err.message, true);
           });
@@ -1354,7 +1294,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       errors.forEach(function (err) {
         if (err) {
           var createListItem = function createListItem(message, index) {
-            var messageFromIndex = !_lodash["default"].isUndefined(index) && err.messages && err.messages[index];
+            var messageFromIndex = !_lodash.default.isUndefined(index) && err.messages && err.messages[index];
             var keyOrPath = messageFromIndex && messageFromIndex.formattedKeyOrPath || messageFromIndex.path || err.component && err.component.key || err.fromServer && err.path;
             var formattedKeyOrPath = keyOrPath ? (0, _utils.getStringFromComponentPath)(keyOrPath) : '';
             formattedKeyOrPath = _this17._parentPath + formattedKeyOrPath;
@@ -1366,7 +1306,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
               keyOrPath: formattedKeyOrPath
             };
           };
-          err.messages = _lodash["default"].uniqBy(err.messages, function (message) {
+          err.messages = _lodash.default.uniqBy(err.messages, function (message) {
             return message.message;
           });
           if (err.messages && err.messages.length) {
@@ -1384,7 +1324,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
               displayedErrors.push(createListItem(text, index));
             });
           } else if (err) {
-            var message = _lodash["default"].isObject(err) ? _this17.t('alertMessage', {
+            var message = _lodash.default.isObject(err) ? _this17.t('alertMessage', {
               message: _this17.t(err.message || '')
             }) : _this17.t('alertMessage', {
               message: _this17.t(err)
@@ -1472,12 +1412,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         });
         return false;
       }
-      var errors;
-      if (this.submitted) {
-        errors = this.showErrors();
-      } else {
-        errors = this.showErrors(error, true);
-      }
+      var errors = this.showErrors(error, true);
       if (this.root && this.root.alert) {
         this.scrollIntoView(this.root.alert);
       }
@@ -1493,7 +1428,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
   }, {
     key: "onChange",
     value: function onChange(flags, changed, modified, changes) {
-      var _this$parent2;
       flags = flags || {};
       var isChangeEventEmitted = false;
       // For any change events, clear any custom errors for that component.
@@ -1502,14 +1436,8 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           return err.component && err.component !== changed.component.key;
         });
       }
-      if (((_this$parent2 = this.parent) === null || _this$parent2 === void 0 ? void 0 : _this$parent2.subForm) === this) {
-        _get(_getPrototypeOf(Webform.prototype), "onChange", this).call(this, _objectSpread(_objectSpread({}, flags), {}, {
-          modified: modified
-        }), false);
-      } else {
-        _get(_getPrototypeOf(Webform.prototype), "onChange", this).call(this, flags, true);
-      }
-      var value = _lodash["default"].clone(this.submission);
+      _get(_getPrototypeOf(Webform.prototype), "onChange", this).call(this, flags, true);
+      var value = _lodash.default.clone(this.submission);
       flags.changed = value.changed = changed;
       flags.changes = changes;
       if (modified && this.pristine) {
@@ -1541,7 +1469,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     value: function checkData(data) {
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       var valid = _get(_getPrototypeOf(Webform.prototype), "checkData", this).call(this, data, flags);
-      if ((_lodash["default"].isEmpty(flags) || flags.noValidate) && this.submitted) {
+      if ((_lodash.default.isEmpty(flags) || flags.noValidate) && this.submitted) {
         this.showErrors();
       }
       return valid;
@@ -1582,9 +1510,9 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     value: function setMetadata(submission) {
       // Add in metadata about client submitting the form
       submission.metadata = submission.metadata || {};
-      _lodash["default"].defaults(submission.metadata, {
-        timezone: _lodash["default"].get(this, '_submission.metadata.timezone', (0, _utils.currentTimezone)()),
-        offset: parseInt(_lodash["default"].get(this, '_submission.metadata.offset', (0, _moment["default"])().utcOffset()), 10),
+      _lodash.default.defaults(submission.metadata, {
+        timezone: _lodash.default.get(this, '_submission.metadata.timezone', (0, _utils.currentTimezone)()),
+        offset: parseInt(_lodash.default.get(this, '_submission.metadata.offset', (0, _moment.default)().utcOffset()), 10),
         origin: document.location.origin,
         referrer: document.referrer,
         browserName: navigator.appName,
@@ -1599,7 +1527,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       var _this19 = this;
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.clearServerErrors();
-      return new _nativePromiseOnly["default"](function (resolve, reject) {
+      return new _nativePromiseOnly.default(function (resolve, reject) {
         // Read-only forms should never submit.
         if (_this19.options.readOnly) {
           return resolve({
@@ -1627,7 +1555,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           _this19.everyComponent(function (comp) {
             var persistent = comp.component.persistent;
             if (persistent === 'client-only') {
-              _lodash["default"].unset(submission.data, comp.path);
+              _lodash.default.unset(submission.data, comp.path);
             }
           });
           _this19.hook('customValidation', _objectSpread(_objectSpread({}, submission), {}, {
@@ -1658,7 +1586,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
                   submission: result,
                   saved: true
                 });
-              })["catch"](function (error) {
+              }).catch(function (error) {
                 _this19.setServerErrors(error);
                 return reject(error);
               });
@@ -1677,7 +1605,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
                 submission: result,
                 saved: true
               });
-            })["catch"](function (error) {
+            }).catch(function (error) {
               _this19.setServerErrors(error);
               return reject(error);
             });
@@ -1695,12 +1623,6 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
           err.fromServer = true;
           return err;
         });
-      } else if (typeof error === 'string') {
-        this.serverErrors = [{
-          fromServer: true,
-          level: 'error',
-          message: error
-        }];
       }
     }
   }, {
@@ -1716,9 +1638,9 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       }).then(function (results) {
         _this20.submissionInProcess = false;
         return results;
-      })["catch"](function (err) {
+      }).catch(function (err) {
         _this20.submissionInProcess = false;
-        return _nativePromiseOnly["default"].reject(_this20.onSubmissionError(err));
+        return _nativePromiseOnly.default.reject(_this20.onSubmissionError(err));
       });
     }
   }, {
@@ -1729,7 +1651,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
       (_this$serverErrors = this.serverErrors) === null || _this$serverErrors === void 0 ? void 0 : _this$serverErrors.forEach(function (error) {
         if (error.path) {
           var pathArray = (0, _utils.getArrayFromComponentPath)(error.path);
-          var component = _this21.getComponent(pathArray, _lodash["default"].identity, error.formattedKeyOrPath);
+          var component = _this21.getComponent(pathArray, _lodash.default.identity, error.formattedKeyOrPath);
           if (component) {
             component.serverErrors = [];
           }
@@ -1797,7 +1719,7 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
         }).then(function () {
           _this23.emit('requestDone');
           _this23.setAlert('success', '<p> Success </p>');
-        })["catch"](function (e) {
+        }).catch(function (e) {
           _this23.showErrors("".concat(e.statusText ? e.statusText : '', " ").concat(e.status ? e.status : e));
           _this23.emit('error', "".concat(e.statusText ? e.statusText : '', " ").concat(e.status ? e.status : e));
           console.error("".concat(e.statusText ? e.statusText : '', " ").concat(e.status ? e.status : e));
@@ -1846,8 +1768,8 @@ var Webform = /*#__PURE__*/function (_NestedDataComponent) {
     }
   }]);
   return Webform;
-}(_NestedDataComponent2["default"]);
-exports["default"] = Webform;
+}(_NestedDataComponent2.default);
+exports.default = Webform;
 Webform.setBaseUrl = _Formio.GlobalFormio.setBaseUrl;
 Webform.setApiUrl = _Formio.GlobalFormio.setApiUrl;
 Webform.setAppUrl = _Formio.GlobalFormio.setAppUrl;

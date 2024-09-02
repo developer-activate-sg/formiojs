@@ -4,8 +4,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -22,31 +20,25 @@ require("core-js/modules/es.regexp.exec.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.find-index.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _NestedComponent2 = _interopRequireDefault(require("../_classes/nested/NestedComponent"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -87,7 +79,7 @@ var TabsComponent = /*#__PURE__*/function (_NestedComponent) {
       var _this2 = this;
       var schema = _get(_getPrototypeOf(TabsComponent.prototype), "schema", this);
       // We need to clone this because the builder uses the "components" reference and this would reset that reference.
-      var components = _lodash["default"].cloneDeep(this.component.components);
+      var components = _lodash.default.cloneDeep(this.component.components);
       schema.components = components.map(function (tab, index) {
         tab.components = _this2.tabs[index].map(function (component) {
           return component.schema;
@@ -117,11 +109,11 @@ var TabsComponent = /*#__PURE__*/function (_NestedComponent) {
       var _this3 = this;
       this.components = [];
       this.tabs = [];
-      _lodash["default"].each(this.component.components, function (tab, index) {
+      _lodash.default.each(this.component.components, function (tab, index) {
         _this3.tabs[index] = [];
         // Initialize empty tabs.
         tab.components = tab.components || [];
-        _lodash["default"].each(tab.components, function (comp) {
+        _lodash.default.each(tab.components, function (comp) {
           var component = _this3.createComponent(comp);
           component.tab = index;
           _this3.tabs[index].push(component);
@@ -182,13 +174,13 @@ var TabsComponent = /*#__PURE__*/function (_NestedComponent) {
         return;
       }
       this.currentTab = index;
-      _lodash["default"].each(this.refs[this.tabKey], function (tab) {
+      _lodash.default.each(this.refs[this.tabKey], function (tab) {
         _this6.removeClass(tab, 'formio-tab-panel-active');
         tab.style.display = 'none';
       });
       this.addClass(this.refs[this.tabKey][index], 'formio-tab-panel-active');
       this.refs[this.tabKey][index].style.display = 'block';
-      _lodash["default"].each(this.refs[this.tabLinkKey], function (tabLink, tabIndex) {
+      _lodash.default.each(this.refs[this.tabLinkKey], function (tabLink, tabIndex) {
         if (_this6.refs[_this6.tabLinkKey][tabIndex]) {
           _this6.removeClass(tabLink, 'formio-tab-link-active');
         }
@@ -283,7 +275,7 @@ var TabsComponent = /*#__PURE__*/function (_NestedComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _NestedComponent2["default"].schema.apply(_NestedComponent2["default"], [{
+      return _NestedComponent2.default.schema.apply(_NestedComponent2.default, [{
         label: 'Tabs',
         type: 'tabs',
         input: false,
@@ -306,17 +298,11 @@ var TabsComponent = /*#__PURE__*/function (_NestedComponent) {
         group: 'layout',
         icon: 'folder-o',
         weight: 50,
-        documentation: '/userguide/form-building/layout-components#tabs',
-        showPreview: false,
+        documentation: '/userguide/forms/layout-components#tabs',
         schema: TabsComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return TabsComponent;
-}(_NestedComponent2["default"]);
-exports["default"] = TabsComponent;
+}(_NestedComponent2.default);
+exports.default = TabsComponent;

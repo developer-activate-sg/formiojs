@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   key: 'labelPosition',
   ignore: true
@@ -49,7 +48,7 @@ var _default = [{
     allowCalculateOverride: true,
     calculateValue: {
       _camelCase: [{
-        "var": 'row.label'
+        var: 'row.label'
       }]
     }
   }]
@@ -61,4 +60,4 @@ var _default = [{
   key: 'verticalLayout',
   input: true
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -2,11 +2,11 @@
 
 var _NestedArrayComponent = _interopRequireDefault(require("./NestedArrayComponent"));
 var _harness = _interopRequireDefault(require("../../../../test/harness"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var component = null;
 describe('NestedArrayComponent class', function () {
   it('Should create a new NestedArrayComponent class', function () {
-    return _harness["default"].testCreate(_NestedArrayComponent["default"], {
+    return _harness.default.testCreate(_NestedArrayComponent.default, {
       // key: 'nested',
       components: [{
         type: 'textfield',
@@ -19,8 +19,8 @@ describe('NestedArrayComponent class', function () {
       }]
     }).then(function (_component) {
       component = _component;
-      _harness["default"].testElements(component, 'input[name="data[firstName]"]', 1);
-      _harness["default"].testElements(component, 'input[name="data[lastName]"]', 1);
+      _harness.default.testElements(component, 'input[name="data[firstName]"]', 1);
+      _harness.default.testElements(component, 'input[name="data[lastName]"]', 1);
     });
   });
 });

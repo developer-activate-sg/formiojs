@@ -1,12 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _Evaluator = _interopRequireDefault(require("../../../utils/Evaluator"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   type: 'textarea',
   label: 'Header Template',
@@ -21,7 +20,7 @@ var _default = [{
   tooltip: 'This is the <a href=\'https://lodash.com/docs/4.17.5#template\'>Lodash Template</a> used to render the header of the Edit grid.',
   customConditional: function customConditional(_ref) {
     var data = _ref.data;
-    return (!_Evaluator["default"].noeval || _Evaluator["default"].protectedEval) && !data.displayAsTable;
+    return (!_Evaluator.default.noeval || _Evaluator.default.protectedEval) && !data.displayAsTable;
   }
 }, {
   type: 'textarea',
@@ -37,7 +36,7 @@ var _default = [{
   tooltip: 'This is the <a href=\'https://lodash.com/docs/4.17.5#template\'>Lodash Template</a> used to render the header of the Edit grid.',
   customConditional: function customConditional(_ref2) {
     var data = _ref2.data;
-    return (!_Evaluator["default"].noeval || _Evaluator["default"].protectedEval) && data.displayAsTable;
+    return (!_Evaluator.default.noeval || _Evaluator.default.protectedEval) && data.displayAsTable;
   }
 }, {
   type: 'textarea',
@@ -53,7 +52,7 @@ var _default = [{
   tooltip: 'This is the <a href=\'https://lodash.com/docs/4.17.5#template\'>Lodash Template</a> used to render each row of the Edit grid.',
   customConditional: function customConditional(_ref3) {
     var data = _ref3.data;
-    return (!_Evaluator["default"].noeval || _Evaluator["default"].protectedEval) && !data.displayAsTable;
+    return (!_Evaluator.default.noeval || _Evaluator.default.protectedEval) && !data.displayAsTable;
   }
 }, {
   type: 'textarea',
@@ -69,7 +68,7 @@ var _default = [{
   tooltip: 'This is the <a href=\'https://lodash.com/docs/4.17.5#template\'>Lodash Template</a> used to render each row of the Edit grid.',
   customConditional: function customConditional(_ref4) {
     var data = _ref4.data;
-    return (!_Evaluator["default"].noeval || _Evaluator["default"].protectedEval) && data.displayAsTable;
+    return (!_Evaluator.default.noeval || _Evaluator.default.protectedEval) && data.displayAsTable;
   }
 }, {
   type: 'textarea',
@@ -83,7 +82,7 @@ var _default = [{
   description: 'Two available variables. "value" is the array of row data and "components" is the array of components in the grid.',
   tooltip: 'This is the <a href=\'https://lodash.com/docs/4.17.5#template\'>Lodash Template</a> used to render the footer of the Edit grid.',
   customConditional: function customConditional() {
-    return !_Evaluator["default"].noeval || _Evaluator["default"].protectedEval;
+    return !_Evaluator.default.noeval || _Evaluator.default.protectedEval;
   }
 }, {
   type: 'textfield',
@@ -121,4 +120,4 @@ var _default = [{
   placeholder: 'Remove',
   tooltip: 'Set the text of the remove Row button.'
 }];
-exports["default"] = _default;
+exports.default = _default;

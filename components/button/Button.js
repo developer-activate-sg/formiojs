@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,11 +16,9 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.includes.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.splice.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.regexp.constructor.js");
@@ -32,19 +28,15 @@ require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.object.keys.js");
-require("core-js/modules/web.timers.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _Field2 = _interopRequireDefault(require("../_classes/field/Field"));
 var _Input = _interopRequireDefault(require("../_classes/input/Input"));
 var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -81,15 +73,15 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
       info.type = 'button';
       info.attr.type = ['submit', 'saveState'].includes(this.component.action) ? 'submit' : 'button';
       this.component.theme = this.component.theme || 'default';
-      info.attr["class"] = "btn btn-".concat(this.component.theme);
+      info.attr.class = "btn btn-".concat(this.component.theme);
       if (this.component.size) {
-        info.attr["class"] += " btn-".concat(this.component.size);
+        info.attr.class += " btn-".concat(this.component.size);
       }
       if (this.component.block) {
-        info.attr["class"] += ' btn-block';
+        info.attr.class += ' btn-block';
       }
       if (this.component.customClass) {
-        info.attr["class"] += " ".concat(this.component.customClass);
+        info.attr.class += " ".concat(this.component.customClass);
       }
       info.content = this.t(this.component.label, {
         _userInput: true
@@ -148,13 +140,13 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
     key: "className",
     get: function get() {
       var className = _get(_getPrototypeOf(ButtonComponent.prototype), "className", this);
-      className += " ".concat(this.transform('class', 'form-group'));
+      className += ' form-group';
       return className;
     }
   }, {
     key: "oauthConfig",
     get: function get() {
-      if (_lodash["default"].has(this, 'root.form.config.oauth') && this.component.oauthProvider) {
+      if (_lodash.default.has(this, 'root.form.config.oauth') && this.component.oauthProvider) {
         return this.root.form.config.oauth[this.component.oauthProvider];
       }
       // Legacy oauth location.
@@ -189,7 +181,7 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
           _this2.disabled = false;
         }, true);
         this.on('submitDone', function (message) {
-          var resultMessage = _lodash["default"].isString(message) ? message : _this2.t('complete');
+          var resultMessage = _lodash.default.isString(message) ? message : _this2.t('complete');
           _this2.loading = false;
           _this2.disabled = false;
           _this2.addClass(_this2.refs.button, 'btn-success submit-success');
@@ -199,7 +191,7 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
           _this2.setContent(_this2.refs.buttonMessage, resultMessage);
         }, true);
         this.on('submitError', function (message) {
-          var resultMessage = _lodash["default"].isString(message) ? _this2.t(message) : _this2.t(_this2.errorMessage('submitError'));
+          var resultMessage = _lodash.default.isString(message) ? _this2.t(message) : _this2.t(_this2.errorMessage('submitError'));
           _this2.loading = false;
           _this2.disabled = false;
           _this2.hasError = true;
@@ -463,7 +455,7 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
         try {
           var popupHost = popup.location.host;
           var currentHost = window.location.host;
-          if (popup && !popup.closed && popupHost === currentHost) {
+          if (popup && !popup.closed && popupHost === currentHost && popup.location.search) {
             popup.close();
             var _params = popup.location.search.substr(1).split('&').reduce(function (params, param) {
               var split = param.split('=');
@@ -481,13 +473,13 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
               return;
             }
             // Depending on where the settings came from, submit to either the submission endpoint (old) or oauth endpoint (new).
-            var requestPromise = _nativePromiseOnly["default"].resolve();
-            if (_lodash["default"].has(_this3, 'root.form.config.oauth') && _this3.root.form.config.oauth[_this3.component.oauthProvider]) {
+            var requestPromise = _nativePromiseOnly.default.resolve();
+            if (_lodash.default.has(_this3, 'root.form.config.oauth') && _this3.root.form.config.oauth[_this3.component.oauthProvider]) {
               _params.provider = settings.provider;
               _params.redirectURI = originalRedirectUri;
 
               // Needs for the exclude oAuth Actions that not related to this button
-              _params.triggeredBy = _this3.oauthComponentPath;
+              _params.triggeredBy = _this3.key;
               requestPromise = _this3.root.formio.makeRequest('oauth', "".concat(_this3.root.formio.projectUrl, "/oauth2"), 'POST', _params);
             } else {
               var submission = {
@@ -496,22 +488,19 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
               };
               submission.oauth[settings.provider] = _params;
               submission.oauth[settings.provider].redirectURI = originalRedirectUri;
-              if (settings.logoutURI) {
-                _this3.root.formio.oauthLogoutURI(settings.logoutURI);
-              }
 
               // Needs for the exclude oAuth Actions that not related to this button
-              submission.oauth[settings.provider].triggeredBy = _this3.oauthComponentPath;
+              submission.oauth[settings.provider].triggeredBy = _this3.key;
               requestPromise = _this3.root.formio.saveSubmission(submission);
             }
             requestPromise.then(function (result) {
               _this3.root.onSubmit(result, true);
-            })["catch"](function (err) {
+            }).catch(function (err) {
               _this3.root.onSubmissionError(err);
             });
           }
         } catch (error) {
-          if (error.name !== 'SecurityError' && (error.name !== 'Error' || error.message !== 'Permission denied')) {
+          if (error.name !== 'SecurityError') {
             _this3.root.setAlert('danger', error.message || error);
           }
         }
@@ -519,14 +508,6 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
           clearInterval(interval);
         }
       }, 100);
-    }
-  }, {
-    key: "oauthComponentPath",
-    get: function get() {
-      var pathArray = (0, _utils.getArrayFromComponentPath)(this.path);
-      return _lodash["default"].chain(pathArray).filter(function (pathPart) {
-        return !_lodash["default"].isNumber(pathPart);
-      }).join('.').value();
     }
   }, {
     key: "focus",
@@ -558,7 +539,7 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Input["default"].schema.apply(_Input["default"], [{
+      return _Input.default.schema.apply(_Input.default, [{
         type: 'button',
         label: 'Submit',
         key: 'submit',
@@ -580,17 +561,12 @@ var ButtonComponent = /*#__PURE__*/function (_Field) {
         title: 'Button',
         group: 'basic',
         icon: 'stop',
-        documentation: '/userguide/form-building/form-components#button',
+        documentation: '/userguide/forms/form-components#button',
         weight: 110,
         schema: ButtonComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes["boolean"]];
-    }
   }]);
   return ButtonComponent;
-}(_Field2["default"]);
-exports["default"] = ButtonComponent;
+}(_Field2.default);
+exports.default = ButtonComponent;

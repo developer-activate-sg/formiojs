@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   ignore: true,
   key: 'unique'
@@ -32,4 +31,4 @@ var _default = [{
   label: 'Enable Row Drafts',
   tooltip: 'Allow save rows even if their data is invalid. Errors will occur when try to submit with invalid rows.'
 }];
-exports["default"] = _default;
+exports.default = _default;

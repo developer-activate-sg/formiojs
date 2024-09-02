@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -8,23 +7,19 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -50,8 +45,8 @@ var Node = /*#__PURE__*/function () {
     _classCallCheck(this, Node);
     this.parent = parent;
     this.previousData = {};
-    this.persistentData = _lodash["default"].cloneDeep(data);
-    this["new"] = isNew;
+    this.persistentData = _lodash.default.cloneDeep(data);
+    this.new = isNew;
     this.createComponents = createComponents;
     this.checkNode = checkNode;
     this.removeComponents = removeComponents;
@@ -75,11 +70,11 @@ var Node = /*#__PURE__*/function () {
   _createClass(Node, [{
     key: "value",
     get: function get() {
-      return this["new"] ? null // Check the special case for empty root node.
+      return this.new ? null // Check the special case for empty root node.
       : {
-        data: _lodash["default"].cloneDeep(this.persistentData),
+        data: _lodash.default.cloneDeep(this.persistentData),
         children: this.children.filter(function (child) {
-          return !child["new"];
+          return !child.new;
         }).map(function (child) {
           return child.value;
         })
@@ -93,7 +88,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "changing",
     get: function get() {
-      return this["new"] || this.editing;
+      return this.new || this.editing;
     }
   }, {
     key: "hasChangingChildren",
@@ -105,7 +100,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "hasData",
     get: function get() {
-      return !_lodash["default"].isEmpty(this.persistentData);
+      return !_lodash.default.isEmpty(this.persistentData);
     }
   }, {
     key: "hasChildren",
@@ -147,7 +142,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "addChild",
     value: function addChild() {
-      if (this["new"]) {
+      if (this.new) {
         return null;
       }
       var child = new Node(this, {}, {
@@ -163,7 +158,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "removeChild",
     value: function removeChild(childToRemove) {
-      if (!this["new"]) {
+      if (!this.new) {
         this.children = this.children.filter(function (child) {
           return child !== childToRemove;
         });
@@ -173,7 +168,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "edit",
     value: function edit() {
-      if (this["new"]) {
+      if (this.new) {
         return this;
       }
       this.editing = true;
@@ -184,8 +179,8 @@ var Node = /*#__PURE__*/function () {
     value: function save() {
       var isValid = this.validateNode();
       if (this.changing && isValid) {
-        if (this["new"]) {
-          this["new"] = false;
+        if (this.new) {
+          this.new = false;
         } else {
           this.editing = false;
           this.revertAvailable = true;
@@ -197,7 +192,7 @@ var Node = /*#__PURE__*/function () {
   }, {
     key: "cancel",
     value: function cancel() {
-      if (this["new"]) {
+      if (this.new) {
         this.remove();
       } else if (this.editing) {
         this.editing = false;
@@ -226,14 +221,14 @@ var Node = /*#__PURE__*/function () {
     key: "commitData",
     value: function commitData() {
       this.previousData = this.persistentData;
-      this.persistentData = _lodash["default"].cloneDeep(this.data);
+      this.persistentData = _lodash.default.cloneDeep(this.data);
       this.clearComponents();
       return this;
     }
   }, {
     key: "resetData",
     value: function resetData() {
-      this.data = _lodash["default"].cloneDeep(this.persistentData);
+      this.data = _lodash.default.cloneDeep(this.persistentData);
       this.updateComponentsContext();
       return this;
     }
@@ -285,4 +280,4 @@ var Node = /*#__PURE__*/function () {
   }]);
   return Node;
 }();
-exports["default"] = Node;
+exports.default = Node;

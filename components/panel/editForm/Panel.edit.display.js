@@ -1,17 +1,15 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.some.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
 var _isEqual2 = _interopRequireDefault(require("lodash/isEqual"));
 var _omit2 = _interopRequireDefault(require("lodash/omit"));
 var _difference2 = _interopRequireDefault(require("lodash/difference"));
 var _keys2 = _interopRequireDefault(require("lodash/keys"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   key: 'labelPosition',
   ignore: true
@@ -111,7 +109,7 @@ var _default = [{
     conditional: {
       json: {
         '!==': [{
-          "var": 'data.breadcrumb'
+          var: 'data.breadcrumb'
         }, 'none']
       }
     }
@@ -125,7 +123,7 @@ var _default = [{
     conditional: {
       json: {
         '===': [{
-          "var": 'data.breadcrumbClickable'
+          var: 'data.breadcrumbClickable'
         }, false]
       }
     }
@@ -188,9 +186,9 @@ var _default = [{
       var component = context.instance.options.editComponent;
       if (components && component) {
         isWizardPanel = components.some(function (comp) {
-          var diff = (0, _difference2["default"])((0, _keys2["default"])(comp), (0, _keys2["default"])(component)) || [];
+          var diff = (0, _difference2.default)((0, _keys2.default)(comp), (0, _keys2.default)(component)) || [];
           diff.push('components');
-          return (0, _isEqual2["default"])((0, _omit2["default"])(comp, diff), (0, _omit2["default"])(component, diff));
+          return (0, _isEqual2.default)((0, _omit2.default)(comp, diff), (0, _omit2.default)(component, diff));
         });
       }
     }
@@ -213,9 +211,9 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.collapsible'
+        var: 'data.collapsible'
       }, true]
     }
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

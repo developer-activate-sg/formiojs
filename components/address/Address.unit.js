@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/web.timers.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 var _harness = _interopRequireDefault(require("../../../test/harness"));
@@ -10,60 +8,60 @@ var _powerAssert = _interopRequireDefault(require("power-assert"));
 var _Formio = _interopRequireDefault(require("./../../Formio"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _fixtures = require("./fixtures");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 describe('Address Component', function () {
   it('Should build an address component', function () {
-    return _harness["default"].testCreate(_Address["default"], _fixtures.comp1);
+    return _harness.default.testCreate(_Address.default, _fixtures.comp1);
   });
   it('Should set default value and clear it on "clear icon" click (openStreetMap provider)', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp2);
+    var form = _lodash.default.cloneDeep(_fixtures.comp2);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var address = form.getComponent('address');
-      _powerAssert["default"].equal(!!address.provider, true);
-      _powerAssert["default"].equal(address.refs.searchInput[0].value, 'Dallas County, Texas, United States');
+      _powerAssert.default.equal(!!address.provider, true);
+      _powerAssert.default.equal(address.refs.searchInput[0].value, 'Dallas County, Texas, United States');
       var clearIcon = address.refs.removeValueIcon[0];
       var clickEvent = new Event('click');
       clearIcon.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(address.refs.searchInput[0].value, '');
+        _powerAssert.default.equal(address.refs.searchInput[0].value, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should disable "clear icon"', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp2);
+    var form = _lodash.default.cloneDeep(_fixtures.comp2);
     var element = document.createElement('div');
     form.components[0].disableClearIcon = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var address = form.getComponent('address');
-      _powerAssert["default"].equal(!!address.provider, true);
-      _powerAssert["default"].equal(address.refs.removeValueIcon.length, 0);
+      _powerAssert.default.equal(!!address.provider, true);
+      _powerAssert.default.equal(address.refs.removeValueIcon.length, 0);
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Test manual mode', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp2);
+    var form = _lodash.default.cloneDeep(_fixtures.comp2);
     var element = document.createElement('div');
     form.components[0].disableClearIcon = true;
     form.components[0].enableManualMode = true;
     form.components[0].switchToManualModeLabel = 'Check it to switch to manual mode';
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var address = form.getComponent('address');
-      _powerAssert["default"].equal(!!address.provider, true);
-      _powerAssert["default"].equal(address.mode, 'autocomplete');
-      _powerAssert["default"].equal(address.refs.modeSwitcher.checked, false, 'Manual mode should be turned off');
-      _powerAssert["default"].equal(address.refs.modeSwitcher.nextElementSibling.textContent, 'Check it to switch to manual mode', 'Should set custom label for manual mode checkbox');
+      _powerAssert.default.equal(!!address.provider, true);
+      _powerAssert.default.equal(address.mode, 'autocomplete');
+      _powerAssert.default.equal(address.refs.modeSwitcher.checked, false, 'Manual mode should be turned off');
+      _powerAssert.default.equal(address.refs.modeSwitcher.nextElementSibling.textContent, 'Check it to switch to manual mode', 'Should set custom label for manual mode checkbox');
       address.components.forEach(function (comp) {
-        _powerAssert["default"].equal(comp.visible, false, 'Manual mode components should be hidden');
+        _powerAssert.default.equal(comp.visible, false, 'Manual mode components should be hidden');
       });
       address.refs.modeSwitcher.checked = true;
       var changeEvent = new Event('change');
       address.refs.modeSwitcher.dispatchEvent(changeEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(address.refs.modeSwitcher.checked, true, 'Manual mode should be turned on');
-        _powerAssert["default"].equal(address.mode, 'manual');
+        _powerAssert.default.equal(address.refs.modeSwitcher.checked, true, 'Manual mode should be turned on');
+        _powerAssert.default.equal(address.mode, 'manual');
         var manualModeValue = {
           address1: 'test address1',
           address2: 'test address2',
@@ -73,14 +71,14 @@ describe('Address Component', function () {
           zip: '1111111'
         };
         address.components.forEach(function (comp) {
-          _powerAssert["default"].equal(comp.visible, true, 'Manual mode components should be visible');
+          _powerAssert.default.equal(comp.visible, true, 'Manual mode components should be visible');
           var inputEvent = new Event('input');
           var input = comp.refs.input[0];
           input.value = manualModeValue["".concat(comp.component.key)];
           input.dispatchEvent(inputEvent);
         });
         setTimeout(function () {
-          _powerAssert["default"].deepEqual(address.dataValue, {
+          _powerAssert.default.deepEqual(address.dataValue, {
             address: manualModeValue,
             mode: 'manual'
           }, 'Should set manual mode value');
@@ -88,12 +86,12 @@ describe('Address Component', function () {
           done();
         }, 300);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should close modal window without showing dialog if value not changed', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var value = {
         'address_components': [{
           'long_name': 'Los Angeles',
@@ -134,7 +132,7 @@ describe('Address Component', function () {
       var clickEvent = new Event('click');
       openModalButton.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(address.componentModal.isOpened, true);
+        _powerAssert.default.equal(address.componentModal.isOpened, true);
         address.dataValue = value;
         address.componentModal.closeModal();
         address.redraw();
@@ -142,60 +140,18 @@ describe('Address Component', function () {
           address.componentModal.isOpened = true;
           openModalButton.dispatchEvent(clickEvent);
           setTimeout(function () {
-            _powerAssert["default"].equal(address.componentModal.isOpened, true);
-            _powerAssert["default"].equal(!!address.dataValue, true);
+            _powerAssert.default.equal(address.componentModal.isOpened, true);
+            _powerAssert.default.equal(!!address.dataValue, true);
             var modalOverlayButton = address.componentModal.refs.modalOverlay;
             modalOverlayButton.dispatchEvent(clickEvent);
             setTimeout(function () {
-              _powerAssert["default"].equal(!!address.componentModal.isValueChanged(), false);
-              _powerAssert["default"].equal(!!address.componentModal.dialogElement, false);
+              _powerAssert.default.equal(!!address.componentModal.isValueChanged(), false);
+              _powerAssert.default.equal(!!address.componentModal.dialogElement, false);
               done();
             }, 200);
           }, 200);
         }, 200);
       }, 200);
-    })["catch"](done);
-  });
-  it('Should correctly display component that has a conditional based on the Address component', function (done) {
-    var value = {
-      'place_id': 298032694,
-      licence: 'Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright',
-      'osm_type': 'relation',
-      'osm_id': 1180520,
-      boundingbox: [37.4148293, 37.907822, -93.191483, -92.845795],
-      lat: 37.6832712,
-      lon: -93.0219376,
-      'display_name': 'Dallas County, Missouri, United States',
-      "class": 'boundary',
-      type: 'administrative',
-      importance: 0.6131235182618818,
-      icon: 'https://nominatim.openstreetmap.org/ui/mapicons/poi_boundary_administrative.p.20.png',
-      address: {
-        county: 'Dallas County',
-        state: 'Missouri',
-        'ISO3166-2-lvl4': 'US-MO',
-        country: 'United States',
-        'country_code': 'us'
-      }
-    };
-    var form = _lodash["default"].cloneDeep(_fixtures.comp4);
-    var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
-      var address = form.getComponent('address');
-      var textfield = form.getComponent('textField');
-      setTimeout(function () {
-        address.setValue(value);
-        setTimeout(function () {
-          _powerAssert["default"].equal(textfield.visible, true);
-          var clearIcon = address.refs.removeValueIcon[0];
-          var clickEvent = new Event('click');
-          clearIcon.dispatchEvent(clickEvent);
-          setTimeout(function () {
-            _powerAssert["default"].equal(textfield.visible, false);
-            done();
-          }, 300);
-        }, 300);
-      }, 300);
-    });
+    }).catch(done);
   });
 });

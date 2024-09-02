@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -8,7 +7,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
@@ -36,11 +35,11 @@ var CDN = /*#__PURE__*/function () {
       'bootstrap': '4.6.2',
       'ckeditor': '19.0.0',
       'flatpickr': '4.6.8',
-      'flatpickr-formio': '4.6.13-formio.3',
+      'flatpickr-formio': '4.6.13-formio.1',
       'font-awesome': '4.7.0',
       'grid': 'latest',
       'moment-timezone': 'latest',
-      'quill': '2.0.0-dev.3',
+      'quill': '1.3.7',
       'shortcut-buttons-flatpickr': '0.4.0',
       'uswds': '2.4.8',
       'core': ''
@@ -118,4 +117,4 @@ var CDN = /*#__PURE__*/function () {
   return CDN;
 }();
 var _default = CDN;
-exports["default"] = _default;
+exports.default = _default;

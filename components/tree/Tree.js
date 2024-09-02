@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -12,9 +10,9 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.reflect.set.js");
+require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -22,16 +20,11 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.reduce.js");
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Component = _interopRequireDefault(require("../_classes/component/Component"));
@@ -39,14 +32,14 @@ var _Components = _interopRequireDefault(require("../Components"));
 var _NestedDataComponent2 = _interopRequireDefault(require("../_classes/nesteddata/NestedDataComponent"));
 var _Node = _interopRequireDefault(require("./Node"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -131,7 +124,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
     value: function createComponents(data, node) {
       var _this2 = this;
       var components = this.componentComponents.map(function (component) {
-        var componentInstance = _Components["default"].create(component, _this2.componentOptions, data);
+        var componentInstance = _Components.default.create(component, _this2.componentOptions, data);
         componentInstance.init();
         componentInstance.parentDisabled = _this2.disabled;
         return componentInstance;
@@ -212,17 +205,17 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       this.loadRefs(element, {
         root: 'single'
       });
-      return _nativePromiseOnly["default"].all([_get(_getPrototypeOf(TreeComponent.prototype), "attach", this).call(this, element), this.attachNode(this.refs.root, this.treeRoot)]);
+      return _nativePromiseOnly.default.all([_get(_getPrototypeOf(TreeComponent.prototype), "attach", this).call(this, element), this.attachNode(this.refs.root, this.treeRoot)]);
     }
   }, {
     key: "attachNode",
     value: function attachNode(element, node) {
       if (!element) {
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
-      var componentsPromise = _nativePromiseOnly["default"].resolve();
-      var childrenPromise = _nativePromiseOnly["default"].resolve();
-      node.refs = _lodash["default"].reduce(element.children, function (refs, child) {
+      var componentsPromise = _nativePromiseOnly.default.resolve();
+      var childrenPromise = _nativePromiseOnly.default.resolve();
+      node.refs = _lodash.default.reduce(element.children, function (refs, child) {
         return child.hasAttribute('ref') ? _objectSpread(_objectSpread({}, refs), {}, _defineProperty({}, child.getAttribute('ref'), child)) : refs;
       }, {});
       if (node.refs.content) {
@@ -232,7 +225,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       if (node.refs.childNodes) {
         childrenPromise = this.attachChildren(node);
       }
-      return _nativePromiseOnly["default"].all([componentsPromise, childrenPromise]);
+      return _nativePromiseOnly.default.all([componentsPromise, childrenPromise]);
     }
   }, {
     key: "attachActions",
@@ -303,14 +296,14 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       this.loadRefs.call(node, node.refs.content, {
         nodeEdit: 'single'
       });
-      return node.refs.nodeEdit ? _get(_getPrototypeOf(TreeComponent.prototype), "attachComponents", this).call(this, node.refs.nodeEdit, node.components) : _nativePromiseOnly["default"].resolve();
+      return node.refs.nodeEdit ? _get(_getPrototypeOf(TreeComponent.prototype), "attachComponents", this).call(this, node.refs.nodeEdit, node.components) : _nativePromiseOnly.default.resolve();
     }
   }, {
     key: "attachChildren",
     value: function attachChildren(node) {
       var _this5 = this;
       var childElements = node.refs.childNodes.children;
-      return _nativePromiseOnly["default"].all(_lodash["default"].map(childElements, function (childElement, index) {
+      return _nativePromiseOnly.default.all(_lodash.default.map(childElements, function (childElement, index) {
         return _this5.attachNode(childElement, node.children[index]);
       }));
     }
@@ -326,7 +319,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "addChild",
     value: function addChild(parent) {
       var _this6 = this;
-      if (this.options.readOnly || parent["new"]) {
+      if (this.options.readOnly || parent.new) {
         return;
       }
       this.hook('tree.addChild', {
@@ -350,7 +343,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
         component: this
       }, function () {
         if (node.isRoot) {
-          if (node.persistentData && !_lodash["default"].isEmpty(node.persistentData)) {
+          if (node.persistentData && !_lodash.default.isEmpty(node.persistentData)) {
             node.cancel();
             _this7.redraw();
           } else {
@@ -367,7 +360,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "editNode",
     value: function editNode(node) {
       var _this8 = this;
-      if (this.options.readOnly || node["new"]) {
+      if (this.options.readOnly || node.new) {
         return;
       }
       this.hook('tree.editNode', {
@@ -383,7 +376,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "removeNode",
     value: function removeNode(node) {
       var _this9 = this;
-      if (this.options.readOnly || node["new"]) {
+      if (this.options.readOnly || node.new) {
         return;
       }
       this.hook('tree.removeNode', {
@@ -460,7 +453,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "setRoot",
     value: function setRoot() {
       var value = this.getValue();
-      this.treeRoot = new _Node["default"](null, value, {
+      this.treeRoot = new _Node.default(null, value, {
         isNew: this.builderMode ? true : !value.data,
         createComponents: this.createComponents.bind(this),
         checkNode: this.checkNode.bind(this, this.data),
@@ -495,39 +488,12 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       var _this13 = this;
       return node.children.reduce(function (result, child) {
         return _this13.checkNode(data, child, flags, row) && result;
-      }, _get(_getPrototypeOf(TreeComponent.prototype), "checkData", this).call(this, data, flags, node.data, node.components) && !node.editing && !node["new"]);
+      }, _get(_getPrototypeOf(TreeComponent.prototype), "checkData", this).call(this, data, flags, node.data, node.components) && !node.editing && !node.new);
     }
   }, {
     key: "getComponents",
     value: function getComponents() {
       return this.treeRoot && (this.isDefaultValueComponent || !this.isDefaultValueComponent && !this.builderMode) ? this.treeRoot.getComponents() : _get(_getPrototypeOf(TreeComponent.prototype), "getComponents", this).call(this);
-    }
-  }, {
-    key: "getValueAsString",
-    value: function getValueAsString(value, options) {
-      var getChildAsString = function getChildAsString(value) {
-        var _value$children;
-        var result = "\n        <table border=\"1\" style=\"width:100%\">\n          <tbody>\n      ";
-        result += "\n            <tr>\n      ";
-        result += Object.keys(value.data).map(function (k) {
-          return "\n              <th style=\"padding: 5px 10px;\">".concat(k, "</th>\n              <td style=\"width:100%;padding:5px 10px;\">\n                ").concat(value.data[k], "\n                <br>\n      ");
-        });
-        if (((_value$children = value.children) === null || _value$children === void 0 ? void 0 : _value$children.length) !== 0) {
-          var _value$children2;
-          (_value$children2 = value.children) === null || _value$children2 === void 0 ? void 0 : _value$children2.forEach(function (v) {
-            result += getChildAsString(v);
-          });
-        }
-        result += "\n              </td>\n            </tr>\n      ";
-        result += "\n          </tbody>\n        </table>\n      ";
-        return result;
-      };
-      if (options !== null && options !== void 0 && options.email) {
-        var result = '';
-        result += getChildAsString(value);
-        return result;
-      }
-      return _get(_getPrototypeOf(TreeComponent.prototype), "getValueAsString", this).call(this, value, options);
     }
   }], [{
     key: "schema",
@@ -535,7 +501,7 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       for (var _len3 = arguments.length, extend = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
         extend[_key3] = arguments[_key3];
       }
-      return _NestedDataComponent2["default"].schema.apply(_NestedDataComponent2["default"], [{
+      return _NestedDataComponent2.default.schema.apply(_NestedDataComponent2.default, [{
         label: 'Tree',
         key: 'tree',
         type: 'tree',
@@ -552,14 +518,14 @@ var TreeComponent = /*#__PURE__*/function (_NestedDataComponent) {
       return {
         title: 'Tree',
         icon: 'indent',
+        group: 'data',
         weight: 40,
-        documentation: '/userguide/form-building/data-components#tree',
-        showPreview: false,
+        documentation: '/userguide/forms/data-components#tree',
         schema: TreeComponent.schema()
       };
     }
   }]);
   return TreeComponent;
-}(_NestedDataComponent2["default"]);
-exports["default"] = TreeComponent;
-TreeComponent.prototype.hasChanged = _Component["default"].prototype.hasChanged;
+}(_NestedDataComponent2.default);
+exports.default = TreeComponent;
+TreeComponent.prototype.hasChanged = _Component.default.prototype.hasChanged;

@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'checkbox',
   input: true,
@@ -34,4 +33,4 @@ var _default = [{
   tooltip: 'Display time in 12 hour time with AM/PM.',
   weight: 30
 }];
-exports["default"] = _default;
+exports.default = _default;

@@ -1,21 +1,19 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.concat.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _utils = require("./utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = {
   /**
    * Appends a number to a component.key to keep it unique
@@ -57,7 +55,7 @@ var _default = {
     button: ['Enter', 'Esc']
   },
   getAlphaShortcuts: function getAlphaShortcuts() {
-    return _lodash["default"].range('A'.charCodeAt(), 'Z'.charCodeAt() + 1).map(function (charCode) {
+    return _lodash.default.range('A'.charCodeAt(), 'Z'.charCodeAt() + 1).map(function (charCode) {
       return String.fromCharCode(charCode);
     });
   },
@@ -87,7 +85,7 @@ var _default = {
     if (!component) {
       return [];
     }
-    return [''].concat(_lodash["default"].difference(this.getAlphaShortcuts().concat(this.getAdditionalShortcuts(component.type)), this.getBindedShortcuts(form.components, component))).map(function (shortcut) {
+    return [''].concat(_lodash.default.difference(this.getAlphaShortcuts().concat(this.getAdditionalShortcuts(component.type)), this.getBindedShortcuts(form.components, component))).map(function (shortcut) {
       return {
         label: shortcut,
         value: shortcut
@@ -95,4 +93,4 @@ var _default = {
     });
   }
 };
-exports["default"] = _default;
+exports.default = _default;

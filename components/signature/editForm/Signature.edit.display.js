@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'textfield',
   input: true,
@@ -23,7 +22,7 @@ var _default = [{
   conditional: {
     json: {
       '!': [{
-        "var": 'data.keepOverlayRatio'
+        var: 'data.keepOverlayRatio'
       }]
     }
   },
@@ -38,7 +37,7 @@ var _default = [{
   conditional: {
     json: {
       '!': [{
-        "var": 'data.keepOverlayRatio'
+        var: 'data.keepOverlayRatio'
       }]
     }
   },
@@ -78,4 +77,4 @@ var _default = [{
   key: 'autofocus',
   ignore: true
 }];
-exports["default"] = _default;
+exports.default = _default;

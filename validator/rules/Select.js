@@ -1,11 +1,7 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -26,7 +22,7 @@ var _utils = require("../../utils/utils");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _fetchPonyfill2 = _interopRequireDefault(require("fetch-ponyfill"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -41,8 +37,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-var _fetchPonyfill = (0, _fetchPonyfill2["default"])({
-    Promise: _nativePromiseOnly["default"]
+var _fetchPonyfill = (0, _fetchPonyfill2.default)({
+    Promise: _nativePromiseOnly.default
   }),
   fetch = _fetchPonyfill.fetch,
   Headers = _fetchPonyfill.Headers,
@@ -65,7 +61,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
     key: "check",
     value: function check(value, data, row, async) {
       // Skip if value is empty
-      if (!value || _lodash["default"].isEmpty(value)) {
+      if (!value || _lodash.default.isEmpty(value)) {
         return true;
       }
 
@@ -85,7 +81,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
       };
 
       // If the url is a boolean value
-      if (_lodash["default"].isBoolean(requestOptions.url)) {
+      if (_lodash.default.isBoolean(requestOptions.url)) {
         requestOptions.url = !!requestOptions.url;
         if (!requestOptions.url || schema.dataSrc !== 'url' || !schema.data.url || !schema.searchField) {
           return true;
@@ -117,13 +113,13 @@ module.exports = /*#__PURE__*/function (_Rule) {
       });
 
       // Add query string to URL
-      requestOptions.url += (requestOptions.url.includes('?') ? '&' : '?') + _lodash["default"].chain(requestOptions.qs).map(function (val, key) {
+      requestOptions.url += (requestOptions.url.includes('?') ? '&' : '?') + _lodash.default.chain(requestOptions.qs).map(function (val, key) {
         return "".concat(encodeURIComponent(key), "=").concat(encodeURIComponent(val));
       }).join('&').value();
 
       // Set custom headers.
       if (schema.data && schema.data.headers) {
-        _lodash["default"].each(schema.data.headers, function (header) {
+        _lodash.default.each(schema.data.headers, function (header) {
           if (header.key) {
             requestOptions.headers[header.key] = header.value;
           }
@@ -143,7 +139,7 @@ module.exports = /*#__PURE__*/function (_Rule) {
         return response.json();
       }).then(function (results) {
         return results && results.length;
-      })["catch"](function () {
+      }).catch(function () {
         return false;
       });
     }

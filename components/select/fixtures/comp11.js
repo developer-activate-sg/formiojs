@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   components: [{
     type: 'select',
@@ -26,4 +25,4 @@ var _default = {
     tableView: false
   }]
 };
-exports["default"] = _default;
+exports.default = _default;

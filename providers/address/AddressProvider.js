@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -25,13 +23,13 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Formio = require("../../Formio");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -43,7 +41,7 @@ var AddressProvider = /*#__PURE__*/function () {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     _classCallCheck(this, AddressProvider);
     this.beforeMergeOptions(options);
-    this.options = _lodash["default"].merge({}, this.defaultOptions, options);
+    this.options = _lodash.default.merge({}, this.defaultOptions, options);
   }
   _createClass(AddressProvider, [{
     key: "beforeMergeOptions",
@@ -73,7 +71,7 @@ var AddressProvider = /*#__PURE__*/function () {
   }, {
     key: "serialize",
     value: function serialize(params) {
-      return _lodash["default"].toPairs(params).map(function (_ref) {
+      return _lodash.default.toPairs(params).map(function (_ref) {
         var _ref2 = _slicedToArray(_ref, 2),
           key = _ref2[0],
           value = _ref2[1];
@@ -84,7 +82,7 @@ var AddressProvider = /*#__PURE__*/function () {
     key: "getRequestOptions",
     value: function getRequestOptions() {
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      return _lodash["default"].merge({}, this.options, options);
+      return _lodash.default.merge({}, this.options, options);
     }
 
     // eslint-disable-next-line no-unused-vars
@@ -111,13 +109,13 @@ var AddressProvider = /*#__PURE__*/function () {
       var params = requestOptions.params = requestOptions.params || {};
       params[this.queryProperty] = query;
       return this.makeRequest(requestOptions).then(function (result) {
-        return _this.responseProperty ? _lodash["default"].get(result, _this.responseProperty, []) : result;
+        return _this.responseProperty ? _lodash.default.get(result, _this.responseProperty, []) : result;
       });
     }
   }, {
     key: "getDisplayValue",
     value: function getDisplayValue(address) {
-      return this.displayValueProperty ? _lodash["default"].get(address, this.displayValueProperty, '') : String(address);
+      return this.displayValueProperty ? _lodash.default.get(address, this.displayValueProperty, '') : String(address);
     }
   }], [{
     key: "name",

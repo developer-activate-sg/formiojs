@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -8,7 +7,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -17,7 +16,7 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
 var _index = _interopRequireDefault(require("./index"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -32,7 +31,7 @@ var Templates = /*#__PURE__*/function () {
     key: "templates",
     get: function get() {
       if (!Templates._templates) {
-        Templates._templates = _index["default"];
+        Templates._templates = _index.default;
       }
       return Templates._templates;
     }
@@ -44,7 +43,7 @@ var Templates = /*#__PURE__*/function () {
   }, {
     key: "extendTemplate",
     value: function extendTemplate(name, template) {
-      Templates.templates[name] = _lodash["default"].merge({}, Templates.templates[name], template);
+      Templates.templates[name] = _lodash.default.merge({}, Templates.templates[name], template);
     }
   }, {
     key: "setTemplate",
@@ -61,7 +60,7 @@ var Templates = /*#__PURE__*/function () {
     },
     set: function set(templates) {
       var defaultTemplates = Templates.current;
-      Templates._current = _lodash["default"].merge({}, defaultTemplates, templates);
+      Templates._current = _lodash.default.merge({}, defaultTemplates, templates);
     }
   }, {
     key: "defaultTemplates",
@@ -82,4 +81,4 @@ var Templates = /*#__PURE__*/function () {
   }]);
   return Templates;
 }();
-exports["default"] = Templates;
+exports.default = Templates;

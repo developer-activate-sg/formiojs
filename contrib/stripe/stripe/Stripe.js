@@ -2,8 +2,6 @@
 
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,16 +16,14 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.object.set-prototype-of.js");
+exports.default = void 0;
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Validator = _interopRequireDefault(require("../../../validator/Validator"));
 var _Component2 = _interopRequireDefault(require("../../../components/_classes/component/Component"));
 var _Formio = require("../../../Formio");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -44,8 +40,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 // Register a custom validor to use card validition from Stripe
-if (typeof _Validator["default"].validators.stripe === 'undefined') {
-  _Validator["default"].validators.stripe = {
+if (typeof _Validator.default.validators.stripe === 'undefined') {
+  _Validator.default.validators.stripe = {
     key: 'validate.stripe',
     message: function message(component) {
       var stripeMessage = '';
@@ -176,12 +172,12 @@ var StripeComponent = /*#__PURE__*/function (_Component) {
         return;
       }
       var that = this;
-      return new _nativePromiseOnly["default"](function (resolve, reject) {
+      return new _nativePromiseOnly.default(function (resolve, reject) {
         that.authorizePending();
 
         // Get all additionnal data to send to Stripe
-        var cardData = _lodash["default"].cloneDeep(that.component.stripe.cardData) || {};
-        _lodash["default"].each(cardData, function (value, key) {
+        var cardData = _lodash.default.cloneDeep(that.component.stripe.cardData) || {};
+        _lodash.default.each(cardData, function (value, key) {
           cardData[key] = that.t(value);
         });
         return that.stripe.createToken(that.stripeCard, cardData).then(function (result) {
@@ -233,7 +229,7 @@ var StripeComponent = /*#__PURE__*/function (_Component) {
       _get(_getPrototypeOf(StripeComponent.prototype), "build", this).call(this);
       var successLabel = this.component.stripe.payButton.successLabel || 'Payment successful';
       this.stripeSuccess = this.ce('div', {
-        "class": 'Stripe-success',
+        class: 'Stripe-success',
         style: 'display: none'
       }, this.t(successLabel));
       this.element.appendChild(this.stripeSuccess);
@@ -241,12 +237,12 @@ var StripeComponent = /*#__PURE__*/function (_Component) {
       // Add container for pay button
       if (this.component.stripe.payButton && this.component.stripe.payButton.enable) {
         this.stripeElementPayButton = this.ce('div', {
-          "class": 'Stripe-paybutton'
+          class: 'Stripe-paybutton'
         });
         this.element.appendChild(this.stripeElementPayButton);
         var separatorLabel = this.component.stripe.payButton.separatorLabel || 'Or';
         this.stripeSeparator = this.ce('div', {
-          "class": 'Stripe-separator',
+          class: 'Stripe-separator',
           style: 'display: none'
         }, this.t(separatorLabel));
         this.element.appendChild(this.stripeSeparator);
@@ -261,7 +257,7 @@ var StripeComponent = /*#__PURE__*/function (_Component) {
         // Create an instance of Elements
         var stripeElementsOptions = {};
         if (_this2.component.stripe) {
-          stripeElementsOptions = _lodash["default"].cloneDeep(_this2.component.stripe.stripeElementsOptions) || {};
+          stripeElementsOptions = _lodash.default.cloneDeep(_this2.component.stripe.stripeElementsOptions) || {};
         }
         if (typeof stripeElementsOptions.locale === 'undefined') {
           stripeElementsOptions.locale = _this2.options.language;
@@ -306,8 +302,8 @@ var StripeComponent = /*#__PURE__*/function (_Component) {
     }
   }]);
   return StripeComponent;
-}(_Component2["default"]);
-exports["default"] = StripeComponent;
+}(_Component2.default);
+exports.default = StripeComponent;
 if ((typeof global === "undefined" ? "undefined" : _typeof(global)) === 'object' && global.Formio && global.Formio.registerComponent) {
   global.Formio.registerComponent('stripe', StripeComponent);
 }

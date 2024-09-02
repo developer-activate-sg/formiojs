@@ -1,17 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.number.is-nan.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.symbol.to-primitive.js");

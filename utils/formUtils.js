@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -21,24 +20,17 @@ exports.matchComponent = matchComponent;
 exports.parseFloatExt = parseFloatExt;
 exports.removeComponent = removeComponent;
 exports.searchComponents = searchComponents;
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.array.splice.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.reverse.js");
 require("core-js/modules/es.array.from.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.array.iterator.js");
@@ -57,7 +49,7 @@ var _chunk = _interopRequireDefault(require("lodash/chunk"));
 var _pad = _interopRequireDefault(require("lodash/pad"));
 var _fastJsonPatch = require("fast-json-patch");
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /**
  * Determine if a component is a layout component or not.
  *
@@ -108,7 +100,7 @@ function eachComponent(components, fn, includeAll, path, parent, inRecursion) {
     // Keep track of parent references.
     if (parent) {
       // Ensure we don't create infinite JSON structures.
-      component.parent = (0, _clone["default"])(parent);
+      component.parent = (0, _clone.default)(parent);
       delete component.parent.components;
       delete component.parent.componentMap;
       delete component.parent.columns;
@@ -122,7 +114,7 @@ function eachComponent(components, fn, includeAll, path, parent, inRecursion) {
       noRecurse = fn(component, newPath, components);
     }
     var subPath = function subPath() {
-      if (component.key && !['panel', 'table', 'well', 'columns', 'fieldset', 'tabs', 'form'].includes(component.type) && (['datagrid', 'container', 'editgrid', 'address', 'dynamicWizard', 'datatable', 'tagpad'].includes(component.type) || component.tree)) {
+      if (component.key && !['panel', 'table', 'well', 'columns', 'fieldset', 'tabs', 'form'].includes(component.type) && (['datagrid', 'container', 'editgrid', 'address', 'dynamicWizard', 'datatable'].includes(component.type) || component.tree)) {
         return newPath;
       } else if (component.key && component.type === 'form') {
         return "".concat(newPath, ".data");
@@ -160,12 +152,12 @@ function eachComponent(components, fn, includeAll, path, parent, inRecursion) {
  * @return {boolean}
  */
 function matchComponent(component, query) {
-  if ((0, _isString["default"])(query)) {
+  if ((0, _isString.default)(query)) {
     return component.key === query || component.path === query;
   } else {
     var matches = false;
-    (0, _forOwn["default"])(query, function (value, key) {
-      matches = (0, _get["default"])(component, key) === value;
+    (0, _forOwn.default)(query, function (value, key) {
+      matches = (0, _get.default)(component, key) === value;
       if (!matches) {
         return false;
       }
@@ -291,7 +283,7 @@ function removeComponent(components, path) {
   // Using _.unset() leave a null value. Use Array splice instead.
   var index = path.pop();
   if (path.length !== 0) {
-    components = (0, _get["default"])(components, path);
+    components = (0, _get.default)(components, path);
   }
   components.splice(index, 1);
 }
@@ -353,14 +345,14 @@ function applyFormChanges(form, changes) {
             removeComponent(form.components, path);
           });
           found = true;
-          var container = (0, _get["default"])(parent, change.path);
+          var container = (0, _get.default)(parent, change.path);
           container.splice(change.index, 0, newComponent);
         });
         break;
       case 'remove':
         findComponent(form.components, change.key, null, function (component, path) {
           found = true;
-          var oldComponent = (0, _get["default"])(form.components, path);
+          var oldComponent = (0, _get.default)(form.components, path);
           if (oldComponent.key !== component.key) {
             path.pop();
           }
@@ -371,12 +363,12 @@ function applyFormChanges(form, changes) {
         findComponent(form.components, change.key, null, function (component, path) {
           found = true;
           try {
-            var oldComponent = (0, _get["default"])(form.components, path);
+            var oldComponent = (0, _get.default)(form.components, path);
             var _newComponent = (0, _fastJsonPatch.applyPatch)(component, change.patches).newDocument;
             if (oldComponent.key !== _newComponent.key) {
               path.pop();
             }
-            (0, _set["default"])(form.components, path, _newComponent);
+            (0, _set.default)(form.components, path, _newComponent);
           } catch (err) {
             failed.push(change);
           }
@@ -422,9 +414,7 @@ function flattenComponents(components, includeAll) {
  * @returns {boolean} - TRUE - This component has a conditional, FALSE - No conditional provided.
  */
 function hasCondition(component) {
-  return Boolean(component.customConditional || component.conditional && (component.conditional.when || _lodash["default"].some(component.conditional.conditions || [], function (condition) {
-    return condition.component && condition.operator;
-  }) || component.conditional.json || component.conditional.condition));
+  return Boolean(component.customConditional || component.conditional && (component.conditional.when || component.conditional.json || component.conditional.condition));
 }
 
 /**
@@ -437,7 +427,7 @@ function hasCondition(component) {
  *   Parsed value.
  */
 function parseFloatExt(value) {
-  return parseFloat((0, _isString["default"])(value) ? value.replace(/[^\de.+-]/gi, '') : value);
+  return parseFloat((0, _isString.default)(value) ? value.replace(/[^\de.+-]/gi, '') : value);
 }
 
 /**
@@ -451,14 +441,14 @@ function parseFloatExt(value) {
  */
 function formatAsCurrency(value) {
   var parsedValue = parseFloatExt(value);
-  if ((0, _isNaN["default"])(parsedValue)) {
+  if ((0, _isNaN.default)(parsedValue)) {
     return '';
   }
-  var parts = (0, _round["default"])(parsedValue, 2).toString().split('.');
-  parts[0] = (0, _chunk["default"])(Array.from(parts[0]).reverse(), 3).reverse().map(function (part) {
+  var parts = (0, _round.default)(parsedValue, 2).toString().split('.');
+  parts[0] = (0, _chunk.default)(Array.from(parts[0]).reverse(), 3).reverse().map(function (part) {
     return part.reverse().join('');
   }).join(',');
-  parts[1] = (0, _pad["default"])(parts[1], 2, '0');
+  parts[1] = (0, _pad.default)(parts[1], 2, '0');
   return parts.join('.');
 }
 
@@ -484,14 +474,14 @@ function escapeRegExCharacters(value) {
  */
 function getValue(submission, key) {
   var search = function search(data) {
-    if ((0, _isPlainObject["default"])(data)) {
-      if ((0, _has["default"])(data, key)) {
-        return _lodash["default"].get(data, key);
+    if ((0, _isPlainObject.default)(data)) {
+      if ((0, _has.default)(data, key)) {
+        return _lodash.default.get(data, key);
       }
       var value = null;
-      (0, _forOwn["default"])(data, function (prop) {
+      (0, _forOwn.default)(data, function (prop) {
         var result = search(prop);
-        if (!(0, _isNil["default"])(result)) {
+        if (!(0, _isNil.default)(result)) {
           value = result;
           return false;
         }

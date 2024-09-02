@@ -1,22 +1,21 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = _default;
+exports.default = _default;
 require("core-js/modules/es.array.concat.js");
 var _Components = _interopRequireDefault(require("../Components"));
 var _ContentEdit = _interopRequireDefault(require("./editForm/Content.edit.display"));
 var _ContentEdit2 = _interopRequireDefault(require("./editForm/Content.edit.logic"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _default() {
   for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
     extend[_key] = arguments[_key];
   }
-  var editForm = _Components["default"].baseEditForm.apply(_Components["default"], [[{
+  var editForm = _Components.default.baseEditForm.apply(_Components.default, [[{
     key: 'display',
-    components: _ContentEdit["default"]
+    components: _ContentEdit.default
   }, {
     key: 'data',
     ignore: true
@@ -25,7 +24,10 @@ function _default() {
     ignore: true
   }, {
     key: 'logic',
-    components: _ContentEdit2["default"]
+    components: _ContentEdit2.default
+  }, {
+    key: 'addons',
+    ignore: true
   }]].concat(extend));
   // Add content as full width above the settings.
   editForm.components = [{

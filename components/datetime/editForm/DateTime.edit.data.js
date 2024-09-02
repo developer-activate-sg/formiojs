@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   type: 'textfield',
   input: true,
@@ -24,4 +23,4 @@ var _default = [{
   tooltip: 'A raw JSON object to use as options for the Date / Time component (Flatpickr).',
   defaultValue: {}
 }];
-exports["default"] = _default;
+exports.default = _default;

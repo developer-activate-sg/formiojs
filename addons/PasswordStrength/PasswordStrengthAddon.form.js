@@ -1,12 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _utils = _interopRequireDefault(require("../../components/_classes/component/editForm/utils"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   label: 'Strength Levels',
   reorder: false,
@@ -179,7 +178,7 @@ var _default = [{
     key: 'name',
     type: 'textfield',
     input: true
-  }, _utils["default"].javaScriptValue('Check', 'check', '', 1100, '<p><h4>Example:</h4><pre>valid = !value.includes(data.email) ? true : "Password should not be variation of the email";</pre></p>', '', '', true), {
+  }, _utils.default.javaScriptValue('Check', 'check', '', 1100, '<p><h4>Example:</h4><pre>valid = !value.includes(data.email) ? true : "Password should not be variation of the email";</pre></p>', '', '', true), {
     label: 'Increase Characters Pool Size',
     description: 'Set this to amount of characters that may be used in the password if there is a specific group of characters is used.\nE.g., if your validation checks if there is any numeric symbol in the password, then you should set it to 10 (there are 10 possible numbers).\n',
     mask: false,
@@ -200,7 +199,7 @@ var _default = [{
     input: true,
     defaultValue: false
   }]
-}, _utils["default"].javaScriptValue('Is Valid', 'isValid', '', 1100, '<p><h4>Example:</h4><pre>valid = entropy > maxEntropy / 2 ;</pre></p>', '', '<tr><th>entropy</th><td>Current entropy bits of the password.</td></tr>' + '<tr><th>level</th><td>Current strength level of the password.</td></tr>', true), {
+}, _utils.default.javaScriptValue('Is Valid', 'isValid', '', 1100, '<p><h4>Example:</h4><pre>valid = entropy > maxEntropy / 2 ;</pre></p>', '', '<tr><th>entropy</th><td>Current entropy bits of the password.</td></tr>' + '<tr><th>level</th><td>Current strength level of the password.</td></tr>', true), {
   label: 'Required',
   description: "Check this if you don't want to allow submitting password which does not correspond to the minimal strength requirements.",
   tableView: false,
@@ -216,7 +215,7 @@ var _default = [{
   key: 'blackList',
   type: 'textfield',
   input: true
-}, _utils["default"].javaScriptValue('Custom Blacklisted Words', 'customBlackListedWords', '', 1100, '<p><h4>Example:</h4><pre>values = [ data.name, data.dataOfBirth, data.favoriteColor ];</pre></p>', '', '', true), {
+}, _utils.default.javaScriptValue('Custom Blacklisted Words', 'customBlackListedWords', '', 1100, '<p><h4>Example:</h4><pre>values = [ data.name, data.dataOfBirth, data.favoriteColor ];</pre></p>', '', '', true), {
   label: 'Disable Blacklisted Words',
   tooltip: 'Check if you want to disable submitting passwords containing words form the clack list',
   tableView: false,
@@ -272,4 +271,4 @@ var _default = [{
   input: true,
   as: 'html'
 }];
-exports["default"] = _default;
+exports.default = _default;

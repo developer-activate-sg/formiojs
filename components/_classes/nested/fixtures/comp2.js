@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   components: [{
     label: 'Data Grid',
@@ -223,4 +222,4 @@ var _default = {
     id: 'evn07ja'
   }]
 };
-exports["default"] = _default;
+exports.default = _default;

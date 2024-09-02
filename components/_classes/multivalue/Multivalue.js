@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -19,28 +17,23 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.is-array.js");
+exports.default = void 0;
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Field2 = _interopRequireDefault(require("../field/Field"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -77,7 +70,7 @@ var Multivalue = /*#__PURE__*/function (_Field) {
     get: function get() {
       var value = _get(_getPrototypeOf(Multivalue.prototype), "defaultValue", this);
       if (this.component.multiple) {
-        if (_lodash["default"].isArray(value)) {
+        if (_lodash.default.isArray(value)) {
           value = !value.length ? [_get(_getPrototypeOf(Multivalue.prototype), "emptyValue", this)] : value;
         } else {
           value = [value];
@@ -147,7 +140,7 @@ var Multivalue = /*#__PURE__*/function (_Field) {
         promises.push(_this.attachElement.call(_this, element, index));
       });
       if (!this.component.multiple) {
-        return _nativePromiseOnly["default"].all(promises);
+        return _nativePromiseOnly.default.all(promises);
       }
       this.refs.removeRow.forEach(function (removeButton, index) {
         _this.addEventListener(removeButton, 'click', function (event) {
@@ -164,7 +157,7 @@ var Multivalue = /*#__PURE__*/function (_Field) {
         });
       });
       return superAttach.then(function () {
-        return _nativePromiseOnly["default"].all(promises);
+        return _nativePromiseOnly.default.all(promises);
       });
     }
   }, {
@@ -202,7 +195,7 @@ var Multivalue = /*#__PURE__*/function (_Field) {
       var _this2 = this;
       this.addEventListener(element, this.inputInfo.changeEvent, function () {
         // Delay update slightly to give input mask a chance to run.
-        var textCase = _lodash["default"].get(_this2.component, 'case', 'mixed');
+        var textCase = _lodash.default.get(_this2.component, 'case', 'mixed');
         if (textCase !== 'mixed') {
           var selectionStart = element.selectionStart,
             selectionEnd = element.selectionEnd;
@@ -237,29 +230,25 @@ var Multivalue = /*#__PURE__*/function (_Field) {
         }
       });
       if (!this.attachMultiMask(index)) {
-        var applyMask = function applyMask() {
-          _this2.setInputMask(element);
-          var valueMask = _this2.component.inputMask;
-          var displayMask = _this2.component.displayMask;
-          if (valueMask && displayMask && displayMask !== valueMask && _this2.refs.valueMaskInput) {
-            _this2.setInputMask(_this2.refs.valueMaskInput, valueMask);
-          }
-        };
-        if (this.inputInfo.changeEvent === 'blur') {
-          this.addEventListener(element, this.inputInfo.changeEvent, function () {
-            var _document$querySelect;
-            applyMask();
-            _this2.dataValue = _this2.refs.input[0].value;
-            var submitBtnDisabled = (_document$querySelect = document.querySelector('[name="data[submit]"]')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.disabled;
-            submitBtnDisabled = true;
-            if (_this2.checkComponentValidity()) {
-              _this2.updateComponentValue(_this2.refs.input[0].value);
-              submitBtnDisabled = false;
-            }
-          });
-        } else {
-          applyMask();
+        this.setInputMask(element);
+        var valueMask = this.component.inputMask;
+        var displayMask = this.component.displayMask;
+        if (valueMask && displayMask && displayMask !== valueMask && this.refs.valueMaskInput) {
+          this.setInputMask(this.refs.valueMaskInput, valueMask);
         }
+      }
+    }
+
+    // Saves current caret position to restore it after the component is redrawn
+  }, {
+    key: "saveCaretPosition",
+    value: function saveCaretPosition(element, index) {
+      var _this$root, _this$root$focusedCom;
+      if (((_this$root = this.root) === null || _this$root === void 0 ? void 0 : (_this$root$focusedCom = _this$root.focusedComponent) === null || _this$root$focusedCom === void 0 ? void 0 : _this$root$focusedCom.path) === this.path) {
+        this.root.currentSelection = {
+          selection: [element.selectionStart, element.selectionEnd],
+          index: index
+        };
       }
     }
   }, {
@@ -347,5 +336,5 @@ var Multivalue = /*#__PURE__*/function (_Field) {
     }
   }]);
   return Multivalue;
-}(_Field2["default"]);
-exports["default"] = Multivalue;
+}(_Field2.default);
+exports.default = Multivalue;

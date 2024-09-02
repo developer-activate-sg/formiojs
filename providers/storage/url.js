@@ -6,7 +6,6 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -15,18 +14,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.function.name.js");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var url = function url(formio) {
   var xhrRequest = function xhrRequest(url, name, query, data, options, progressCallback, abortCallback) {
-    return new _nativePromiseOnly["default"](function (resolve, reject) {
+    return new _nativePromiseOnly.default(function (resolve, reject) {
       var xhr = new XMLHttpRequest();
       var json = typeof data === 'string';
       var fd = new FormData();
@@ -95,14 +93,7 @@ var url = function url(formio) {
       if (options) {
         var parsedOptions = typeof options === 'string' ? JSON.parse(options) : options;
         for (var prop in parsedOptions) {
-          if (prop === 'headers') {
-            var headers = parsedOptions['headers'];
-            for (var header in headers) {
-              xhr.setRequestHeader(header, headers[header]);
-            }
-          } else {
-            xhr[prop] = parsedOptions[prop];
-          }
+          xhr[prop] = parsedOptions[prop];
         }
       }
       xhr.send(json ? data : fd);
@@ -134,7 +125,7 @@ var url = function url(formio) {
           };
         });
       };
-      if (file["private"] && formio.formId) {
+      if (file.private && formio.formId) {
         return formio.loadForm().then(function (form) {
           return uploadRequest(form);
         });
@@ -143,7 +134,7 @@ var url = function url(formio) {
       }
     },
     deleteFile: function deleteFile(fileInfo) {
-      return new _nativePromiseOnly["default"](function (resolve, reject) {
+      return new _nativePromiseOnly.default(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         xhr.open('DELETE', fileInfo.url, true);
         xhr.onload = function () {
@@ -157,7 +148,7 @@ var url = function url(formio) {
       });
     },
     downloadFile: function downloadFile(file) {
-      if (file["private"]) {
+      if (file.private) {
         if (formio.submissionId && file.data) {
           file.data.submission = formio.submissionId;
         }
@@ -167,10 +158,10 @@ var url = function url(formio) {
       }
 
       // Return the original as there is nothing to do.
-      return _nativePromiseOnly["default"].resolve(file);
+      return _nativePromiseOnly.default.resolve(file);
     }
   };
 };
 url.title = 'Url';
 var _default = url;
-exports["default"] = _default;
+exports.default = _default;

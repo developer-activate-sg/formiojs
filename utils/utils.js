@@ -5,7 +5,6 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 require("core-js/modules/es.array.from.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -19,7 +18,6 @@ var _exportNames = {
   isMongoId: true,
   checkCalculated: true,
   checkSimpleConditional: true,
-  getComponentActualValue: true,
   checkCustomConditional: true,
   checkJsonConditional: true,
   checkCondition: true,
@@ -77,32 +75,21 @@ var _exportNames = {
   isPromise: true,
   isInsideScopingComponent: true,
   getFocusableElements: true,
-  componentValueTypes: true,
-  getComponentSavedTypes: true,
-  getItemTemplateKeys: true,
-  isSelectResourceWithObjectValue: true,
   _: true,
   jsonLogic: true,
   moment: true,
-  Evaluator: true,
-  ConditionOperators: true
+  Evaluator: true
 };
-Object.defineProperty(exports, "ConditionOperators", {
-  enumerable: true,
-  get: function get() {
-    return _conditionOperators["default"];
-  }
-});
 Object.defineProperty(exports, "Evaluator", {
   enumerable: true,
   get: function get() {
-    return _Evaluator["default"];
+    return _Evaluator.default;
   }
 });
 Object.defineProperty(exports, "_", {
   enumerable: true,
   get: function get() {
-    return _lodash["default"];
+    return _lodash.default;
   }
 });
 exports.boolValue = boolValue;
@@ -113,7 +100,6 @@ exports.checkCustomConditional = checkCustomConditional;
 exports.checkJsonConditional = checkJsonConditional;
 exports.checkSimpleConditional = checkSimpleConditional;
 exports.checkTrigger = checkTrigger;
-exports.componentValueTypes = void 0;
 exports.convertFormatToFlatpickr = convertFormatToFlatpickr;
 exports.convertFormatToMask = convertFormatToMask;
 exports.convertFormatToMoment = convertFormatToMoment;
@@ -128,10 +114,8 @@ exports.formatDate = formatDate;
 exports.formatOffset = formatOffset;
 exports.getArrayFromComponentPath = getArrayFromComponentPath;
 exports.getBrowserInfo = getBrowserInfo;
-exports.getComponentActualValue = getComponentActualValue;
 exports.getComponentPath = getComponentPath;
 exports.getComponentPathWithoutIndicies = getComponentPathWithoutIndicies;
-exports.getComponentSavedTypes = getComponentSavedTypes;
 exports.getContextButtons = getContextButtons;
 exports.getContextComponents = getContextComponents;
 exports.getCurrencyAffixes = getCurrencyAffixes;
@@ -141,7 +125,6 @@ exports.getElementRect = getElementRect;
 exports.getFocusableElements = getFocusableElements;
 exports.getIEBrowserVersion = getIEBrowserVersion;
 exports.getInputMask = getInputMask;
-exports.getItemTemplateKeys = getItemTemplateKeys;
 exports.getLocaleDateFormatInfo = getLocaleDateFormatInfo;
 exports.getNumberDecimalLimit = getNumberDecimalLimit;
 exports.getNumberSeparators = getNumberSeparators;
@@ -155,13 +138,12 @@ exports.isInputComponent = isInputComponent;
 exports.isInsideScopingComponent = isInsideScopingComponent;
 exports.isMongoId = isMongoId;
 exports.isPromise = isPromise;
-exports.isSelectResourceWithObjectValue = isSelectResourceWithObjectValue;
 exports.isValidDate = isValidDate;
 exports.iterateKey = iterateKey;
 Object.defineProperty(exports, "jsonLogic", {
   enumerable: true,
   get: function get() {
-    return _jsonLogicJs["default"];
+    return _jsonLogicJs.default;
   }
 });
 exports.loadZones = loadZones;
@@ -169,7 +151,7 @@ exports.matchInputMask = matchInputMask;
 Object.defineProperty(exports, "moment", {
   enumerable: true,
   get: function get() {
-    return _momentTimezone["default"];
+    return _momentTimezone.default;
   }
 });
 exports.momentDate = momentDate;
@@ -187,25 +169,17 @@ exports.uniqueName = uniqueName;
 exports.unmaskValue = unmaskValue;
 exports.withSwitch = withSwitch;
 exports.zonesLoaded = zonesLoaded;
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.date.to-iso-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.parse-float.js");
 require("core-js/modules/es.string.match.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.array.some.js");
-require("core-js/modules/es.array.every.js");
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.string.starts-with.js");
 require("core-js/modules/es.array.join.js");
@@ -213,9 +187,7 @@ require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.regexp.constructor.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.parse-int.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.number.to-fixed.js");
@@ -240,39 +212,38 @@ Object.keys(_formUtils).forEach(function (key) {
   });
 });
 var _Evaluator = _interopRequireDefault(require("./Evaluator"));
-var _conditionOperators = _interopRequireDefault(require("./conditionOperators"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-var interpolate = _Evaluator["default"].interpolate;
+var interpolate = _Evaluator.default.interpolate;
 exports.interpolate = interpolate;
-var _fetchPonyfill = (0, _fetchPonyfill2["default"])({
-    Promise: _nativePromiseOnly["default"]
+var _fetchPonyfill = (0, _fetchPonyfill2.default)({
+    Promise: _nativePromiseOnly.default
   }),
   fetch = _fetchPonyfill.fetch;
 // Configure JsonLogic
 _operators.lodashOperators.forEach(function (name) {
-  return _jsonLogicJs["default"].add_operation("_".concat(name), _lodash["default"][name]);
+  return _jsonLogicJs.default.add_operation("_".concat(name), _lodash.default[name]);
 });
 
 // Retrieve Any Date
-_jsonLogicJs["default"].add_operation('getDate', function (date) {
-  return (0, _momentTimezone["default"])(date).toISOString();
+_jsonLogicJs.default.add_operation('getDate', function (date) {
+  return (0, _momentTimezone.default)(date).toISOString();
 });
 
 // Set Relative Minimum Date
-_jsonLogicJs["default"].add_operation('relativeMinDate', function (relativeMinDate) {
-  return (0, _momentTimezone["default"])().subtract(relativeMinDate, 'days').toISOString();
+_jsonLogicJs.default.add_operation('relativeMinDate', function (relativeMinDate) {
+  return (0, _momentTimezone.default)().subtract(relativeMinDate, 'days').toISOString();
 });
 
 // Set Relative Maximum Date
-_jsonLogicJs["default"].add_operation('relativeMaxDate', function (relativeMaxDate) {
-  return (0, _momentTimezone["default"])().add(relativeMaxDate, 'days').toISOString();
+_jsonLogicJs.default.add_operation('relativeMaxDate', function (relativeMaxDate) {
+  return (0, _momentTimezone.default)().add(relativeMaxDate, 'days').toISOString();
 });
 function setPathToComponentAndPerentSchema(component) {
   component.path = getComponentPath(component);
@@ -295,7 +266,7 @@ function evaluate(func, args, ret, tokenize) {
     key: 'unknown'
   };
   if (!args.form && args.instance) {
-    args.form = _lodash["default"].get(args.instance, 'root._form', {});
+    args.form = _lodash.default.get(args.instance, 'root._form', {});
   }
   var componentKey = component.key;
   if (typeof func === 'string') {
@@ -306,18 +277,18 @@ function evaluate(func, args, ret, tokenize) {
       // Replace all {{ }} references with actual data.
       func = func.replace(/({{\s+(.*)\s+}})/, function (match, $1, $2) {
         if ($2.indexOf('data.') === 0) {
-          return _lodash["default"].get(args.data, $2.replace('data.', ''));
+          return _lodash.default.get(args.data, $2.replace('data.', ''));
         } else if ($2.indexOf('row.') === 0) {
-          return _lodash["default"].get(args.row, $2.replace('row.', ''));
+          return _lodash.default.get(args.row, $2.replace('row.', ''));
         }
 
         // Support legacy...
-        return _lodash["default"].get(args.data, $2);
+        return _lodash.default.get(args.data, $2);
       });
     }
     try {
-      func = _Evaluator["default"].evaluator(func, args);
-      args = _lodash["default"].values(args);
+      func = _Evaluator.default.evaluator(func, args);
+      args = _lodash.default.values(args);
     } catch (err) {
       console.warn("An error occured within the custom function for ".concat(componentKey), err);
       returnVal = null;
@@ -326,14 +297,14 @@ function evaluate(func, args, ret, tokenize) {
   }
   if (typeof func === 'function') {
     try {
-      returnVal = _Evaluator["default"].evaluate(func, args);
+      returnVal = _Evaluator.default.evaluate(func, args);
     } catch (err) {
       returnVal = null;
       console.warn("An error occured within custom function for ".concat(componentKey), err);
     }
   } else if (_typeof(func) === 'object') {
     try {
-      returnVal = _jsonLogicJs["default"].apply(func, args);
+      returnVal = _jsonLogicJs.default.apply(func, args);
     } catch (err) {
       returnVal = null;
       console.warn("An error occured within custom function for ".concat(componentKey), err);
@@ -383,9 +354,9 @@ function getElementRect(element) {
  * @return {boolean}
  */
 function boolValue(value) {
-  if (_lodash["default"].isBoolean(value)) {
+  if (_lodash.default.isBoolean(value)) {
     return value;
-  } else if (_lodash["default"].isString(value)) {
+  } else if (_lodash.default.isString(value)) {
     return value.toLowerCase() === 'true';
   } else {
     return !!value;
@@ -414,7 +385,7 @@ function isMongoId(text) {
 function checkCalculated(component, submission, rowData) {
   // Process calculated value stuff if present.
   if (component.calculateValue) {
-    _lodash["default"].set(rowData, component.key, evaluate(component.calculateValue, {
+    _lodash.default.set(rowData, component.key, evaluate(component.calculateValue, {
       value: undefined,
       data: submission ? submission.data : rowData,
       row: rowData,
@@ -431,83 +402,36 @@ function checkCalculated(component, submission, rowData) {
  * @param condition
  * @param row
  * @param data
- * @param instance
  * @returns {boolean}
  */
-function checkSimpleConditional(component, condition, row, data, instance) {
-  if (condition.when) {
-    var value = getComponentActualValue(condition.when, data, row);
-    var eq = String(condition.eq);
-    var show = String(condition.show);
-
-    // Special check for selectboxes component.
-    if (_lodash["default"].isObject(value) && _lodash["default"].has(value, condition.eq)) {
-      return String(value[condition.eq]) === show;
-    }
-    // FOR-179 - Check for multiple values.
-    if (Array.isArray(value) && value.map(String).includes(eq)) {
-      return show === 'true';
-    }
-    return String(value) === eq === (show === 'true');
-  } else {
-    var _condition$conditions = condition.conditions,
-      conditions = _condition$conditions === void 0 ? [] : _condition$conditions,
-      _condition$conjunctio = condition.conjunction,
-      conjunction = _condition$conjunctio === void 0 ? 'all' : _condition$conjunctio,
-      _condition$show = condition.show,
-      _show = _condition$show === void 0 ? true : _condition$show;
-    if (!conditions.length) {
-      return true;
-    }
-    var conditionsResult = _lodash["default"].map(conditions, function (cond) {
-      var comparedValue = cond.value,
-        operator = cond.operator,
-        conditionComponentPath = cond.component;
-      if (!conditionComponentPath) {
-        return true;
-      }
-      var value = getComponentActualValue(conditionComponentPath, data, row);
-      var СonditionOperator = _conditionOperators["default"][operator];
-      return СonditionOperator ? new СonditionOperator().getResult({
-        value: value,
-        comparedValue: comparedValue,
-        instance: instance,
-        component: component,
-        conditionComponentPath: conditionComponentPath
-      }) : true;
-    });
-    var result = false;
-    switch (conjunction) {
-      case 'any':
-        result = _lodash["default"].some(conditionsResult, function (res) {
-          return !!res;
-        });
-        break;
-      default:
-        result = _lodash["default"].every(conditionsResult, function (res) {
-          return !!res;
-        });
-    }
-    return _show ? result : !result;
-  }
-}
-function getComponentActualValue(compPath, data, row) {
+function checkSimpleConditional(component, condition, row, data) {
   var value = null;
   if (row) {
     value = (0, _formUtils.getValue)({
       data: row
-    }, compPath);
+    }, condition.when);
   }
-  if (data && _lodash["default"].isNil(value)) {
+  if (data && _lodash.default.isNil(value)) {
     value = (0, _formUtils.getValue)({
       data: data
-    }, compPath);
+    }, condition.when);
   }
   // FOR-400 - Fix issue where falsey values were being evaluated as show=true
-  if (_lodash["default"].isNil(value) || _lodash["default"].isObject(value) && _lodash["default"].isEmpty(value)) {
+  if (_lodash.default.isNil(value)) {
     value = '';
   }
-  return value;
+  var eq = String(condition.eq);
+  var show = String(condition.show);
+
+  // Special check for selectboxes component.
+  if (_lodash.default.isObject(value) && _lodash.default.has(value, condition.eq)) {
+    return String(value[condition.eq]) === show;
+  }
+  // FOR-179 - Check for multiple values.
+  if (Array.isArray(value) && value.map(String).includes(eq)) {
+    return show === 'true';
+  }
+  return String(value) === eq === (show === 'true');
 }
 
 /**
@@ -539,11 +463,11 @@ function checkCustomConditional(component, custom, row, data, form, variable, on
 }
 function checkJsonConditional(component, json, row, data, form, onError) {
   try {
-    return _jsonLogicJs["default"].apply(json, {
+    return _jsonLogicJs.default.apply(json, {
       data: data,
       row: row,
       form: form,
-      _: _lodash["default"]
+      _: _lodash.default
     });
   } catch (err) {
     console.warn("An error occurred in jsonLogic advanced condition for ".concat(component.key), err);
@@ -555,17 +479,14 @@ function getRow(component, row, instance, conditional) {
   var condition = conditional || component.conditional;
   // If no component's instance passed (happens only in 6.x server), calculate its path based on the schema
   if (!instance) {
-    instance = _lodash["default"].cloneDeep(component);
+    instance = _lodash.default.cloneDeep(component);
     setPathToComponentAndPerentSchema(instance);
   }
   var dataParent = getDataParentComponent(instance);
   var parentPath = dataParent ? getComponentPath(dataParent) : null;
-  var isTriggerCondtionComponentPath = condition.when || !condition.conditions ? (_condition$when = condition.when) === null || _condition$when === void 0 ? void 0 : _condition$when.startsWith(parentPath) : _lodash["default"].some(condition.conditions, function (cond) {
-    return cond.component.startsWith(parentPath);
-  });
-  if (dataParent && isTriggerCondtionComponentPath) {
+  if (dataParent && (_condition$when = condition.when) !== null && _condition$when !== void 0 && _condition$when.startsWith(parentPath)) {
     var newRow = {};
-    _lodash["default"].set(newRow, parentPath, row);
+    _lodash.default.set(newRow, parentPath, row);
     row = newRow;
   }
   return row;
@@ -588,11 +509,9 @@ function checkCondition(component, row, data, form, instance) {
     conditional = component.conditional;
   if (customConditional) {
     return checkCustomConditional(component, customConditional, row, data, form, 'show', true, instance);
-  } else if (conditional && (conditional.when || _lodash["default"].some(conditional.conditions || [], function (condition) {
-    return condition.component && condition.operator;
-  }))) {
+  } else if (conditional && conditional.when) {
     row = getRow(component, row, instance);
-    return checkSimpleConditional(component, conditional, row, data, instance);
+    return checkSimpleConditional(component, conditional, row, data);
   } else if (conditional && conditional.json) {
     return checkJsonConditional(component, conditional.json, row, data, form, true);
   }
@@ -618,7 +537,7 @@ function checkTrigger(component, trigger, row, data, form, instance) {
   switch (trigger.type) {
     case 'simple':
       row = getRow(component, row, instance, trigger.simple);
-      return checkSimpleConditional(component, trigger.simple, row, data, instance);
+      return checkSimpleConditional(component, trigger.simple, row, data);
     case 'javascript':
       return checkCustomConditional(component, trigger.javascript, row, data, form, 'result', false, instance);
     case 'json':
@@ -632,10 +551,10 @@ function setActionProperty(component, action, result, row, data, instance) {
   switch (action.property.type) {
     case 'boolean':
       {
-        var currentValue = _lodash["default"].get(component, property, false).toString();
+        var currentValue = _lodash.default.get(component, property, false).toString();
         var newValue = action.state.toString();
         if (currentValue !== newValue) {
-          _lodash["default"].set(component, property, newValue === 'true');
+          _lodash.default.set(component, property, newValue === 'true');
         }
         break;
       }
@@ -648,10 +567,10 @@ function setActionProperty(component, action, result, row, data, instance) {
           result: result
         };
         var textValue = action.property.component ? action[action.property.component] : action.text;
-        var _currentValue = _lodash["default"].get(component, property, '');
-        var _newValue = instance && instance.interpolate ? instance.interpolate(textValue, evalData) : _Evaluator["default"].interpolate(textValue, evalData);
+        var _currentValue = _lodash.default.get(component, property, '');
+        var _newValue = instance && instance.interpolate ? instance.interpolate(textValue, evalData) : _Evaluator.default.interpolate(textValue, evalData);
         if (_newValue !== _currentValue) {
-          _lodash["default"].set(component, property, _newValue);
+          _lodash.default.set(component, property, _newValue);
         }
         break;
       }
@@ -699,7 +618,7 @@ function uniqueName(name, template, evalContext) {
   }
   var parts = name.split('.');
   var fileName = parts.slice(0, parts.length - 1).join('.');
-  var extension = parts.length > 1 ? ".".concat(_lodash["default"].last(parts)) : '';
+  var extension = parts.length > 1 ? ".".concat(_lodash.default.last(parts)) : '';
   //allow only 100 characters from original name to avoid issues with filename length restrictions
   fileName = fileName.substr(0, 100);
   evalContext = Object.assign(evalContext || {}, {
@@ -707,7 +626,7 @@ function uniqueName(name, template, evalContext) {
     guid: guid()
   });
   //only letters, numbers, dots, dashes, underscores and spaces are allowed. Anything else will be replaced with dash
-  var uniqueName = "".concat(_Evaluator["default"].interpolate(template, evalContext)).concat(extension).replace(/[^0-9a-zA-Z.\-_ ]/g, '-');
+  var uniqueName = "".concat(_Evaluator.default.interpolate(template, evalContext)).concat(extension).replace(/[^0-9a-zA-Z.\-_ ]/g, '-');
   return uniqueName;
 }
 function guid() {
@@ -725,7 +644,7 @@ function guid() {
  * @return {(null|Date)}
  */
 function getDateSetting(date) {
-  if (_lodash["default"].isNil(date) || _lodash["default"].isNaN(date) || date === '') {
+  if (_lodash.default.isNil(date) || _lodash.default.isNaN(date) || date === '') {
     return null;
   }
   if (date instanceof Date) {
@@ -733,19 +652,19 @@ function getDateSetting(date) {
   } else if (typeof date.toDate === 'function') {
     return date.isValid() ? date.toDate() : null;
   }
-  var dateSetting = typeof date !== 'string' || date.indexOf('moment(') === -1 ? (0, _momentTimezone["default"])(date) : null;
+  var dateSetting = typeof date !== 'string' || date.indexOf('moment(') === -1 ? (0, _momentTimezone.default)(date) : null;
   if (dateSetting && dateSetting.isValid()) {
     return dateSetting.toDate();
   }
   dateSetting = null;
   try {
-    var value = _Evaluator["default"].evaluator("return ".concat(date, ";"), 'moment')(_momentTimezone["default"]);
+    var value = _Evaluator.default.evaluator("return ".concat(date, ";"), 'moment')(_momentTimezone.default);
     if (typeof value === 'string') {
-      dateSetting = (0, _momentTimezone["default"])(value);
+      dateSetting = (0, _momentTimezone.default)(value);
     } else if (typeof value.toDate === 'function') {
-      dateSetting = (0, _momentTimezone["default"])(value.toDate().toUTCString());
+      dateSetting = (0, _momentTimezone.default)(value.toDate().toUTCString());
     } else if (value instanceof Date) {
-      dateSetting = (0, _momentTimezone["default"])(value);
+      dateSetting = (0, _momentTimezone.default)(value);
     }
   } catch (e) {
     return null;
@@ -761,7 +680,7 @@ function getDateSetting(date) {
   return dateSetting.toDate();
 }
 function isValidDate(date) {
-  return _lodash["default"].isDate(date) && !_lodash["default"].isNaN(date.getDate());
+  return _lodash.default.isDate(date) && !_lodash.default.isNaN(date.getDate());
 }
 
 /**
@@ -770,11 +689,11 @@ function isValidDate(date) {
  * @return {string}
  */
 function currentTimezone() {
-  if (_momentTimezone["default"].currentTimezone) {
-    return _momentTimezone["default"].currentTimezone;
+  if (_momentTimezone.default.currentTimezone) {
+    return _momentTimezone.default.currentTimezone;
   }
-  _momentTimezone["default"].currentTimezone = _jstimezonedetect["default"].determine().name();
-  return _momentTimezone["default"].currentTimezone;
+  _momentTimezone.default.currentTimezone = _jstimezonedetect.default.determine().name();
+  return _momentTimezone.default.currentTimezone;
 }
 
 /**
@@ -791,7 +710,7 @@ function offsetDate(date, timezone) {
       abbr: 'UTC'
     };
   }
-  var dateMoment = (0, _momentTimezone["default"])(date).tz(timezone);
+  var dateMoment = (0, _momentTimezone.default)(date).tz(timezone);
   return {
     date: new Date(date.getTime() + (dateMoment.utcOffset() + date.getTimezoneOffset()) * 60000),
     abbr: dateMoment.format('z')
@@ -804,7 +723,7 @@ function offsetDate(date, timezone) {
  * @return {boolean}
  */
 function zonesLoaded() {
-  return _momentTimezone["default"].zonesLoaded;
+  return _momentTimezone.default.zonesLoaded;
 }
 
 /**
@@ -828,15 +747,15 @@ function shouldLoadZones(timezone) {
 function loadZones(url, timezone) {
   if (timezone && !shouldLoadZones(timezone)) {
     // Return non-resolving promise.
-    return new _nativePromiseOnly["default"](_lodash["default"].noop);
+    return new _nativePromiseOnly.default(_lodash.default.noop);
   }
-  if (_momentTimezone["default"].zonesPromise) {
-    return _momentTimezone["default"].zonesPromise;
+  if (_momentTimezone.default.zonesPromise) {
+    return _momentTimezone.default.zonesPromise;
   }
-  return _momentTimezone["default"].zonesPromise = fetch(url).then(function (resp) {
+  return _momentTimezone.default.zonesPromise = fetch(url).then(function (resp) {
     return resp.json().then(function (zones) {
-      _momentTimezone["default"].tz.load(zones);
-      _momentTimezone["default"].zonesLoaded = true;
+      _momentTimezone.default.tz.load(zones);
+      _momentTimezone.default.zonesLoaded = true;
 
       // Trigger a global event that the timezones have finished loading.
       if (document && document.createEvent && document.body && document.body.dispatchEvent) {
@@ -857,14 +776,14 @@ function loadZones(url, timezone) {
  * @return {*}
  */
 function momentDate(value, format, timezone) {
-  var momentDate = (0, _momentTimezone["default"])(value);
+  var momentDate = (0, _momentTimezone.default)(value);
   if (!timezone) {
     return momentDate;
   }
   if (timezone === 'UTC') {
     timezone = 'Etc/UTC';
   }
-  if ((timezone !== currentTimezone() || format && format.match(/\s(z$|z\s)/)) && _momentTimezone["default"].zonesLoaded) {
+  if ((timezone !== currentTimezone() || format && format.match(/\s(z$|z\s)/)) && _momentTimezone.default.zonesLoaded) {
     return momentDate.tz(timezone);
   }
   return momentDate;
@@ -879,12 +798,12 @@ function momentDate(value, format, timezone) {
  * @return {string}
  */
 function formatDate(timezonesUrl, value, format, timezone, flatPickrInputFormat) {
-  var momentDate = (0, _momentTimezone["default"])(value, flatPickrInputFormat || undefined);
+  var momentDate = (0, _momentTimezone.default)(value, flatPickrInputFormat || undefined);
   if (timezone === currentTimezone()) {
     // See if our format contains a "z" timezone character.
     if (format.match(/\s(z$|z\s)/)) {
       loadZones(timezonesUrl);
-      if (_momentTimezone["default"].zonesLoaded) {
+      if (_momentTimezone.default.zonesLoaded) {
         return momentDate.tz(timezone).format(convertFormatToMoment(format));
       } else {
         return momentDate.format(convertFormatToMoment(format.replace(/\s(z$|z\s)/, '')));
@@ -896,12 +815,12 @@ function formatDate(timezonesUrl, value, format, timezone, flatPickrInputFormat)
   }
   if (timezone === 'UTC') {
     var offset = offsetDate(momentDate.toDate(), 'UTC');
-    return "".concat((0, _momentTimezone["default"])(offset.date).format(convertFormatToMoment(format)), " UTC");
+    return "".concat((0, _momentTimezone.default)(offset.date).format(convertFormatToMoment(format)), " UTC");
   }
 
   // Load the zones since we need timezone information.
   loadZones(timezonesUrl);
-  if (_momentTimezone["default"].zonesLoaded && timezone) {
+  if (_momentTimezone.default.zonesLoaded && timezone) {
     return momentDate.tz(timezone).format("".concat(convertFormatToMoment(format), " z"));
   } else {
     return momentDate.format(convertFormatToMoment(format));
@@ -927,7 +846,7 @@ function formatOffset(timezonesUrl, formatFn, date, format, timezone) {
 
   // Load the zones since we need timezone information.
   loadZones(timezonesUrl);
-  if (_momentTimezone["default"].zonesLoaded) {
+  if (_momentTimezone.default.zonesLoaded) {
     var offset = offsetDate(date, timezone);
     return "".concat(formatFn(offset.date, format), " ").concat(offset.abbr);
   } else {
@@ -1049,9 +968,9 @@ function unmaskValue(value, mask, placeholderChar) {
   }
   var unmaskedValue = value.split('');
   for (var i = 0; i < mask.length; i++) {
-    var _char = value[i] || '';
+    var char = value[i] || '';
     var charPart = mask[i];
-    if (!_lodash["default"].isRegExp(charPart) && _char === charPart) {
+    if (!_lodash.default.isRegExp(charPart) && char === charPart) {
       unmaskedValue[i] = '';
     }
   }
@@ -1068,9 +987,9 @@ function matchInputMask(value, inputMask) {
     return false;
   }
   for (var i = 0; i < inputMask.length; i++) {
-    var _char2 = value[i] || '';
+    var char = value[i] || '';
     var charPart = inputMask[i];
-    if (!(_lodash["default"].isRegExp(charPart) && charPart.test(_char2) || charPart === _char2)) {
+    if (!(_lodash.default.isRegExp(charPart) && charPart.test(char) || charPart === char)) {
       return false;
     }
   }
@@ -1092,12 +1011,12 @@ function getNumberSeparators() {
   };
 }
 function getNumberDecimalLimit(component, defaultLimit) {
-  if (_lodash["default"].has(component, 'decimalLimit')) {
-    return _lodash["default"].get(component, 'decimalLimit');
+  if (_lodash.default.has(component, 'decimalLimit')) {
+    return _lodash.default.get(component, 'decimalLimit');
   }
   // Determine the decimal limit. Defaults to 20 but can be overridden by validate.step or decimalLimit settings.
   var decimalLimit = defaultLimit || 20;
-  var step = _lodash["default"].get(component, 'validate.step', 'any');
+  var step = _lodash.default.get(component, 'validate.step', 'any');
   if (step !== 'any') {
     var parts = step.toString().split('.');
     if (parts.length > 1) {
@@ -1278,8 +1197,8 @@ function unfold(e) {
  *
  * @return {T}
  */
-var firstNonNil = _lodash["default"].flow([_lodash["default"].partialRight(_lodash["default"].map, unfold), _lodash["default"].partialRight(_lodash["default"].find, function (v) {
-  return !_lodash["default"].isUndefined(v);
+var firstNonNil = _lodash.default.flow([_lodash.default.partialRight(_lodash.default.map, unfold), _lodash.default.partialRight(_lodash.default.find, function (v) {
+  return !_lodash.default.isUndefined(v);
 })]);
 
 /*
@@ -1328,12 +1247,10 @@ function observeOverload(callback) {
     }
   };
 }
-function getContextComponents(context, excludeNested) {
-  var excludedTypes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+function getContextComponents(context) {
   var values = [];
   context.utils.eachComponent(context.instance.options.editForm.components, function (component, path) {
-    var addToContextComponents = excludeNested ? !component.tree : true;
-    if (component.key !== context.data.key && addToContextComponents && !_lodash["default"].includes(excludedTypes, component.type)) {
+    if (component.key !== context.data.key) {
       values.push({
         label: "".concat(component.label || component.key, " (").concat(path, ")"),
         value: path
@@ -1371,7 +1288,7 @@ function translateElemValue(elem, translate) {
   if (!elem.innerText) {
     return elem.innerHTML;
   }
-  var elemValue = elem.innerText.replace(_Evaluator["default"].templateSettings.interpolate, '').replace(/\s\s+/g, ' ').trim();
+  var elemValue = elem.innerText.replace(_Evaluator.default.templateSettings.interpolate, '').replace(/\s\s+/g, ' ').trim();
   var translatedValue = translate(elemValue);
   if (elemValue !== translatedValue) {
     var links = elem.innerHTML.match(/<a[^>]*>(.*?)<\/a>/g);
@@ -1447,7 +1364,7 @@ function translateHTMLTemplate(template, translate) {
  * @returns {*}
  */
 function sanitize(string, options) {
-  if (typeof _dompurify["default"].sanitize !== 'function') {
+  if (typeof _dompurify.default.sanitize !== 'function') {
     return string;
   }
   // Dompurify configuration
@@ -1483,7 +1400,7 @@ function sanitize(string, options) {
   if (options.sanitizeConfig && Array.isArray(options.sanitizeConfig.addUriSafeAttr) && options.sanitizeConfig.addUriSafeAttr.length > 0) {
     sanitizeOptions.ADD_URI_SAFE_ATTR = options.sanitizeConfig.addUriSafeAttr;
   }
-  return _dompurify["default"].sanitize(string, sanitizeOptions);
+  return _dompurify.default.sanitize(string, sanitizeOptions);
 }
 
 /**
@@ -1512,31 +1429,31 @@ function isInputComponent(componentJson) {
   }
 }
 function getArrayFromComponentPath(pathStr) {
-  if (!pathStr || !_lodash["default"].isString(pathStr)) {
-    if (!_lodash["default"].isArray(pathStr)) {
+  if (!pathStr || !_lodash.default.isString(pathStr)) {
+    if (!_lodash.default.isArray(pathStr)) {
       return [pathStr];
     }
     return pathStr;
   }
   return pathStr.replace(/[[\]]/g, '.').replace(/\.\./g, '.').replace(/(^\.)|(\.$)/g, '').split('.').map(function (part) {
-    return _lodash["default"].defaultTo(_lodash["default"].toNumber(part), part);
+    return _lodash.default.defaultTo(_lodash.default.toNumber(part), part);
   });
 }
 function hasInvalidComponent(component) {
   return component.getComponents().some(function (comp) {
-    if (_lodash["default"].isArray(comp.components)) {
+    if (_lodash.default.isArray(comp.components)) {
       return hasInvalidComponent(comp);
     }
     return comp.error;
   });
 }
 function getStringFromComponentPath(path) {
-  if (!_lodash["default"].isArray(path)) {
+  if (!_lodash.default.isArray(path)) {
     return path;
   }
   var strPath = '';
   path.forEach(function (part, i) {
-    if (_lodash["default"].isNumber(part)) {
+    if (_lodash.default.isNumber(part)) {
       strPath += "[".concat(part, "]");
     } else {
       strPath += i === 0 ? part : ".".concat(part);
@@ -1545,7 +1462,7 @@ function getStringFromComponentPath(path) {
   return strPath;
 }
 function round(number, precision) {
-  if (_lodash["default"].isNumber(number)) {
+  if (_lodash.default.isNumber(number)) {
     return number.toFixed(precision);
   }
   return number;
@@ -1674,47 +1591,3 @@ function getFocusableElements(element) {
 }
 
 // Export lodash to save space with other libraries.
-
-var componentValueTypes = {
-  number: 'number',
-  string: 'string',
-  "boolean": 'boolean',
-  array: 'array',
-  object: 'object',
-  date: 'date',
-  any: 'any'
-};
-exports.componentValueTypes = componentValueTypes;
-function getComponentSavedTypes(fullSchema) {
-  var schema = fullSchema || {};
-  if (schema.persistent !== true) {
-    return [];
-  }
-  if (schema.multiple) {
-    return [componentValueTypes.array];
-  }
-  return null;
-}
-function getItemTemplateKeys(template) {
-  var templateKeys = [];
-  if (!template) {
-    return templateKeys;
-  }
-  var keys = template.match(/({{\s*(.*?)\s*}})/g);
-  if (keys) {
-    keys.forEach(function (key) {
-      var propKey = key.match(/{{\s*item\.(.*?)\s*}}/);
-      if (propKey && propKey.length > 1) {
-        templateKeys.push(propKey[1]);
-      }
-    });
-  }
-  return templateKeys;
-}
-function isSelectResourceWithObjectValue() {
-  var comp = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var reference = comp.reference,
-    dataSrc = comp.dataSrc,
-    valueProperty = comp.valueProperty;
-  return reference || dataSrc === 'resource' && (!valueProperty || valueProperty === 'data');
-}

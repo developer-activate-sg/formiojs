@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -37,7 +36,7 @@ Object.defineProperty(exports, "Form", {
 Object.defineProperty(exports, "FormBuilder", {
   enumerable: true,
   get: function get() {
-    return _FormBuilder["default"];
+    return _FormBuilder.default;
   }
 });
 Object.defineProperty(exports, "Formio", {
@@ -102,4 +101,4 @@ Object.defineProperty(exports, "Widgets", {
 });
 var _formio = require("./formio.form");
 var _FormBuilder = _interopRequireDefault(require("./FormBuilder"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

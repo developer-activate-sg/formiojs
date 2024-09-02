@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -13,10 +11,8 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -24,21 +20,19 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.array.find.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.string.trim.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
 var _Formio = require("./Formio");
 var _Webform2 = _interopRequireDefault(require("./Webform"));
 var _utils = require("./utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -132,7 +126,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
       this.postMessage({
         name: 'redraw'
       });
-      return this.builderMode ? _nativePromiseOnly["default"].resolve() : _get(_getPrototypeOf(PDF.prototype), "redraw", this).call(this);
+      return this.builderMode ? _nativePromiseOnly.default.resolve() : _get(_getPrototypeOf(PDF.prototype), "redraw", this).call(this);
     }
   }, {
     key: "rebuild",
@@ -140,7 +134,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
       if (this.builderMode && this.component.components) {
         this.destroyComponents();
         this.addComponents();
-        return _nativePromiseOnly["default"].resolve();
+        return _nativePromiseOnly.default.resolve();
       }
       this.postMessage({
         name: 'redraw'
@@ -174,7 +168,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
         _this3.submitButton.attachButton();
 
         // Reset the iframeReady promise.
-        _this3.iframeReady = new _nativePromiseOnly["default"](function (resolve, reject) {
+        _this3.iframeReady = new _nativePromiseOnly.default(function (resolve, reject) {
           _this3.iframeReadyResolve = resolve;
           _this3.iframeReadyReject = reject;
         });
@@ -184,7 +178,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
           src: _this3.getSrc(),
           id: "iframe-".concat(_this3.id),
           seamless: true,
-          "class": 'formio-iframe'
+          class: 'formio-iframe'
         });
         _this3.iframeElement.formioContainer = _this3.component.components;
         _this3.iframeElement.formioComponent = _this3;
@@ -243,7 +237,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
     key: "getSubmission",
     value: function getSubmission() {
       var _this4 = this;
-      return new _nativePromiseOnly["default"](function (resolve) {
+      return new _nativePromiseOnly.default(function (resolve) {
         _this4.once('iframe-submission', resolve);
         _this4.postMessage({
           name: 'getSubmission'
@@ -380,7 +374,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
       var isSubmitErrorShown = ((_this$refs$buttonMess = this.refs.buttonMessage) === null || _this$refs$buttonMess === void 0 ? void 0 : _this$refs$buttonMess.textContent.trim()) === submitError;
       if (!helpBlock && this.errors.length && !isSubmitErrorShown) {
         var p = this.ce('p', {
-          "class": 'help-block'
+          class: 'help-block'
         });
         this.setContent(p, submitError);
         p.addEventListener('click', function () {
@@ -388,7 +382,7 @@ var PDF = /*#__PURE__*/function (_Webform) {
         });
         var div = this.ce('div', {
           id: 'submit-error',
-          "class": 'has-error'
+          class: 'has-error'
         });
         this.appendTo(p, div);
         this.appendTo(div, this.element);
@@ -411,11 +405,11 @@ var PDF = /*#__PURE__*/function (_Webform) {
     }
   }]);
   return PDF;
-}(_Webform2["default"]);
+}(_Webform2.default);
 /**
  * Listen for window messages.
  */
-exports["default"] = PDF;
+exports.default = PDF;
 if (typeof window !== 'undefined') {
   window.addEventListener('message', function (event) {
     var eventData = null;

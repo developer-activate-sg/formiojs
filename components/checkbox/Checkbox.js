@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -11,12 +9,6 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.array.for-each.js");
-require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -24,24 +16,17 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
-var _utils = require("../../utils/utils");
 var _Field2 = _interopRequireDefault(require("../_classes/field/Field"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -96,7 +81,7 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
       info.type = 'input';
       info.changeEvent = 'click';
       info.attr.type = this.component.inputType || 'checkbox';
-      info.attr["class"] = 'form-check-input';
+      info.attr.class = 'form-check-input';
       if (this.component.name) {
         info.attr.name = "data[".concat(this.component.name, "]");
       }
@@ -226,8 +211,14 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
     key: "setValue",
     value: function setValue(value) {
       var flags = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      this.setCheckedState(value);
-      return _get(_getPrototypeOf(CheckBoxComponent.prototype), "setValue", this).call(this, value, flags);
+      if (this.setCheckedState(value) !== undefined || !this.input && value !== undefined && (this.visible || this.conditionallyVisible() || !this.component.clearOnHide)) {
+        var changed = this.updateValue(value, flags);
+        if (this.isHtmlRenderMode() && flags && flags.fromSubmission && changed) {
+          this.redraw();
+        }
+        return changed;
+      }
+      return false;
     }
   }, {
     key: "getValueAsString",
@@ -235,7 +226,7 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
       var _this$component = this.component,
         componentName = _this$component.name,
         componentValue = _this$component.value;
-      var hasValue = componentName ? _lodash["default"].isEqual(value, componentValue) : value;
+      var hasValue = componentName ? _lodash.default.isEqual(value, componentValue) : value;
       return this.t(hasValue ? 'Yes' : 'No');
     }
   }, {
@@ -246,7 +237,6 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
         this.input.checked = 0;
         this.input.value = 0;
         this.dataValue = '';
-        this.updateOnChange(flags, true);
       }
       var changed = _get(_getPrototypeOf(CheckBoxComponent.prototype), "updateValue", this).call(this, value, flags);
 
@@ -266,7 +256,7 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Field2["default"].schema.apply(_Field2["default"], [{
+      return _Field2.default.schema.apply(_Field2.default, [{
         type: 'checkbox',
         inputType: 'checkbox',
         label: 'Checkbox',
@@ -284,52 +274,12 @@ var CheckBoxComponent = /*#__PURE__*/function (_Field) {
         title: 'Checkbox',
         group: 'basic',
         icon: 'check-square',
-        documentation: '/userguide/form-building/form-components#check-box',
+        documentation: '/userguide/forms/form-components#check-box',
         weight: 50,
         schema: CheckBoxComponent.schema()
       };
     }
-  }, {
-    key: "serverConditionSettings",
-    get: function get() {
-      return CheckBoxComponent.conditionOperatorsSettings;
-    }
-  }, {
-    key: "conditionOperatorsSettings",
-    get: function get() {
-      return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(CheckBoxComponent), "conditionOperatorsSettings", this)), {}, {
-        operators: ['isEqual'],
-        valueComponent: function valueComponent() {
-          return {
-            valueType: 'boolean',
-            data: {
-              values: [{
-                label: 'Checked',
-                value: 'true'
-              }, {
-                label: 'Not Checked',
-                value: 'false'
-              }]
-            },
-            type: 'select'
-          };
-        }
-      });
-    }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      schema = schema || {};
-      var types = (0, _utils.getComponentSavedTypes)(schema);
-      if (_lodash["default"].isArray(types)) {
-        return types;
-      }
-      if (schema.inputType === 'radio') {
-        return [_utils.componentValueTypes.string];
-      }
-      return [_utils.componentValueTypes["boolean"]];
-    }
   }]);
   return CheckBoxComponent;
-}(_Field2["default"]);
-exports["default"] = CheckBoxComponent;
+}(_Field2.default);
+exports.default = CheckBoxComponent;

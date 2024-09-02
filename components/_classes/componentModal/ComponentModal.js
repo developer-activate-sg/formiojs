@@ -1,13 +1,10 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -15,8 +12,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
@@ -26,7 +22,7 @@ require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.number.constructor.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _utils = require("../../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -140,7 +136,7 @@ var ComponentModal = /*#__PURE__*/function () {
         componentValue = this.component.getValue().data;
         currentValue = this.currentValue.data;
       }
-      return !_lodash["default"].isEqual((0, _utils.fastCloneDeep)(componentValue), currentValue);
+      return !_lodash.default.isEqual((0, _utils.fastCloneDeep)(componentValue), currentValue);
     }
   }, {
     key: "setOpenEventListener",
@@ -181,7 +177,7 @@ var ComponentModal = /*#__PURE__*/function () {
   }, {
     key: "updateView",
     value: function updateView() {
-      var template = _lodash["default"].isEqual(this.currentValue, this.component.defaultValue) ? this.openModalTemplate : this.component.getModalPreviewTemplate();
+      var template = _lodash.default.isEqual(this.currentValue, this.component.defaultValue) ? this.openModalTemplate : this.component.getModalPreviewTemplate();
       this.component.setContent(this.refs.openModalWrapper, template);
       this.setOpenEventListener();
     }
@@ -198,7 +194,7 @@ var ComponentModal = /*#__PURE__*/function () {
     value: function closeModalHandler(event) {
       event.preventDefault();
       if (!this.component.disabled) {
-        this.component.setValue(_lodash["default"].cloneDeep(this.currentValue), {
+        this.component.setValue(_lodash.default.cloneDeep(this.currentValue), {
           resetValue: true
         });
       }
@@ -246,11 +242,13 @@ var ComponentModal = /*#__PURE__*/function () {
     key: "render",
     value: function render(component, data, topLevel) {
       var children = component.renderTemplate('component', data, topLevel);
+      var isOpened = this;
       return component.renderTemplate('componentModal', _objectSpread(_objectSpread({}, data), {}, {
-        children: children
+        children: children,
+        isOpened: isOpened
       }));
     }
   }]);
   return ComponentModal;
 }();
-exports["default"] = ComponentModal;
+exports.default = ComponentModal;

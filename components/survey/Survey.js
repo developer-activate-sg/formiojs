@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -12,42 +10,29 @@ require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.reflect.set.js");
-require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.array.filter.js");
-require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.string.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.for-each.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.function.name.js");
-require("core-js/modules/es.array.some.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.find.js");
-require("core-js/modules/es.array.join.js");
-require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Field2 = _interopRequireDefault(require("../_classes/field/Field"));
 var _utils = require("../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -107,8 +92,8 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
       if (!value) {
         return false;
       }
-      _lodash["default"].each(this.component.questions, function (question) {
-        _lodash["default"].each(_this2.refs.input, function (input) {
+      _lodash.default.each(this.component.questions, function (question) {
+        _lodash.default.each(_this2.refs.input, function (input) {
           if (input.name === _this2.getInputName(question)) {
             input.checked = input.value === value[question.value];
           }
@@ -130,7 +115,7 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
     get: function get() {
       var defaultValue = _get(_getPrototypeOf(SurveyComponent.prototype), "defaultValue", this);
       //support for default values created in old formio.js versions
-      if (defaultValue && !_lodash["default"].isObject(defaultValue) && this.component.values.some(function (value) {
+      if (defaultValue && !_lodash.default.isObject(defaultValue) && this.component.values.some(function (value) {
         return value.value === defaultValue;
       })) {
         var adoptedDefaultValue = {};
@@ -149,8 +134,8 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
         return this.dataValue;
       }
       var value = {};
-      _lodash["default"].each(this.component.questions, function (question) {
-        _lodash["default"].each(_this3.refs.input, function (input) {
+      _lodash.default.each(this.component.questions, function (question) {
+        _lodash.default.each(_this3.refs.input, function (input) {
           if (input.checked && input.name === _this3.getInputName(question)) {
             value[question.value] = input.value;
             return false;
@@ -166,7 +151,7 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
     },
     set: function set(disabled) {
       _set(_getPrototypeOf(SurveyComponent.prototype), "disabled", disabled, this, true);
-      _lodash["default"].each(this.refs.input, function (input) {
+      _lodash.default.each(this.refs.input, function (input) {
         input.disabled = true;
       });
     }
@@ -191,9 +176,9 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
       var _this4 = this;
       if (options !== null && options !== void 0 && options.email) {
         var result = "\n        <table border=\"1\" style=\"width:100%\">\n          <thead>\n            <tr>\n              <th>Question</th>\n              <th>Value</th>\n            </tr>\n          </thead>\n          <tbody>\n      ";
-        _lodash["default"].forIn(value, function (value, key) {
-          var question = _lodash["default"].find(_this4.component.questions, ['value', key]);
-          var answer = _lodash["default"].find(_this4.component.values, ['value', value]);
+        _lodash.default.forIn(value, function (value, key) {
+          var question = _lodash.default.find(_this4.component.questions, ['value', key]);
+          var answer = _lodash.default.find(_this4.component.values, ['value', value]);
           if (!question || !answer) {
             return;
           }
@@ -201,22 +186,6 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
         });
         result += '</tbody></table>';
         return result;
-      }
-      if (_lodash["default"].isPlainObject(value)) {
-        var _this$component = this.component,
-          _this$component$value = _this$component.values,
-          values = _this$component$value === void 0 ? [] : _this$component$value,
-          _this$component$quest = _this$component.questions,
-          questions = _this$component$quest === void 0 ? [] : _this$component$quest;
-        return _lodash["default"].isEmpty(value) ? '' : _lodash["default"].map(value, function (v, q) {
-          var valueLabel = _lodash["default"].get(_lodash["default"].find(values, function (val) {
-            return _lodash["default"].isEqual(val.value, v);
-          }), 'label', v);
-          var questionLabel = _lodash["default"].get(_lodash["default"].find(questions, function (quest) {
-            return _lodash["default"].isEqual(quest.value, q);
-          }), 'label', q);
-          return "".concat(questionLabel, ": ").concat(valueLabel);
-        }).join('; ');
       }
       return _get(_getPrototypeOf(SurveyComponent.prototype), "getValueAsString", this).call(this, value, options);
     }
@@ -226,7 +195,7 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Field2["default"].schema.apply(_Field2["default"], [{
+      return _Field2.default.schema.apply(_Field2.default, [{
         type: 'survey',
         label: 'Survey',
         key: 'survey',
@@ -242,28 +211,11 @@ var SurveyComponent = /*#__PURE__*/function (_Field) {
         group: 'advanced',
         icon: 'list',
         weight: 110,
-        documentation: '/userguide/form-building/advanced-components#survey',
+        documentation: '/userguide/forms/form-components#survey',
         schema: SurveyComponent.schema()
       };
     }
-  }, {
-    key: "serverConditionSettings",
-    get: function get() {
-      return SurveyComponent.conditionOperatorsSettings;
-    }
-  }, {
-    key: "conditionOperatorsSettings",
-    get: function get() {
-      return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(SurveyComponent), "conditionOperatorsSettings", this)), {}, {
-        operators: ['isEmpty', 'isNotEmpty']
-      });
-    }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes(schema) {
-      return (0, _utils.getComponentSavedTypes)(schema) || [_utils.componentValueTypes.object];
-    }
   }]);
   return SurveyComponent;
-}(_Field2["default"]);
-exports["default"] = SurveyComponent;
+}(_Field2.default);
+exports.default = SurveyComponent;

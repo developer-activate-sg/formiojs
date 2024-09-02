@@ -18,7 +18,7 @@ __p += '<label\n  ref="label"\n  class="col-form-label ' +
 ((__t = ( ctx.t(ctx.component.label, { _userInput: true }) )) == null ? '' : __t) +
 '\n  ';
  if (ctx.component.type === 'number' || ctx.component.type === 'phoneNumber' || ctx.component.type === 'currency') { ;
-__p += '\n    <span class="sr-only">, ' +
+__p += '\n    <span class=\'sr-only\'>, ' +
 ((__t = (ctx.t('numeric only'))) == null ? '' : __t) +
 ',</span>\n  ';
  } ;

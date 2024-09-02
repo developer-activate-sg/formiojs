@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = {
   type: 'form',
   tags: [],
@@ -25,7 +24,7 @@ var _default = {
       suffix: '',
       multiple: false,
       defaultValue: '',
-      "protected": false,
+      protected: false,
       unique: false,
       persistent: true,
       hidden: false,
@@ -71,7 +70,7 @@ var _default = {
       prefix: '',
       suffix: '',
       defaultValue: '',
-      "protected": false,
+      protected: false,
       persistent: true,
       hidden: false,
       clearOnHide: true,
@@ -113,7 +112,7 @@ var _default = {
       dataGridLabel: false,
       key: 'page3Hola',
       defaultValue: false,
-      "protected": false,
+      protected: false,
       persistent: true,
       hidden: false,
       name: '',
@@ -162,4 +161,4 @@ var _default = {
   name: 'wiizard',
   path: 'wiizard'
 };
-exports["default"] = _default;
+exports.default = _default;

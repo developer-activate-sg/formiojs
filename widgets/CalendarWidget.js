@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -13,10 +11,8 @@ require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
 require("core-js/modules/es.reflect.set.js");
 require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -24,39 +20,32 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.date.now.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.string.match.js");
-require("core-js/modules/es.array.some.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.array.find.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Formio = require("../Formio");
 var _InputWidget2 = _interopRequireDefault(require("./InputWidget"));
 var _utils = require("../utils/utils");
 var _moment = _interopRequireDefault(require("moment"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 function set(target, property, value, receiver) { if (typeof Reflect !== "undefined" && Reflect.set) { set = Reflect.set; } else { set = function set(target, property, value, receiver) { var base = _superPropBase(target, property); var desc; if (base) { desc = Object.getOwnPropertyDescriptor(base, property); if (desc.set) { desc.set.call(receiver, value); return true; } else if (!desc.writable) { return false; } } desc = Object.getOwnPropertyDescriptor(receiver, property); if (desc) { if (!desc.writable) { return false; } desc.value = value; Object.defineProperty(receiver, property, desc); } else { _defineProperty(receiver, property, value); } return true; }; } return set(target, property, value, receiver); }
-function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new Error('failed to set property'); } return value; }
+function _set(target, property, value, receiver, isStrict) { var s = set(target, property, value, receiver || target); if (!s && isStrict) { throw new TypeError('failed to set property'); } return value; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
@@ -211,7 +200,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
           if (_this3._input) {
             var locale = _this3.settings.locale;
             if (locale && locale.length >= 2 && locale !== 'en') {
-              return _Formio.GlobalFormio.requireLibrary("flatpickr-".concat(locale), "flatpickr-".concat(locale), "".concat(_Formio.GlobalFormio.cdn['flatpickr-formio'], "/l10n/flatpickr-").concat(locale, ".js"), true).then(function () {
+              return _Formio.GlobalFormio.requireLibrary("flatpickr-".concat(locale), "flatpickr-".concat(locale), "".concat(_Formio.GlobalFormio.cdn['flatpickr-formio'], "/l10n/flatpickr-").concat(locale, ".js"), false, function () {
                 return _this3.initFlatpickr(Flatpickr);
               });
             } else {
@@ -219,7 +208,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
             }
           }
         });
-      })["catch"](function (err) {
+      }).catch(function (err) {
         console.warn(err);
       });
     }
@@ -332,7 +321,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
   }, {
     key: "dateFormat",
     get: function get() {
-      return _lodash["default"].get(this.settings, 'format', DEFAULT_FORMAT);
+      return _lodash.default.get(this.settings, 'format', DEFAULT_FORMAT);
     }
 
     /**
@@ -348,7 +337,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
       if (useTimezone) {
         return (0, _utils.momentDate)(date, this.valueFormat, this.timezone).format((0, _utils.convertFormatToMoment)(format));
       }
-      return (0, _moment["default"])(date).format((0, _utils.convertFormatToMoment)(format));
+      return (0, _moment.default)(date).format((0, _utils.convertFormatToMoment)(format));
     }
 
     /**
@@ -400,7 +389,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
         } else if (this.isValueISO8601(value)) {
           this.calendar.setDate(value, false);
         } else {
-          this.calendar.setDate((0, _moment["default"])(value, this.valueMomentFormat).toDate(), false);
+          this.calendar.setDate((0, _moment.default)(value, this.valueMomentFormat).toDate(), false);
         }
       } else {
         this.calendar.clear(false);
@@ -412,7 +401,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
       var inputFormat = format || this.dateFormat;
       var valueFormat = this.calendar ? this.valueFormat : this.settings.dateFormat;
       if (this.settings.saveAs === 'text' && this.componentInstance.parent && !this.settings.readOnly) {
-        return (0, _moment["default"])(value, (0, _utils.convertFormatToMoment)(valueFormat)).format((0, _utils.convertFormatToMoment)(valueFormat));
+        return (0, _moment.default)(value, (0, _utils.convertFormatToMoment)(valueFormat)).format((0, _utils.convertFormatToMoment)(valueFormat));
       }
       return (0, _utils.formatDate)(this.timezonesUrl, value, inputFormat, this.timezone, (0, _utils.convertFormatToMoment)(valueFormat));
     }
@@ -475,8 +464,8 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
         }
       });
       var excludedFromMaskFormats = ['MMMM'];
-      if (!this.settings.readOnly && !_lodash["default"].some(excludedFromMaskFormats, function (format) {
-        return _lodash["default"].includes(_this7.settings.format, format);
+      if (!this.settings.readOnly && !_lodash.default.some(excludedFromMaskFormats, function (format) {
+        return _lodash.default.includes(_this7.settings.format, format);
       })) {
         // Enforce the input mask of the format.
         this.setInputMask(this.calendar._input, (0, _utils.convertFormatToMask)(this.settings.format));
@@ -508,11 +497,11 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
         var relatedTarget = event.relatedTarget ? event.relatedTarget : activeElement;
         if (!(isIEBrowser && !relatedTarget) && !_this7.isCalendarElement(relatedTarget)) {
           var inputValue = _this7.calendar.input.value;
-          var dateValue = inputValue ? (0, _moment["default"])(_this7.calendar.input.value, (0, _utils.convertFormatToMoment)(_this7.valueFormat)).toDate() : inputValue;
+          var dateValue = inputValue ? (0, _moment.default)(_this7.calendar.input.value, (0, _utils.convertFormatToMoment)(_this7.valueFormat)).toDate() : inputValue;
           _this7.calendar.setDate(dateValue, true, _this7.settings.altFormat);
         } else if (!_this7.calendar.input.value && _this7.calendar.config.noCalendar) {
           var _this7$calendar, _this7$calendar$confi, _this7$calendar2, _this7$calendar2$conf;
-          var value = (0, _moment["default"])({
+          var value = (0, _moment.default)({
             hour: (_this7$calendar = _this7.calendar) === null || _this7$calendar === void 0 ? void 0 : (_this7$calendar$confi = _this7$calendar.config) === null || _this7$calendar$confi === void 0 ? void 0 : _this7$calendar$confi.defaultHour,
             minute: (_this7$calendar2 = _this7.calendar) === null || _this7$calendar2 === void 0 ? void 0 : (_this7$calendar2$conf = _this7$calendar2.config) === null || _this7$calendar2$conf === void 0 ? void 0 : _this7$calendar2$conf.defaultMinute
           }).toDate();
@@ -571,7 +560,7 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
       return function (date, format) {
         // Only format this if this is the altFormat and the form is readOnly.
         if (_this9.settings.readOnly && format === _this9.settings.altFormat) {
-          if (!_this9.settings.enableTime || _this9.loadZones()) {
+          if (_this9.loadZones()) {
             return Flatpickr.formatDate(date, format);
           }
           var currentValue = new Date(_this9.getValue());
@@ -621,5 +610,5 @@ var CalendarWidget = /*#__PURE__*/function (_InputWidget) {
     }
   }]);
   return CalendarWidget;
-}(_InputWidget2["default"]);
-exports["default"] = CalendarWidget;
+}(_InputWidget2.default);
+exports.default = CalendarWidget;

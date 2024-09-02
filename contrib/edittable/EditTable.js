@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -11,7 +9,6 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -22,24 +19,20 @@ require("core-js/modules/es.regexp.exec.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.array.concat.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.join.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.array.slice.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _DataGrid = _interopRequireDefault(require("../../components/datagrid/DataGrid"));
 var _ModalEdit = _interopRequireDefault(require("../modaledit/ModalEdit"));
 var _EditTable = _interopRequireDefault(require("./EditTable.form"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -47,8 +40,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) { ; } } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -74,7 +67,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    var groups = _lodash["default"].get(_this.component, 'rowGroups', []);
+    var groups = _lodash.default.get(_this.component, 'rowGroups', []);
     if (_this.hasColumns()) {
       _this.component.components = _this.componentComponents;
     }
@@ -114,7 +107,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
       for (var _len2 = arguments.length, extend = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
         extend[_key2] = arguments[_key2];
       }
-      return _ModalEdit["default"].schema.apply(_ModalEdit["default"], [{
+      return _ModalEdit.default.schema.apply(_ModalEdit.default, [{
         rows: 0,
         editor: 'ckeditor',
         hideLabel: true
@@ -130,27 +123,27 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "getColumns",
     value: function getColumns() {
       var _this2 = this;
-      var cols = _lodash["default"].get(this, 'component.columns', []);
-      return _lodash["default"].filter(_lodash["default"].map(cols, function (c) {
-        return _lodash["default"].pick(c, ['label', 'key']);
+      var cols = _lodash.default.get(this, 'component.columns', []);
+      return _lodash.default.filter(_lodash.default.map(cols, function (c) {
+        return _lodash.default.pick(c, ['label', 'key']);
       }), function (c) {
-        return !_lodash["default"].isEqual(c, _this2.emptyColumn);
+        return !_lodash.default.isEqual(c, _this2.emptyColumn);
       });
     }
   }, {
     key: "getGroups",
     value: function getGroups() {
-      return _lodash["default"].get(this.component, 'rowGroups', []);
+      return _lodash.default.get(this.component, 'rowGroups', []);
     }
   }, {
     key: "totalRowsNumber",
     value: function totalRowsNumber(groups) {
-      return _lodash["default"].sum(_lodash["default"].map(groups, 'numberOfRows'));
+      return _lodash.default.sum(_lodash.default.map(groups, 'numberOfRows'));
     }
   }, {
     key: "addEmptyRows",
     value: function addEmptyRows(n) {
-      this.dataValue = _lodash["default"].range(n).map(function () {
+      this.dataValue = _lodash.default.range(n).map(function () {
         return {};
       });
     }
@@ -179,10 +172,10 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "tableClass",
     get: function get() {
       var _this4 = this;
-      var type = _lodash["default"].get(this.component, 'type', 'edittable');
+      var type = _lodash.default.get(this.component, 'type', 'edittable');
       var defaultClass = ['table', 'table-bordered', "table-".concat(type), 'form-group', "formio-".concat(type, "-table")].join(' ');
-      var className = _lodash["default"].get(this.component, 'tableClass');
-      if (className === '' || !_lodash["default"].isString(className)) {
+      var className = _lodash.default.get(this.component, 'tableClass');
+      if (className === '' || !_lodash.default.isString(className)) {
         className = defaultClass;
       }
       ['striped', 'bordered', 'hover', 'condensed'].forEach(function (prop) {
@@ -195,7 +188,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
   }, {
     key: "groupsMode",
     get: function get() {
-      return _lodash["default"].get(this.component, 'enableRowGroups', false);
+      return _lodash.default.get(this.component, 'enableRowGroups', false);
     }
 
     /** @override **/
@@ -222,12 +215,12 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "buildGroups",
     value: function buildGroups() {
       var _this5 = this;
-      var groups = _lodash["default"].get(this.component, 'rowGroups', []);
-      var ranges = _lodash["default"].map(groups, 'numberOfRows');
+      var groups = _lodash.default.get(this.component, 'rowGroups', []);
+      var ranges = _lodash.default.map(groups, 'numberOfRows');
       var rows = this.tableElement.querySelectorAll('tbody>tr');
       var tbody = this.tableElement.querySelector('tbody');
       var chunks = this.getRowChunks(ranges, rows);
-      var firstElements = chunks.map(_lodash["default"].head);
+      var firstElements = chunks.map(_lodash.default.head);
       var groupElements = groups.map(function (g) {
         return _this5.buildGroup(g);
       });
@@ -258,7 +251,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
         _groups$reduce2 = _slicedToArray(_groups$reduce, 2),
         chunks = _groups$reduce2[1];
       return chunks.map(function (range) {
-        return _lodash["default"].slice.apply(_lodash["default"], [coll].concat(_toConsumableArray(range)));
+        return _lodash.default.slice.apply(_lodash.default, [coll].concat(_toConsumableArray(range)));
       });
     }
   }, {
@@ -268,7 +261,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
       var colsNumber = this.getColumns().length;
       var cell = this.ce('td', {
         colspan: colsNumber,
-        "class": 'edittable-group-label'
+        class: 'edittable-group-label'
       }, label);
       return this.ce('tr', null, cell);
     }
@@ -300,12 +293,12 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "removeButton",
     value: function removeButton(index) {
       var _this7 = this;
-      var type = _lodash["default"].get(this.component, 'type', 'edittable');
+      var type = _lodash.default.get(this.component, 'type', 'edittable');
       var button = this.ce('button', {
         type: 'button',
-        "class": "btn btn-xxs btn-danger formio-".concat(type, "-remove")
+        class: "btn btn-xxs btn-danger formio-".concat(type, "-remove")
       }, this.ce('i', {
-        "class": this.iconClass('remove')
+        class: this.iconClass('remove')
       }));
       this.addEventListener(button, 'click', function (event) {
         event.preventDefault();
@@ -317,9 +310,9 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     key: "builderView",
     value: function builderView() {
       return this.ce('div', {
-        "class": 'well edittable-placeholder'
+        class: 'well edittable-placeholder'
       }, [this.ce('i', {
-        "class": this.iconClass('warning-sign')
+        class: this.iconClass('warning-sign')
       }), ' ', this.t('No columns provided')]);
     }
   }, {
@@ -338,10 +331,10 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
   }, {
     key: "setMeta",
     value: function setMeta() {
-      var key = _lodash["default"].get(this.component, 'key');
+      var key = _lodash.default.get(this.component, 'key');
       var data = this.getMeta();
       if (key && data) {
-        _lodash["default"].set(this.root, ['_submission', 'metadata', key], data);
+        _lodash.default.set(this.root, ['_submission', 'metadata', key], data);
       }
     }
   }], [{
@@ -350,7 +343,7 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
       for (var _len3 = arguments.length, extend = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
         extend[_key3] = arguments[_key3];
       }
-      return _DataGrid["default"].schema.apply(_DataGrid["default"], [{
+      return _DataGrid.default.schema.apply(_DataGrid.default, [{
         label: 'Edit Table',
         key: 'editTable',
         type: 'edittable',
@@ -373,6 +366,6 @@ var EditTableComponent = /*#__PURE__*/function (_DataGridComponent) {
     }
   }]);
   return EditTableComponent;
-}(_DataGrid["default"]);
-exports["default"] = EditTableComponent;
-EditTableComponent.editForm = _EditTable["default"];
+}(_DataGrid.default);
+exports.default = EditTableComponent;
+EditTableComponent.editForm = _EditTable.default;

@@ -1,13 +1,12 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _en = _interopRequireDefault(require("./translations/en"));
 var _utils = require("./utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = {
   lng: 'en',
   nsSeparator: '::',
@@ -16,8 +15,8 @@ var _default = {
   contextSeparator: '._.',
   resources: {
     en: {
-      translation: (0, _utils.fastCloneDeep)(_en["default"])
+      translation: (0, _utils.fastCloneDeep)(_en.default)
     }
   }
 };
-exports["default"] = _default;
+exports.default = _default;

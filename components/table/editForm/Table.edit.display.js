@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   key: 'labelPosition',
   ignore: true
@@ -102,4 +101,4 @@ var _default = [{
   tooltip: 'Condense the size of the table.',
   weight: 704
 }];
-exports["default"] = _default;
+exports.default = _default;

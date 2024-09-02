@@ -1,12 +1,11 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _utils = _interopRequireDefault(require("./utils"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 /* eslint-disable max-len */
 var _default = [{
   weight: 0,
@@ -126,7 +125,7 @@ var _default = [{
   conditional: {
     json: {
       '!': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }]
     }
   }
@@ -137,8 +136,17 @@ var _default = [{
   key: 'clearOnHide',
   defaultValue: true,
   tooltip: 'When a field is hidden, clear the value.',
-  input: true
-}, _utils["default"].javaScriptValue('Custom Default Value', 'customDefaultValue', 'customDefaultValue', 1000, '<p><h4>Example:</h4><pre>value = data.firstName + " " + data.lastName;</pre></p>', '<p><h4>Example:</h4><pre>{"cat": [{"var": "data.firstName"}, " ", {"var": "data.lastName"}]}</pre>'), _utils["default"].javaScriptValue('Calculated Value', 'calculateValue', 'calculateValue', 1100, '<p><h4>Example:</h4><pre>value = data.a + data.b + data.c;</pre></p>', '<p><h4>Example:</h4><pre>{"+": [{"var": "data.a"}, {"var": "data.b"}, {"var": "data.c"}]}</pre><p><a href="http://formio.github.io/formio.js/app/examples/calculated.html" target="_blank" rel="noopener noreferrer">Click here for an example</a></p>', '<tr><th>token</th><td>The decoded JWT token for the authenticated user.</td></tr>'), {
+  input: true,
+  clearOnHide: false,
+  calculateValue: 'value = data.hidden ? false : value',
+  conditional: {
+    json: {
+      '!': [{
+        var: 'data.hidden'
+      }]
+    }
+  }
+}, _utils.default.javaScriptValue('Custom Default Value', 'customDefaultValue', 'customDefaultValue', 1000, '<p><h4>Example:</h4><pre>value = data.firstName + " " + data.lastName;</pre></p>', '<p><h4>Example:</h4><pre>{"cat": [{"var": "data.firstName"}, " ", {"var": "data.lastName"}]}</pre>'), _utils.default.javaScriptValue('Calculated Value', 'calculateValue', 'calculateValue', 1100, '<p><h4>Example:</h4><pre>value = data.a + data.b + data.c;</pre></p>', '<p><h4>Example:</h4><pre>{"+": [{"var": "data.a"}, {"var": "data.b"}, {"var": "data.c"}]}</pre><p><a target="_blank" href="http://formio.github.io/formio.js/app/examples/calculated.html">Click here for an example</a></p>', '<tr><th>token</th><td>The decoded JWT token for the authenticated user.</td></tr>'), {
   type: 'checkbox',
   input: true,
   weight: 1100,
@@ -154,4 +162,4 @@ var _default = [{
   tooltip: 'When checked, this will allow the user to manually override the calculated value.'
 }];
 /* eslint-enable max-len */
-exports["default"] = _default;
+exports.default = _default;

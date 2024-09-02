@@ -3,8 +3,6 @@
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -19,15 +17,12 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.KEY_CODES = void 0;
+exports.default = exports.KEY_CODES = void 0;
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.regexp.exec.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _choices = _interopRequireDefault(require("@formio/choices.js"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -52,7 +47,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
  * @type {Choices._generatePlaceholderValue}
  * @private
  */
-_choices["default"].prototype._generatePlaceholderValue = function () {
+_choices.default.prototype._generatePlaceholderValue = function () {
   if (this._isSelectElement && this.passedElement.placeholderOption) {
     var placeholderOption = this.passedElement.placeholderOption;
     return placeholderOption ? placeholderOption.text : false;
@@ -100,26 +95,6 @@ var ChoicesWrapper = /*#__PURE__*/function (_Choices) {
     return _this;
   }
   _createClass(ChoicesWrapper, [{
-    key: "_onTouchEnd",
-    value: function _onTouchEnd(event) {
-      var target = (event || event.touches[0]).target;
-      var touchWasWithinContainer = this._wasTap && this.containerOuter.element.contains(target);
-      if (touchWasWithinContainer) {
-        var containerWasExactTarget = target === this.containerOuter.element || target === this.containerInner.element;
-        if (containerWasExactTarget) {
-          if (this._isTextElement) {
-            this.input.focus();
-          } else if (this._isSelectMultipleElement) {
-            this.input.focus();
-            this.showDropdown();
-          }
-        }
-        // Prevents focus event firing
-        event.stopPropagation();
-      }
-      this._wasTap = true;
-    }
-  }, {
     key: "_handleButtonAction",
     value: function _handleButtonAction(activeItems, element) {
       if (!this._isSelectOneElement) {
@@ -285,6 +260,6 @@ var ChoicesWrapper = /*#__PURE__*/function (_Choices) {
     }
   }]);
   return ChoicesWrapper;
-}(_choices["default"]);
+}(_choices.default);
 var _default = ChoicesWrapper;
-exports["default"] = _default;
+exports.default = _default;

@@ -3,11 +3,8 @@ import * as moment from 'moment';
 export type AnyForJSON = { [key: string]: any } | any;
 
 export namespace Utils {
-  const ConditionOperators: any;
-  const componentValueTypes: { [key: string]: string };
   const Evaluator: any;
   const _: any;
-  function getComponentSavedTypes(schema: object): Array<any> | null;
   function evaluate(
     func: any,
     args: { component: any; form: any; instance: any; row: any; data: any } | any,
@@ -25,7 +22,6 @@ export namespace Utils {
     condition: { eq: any; show: any; when: any } & any,
     row: any,
     data: any,
-    instance: any
   ): boolean;
   function checkCustomConditional(
     component: any /* unused */,
@@ -111,7 +107,7 @@ export namespace Utils {
   const firstNonNil: any;
   function withSwitch(a: any, b: any): [Function, Function];
   function observeOverload(callback: Function, options?: { limit?: number; delay?: number }): any;
-  function getContextComponents(context: any, excludeNested?: any, excludedTypes?: any): any;
+  function getContextComponents(context: any): any;
   function sanitize(string: string, options: any): any;
 
   // Form Utils

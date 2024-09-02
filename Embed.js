@@ -1,25 +1,20 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.embed = embed;
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/es.array.index-of.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.string.match.js");
 var _CDN = _interopRequireDefault(require("./CDN"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 // eslint-disable-next-line max-statements
 function embed() {
   var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -64,7 +59,7 @@ function embed() {
         }
       };
       // Check if using cdn.form.io standart folders format
-      if (cdn instanceof _CDN["default"]) {
+      if (cdn instanceof _CDN.default) {
         var url = cdn.baseUrl;
         libs.uswds.js = "".concat(url, "/uswds/").concat(cdn.getVersion('uswds'), "/uswds.min.js");
         libs.uswds.css = "".concat(url, "/uswds/").concat(cdn.getVersion('uswds'), "/uswds.min.css");
@@ -76,7 +71,7 @@ function embed() {
     config = Object.assign({
       script: query.script,
       style: query.styles,
-      "class": query["class"] || 'formio-form-wrapper',
+      class: query.class || 'formio-form-wrapper',
       src: query.src,
       form: null,
       submission: null,
@@ -87,7 +82,7 @@ function embed() {
       template: query.template,
       debug: query.debug === 'true' || query.debug === '1',
       config: {},
-      redirect: query["return"] || query.redirect,
+      redirect: query.return || query.redirect,
       before: function before() {},
       after: function after() {}
     }, config);
@@ -213,12 +208,12 @@ function embed() {
     }, [{
       tag: 'div',
       attrs: {
-        "class": 'loader-wrapper'
+        class: 'loader-wrapper'
       },
       children: [{
         tag: 'div',
         attrs: {
-          "class": 'loader text-center'
+          class: 'loader text-center'
         }
       }]
     }]);
@@ -227,7 +222,7 @@ function embed() {
     // Add the wrapper for the rendered form.
     debug('Creating form element');
     var formElement = createElement('div', {
-      "class": config["class"]
+      class: config.class
     });
     wrapper.appendChild(formElement);
 
@@ -341,7 +336,7 @@ function embed() {
           }
         }
         var templateSrc;
-        if (cdn instanceof _CDN["default"]) {
+        if (cdn instanceof _CDN.default) {
           templateSrc = "".concat(cdn[config.template], "/").concat(config.template, ".min");
         } else {
           templateSrc = "".concat(cdn, "/@formio/").concat(config.template, "@latest/dist/").concat(config.template, ".min");
@@ -358,7 +353,7 @@ function embed() {
       }
       // Default bootstrap + fontawesome.
       else if (config.includeLibs) {
-        Formio.cdn = new _CDN["default"]();
+        Formio.cdn = new _CDN.default();
         config.libs = resolveLibs(query.cdn || Formio.cdn);
         addStyles(config.libs.fontawesome.css, true);
         addStyles(config.libs.bootstrap.css);

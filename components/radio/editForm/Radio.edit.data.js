@@ -1,17 +1,16 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.regexp.flags.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _builder = _interopRequireDefault(require("../../../utils/builder"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 var _default = [{
   key: 'multiple',
   ignore: true
@@ -79,14 +78,14 @@ var _default = [{
     template: '{{ item.label }}',
     data: {
       custom: function custom(context) {
-        return _builder["default"].getAvailableShortcuts(_lodash["default"].get(context, 'instance.options.editForm', {}), _lodash["default"].get(context, 'instance.options.editComponent', {}));
+        return _builder.default.getAvailableShortcuts(_lodash.default.get(context, 'instance.options.editForm', {}), _lodash.default.get(context, 'instance.options.editComponent', {}));
       }
     }
   }],
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'values']
     }
   }
@@ -123,9 +122,9 @@ var _default = [{
   conditional: {
     json: {
       '===': [{
-        "var": 'data.dataSrc'
+        var: 'data.dataSrc'
       }, 'url']
     }
   }
 }];
-exports["default"] = _default;
+exports.default = _default;

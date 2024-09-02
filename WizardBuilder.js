@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,30 +16,25 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
+require("core-js/modules/es.array.find-index.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
-require("core-js/modules/es.array.index-of.js");
-require("core-js/modules/es.array.find-index.js");
 require("core-js/modules/es.array.sort.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.object.keys.js");
-require("core-js/modules/es.array.is-array.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.array.splice.js");
 require("core-js/modules/es.array.find.js");
-require("core-js/modules/es.object.set-prototype-of.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _WebformBuilder2 = _interopRequireDefault(require("./WebformBuilder"));
 var _Webform = _interopRequireDefault(require("./Webform"));
 var _builder = _interopRequireDefault(require("./utils/builder"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _utils = require("./utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -56,11 +49,6 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-var dragula;
-if (typeof window !== 'undefined') {
-  // Import from "dist" because it would require and "global" would not be defined in Angular apps.
-  dragula = require('dragula/dist/dragula');
-}
 var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
   _inherits(WizardBuilder, _WebformBuilder);
   var _super = _createSuper(WizardBuilder);
@@ -100,6 +88,21 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
     for (var group in _this.groups) {
       _loop(group);
     }
+    _this.options.hooks.attachPanel = function (element, component) {
+      if (component.refs.removeComponent) {
+        _this.addEventListener(component.refs.removeComponent, 'click', function () {
+          var pageIndex = _this.pages.findIndex(function (page) {
+            return page.key === component.key;
+          });
+          var componentIndex = _this._form.components.findIndex(function (comp) {
+            return comp.key === component.key;
+          });
+          if (pageIndex !== -1) {
+            _this.removePage(pageIndex, componentIndex);
+          }
+        });
+      }
+    };
     var originalRenderComponentsHook = _this.options.hooks.renderComponents;
     _this.options.hooks.renderComponents = function (html, _ref) {
       var components = _ref.components,
@@ -147,24 +150,6 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
     return _this;
   }
   _createClass(WizardBuilder, [{
-    key: "removeComponent",
-    value: function removeComponent(component, parent, original) {
-      var remove = _get(_getPrototypeOf(WizardBuilder.prototype), "removeComponent", this).call(this, component, parent, original);
-      // If user agrees to remove the whole group of the components and it could be a Wizard page, find it and remove
-      if (remove && component.type === 'panel') {
-        var pageIndex = this.pages.findIndex(function (page) {
-          return page.key === component.key;
-        });
-        var componentIndex = this._form.components.findIndex(function (comp) {
-          return comp.key === component.key;
-        });
-        if (pageIndex !== -1) {
-          this.removePage(pageIndex, componentIndex);
-        }
-      }
-      return remove;
-    }
-  }, {
     key: "allowDrop",
     value: function allowDrop(element) {
       return this.webform && this.webform.refs && this.webform.refs.webform === element ? false : true;
@@ -172,7 +157,7 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
   }, {
     key: "pages",
     get: function get() {
-      return _lodash["default"].filter(this._form.components, {
+      return _lodash.default.filter(this._form.components, {
         type: 'panel'
       });
     }
@@ -203,8 +188,8 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
   }, {
     key: "schema",
     get: function get() {
-      _lodash["default"].assign(this.currentPage, this.webform._form.components[0]);
-      var webform = new _Webform["default"](this.options);
+      _lodash.default.assign(this.currentPage, this.webform._form.components[0]);
+      var webform = new _Webform.default(this.options);
       webform.setForm(this._form, {
         noEmit: true
       });
@@ -247,23 +232,6 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
         addPage: 'multiple',
         gotoPage: 'multiple'
       });
-      this.refs.gotoPage.forEach(function (page, index) {
-        page.parentNode.dragInfo = {
-          index: index
-        };
-      });
-      if (dragula) {
-        this.navigationDragula = dragula([this.element.querySelector('.wizard-pages')], {
-          // Don't move Add Page button
-          moves: function moves(el) {
-            return !el.classList.contains('wizard-add-page');
-          },
-          // Don't allow dragging components after Add Page button
-          accepts: function accepts(el, target, source, sibling) {
-            return sibling ? true : false;
-          }
-        }).on('drop', this.onReorder.bind(this));
-      }
       this.refs.addPage.forEach(function (link) {
         _this3.addEventListener(link, 'click', function (event) {
           event.preventDefault();
@@ -279,24 +247,13 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
       return _get(_getPrototypeOf(WizardBuilder.prototype), "attach", this).call(this, element);
     }
   }, {
-    key: "detach",
-    value: function detach() {
-      if (this.navigationDragula) {
-        this.navigationDragula.destroy();
-      }
-      this.navigationDragula = null;
-      _get(_getPrototypeOf(WizardBuilder.prototype), "detach", this).call(this);
-    }
-  }, {
     key: "rebuild",
     value: function rebuild() {
-      var _this$_form;
       var page = this.currentPage;
       this.webform.setForm({
         display: 'form',
         type: 'form',
-        components: page ? [page] : [],
-        controller: ((_this$_form = this._form) === null || _this$_form === void 0 ? void 0 : _this$_form.controller) || ''
+        components: page ? [page] : []
       }, {
         keepAsReference: true
       });
@@ -306,7 +263,7 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
     key: "addPage",
     value: function addPage(page) {
       var newPage = page && page.schema ? (0, _utils.fastCloneDeep)(page.schema) : this.getPageConfig(this.pages.length + 1);
-      _builder["default"].uniquify(this._form.components, newPage);
+      _builder.default.uniquify(this._form.components, newPage);
       this._form.components.push(newPage);
       this.emitSaveComponentEvent(newPage, newPage, this._form, 'components', this._form.components.length - 1, true, newPage);
       this.emit('change', this._form);
@@ -328,32 +285,6 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
       } else {
         return this.rebuild();
       }
-    }
-  }, {
-    key: "onReorder",
-    value: function onReorder(element, _target, _source, sibling) {
-      var _this4 = this;
-      var isSiblingAnAddPageButton = sibling === null || sibling === void 0 ? void 0 : sibling.classList.contains('wizard-add-page');
-      // We still can paste before Add Page button
-      if (!element.dragInfo || sibling && !sibling.dragInfo && !isSiblingAnAddPageButton) {
-        console.warn('There is no Drag Info available for either dragged or sibling element');
-        return;
-      }
-      var oldPosition = element.dragInfo.index;
-      //should drop at next sibling position; no next sibling means drop to last position
-      var newPosition = sibling && sibling.dragInfo ? sibling.dragInfo.index : this.pages.length;
-      var movedBelow = newPosition > oldPosition;
-      var formComponents = (0, _utils.fastCloneDeep)(this._form.components);
-      var draggedRowData = this._form.components[oldPosition];
-
-      //insert element at new position
-      formComponents.splice(newPosition, 0, draggedRowData);
-      //remove element from old position (if was moved above, after insertion it's at +1 index)
-      formComponents.splice(movedBelow ? oldPosition : oldPosition + 1, 1);
-      this._form.components = (0, _utils.fastCloneDeep)(formComponents);
-      return this.rebuild().then(function () {
-        _this4.emit('change', _this4._form);
-      });
     }
   }, {
     key: "setPage",
@@ -383,7 +314,7 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
         return;
       }
       if (this._form.components.find(function (comp) {
-        return _lodash["default"].isEqual(component.component, comp);
+        return _lodash.default.isEqual(component.component, comp);
       })) {
         this.addPage(component);
       } else {
@@ -392,5 +323,5 @@ var WizardBuilder = /*#__PURE__*/function (_WebformBuilder) {
     }
   }]);
   return WizardBuilder;
-}(_WebformBuilder2["default"]);
-exports["default"] = WizardBuilder;
+}(_WebformBuilder2.default);
+exports.default = WizardBuilder;

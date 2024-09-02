@@ -1,10 +1,9 @@
 "use strict";
 
-require("core-js/modules/es.object.define-property.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 var _default = [{
   key: 'labelPosition',
   ignore: true
@@ -36,7 +35,7 @@ var _default = [{
   key: 'columns',
   label: 'Column Properties',
   addAnother: 'Add Column',
-  tooltip: 'The size and width settings for each column. One row is equal to 12. (e.g., a row with two columns spanning the entire page should be 6 and 6)',
+  tooltip: 'The width, offset, push, and pull settings for each column.',
   reorder: true,
   components: [{
     type: 'hidden',
@@ -70,6 +69,21 @@ var _default = [{
     key: 'width',
     defaultValue: 6,
     label: 'Width'
+  }, {
+    type: 'number',
+    key: 'offset',
+    defaultValue: 0,
+    label: 'Offset'
+  }, {
+    type: 'number',
+    key: 'push',
+    defaultValue: 0,
+    label: 'Push'
+  }, {
+    type: 'number',
+    key: 'pull',
+    defaultValue: 0,
+    label: 'Pull'
   }]
 }, {
   weight: 160,
@@ -79,4 +93,4 @@ var _default = [{
   key: 'autoAdjust',
   input: true
 }];
-exports["default"] = _default;
+exports.default = _default;

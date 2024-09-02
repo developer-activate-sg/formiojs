@@ -5,12 +5,9 @@ require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.number.constructor.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.object.keys.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.object.get-own-property-descriptors.js");
-require("core-js/modules/es.object.define-properties.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.symbol.iterator.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/es.string.iterator.js");
@@ -20,15 +17,12 @@ require("core-js/modules/es.array.slice.js");
 require("core-js/modules/es.function.name.js");
 require("core-js/modules/es.regexp.exec.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-require("core-js/modules/web.timers.js");
 require("core-js/modules/es.string.starts-with.js");
-require("core-js/modules/es.array.reduce.js");
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.array.map.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.join.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.string.includes.js");
@@ -39,13 +33,13 @@ var _Formio = _interopRequireDefault(require("./../../Formio"));
 var _lodash = _interopRequireDefault(require("lodash"));
 require("flatpickr");
 var _fixtures = require("./fixtures");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -53,33 +47,33 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 describe('DateTime Component', function () {
   it('Should build a date time component', function () {
-    return _harness["default"].testCreate(_DateTime["default"], _fixtures.comp1).then(function (dateTime) {
+    return _harness.default.testCreate(_DateTime.default, _fixtures.comp1).then(function (dateTime) {
       return dateTime.destroy();
     });
   });
   it('Test formatting', function (done) {
-    _harness["default"].testCreate(_DateTime["default"], _fixtures.comp2).then(function (dateTime) {
+    _harness.default.testCreate(_DateTime.default, _fixtures.comp2).then(function (dateTime) {
       var value = '2020-09-22T00:00:00';
       var formattedValue = '2020-09-22';
       dateTime.setValue(value);
       setTimeout(function () {
-        _powerAssert["default"].equal(dateTime.getValueAsString(value), formattedValue, 'getValueAsString should return formatted value');
+        _powerAssert.default.equal(dateTime.getValueAsString(value), formattedValue, 'getValueAsString should return formatted value');
         dateTime.destroy();
         done();
       }, 250);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should format value', function () {
     _fixtures.comp2.format = 'yyyy-MM-dd hh:mm a';
-    return _harness["default"].testCreate(_DateTime["default"], _fixtures.comp2).then(function (dateTime) {
-      _powerAssert["default"].equal(dateTime.getValueAsString('2020-09-18T12:12:00'), '2020-09-18 12:12 PM');
+    return _harness.default.testCreate(_DateTime.default, _fixtures.comp2).then(function (dateTime) {
+      _powerAssert.default.equal(dateTime.getValueAsString('2020-09-18T12:12:00'), '2020-09-18 12:12 PM');
       dateTime.destroy();
     });
   });
   it('Should not change manually entered value on blur when time is disabled', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp11);
+    var form = _lodash.default.cloneDeep(_fixtures.comp11);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var blurEvent = new Event('blur');
       var value = '01-02-2021';
@@ -87,16 +81,16 @@ describe('DateTime Component', function () {
       input.value = value;
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(input.value, value);
+        _powerAssert.default.equal(input.value, value);
         document.innerHTML = '';
         done();
       }, 600);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should allow manual input', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var blurEvent = new Event('blur');
       var value = '2021-04-13 7:00 PM';
@@ -105,17 +99,17 @@ describe('DateTime Component', function () {
       input.value = value;
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(dateTime.getValue().startsWith(expectedValueStart), true);
-        _powerAssert["default"].equal(dateTime.dataValue.startsWith(expectedValueStart), true);
+        _powerAssert.default.equal(dateTime.getValue().startsWith(expectedValueStart), true);
+        _powerAssert.default.equal(dateTime.dataValue.startsWith(expectedValueStart), true);
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should allow manual input for date with full month format (like MMMM)', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp12);
+    var form = _lodash.default.cloneDeep(_fixtures.comp12);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var blurEvent = new Event('blur');
       var value = 'April 22';
@@ -124,17 +118,19 @@ describe('DateTime Component', function () {
       input.value = value;
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(input.value, expectedValue);
+        // assert.equal(dateTime.getValue().startsWith(expectedValueStart), true);
+        _powerAssert.default.equal(input.value, expectedValue);
+        console.log(22222, input.value, dateTime.getValue());
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not allow manual input', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].allowInput = false;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var blurEvent = new Event('blur');
       var value = '2021-04-13 7:00 PM';
@@ -142,15 +138,15 @@ describe('DateTime Component', function () {
       input.value = value;
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(dateTime.getValue(), '');
-        _powerAssert["default"].equal(dateTime.dataValue, '');
+        _powerAssert.default.equal(dateTime.getValue(), '');
+        _powerAssert.default.equal(dateTime.dataValue, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should format date correctly', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     var formatsInitial = [{
       format: 'yyyy-dd-MM',
@@ -237,21 +233,21 @@ describe('DateTime Component', function () {
     var formats = getAllFormats(formatsInitial);
     var formComponents = [];
     formats.forEach(function (format, index) {
-      var comp = _lodash["default"].cloneDeep(form.components[0]);
+      var comp = _lodash.default.cloneDeep(form.components[0]);
       comp.format = format.format;
       comp.widget.format = format.format;
       comp.key = comp.key + index;
       formComponents.push(comp);
     });
     form.components = formComponents;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       form.components.forEach(function (comp, index) {
         comp.setValue(formats[index].setValue);
       });
       setTimeout(function () {
         form.components.forEach(function (comp, index) {
           var input = comp.element.querySelector('.input');
-          _powerAssert["default"].equal(input.value, formats[index].expectedFormattedValue, 'Should format date/time value after setting value');
+          _powerAssert.default.equal(input.value, formats[index].expectedFormattedValue, 'Should format date/time value after setting value');
           var blurEvent = new Event('blur');
           input.value = formats[index].inputValue;
           input.dispatchEvent(blurEvent);
@@ -259,94 +255,94 @@ describe('DateTime Component', function () {
         setTimeout(function () {
           form.components.forEach(function (comp, index) {
             var input = comp.element.querySelector('.input');
-            _powerAssert["default"].equal(input.value, formats[index].expectedFormattedValue, 'Should format date/time value after inputting value');
+            _powerAssert.default.equal(input.value, formats[index].expectedFormattedValue, 'Should format date/time value after inputting value');
           });
           document.innerHTML = '';
           done();
         }, 300);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   }).timeout(4000);
   it('Should disable weekends', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.disableWeekends = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.disableWeekends, true);
+      _powerAssert.default.equal(calendar.config.disableWeekends, true);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should disable weekdays', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.disableWeekdays = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.disableWeekdays, true);
+      _powerAssert.default.equal(calendar.config.disableWeekdays, true);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should disable time', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].enableTime = false;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.enableTime, false);
-      _powerAssert["default"].equal(!!calendar.timeContainer, false);
+      _powerAssert.default.equal(calendar.config.enableTime, false);
+      _powerAssert.default.equal(!!calendar.timeContainer, false);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should disable date', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].enableDate = false;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(!!calendar.daysContainer, false);
+      _powerAssert.default.equal(!!calendar.daysContainer, false);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should enable time', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].enableTime = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.enableTime, true);
-      _powerAssert["default"].equal(!!calendar.timeContainer, true);
+      _powerAssert.default.equal(calendar.config.enableTime, true);
+      _powerAssert.default.equal(!!calendar.timeContainer, true);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should enable date', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].enableDate = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.enableDate, true);
-      _powerAssert["default"].equal(!!calendar.daysContainer, true);
+      _powerAssert.default.equal(calendar.config.enableDate, true);
+      _powerAssert.default.equal(!!calendar.daysContainer, true);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not input the date that is disabled', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.disable = '2021-04-15';
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input = dateTime.element.querySelector('.input');
       var blurEvent = new Event('blur');
@@ -354,18 +350,18 @@ describe('DateTime Component', function () {
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '');
-        _powerAssert["default"].equal(dateTime.dataValue, '');
+        _powerAssert.default.equal(input.value, '');
+        _powerAssert.default.equal(dateTime.dataValue, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not input the date that is in disabled range', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.disable = '2021-04-15-2021-04-20';
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input = dateTime.element.querySelector('.input');
       var blurEvent = new Event('blur');
@@ -373,18 +369,18 @@ describe('DateTime Component', function () {
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '');
-        _powerAssert["default"].equal(dateTime.dataValue, '');
+        _powerAssert.default.equal(input.value, '');
+        _powerAssert.default.equal(dateTime.dataValue, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not allow inputting the date that meets condition of "custom disabled date"', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.disableFunction = 'date.getDay() === 2';
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input = dateTime.element.querySelector('.input');
       var blurEvent = new Event('blur');
@@ -392,19 +388,19 @@ describe('DateTime Component', function () {
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '');
-        _powerAssert["default"].equal(dateTime.dataValue, '');
+        _powerAssert.default.equal(input.value, '');
+        _powerAssert.default.equal(dateTime.dataValue, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not allow inputting the date if it is out of min/max date range', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].datePicker.minDate = '2021-04-04T12:00:00';
     form.components[0].datePicker.maxDate = '2021-04-18T12:00:00';
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input = dateTime.element.querySelector('.input');
       var blurEvent = new Event('blur');
@@ -412,45 +408,45 @@ describe('DateTime Component', function () {
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '');
-        _powerAssert["default"].equal(dateTime.dataValue, '');
+        _powerAssert.default.equal(input.value, '');
+        _powerAssert.default.equal(dateTime.dataValue, '');
         var blurEvent = new Event('blur');
         input.value = '2022-04-13';
         input.dispatchEvent(blurEvent);
         setTimeout(function () {
           var input = dateTime.element.querySelector('.input');
-          _powerAssert["default"].equal(input.value, '');
-          _powerAssert["default"].equal(dateTime.dataValue, '');
+          _powerAssert.default.equal(input.value, '');
+          _powerAssert.default.equal(dateTime.dataValue, '');
           document.innerHTML = '';
           done();
         }, 300);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should set hour and minutes step', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].timePicker = {
       hourStep: 3,
       minuteStep: 10
     };
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var calendar = dateTime.element.querySelector('.flatpickr-input').widget.calendar;
-      _powerAssert["default"].equal(calendar.config.minuteIncrement, 10);
-      _powerAssert["default"].equal(calendar.config.hourIncrement, 3);
+      _powerAssert.default.equal(calendar.config.minuteIncrement, 10);
+      _powerAssert.default.equal(calendar.config.hourIncrement, 3);
       document.innerHTML = '';
       done();
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should allow inputting 24h time', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
+    var form = _lodash.default.cloneDeep(_fixtures.comp3);
     var element = document.createElement('div');
     form.components[0].timePicker = {
       showMeridian: false
     };
     form.components[0].widget['time_24hr'] = true;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input = dateTime.element.querySelector('.input');
       var blurEvent = new Event('blur');
@@ -458,48 +454,48 @@ describe('DateTime Component', function () {
       input.dispatchEvent(blurEvent);
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '2020-04-03 22:11');
-        _powerAssert["default"].equal(dateTime.dataValue.startsWith('2020-04-03T22:11:00'), true);
+        _powerAssert.default.equal(input.value, '2020-04-03 22:11');
+        _powerAssert.default.equal(dateTime.dataValue.startsWith('2020-04-03T22:11:00'), true);
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not set value if it does not meet minDate validation', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp5);
+    var form = _lodash.default.cloneDeep(_fixtures.comp5);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       dateTime.setValue('2021-05-01T09:00:00');
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '');
+        _powerAssert.default.equal(input.value, '');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should set value in readOnly mode even if it does not meet current minDate validation conditions', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp5);
+    var form = _lodash.default.cloneDeep(_fixtures.comp5);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form, {
+    _Formio.default.createForm(element, form, {
       readOnly: true
     }).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       dateTime.setValue('2021-05-01T09:00:00');
       setTimeout(function () {
         var input = dateTime.element.querySelector('.input');
-        _powerAssert["default"].equal(input.value, '05/01/21');
+        _powerAssert.default.equal(input.value, '05/01/21');
         document.innerHTML = '';
         done();
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should save hours and minutes values on first change', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp6);
+    var form = _lodash.default.cloneDeep(_fixtures.comp6);
     var element = document.createElement('div');
     form.components[0].enableDate = false;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var blurEvent = new Event('blur');
       var input = dateTime.element.querySelector('.input');
@@ -510,18 +506,18 @@ describe('DateTime Component', function () {
         var expectedValue = 'T19:00:00';
         calendar._input.dispatchEvent(blurEvent);
         setTimeout(function () {
-          _powerAssert["default"].equal(dateTime.dataValue.includes(expectedValue), true);
+          _powerAssert.default.equal(dateTime.dataValue.includes(expectedValue), true);
           document.innerHTML = '';
           done();
         }, 200);
       }, 200);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should provide correct value after submission', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp7);
+    var form = _lodash.default.cloneDeep(_fixtures.comp7);
     var element = document.createElement('div');
     form.components[0].enableTime = false;
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       dateTime.setValue('2022-12-21');
       setTimeout(function () {
@@ -530,16 +526,16 @@ describe('DateTime Component', function () {
         var submitBtn = submit.refs.button;
         submitBtn.dispatchEvent(clickEvent);
         setTimeout(function () {
-          _powerAssert["default"].equal(dateTime.dataValue, '2022-12-21');
+          _powerAssert.default.equal(dateTime.dataValue, '2022-12-21');
           done();
         }, 200);
       }, 200);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should not highlight the field when it is valid when multiple values and required validation are enabled', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp8);
+    var form = _lodash.default.cloneDeep(_fixtures.comp8);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var input1 = dateTime.element.querySelectorAll('.input')[0];
       var blurEvent = new Event('blur');
@@ -549,25 +545,25 @@ describe('DateTime Component', function () {
       var clickEvent = new Event('click');
       addAnotherBtn.dispatchEvent(clickEvent);
       setTimeout(function () {
-        _powerAssert["default"].equal(dateTime.refs.input.length, 2);
+        _powerAssert.default.equal(dateTime.refs.input.length, 2);
         var inputs = dateTime.element.querySelectorAll('.input');
-        _powerAssert["default"].equal(inputs[0].classList.contains('is-invalid'), false);
-        _powerAssert["default"].equal(inputs[1].classList.contains('is-invalid'), true);
+        _powerAssert.default.equal(inputs[0].classList.contains('is-invalid'), false);
+        _powerAssert.default.equal(inputs[1].classList.contains('is-invalid'), true);
         inputs[1].value = '2020-05-05';
         inputs[1].dispatchEvent(blurEvent);
         setTimeout(function () {
           var input2 = dateTime.element.querySelectorAll('.input')[1];
-          _powerAssert["default"].equal(input2.classList.contains('is-invalid'), false);
+          _powerAssert.default.equal(input2.classList.contains('is-invalid'), false);
           document.innerHTML = '';
           done();
         }, 300);
       }, 300);
-    })["catch"](done);
+    }).catch(done);
   });
   it('Should provide correct values with time after submission', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp10);
+    var form = _lodash.default.cloneDeep(_fixtures.comp10);
     var element = document.createElement('div');
-    _Formio["default"].createForm(element, form).then(function (form) {
+    _Formio.default.createForm(element, form).then(function (form) {
       var dateTime = form.getComponent('dateTime');
       var textField = form.getComponent('textField');
       dateTime.setValue('2022-04-01T14:00:00.000');
@@ -580,40 +576,15 @@ describe('DateTime Component', function () {
         setTimeout(function () {
           var input1 = dateTime.element.querySelector('.input');
           var input2 = textField.element.querySelector('.input');
-          _powerAssert["default"].equal(input1.value, '2022-04-01 02:00 PM');
-          _powerAssert["default"].equal(input2.value, '2022-04-01 02:00 PM');
+          _powerAssert.default.equal(input1.value, '2022-04-01 02:00 PM');
+          _powerAssert.default.equal(input2.value, '2022-04-01 02:00 PM');
           done();
         }, 200);
       }, 200);
-    })["catch"](done);
-  });
-  it('Should add date to format if enableDate is true', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
-    form.components[0].format = 'hh:mm a';
-    form.components[0].enableDate = true;
-    var element = document.createElement('div');
-    _Formio["default"].createForm(element, form, {
-      attachMode: 'builder'
-    }).then(function (form) {
-      var dateTime = form.getComponent('dateTime');
-      _powerAssert["default"].equal(dateTime.component.format, 'yyyy-MM-dd hh:mm a');
-      done();
-    })["catch"](done);
-  });
-  it('Should add time to format if enableTime is true', function (done) {
-    var form = _lodash["default"].cloneDeep(_fixtures.comp3);
-    form.components[0].format = 'yyyy-MM-dd';
-    form.components[0].enableTime = true;
-    var element = document.createElement('div');
-    _Formio["default"].createForm(element, form, {
-      attachMode: 'builder'
-    }).then(function (form) {
-      var dateTime = form.getComponent('dateTime');
-      _powerAssert["default"].equal(dateTime.component.format, 'yyyy-MM-dd hh:mm a');
-      done();
-    })["catch"](done);
+    }).catch(done);
   });
 
+  //TOFIX
   // it('Should provide correct date in selected timezone after submission', (done) => {
   //   const form = _.cloneDeep(comp9);
   //   const element = document.createElement('div');

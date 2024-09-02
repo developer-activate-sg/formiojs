@@ -1,9 +1,8 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,20 +17,16 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.default = void 0;
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.map.js");
-require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.promise.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Component2 = _interopRequireDefault(require("../_classes/component/Component"));
 var _lodash = _interopRequireDefault(require("lodash"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -69,7 +64,7 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
       if (this.component.content.replace(/(<(\/?[^>]+)>)/g, '').trim() === 'select') {
         return " ".concat(this.component.content, " ");
       }
-      var submission = _lodash["default"].get(this.root, 'submission', {});
+      var submission = _lodash.default.get(this.root, 'submission', {});
       var content = this.component.content ? this.interpolate(this.component.content, {
         metadata: submission.metadata || {},
         submission: submission,
@@ -87,7 +82,7 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
     key: "checkRefreshOn",
     value: function checkRefreshOn(changed) {
       _get(_getPrototypeOf(HTMLComponent.prototype), "checkRefreshOn", this).call(this, changed);
-      if (!this.builderMode && this.component.refreshOnChange && this.element && !_lodash["default"].isUndefined(changed) && (_lodash["default"].isBoolean(changed) && changed || !_lodash["default"].isEmpty(changed)) && this.conditionallyVisible(this.data, this.row)) {
+      if (!this.builderMode && this.component.refreshOnChange && this.element && !_lodash.default.isUndefined(changed) && (_lodash.default.isBoolean(changed) && changed || !_lodash.default.isEmpty(changed)) && this.conditionallyVisible(this.data, this.row)) {
         this.setContent(this.element, this.renderContent());
       }
     }
@@ -95,7 +90,7 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
     key: "renderContent",
     value: function renderContent() {
       var _this = this;
-      var submission = _lodash["default"].get(this.root, 'submission', {});
+      var submission = _lodash.default.get(this.root, 'submission', {});
       return this.renderTemplate('html', {
         component: this.component,
         tag: this.component.tag,
@@ -120,22 +115,10 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
       return _get(_getPrototypeOf(HTMLComponent.prototype), "render", this).call(this, this.renderContent());
     }
   }, {
-    key: "dataReady",
-    get: function get() {
-      var _this$root;
-      return ((_this$root = this.root) === null || _this$root === void 0 ? void 0 : _this$root.submissionReady) || Promise.resolve();
-    }
-  }, {
     key: "attach",
     value: function attach(element) {
-      var _this2 = this;
       this.loadRefs(element, {
         html: 'single'
-      });
-      this.dataReady.then(function () {
-        if (_this2.refs.html) {
-          _this2.setContent(_this2.refs.html, _this2.content);
-        }
       });
       return _get(_getPrototypeOf(HTMLComponent.prototype), "attach", this).call(this, element);
     }
@@ -145,7 +128,7 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Component2["default"].schema.apply(_Component2["default"], [{
+      return _Component2.default.schema.apply(_Component2.default, [{
         label: 'HTML',
         type: 'htmlelement',
         tag: 'p',
@@ -163,17 +146,11 @@ var HTMLComponent = /*#__PURE__*/function (_Component) {
         group: 'layout',
         icon: 'code',
         weight: 0,
-        documentation: '/userguide/form-building/layout-components#html-element',
-        showPreview: false,
+        documentation: '/userguide/forms/layout-components#html-element',
         schema: HTMLComponent.schema()
       };
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [];
-    }
   }]);
   return HTMLComponent;
-}(_Component2["default"]);
-exports["default"] = HTMLComponent;
+}(_Component2.default);
+exports.default = HTMLComponent;

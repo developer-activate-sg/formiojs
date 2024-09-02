@@ -2,8 +2,6 @@
 
 require("core-js/modules/es.object.to-string.js");
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,14 +16,12 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.function.bind.js");
-require("core-js/modules/es.object.set-prototype-of.js");
+exports.default = void 0;
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _Button = _interopRequireDefault(require("../../../components/button/Button"));
 var _Formio = require("../../../Formio");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -111,8 +107,8 @@ var StripeCheckoutComponent = /*#__PURE__*/function (_ButtonComponent) {
       }
 
       // Open Checkout with further options:
-      var popupConfiguration = _lodash["default"].cloneDeep(this.component.stripe.popupConfiguration) || {};
-      _lodash["default"].each(popupConfiguration, function (value, key) {
+      var popupConfiguration = _lodash.default.cloneDeep(this.component.stripe.popupConfiguration) || {};
+      _lodash.default.each(popupConfiguration, function (value, key) {
         popupConfiguration[key] = _this2.t(value);
       });
       if (this.componentAction === 'submit') {
@@ -155,7 +151,7 @@ var StripeCheckoutComponent = /*#__PURE__*/function (_ButtonComponent) {
 
       // When stripe checkout is ready, create the handler and add event listeners
       this.stripeCheckoutReady.then(function () {
-        var handlerConfiguration = _lodash["default"].cloneDeep(_this3.component.stripe.handlerConfiguration) || {};
+        var handlerConfiguration = _lodash.default.cloneDeep(_this3.component.stripe.handlerConfiguration) || {};
         handlerConfiguration.key = _this3.component.stripe.apiKey;
         handlerConfiguration.token = _this3.onToken.bind(_this3);
         if (typeof handlerConfiguration.locale === 'undefined') {
@@ -173,13 +169,13 @@ var StripeCheckoutComponent = /*#__PURE__*/function (_ButtonComponent) {
     get: function get() {
       return {
         group: false,
-        schema: _Button["default"].schema()
+        schema: _Button.default.schema()
       };
     }
   }]);
   return StripeCheckoutComponent;
-}(_Button["default"]);
-exports["default"] = StripeCheckoutComponent;
+}(_Button.default);
+exports.default = StripeCheckoutComponent;
 if ((typeof global === "undefined" ? "undefined" : _typeof(global)) === 'object' && global.Formio && global.Formio.registerComponent) {
   global.Formio.registerComponent('stripeCheckout', StripeCheckoutComponent);
 }

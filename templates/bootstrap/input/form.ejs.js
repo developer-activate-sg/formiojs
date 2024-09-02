@@ -10,17 +10,17 @@ __p += '\n<div class="input-group">\n  ';
  } ;
 __p += '\n  ';
  if (ctx.prefix) { ;
-__p += '\n    <div class="input-group-prepend" ref="prefix">\n      <span class="input-group-text">\n        ';
+__p += '\n    <div class="input-group-prepend" ref="prefix">\n    <span class="input-group-text">\n      ';
  if(ctx.prefix instanceof HTMLElement){ ;
-__p += '\n          ' +
+__p += '\n        ' +
 ((__t = ( ctx.t(ctx.prefix.outerHTML, { _userInput: true }) )) == null ? '' : __t) +
-'\n        ';
+'\n      ';
  } else{ ;
-__p += '\n          ' +
+__p += '\n        ' +
 ((__t = ( ctx.t(ctx.prefix, { _userInput: true }) )) == null ? '' : __t) +
-'\n        ';
+'\n      ';
  } ;
-__p += '\n      </span>\n    </div>\n  ';
+__p += '\n    </span>\n    </div>\n  ';
  } ;
 __p += '\n  ';
  if (!ctx.component.editor && !ctx.component.wysiwyg) { ;

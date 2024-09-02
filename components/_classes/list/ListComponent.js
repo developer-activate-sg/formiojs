@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.symbol.to-primitive.js");
 require("core-js/modules/es.date.to-primitive.js");
 require("core-js/modules/es.symbol.js");
@@ -14,30 +12,23 @@ require("core-js/modules/es.string.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.reduce.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.every.js");
-require("core-js/modules/es.date.to-string.js");
 require("core-js/modules/es.regexp.to-string.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.array.iterator.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/es.string.starts-with.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
 require("core-js/modules/es.array.filter.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _Field2 = _interopRequireDefault(require("../field/Field"));
 var _Formio = require("../../../Formio");
 var _lodash = _interopRequireDefault(require("lodash"));
 var _nativePromiseOnly = _interopRequireDefault(require("native-promise-only"));
-var _utils = require("../../../utils/utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -63,45 +54,6 @@ var ListComponent = /*#__PURE__*/function (_Field) {
       return this.component.dataSrc === 'url';
     }
   }, {
-    key: "selectData",
-    get: function get() {
-      var selectData = _lodash["default"].get(this.root, 'submission.metadata.selectData', {});
-      return _lodash["default"].get(selectData, this.path);
-    }
-  }, {
-    key: "shouldLoad",
-    get: function get() {
-      if (this.loadingError) {
-        return false;
-      }
-      // Live forms should always load.
-      if (!this.options.readOnly) {
-        return true;
-      }
-
-      // If there are template keys, then we need to see if we have the data.
-      if (this.templateKeys && this.templateKeys.length) {
-        // See if we already have the data we need.
-        var dataValue = this.dataValue;
-        var selectData = this.selectData;
-        return this.templateKeys.reduce(function (shouldLoad, key) {
-          var hasValue = _lodash["default"].has(dataValue, key) || (_lodash["default"].isArray(selectData) ? selectData.every(function (data) {
-            return _lodash["default"].has(data, key);
-          }) : _lodash["default"].has(selectData, key));
-          return shouldLoad || !hasValue;
-        }, false);
-      }
-
-      // Return that we should load.
-      return true;
-    }
-  }, {
-    key: "getTemplateKeys",
-    value: function getTemplateKeys() {
-      var template = this.component.template;
-      this.templateKeys = this.options.readOnly && template ? (0, _utils.getItemTemplateKeys)(template) : [];
-    }
-  }, {
     key: "requestHeaders",
     get: function get() {
       var _this = this;
@@ -110,7 +62,7 @@ var ListComponent = /*#__PURE__*/function (_Field) {
       // Add custom headers to the url.
       if (this.component.data && this.component.data.headers) {
         try {
-          _lodash["default"].each(this.component.data.headers, function (header) {
+          _lodash.default.each(this.component.data.headers, function (header) {
             if (header.key) {
               headers.set(header.key, _this.interpolate(header.value));
             }
@@ -121,20 +73,9 @@ var ListComponent = /*#__PURE__*/function (_Field) {
       }
       return headers;
     }
-
-    // Must be implemented in child classes.
-  }, {
-    key: "setItems",
-    value: function setItems() {}
-  }, {
-    key: "updateCustomItems",
-    value: function updateCustomItems() {}
-  }, {
-    key: "loadItems",
-    value: function loadItems() {}
   }, {
     key: "getOptionTemplate",
-    value: function getOptionTemplate(data, value, index) {
+    value: function getOptionTemplate(data, value) {
       if (!this.component.template) {
         return data.label;
       }
@@ -142,26 +83,23 @@ var ListComponent = /*#__PURE__*/function (_Field) {
         noeval: true,
         data: {}
       };
-      var template = this.sanitize(this.component.template ? this.interpolate(this.component.template, {
+      var template = this.interpolate(this.component.template, {
         item: data
-      }, options) : data.label, this.shouldSanitizeValue);
+      }, options);
       var templateValue = this.component.reference && value !== null && value !== void 0 && value._id ? value._id.toString() : value;
-      if (templateValue && !_lodash["default"].isObject(templateValue) && options.data.item) {
+      if (templateValue && !_lodash.default.isObject(templateValue) && options.data.item) {
         // If the value is not an object, then we need to save the template data off for when it is selected.
         this.templateData[templateValue] = options.data.item;
-      }
-      if (_lodash["default"].isNumber(index)) {
-        this.templateData[index] = options.data.item;
       }
       return template;
     }
   }, {
     key: "itemTemplate",
-    value: function itemTemplate(data, value, index) {
-      if (_lodash["default"].isEmpty(data)) {
+    value: function itemTemplate(data, value) {
+      if (_lodash.default.isEmpty(data)) {
         return '';
       }
-      var template = this.sanitize(this.getOptionTemplate(data, value, index), this.shouldSanitizeValue);
+      var template = this.sanitize(this.getOptionTemplate(data, value), this.shouldSanitizeValue);
       if (template) {
         var _this$i18next;
         var label = template.replace(/<\/?[^>]+(>|$)/g, '');
@@ -300,7 +238,7 @@ var ListComponent = /*#__PURE__*/function (_Field) {
                 var db = event.target.result;
                 var transaction = db.transaction(_this2.component.indexeddb.table, 'readwrite');
                 var objectStore = transaction.objectStore(_this2.component.indexeddb.table);
-                new _nativePromiseOnly["default"](function (resolve) {
+                new _nativePromiseOnly.default(function (resolve) {
                   var responseItems = [];
                   objectStore.getAll().onsuccess = function (event) {
                     event.target.result.forEach(function (item) {
@@ -309,8 +247,8 @@ var ListComponent = /*#__PURE__*/function (_Field) {
                     resolve(responseItems);
                   };
                 }).then(function (items) {
-                  if (!_lodash["default"].isEmpty(_this2.component.indexeddb.filter)) {
-                    items = _lodash["default"].filter(items, _this2.component.indexeddb.filter);
+                  if (!_lodash.default.isEmpty(_this2.component.indexeddb.filter)) {
+                    items = _lodash.default.filter(items, _this2.component.indexeddb.filter);
                   }
                   _this2.setItems(items);
                 });
@@ -326,7 +264,7 @@ var ListComponent = /*#__PURE__*/function (_Field) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _Field2["default"].schema.apply(_Field2["default"], [{
+      return _Field2.default.schema.apply(_Field2.default, [{
         dataSrc: 'values',
         authenticate: false,
         ignoreCache: false,
@@ -338,5 +276,5 @@ var ListComponent = /*#__PURE__*/function (_Field) {
     }
   }]);
   return ListComponent;
-}(_Field2["default"]);
-exports["default"] = ListComponent;
+}(_Field2.default);
+exports.default = ListComponent;

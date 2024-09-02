@@ -2,8 +2,6 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 require("core-js/modules/es.reflect.construct.js");
-require("core-js/modules/es.object.create.js");
-require("core-js/modules/es.object.define-property.js");
 require("core-js/modules/es.reflect.get.js");
 require("core-js/modules/es.object.get-own-property-descriptor.js");
 require("core-js/modules/es.symbol.to-primitive.js");
@@ -18,21 +16,15 @@ require("core-js/modules/web.dom-collections.iterator.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
-require("core-js/modules/es.array.reduce.js");
+exports.default = void 0;
 require("core-js/modules/es.object.to-string.js");
-require("core-js/modules/es.array.is-array.js");
 require("core-js/modules/es.array.concat.js");
-require("core-js/modules/es.array.for-each.js");
 require("core-js/modules/web.dom-collections.for-each.js");
-require("core-js/modules/es.object.set-prototype-of.js");
-require("core-js/modules/es.function.bind.js");
 require("core-js/modules/es.object.get-prototype-of.js");
 var _lodash = _interopRequireDefault(require("lodash"));
-var _utils = require("../../../utils/utils");
 var _Component = _interopRequireDefault(require("../component/Component"));
 var _NestedDataComponent2 = _interopRequireDefault(require("../nesteddata/NestedDataComponent"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -58,11 +50,6 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "componentContext",
     value: function componentContext(component) {
       return this.iteratableRows[component.rowIndex].data;
-    }
-  }, {
-    key: "isRowsDataComponent",
-    get: function get() {
-      return true;
     }
   }, {
     key: "iteratableRows",
@@ -99,7 +86,7 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
       flags = flags || {};
       row = row || this.data;
       this.checkAddButtonChanged();
-      return this.checkRows('checkData', data, flags, _Component["default"].prototype.checkData.call(this, data, flags, row));
+      return this.checkRows('checkData', data, flags, _Component.default.prototype.checkData.call(this, data, flags, row));
     }
   }, {
     key: "checkRows",
@@ -120,7 +107,7 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
         silentCheck = true;
         opts.noRefresh = true;
       }
-      var valid = _lodash["default"].reduce(components, function (valid, component) {
+      var valid = _lodash.default.reduce(components, function (valid, component) {
         return component[method](data, opts, row, silentCheck) && valid;
       }, true);
       if (opts !== null && opts !== void 0 && opts.noRefresh) {
@@ -131,8 +118,8 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
   }, {
     key: "hasAddButton",
     value: function hasAddButton() {
-      var maxLength = _lodash["default"].get(this.component, 'validate.maxLength');
-      var conditionalAddButton = _lodash["default"].get(this.component, 'conditionalAddButton');
+      var maxLength = _lodash.default.get(this.component, 'validate.maxLength');
+      var conditionalAddButton = _lodash.default.get(this.component, 'conditionalAddButton');
       return !this.component.disableAddingRemovingRows && !this.options.readOnly && !this.disabled && this.fullMode && !this.options.preview && (!maxLength || this.iteratableRows.length < maxLength) && (!conditionalAddButton || this.evaluate(conditionalAddButton, {
         value: this.dataValue
       }, 'show'));
@@ -147,11 +134,11 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
       var possibleComp = null;
       var comp = null;
       var rowIndex = null;
-      if (_lodash["default"].isNumber(key)) {
+      if (_lodash.default.isNumber(key)) {
         rowIndex = key;
         key = remainingPath.shift();
       }
-      if (!_lodash["default"].isString(key)) {
+      if (!_lodash.default.isString(key)) {
         return result;
       }
       this.everyComponent(function (component, components) {
@@ -174,7 +161,7 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
     key: "everyComponent",
     value: function everyComponent(fn, rowIndex, options) {
       var _options;
-      if (_lodash["default"].isObject(rowIndex)) {
+      if (_lodash.default.isObject(rowIndex)) {
         options = rowIndex;
         rowIndex = null;
       }
@@ -182,7 +169,7 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
         return;
       }
       var components = this.getComponents(rowIndex);
-      _lodash["default"].each(components, function (component, index) {
+      _lodash.default.each(components, function (component, index) {
         if (fn(component, components, index) === false) {
           return false;
         }
@@ -207,7 +194,7 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
         this.iteratableRows.forEach(function (_ref) {
           var components = _ref.components;
           result += '<tr>';
-          _lodash["default"].each(components, function (component) {
+          _lodash.default.each(components, function (component) {
             result += '<td style="padding:5px 10px;">';
             if (component.isInputComponent && component.visible && !component.skipInEmail) {
               result += component.getView(component.dataValue, options);
@@ -241,16 +228,11 @@ var NestedArrayComponent = /*#__PURE__*/function (_NestedDataComponent) {
       for (var _len = arguments.length, extend = new Array(_len), _key = 0; _key < _len; _key++) {
         extend[_key] = arguments[_key];
       }
-      return _NestedDataComponent2["default"].schema.apply(_NestedDataComponent2["default"], [{
+      return _NestedDataComponent2.default.schema.apply(_NestedDataComponent2.default, [{
         disableAddingRemovingRows: false
       }].concat(extend));
     }
-  }, {
-    key: "savedValueTypes",
-    value: function savedValueTypes() {
-      return [_utils.componentValueTypes.array];
-    }
   }]);
   return NestedArrayComponent;
-}(_NestedDataComponent2["default"]);
-exports["default"] = NestedArrayComponent;
+}(_NestedDataComponent2.default);
+exports.default = NestedArrayComponent;
